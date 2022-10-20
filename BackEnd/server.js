@@ -1,10 +1,11 @@
 const express = require('express')
-const courseRouters = require('./routes/courses')
+const courseRouter = require('./routes/courseRouter')
 const mongoose = require('mongoose')
 
 
 //express
 const app = express()
+const port = process.env.PORT || 3000;
 
 //middleware
 app.use(express.json())
@@ -14,14 +15,14 @@ app.use((req, res, next) => {
 })
 
 //routes
-app.use('/api/courses', courseRouters)
+app.use('/courseRouter', courseRouter)
 
 
 //db connection
-mongoose.connect(process.env.MONG_URI)
+mongoose.connect('mongodb+srv://boda:boda123@cluster0.fdovrg9.mongodb.net/?retryWrites=true&w=majority')
     .then(() => {
-        app.listen(process.env.PORT, () => {
-            console.log('Hi the server is listening', process.env.PORT)
+        app.listen(port, () => {
+            console.log('connected to db & the server is listening', port)
         })
     })
     .catch((error) => {
