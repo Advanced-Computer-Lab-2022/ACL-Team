@@ -26,19 +26,11 @@ app.use(session({
     saveUninitialized: true
 
 }))
+
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 app.use(passport.initialize())
 app.use(passport.session())
-
-passport.serializeUser(function(user, done) {
-    done(null, user.id)
-})
-
-passport.deserializeUser(function(id, done) {
-    //w8 for user model
-})
-
 
 mongoose.connect('mongodb+srv://boda:boda123@cluster0.fdovrg9.mongodb.net/?retryWrites=true&w=majority')
     .then(() => {
@@ -50,7 +42,33 @@ mongoose.connect('mongodb+srv://boda:boda123@cluster0.fdovrg9.mongodb.net/?retry
         console.log(error)
     })
 
-const userDb = require('../models/userSchema')
+
+const userDb = require('../BackEnd/models/userSchema')
+
+passport.serializeUser(function(user, done) {
+    done(null, user.id)
+})
+
+
+passport.deserializeUser(function(id, done) {
+        userDb.findById(id, function(err, user) {
+            done(err, user)
+        })
+    })
+    //user authentication
+passport.use(new localStrategy(function(username, password, done) {
+    userDb.findOne({ username: username }, function(err, user) {
+        if (err) return done(err);
+        if (!user) return done(null, false, { message: 'Incorrect username.' });
+
+        bcrypt.compare(password, user.password, function(err, res) {
+            if (err) return done(err);
+            if (res == false) return done(null, false, { message: 'Incorrect password. ' });
+
+            return done(null, user)
+        })
+    })
+}));
 
 //middleware
 
