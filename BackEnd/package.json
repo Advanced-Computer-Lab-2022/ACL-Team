@@ -22,6 +22,9 @@
         "express-session": "^1.17.3",
         "passport": "^0.6.0",
         "passport-local": "^1.0.0",
-        "prettier": "^2.7.1"
+        "prettier": "^2.7.1",
+        "xmysql": "^0.5.1",
+        "mongoose": "^6.6.6",
+        "xmysql": "^0.5.1"
     }
 }

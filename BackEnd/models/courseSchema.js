@@ -24,6 +24,8 @@ const courseSchema = new Schema({
     }
 }, { timestamps: true })
 
+
+courseSchema.index({id:'text'})
 module.exports = mongoose.model('course', courseSchema)
 
 //courses.find()

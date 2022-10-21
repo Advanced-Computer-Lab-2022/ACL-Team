@@ -2,16 +2,23 @@ const express = require('express')
 const course = require('../models/courseSchema')
 const {
     createCourse,
-    getCourse,
-    getAllCourses,
+
+    getAllCourses
 
 } = require('../controller/courseController')
+const {
+    getCourse,
+
+
+} = require('../controller/courseSearchController')
+
 
 const router = express.Router();
 
 router.get('/', getAllCourses)
 
 router.get('/:id', getCourse)
+router.post('/:id', getCourse)
 
 //post still is not working
 router.post('/', createCourse)
