@@ -20,17 +20,17 @@ app.set('view Engine', 'hbs');
 
 app.use(express.static(__dirname + '/frontEnd'));
 
-app.use(session({
-    secret: process.env.secret,
-    resave: false,
-    saveUninitialized: true
+// app.use(session({
+//     secret: process.env.secret,
+//     resave: false,
+//     saveUninitialized: true
 
-}))
+// }))
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-app.use(passport.initialize())
-app.use(passport.session())
+    // app.use(passport.initialize())
+    // app.use(passport.session())
 
 mongoose.connect('mongodb+srv://boda:boda123@cluster0.fdovrg9.mongodb.net/?retryWrites=true&w=majority')
     .then(() => {
