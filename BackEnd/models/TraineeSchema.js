@@ -12,21 +12,21 @@ const TraineeSchema = new Schema({
         type: Boolean,
     },
    
-    Name: {
+    name: {
         type: String,
         // required: true
     },
     
-    Password: {
+    password: {
         type: String,
         // required: true
     },
     
-    Gender: {
+    gender: {
         type: String
     },
     
-    BoughtCourses: {
+    boughtCourses: {
         type: String,
         // required: true
     },
