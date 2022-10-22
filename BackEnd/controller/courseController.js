@@ -1,8 +1,8 @@
-const course = require('../models/courseSchema')
+const courseDb = require('../models/courseSchema')
 
 //get all courses available
 const getAllCourses = async(req, res) => {
-    const courses = await course.find({}).sort({ createdAt: -1 })
+    const courses = await courseDb.find({}).sort({ createdAt: -1 })
 
     res.status(200).json(courses)
 }
@@ -12,7 +12,7 @@ const getAllCourses = async(req, res) => {
 const getCourse = async(req, res) => {
     const { id } = req.params
 
-    const course = await course.findById(id)
+    const course = await courseDb.findById(id)
 
     if (!course) {
         return res.status(404).json({ error: 'course not found' })
@@ -26,7 +26,7 @@ const createCourse = async(req, res) => {
     const { title, id, subject, rating, price } = req.body
 
     try {
-        const course = await courseRouter.create({ title, id, subject, rating, price })
+        const course = await courseDb.create({ title, id, subject, rating, price })
         res.status(200).json(course)
     } catch (error) {
 

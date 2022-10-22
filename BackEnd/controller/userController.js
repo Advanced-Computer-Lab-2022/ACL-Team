@@ -6,6 +6,21 @@ const deserializeUser = async(id, done) => {
         done(err, user)
     })
 
+    const signUp = async (req,res) => {
+        const {id , username , password} = req.body
+
+        try{
+            const user = await courseDb.create({ id, username , password})
+            res.status(200).json(user)
+
+        }
+        catch (error) { 
+            res.status(404).json({error: error.message})
+        }
+    }
+
+    
+
 
 
 
@@ -13,6 +28,7 @@ const deserializeUser = async(id, done) => {
 
     module.exports = {
         deserializeUser,
+        signUp
 
     }
 }

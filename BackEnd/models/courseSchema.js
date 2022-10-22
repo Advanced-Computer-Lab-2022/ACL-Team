@@ -3,27 +3,72 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const courseSchema = new Schema({
-    title: {
-        type: String,
-    },
-    id: {
+    Id: {
         type: Number,
         required: true
     },
-    subject: {
+
+    Title: {
+        type: String,
+    },
+   
+    Price: {
+        type: Number,
+        // required: true
+    },
+    
+    Ratings: {
+        type: Number,
+        // required: true
+    },
+    
+    Category: {
+        type: String
+    },
+    
+    Subject: {
         type: String,
         // required: true
     },
-    rating: {
-        type: Number,
-        // required: true
+
+    Instructor_id: {
+        type: String
     },
-    price: {
-        type: Number,
-        // required: true
+
+    Summary: {
+        type: String
+    },
+
+    VideoTree: {
+        type: String
+    },
+
+    CourseTree: {
+        type: String
+    },
+    
+    ExcerciseTree: {
+        type: String
+    },
+
+    Certificate: {
+        type: String
+    },
+
+    ExamTree: {
+        type: String
     }
+
+
+
+
+    
+    
+
 }, { timestamps: true })
 
+
+courseSchema.index({id:'text'})
 module.exports = mongoose.model('course', courseSchema)
 
 //courses.find()
