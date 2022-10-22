@@ -1,13 +1,77 @@
-body {
-    margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-  code {
-    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-      monospace;
-  }
+/* HomePage */
+.Navbar{
+    background-color: #999c9e;
+    padding: 20px;
+    text-decoration: none;
+}
+
+.Title{
+    color: aliceblue;
+    position: relative;
+    left: 40px;
+    text-decoration: none;
+}
+
+.Title:hover{
+    color: aliceblue;
+}
+
+.SignInButton{
+    background-color: #999c9e;
+    border: none;
+    position: absolute;
+    border-radius: 8px;
+    right: 370px;
+    top: 28px;
+    font-size: 20px;
+    padding: 10px 15px 10px 15px;
+    text-decoration: none;
+}
+.SignInButton:hover{
+    color:aliceblue;
+}
+
+.SignUpButton{
+    background-color: transparent;
+    border-color: aqua;
+    border: 2px solid aqua;
+    position: absolute;
+    border-radius: 8px;
+    right: 250px;
+    top: 28px;
+    font-size: 20px;
+    padding: 10px 15px 10px 15px;
+    text-decoration: none;
+}
+.SignUpButton:hover{
+    background-color: aqua;
+}
+
+.WelcomeMssg{
+    color: #cbcece;
+    font-size: 2.0rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: normal;
+    text-align: center;
+    display: block;
+    position: absolute;
+    left: 600px;
+    top: 230px;
+    width: 30%;
+
+}
+
+.EduPic{
+    background-position: 94% 163px;
+    background-repeat: no-repeat;
+    background-size: 1200px;
+    content: "";
+    display: block;
+    left: 0;
+    top: 150px;
+    width: 50%;
+    height: 70%;
+    margin:auto;
+    padding: 100px;
+}
+
