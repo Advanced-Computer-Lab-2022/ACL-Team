@@ -80,7 +80,7 @@ app.use((req, res, next) => {
 })
 
 //routes
-app.use('/courseRouter', courseRouter)
+app.use('/course', courseRouter)
 
 
 //db connection
@@ -90,10 +90,10 @@ app.use('/courseRouter', courseRouter)
 
 
 app.get('/', (req, res) => {
-    res.json({ mssg: 'shal7a' })
+    res.json({ mssg: 'aaaa' })
 })
 app.post('/', (req, res) => {
-    res.json({ mssg: 'shal7a' })
+    res.json({ mssg: 'aaaaa' })
 })
 
 
