@@ -9,6 +9,9 @@ import Inst from './pages/Instructor';
 import Home from './pages/Home';
 import Course from './pages/Course';
 import SignUp from './pages/SignUp';
+import UserPage from './pages/User';
+import InstProfile from './pages/InstructorPage';
+import UserProfile from './pages/userProfile';
 
 
 
@@ -18,10 +21,13 @@ function App() {
     <Router>
       <Routes>
       <Route path='/' exact element={<Home/>} />
-      <Route path='/SignIn' exact element={<SignIn></SignIn>} />
+      <Route path='/login' exact element={<SignIn></SignIn>} />
       <Route path='/SignUp' exact element={<SignUp/>}/>
       <Route path='/Instructor' exact element={<Inst/>}/>
-      <Route path='/Course' exact element={<Course/>}/>
+      <Route path='/InstructorProfile' exact element={<InstProfile/>}/>
+      <Route path='/course' exact element={<Course/>}/>
+      <Route path='/user' exact element={<UserPage/>}/>
+      <Route path='/userProfile' exact element={<UserProfile/>}/>
 
 
       </Routes>

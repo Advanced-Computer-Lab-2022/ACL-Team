@@ -1,6 +1,6 @@
 
 
-export default function CourseNav() {
+export default function UserNav() {
     return(
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="/">EduBay</a>
@@ -14,11 +14,11 @@ export default function CourseNav() {
         <a class="nav-link" href="/course">View Courses</a>
       </li>
       <li class="nav-item active">
+        <a class="nav-link" href="/userProfile">View Profile</a>
+      </li>
+      <li class="nav-item active">
         <a class="nav-link" href="/">Logout</a>
       </li>
-      {/* <li class="nav-item active">
-        <a class="nav-link" href="/userProfile">View Profile</a>
-      </li> */}
 
       <li class="nav-item">
         {/* <a class="nav-link" href="/Instructor">Instructor</a>

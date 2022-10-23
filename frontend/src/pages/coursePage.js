@@ -1,6 +1,6 @@
 import Navbar from "../components/navbar"
 
-export default function Course(){
+export default function CoursePage(){
     return(
            <div className="coursePage">
             <Navbar/>
@@ -8,4 +8,4 @@ export default function Course(){
            </div>
        )
 }
-
+   

@@ -1,10 +1,10 @@
 import InstNav from "../components/Instructor/InstNav";
 
-export default function Inst(){
+export default function InstProfile(){
     return(
         <div>
             <InstNav/>
-            <h1> Instructor page</h1>
+            <h1> Instructor Profile</h1>
         </div>
     )
 }

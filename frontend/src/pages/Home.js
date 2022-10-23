@@ -1,5 +1,5 @@
 import Welcome from "../components/Home/Welcome"
-import Navbar from "../components/NavBar"
+import Navbar from "../components/navbar"
 
 export default function Home(){
 
