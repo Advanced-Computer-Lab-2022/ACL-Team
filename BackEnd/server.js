@@ -68,10 +68,10 @@ passport.deserializeUser(function(id, done) {
         })
     })
     //user authentication
-    // passport.use(new localStrategy(function(username, password, done) {
-    //     userDb.findOne({ username: username }, function(err, user) {
-    //         if (err) return done(err);
-    //         if (!user) return done(null, false, { message: 'Incorrect username.' });
+// passport.use(new localStrategy(function(username, password, done) {
+//     userDb.findOne({ username: username }, function(err, user) {
+//         if (err) return done(err);
+//         if (!user) return done(null, false, { message: 'Incorrect username.' });
 
 //         bcrypt.compare(password, user.password, function(err, res) {
 //             if (err) return done(err);

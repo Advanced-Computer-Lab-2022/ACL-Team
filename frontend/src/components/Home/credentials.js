@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Credentials(){
         return(
@@ -34,7 +35,13 @@ export default function Credentials(){
     <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
     <label class="form-check-label" for="exampleCheck1">Check me out</label>
   </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
+  <Link to="/user">
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </Link>
+
+  <Link to="/Instructor">
+    <button type="submit" class="btn btn-primary">Submit to Instructor</button>
+  </Link>
 </form>                
         </div>
         )

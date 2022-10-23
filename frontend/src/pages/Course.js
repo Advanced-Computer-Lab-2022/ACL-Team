@@ -1,10 +1,28 @@
-import Navbar from "../components/navBar"
+import { useEffect,useState } from "react";
+import CourseCard from "../components/Course/courseCard";
+import CourseNav from "../components/Course/CourseNav";
 
-export default function Course() {
-    return ( 
-        <div className = "coursePage" >
-        <Navbar/>
-        <h1> Course Page </h1> 
-        </div>
-    )
+export default function Course(){
+    const[courses, setCourses] = useState(null) 
+
+    useEffect(() => {
+        const fetchCourses = async () => {
+            const response = await fetch('http://localhost:3000/courseRouter')
+            const json = await response.json()
+
+            if(response.ok){
+                setCourses(json)
+            }
+        }
+
+        fetchCourses()
+    }, [])
+    
+    return(
+           <div className="coursePage">
+            <CourseNav/>
+            <CourseCard/>
+            {/* {courses && courses.map((course) => (<CourseCard />))} */}
+           </div>
+       )
 }

@@ -1,5 +1,5 @@
 import Credentials from '../components/Home/credentials';
-import Navbar from '../components/NavBar';
+import Navbar from '../components/navbar';
 
 
 export default function SignIn(){
