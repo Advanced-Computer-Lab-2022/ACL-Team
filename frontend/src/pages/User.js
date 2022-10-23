@@ -1,5 +1,4 @@
-import Credentials2 from '../components/SignUp/credentials2';
-import UserNav from '../components/User/UserNav';
+import UserNav from '../components/User/usernav';
 
 export default function UserPage(){
     return(

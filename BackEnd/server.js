@@ -31,8 +31,8 @@ app.use(express.static(__dirname + '/frontEnd'));
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-app.use(passport.initialize())
-app.use(passport.session())
+// app.use(passport.initialize())
+// app.use(passport.session())
 
 mongoose.connect('mongodb+srv://boda:boda123@cluster0.fdovrg9.mongodb.net/?retryWrites=true&w=majority')
     .then(() => {
@@ -58,19 +58,19 @@ passport.deserializeUser(function(id, done) {
         })
     })
     //user authentication
-passport.use(new localStrategy(function(username, password, done) {
-    userDb.findOne({ username: username }, function(err, user) {
-        if (err) return done(err);
-        if (!user) return done(null, false, { message: 'Incorrect username.' });
+// passport.use(new localStrategy(function(username, password, done) {
+//     userDb.findOne({ username: username }, function(err, user) {
+//         if (err) return done(err);
+//         if (!user) return done(null, false, { message: 'Incorrect username.' });
 
-        bcrypt.compare(password, user.password, function(err, res) {
-            if (err) return done(err);
-            if (res == false) return done(null, false, { message: 'Incorrect password. ' });
+//         bcrypt.compare(password, user.password, function(err, res) {
+//             if (err) return done(err);
+//             if (res == false) return done(null, false, { message: 'Incorrect password. ' });
 
-            return done(null, user)
-        })
-    })
-}));
+//             return done(null, user)
+//         })
+//     })
+// }));
 
 //middleware
 

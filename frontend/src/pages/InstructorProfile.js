@@ -1,4 +1,4 @@
-import InstNav from "../components/Instructor/InstNav";
+import InstNav from "../components/Instructor/instnav";
 
 export default function InstProfile(){
     return(

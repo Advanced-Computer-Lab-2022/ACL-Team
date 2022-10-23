@@ -1,10 +1,9 @@
-import UserNav from "../components/User/UserNav";
+import UserNav from "../components/User/usernav";
 
 export default function UserProfile(){
     return(
         <div>
             <UserNav/>
-            <h1> User Profile</h1>
         </div>
     )
 }

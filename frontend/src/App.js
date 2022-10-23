@@ -3,14 +3,14 @@ import { BrowserRouter as Router,Routes, Route} from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
-// import Course from './pages/Course';
-import SignIn from './pages/SignIn';
+
+import SignIn from './pages/login';
 import Inst from './pages/Instructor';
 import Home from './pages/Home';
-import Course from './pages/Course';
-import SignUp from './pages/SignUp';
-import UserPage from './pages/User';
-import InstProfile from './pages/InstructorPage';
+import Course from './pages/course';
+import SignUp from './pages/signUp';
+import UserPage from './pages/user';
+import InstProfile from './pages/InstructorProfile';
 import UserProfile from './pages/userProfile';
 
 
