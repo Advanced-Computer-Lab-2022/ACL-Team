@@ -1,13 +1,11 @@
-
-import Credentials from '../components/credentials';
-//import NavAll from '../components/navAll';
-import Navbar2 from '../components/NavBar2';
+import Credentials from '../components/Home/credentials';
+import Navbar from '../components/NavBar';
 
 
 export default function SignIn(){
     return(
         <div>
-            <Navbar2/>
+            <Navbar/>
             <Credentials/>
         </div>
     )

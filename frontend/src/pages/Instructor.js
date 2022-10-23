@@ -1,4 +1,4 @@
-import Navbar2 from "../components/NavBar2";
+import Navbar from "../components/NavBar";
 
 export default function Inst(){
     
@@ -7,7 +7,7 @@ export default function Inst(){
     
     return(
         <div>
-            <Navbar2/>
+            <Navbar/>
             
         </div>
     )

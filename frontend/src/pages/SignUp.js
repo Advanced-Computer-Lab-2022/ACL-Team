@@ -1,13 +1,11 @@
-
-
-import Credentials2 from '../components/credentials2';
-import Navbar2 from '../components/NavBar2';
+import Credentials2 from '../components/SignUp/credentials2';
+import Navbar from '../components/NavBar';
 
 
 export default function SignUp(){
     return(
         <div>
-            <Navbar2/>
+            <Navbar/>
             <Credentials2/>
         </div>
     )
