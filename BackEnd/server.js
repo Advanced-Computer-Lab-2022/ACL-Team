@@ -13,7 +13,7 @@ const loginRouter = require('./routes/loginRouter');
 const adminRouter = require('./routes/adminRouter');
 const signUpRouter = require('./routes/signUpRouter');
 const instructorRouter = require('./routes/InstructorRouter');
-const traineeRouter = require('./routes/traineeRouter');
+
 
 
 
@@ -95,7 +95,6 @@ app.use('/admin', adminRouter)
 app.use('/signUp', signUpRouter)
 app.use('/login', loginRouter)
 app.use('/instructor', instructorRouter)
-app.use('/trainee', traineeRouter)
 
 
 

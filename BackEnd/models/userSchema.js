@@ -6,17 +6,37 @@ const UserSchema = new Schema({
         type: Number,
         required: true
     },
-    
+    isCoroprate: {
+        type: Boolean,
+        required: true
+    },
     username: {
         type: String,
         required: true
     },
-    
+
     password: {
         type: String,
         required: true
     },
-   //lesa fee ba2y
+    gender: {
+        type: String,
+        required: true
+    },
+    boughtCourses: {
+        type: String,
+        required: true
+    },
+    country: {
+        type: String,
+        required: true
+    },
+    creditCardDetails: {
+        type: String,
+        required: true
+    },
+
+    //lesa fee ba2y
 }, { timestamps: true })
 
 

@@ -1,5 +1,5 @@
 const AdminDB = require('../models/AdminSchema')
-
+const userImport=require('../classes/User')
 //get Admin
 const getAdmin = async(req, res) => {
     const { id } = req.params
@@ -39,6 +39,13 @@ const getAllUsers = async(req, res) => {
 
     res.status(200).json(courses)
 }
+
+
+// add admin
+//add user
+// add instructor +++++ search bta3hom
+// add course
+// edit user fields 
 
 
 
