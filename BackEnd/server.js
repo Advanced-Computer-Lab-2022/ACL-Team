@@ -1,11 +1,21 @@
 const express = require('express');
-const courseRouter = require('./routes/courseRouter');
+
 const mongoose = require('mongoose');
 const session = require('express-session');
 const hbs = require('express-handlebars');
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
+
+//router imports
+const courseRouter = require('./routes/courseRouter');
+const loginRouter = require('./routes/loginRouter');
+const adminRouter = require('./routes/adminRouter');
+const signUpRouter = require('./routes/signUpRouter');
+const instructorRouter = require('./routes/InstructorRouter');
+const traineeRouter = require('./routes/traineeRouter');
+
+
 
 //express
 const app = express()
@@ -31,8 +41,8 @@ app.use(express.static(__dirname + '/frontEnd'));
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-app.use(passport.initialize())
-app.use(passport.session())
+    // app.use(passport.initialize())
+    // app.use(passport.session())
 
 mongoose.connect('mongodb+srv://boda:boda123@cluster0.fdovrg9.mongodb.net/?retryWrites=true&w=majority')
     .then(() => {
@@ -58,19 +68,19 @@ passport.deserializeUser(function(id, done) {
         })
     })
     //user authentication
-passport.use(new localStrategy(function(username, password, done) {
-    userDb.findOne({ username: username }, function(err, user) {
-        if (err) return done(err);
-        if (!user) return done(null, false, { message: 'Incorrect username.' });
+    // passport.use(new localStrategy(function(username, password, done) {
+    //     userDb.findOne({ username: username }, function(err, user) {
+    //         if (err) return done(err);
+    //         if (!user) return done(null, false, { message: 'Incorrect username.' });
 
-        bcrypt.compare(password, user.password, function(err, res) {
-            if (err) return done(err);
-            if (res == false) return done(null, false, { message: 'Incorrect password. ' });
+//         bcrypt.compare(password, user.password, function(err, res) {
+//             if (err) return done(err);
+//             if (res == false) return done(null, false, { message: 'Incorrect password. ' });
 
-            return done(null, user)
-        })
-    })
-}));
+//             return done(null, user)
+//         })
+//     })
+// }));
 
 //middleware
 
@@ -81,6 +91,14 @@ app.use((req, res, next) => {
 
 //routes
 app.use('/course', courseRouter)
+app.use('/admin', adminRouter)
+app.use('/signUp', signUpRouter)
+app.use('/login', loginRouter)
+app.use('/instructor', instructorRouter)
+app.use('/trainee', traineeRouter)
+
+
+
 
 
 //db connection

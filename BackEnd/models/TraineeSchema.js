@@ -41,8 +41,6 @@ const TraineeSchema = new Schema({
 
 }, { timestamps: true })
 
-
-courseSchema.index({id:'text'})
 module.exports = mongoose.model('Trainee', TraineeSchema)
 
 //courses.find()

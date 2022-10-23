@@ -14,6 +14,39 @@ const getAdmin = async(req, res) => {
 }
 
 const AddAUser = async(req,res) => {
-    const {}
 
+    
+}
+const getAllCourses = async(req, res) => {
+    const courses = await instructorDb.find({}).sort({ createdAt: -1 })
+
+    res.status(200).json(courses)
+}
+const CreateNewUser = async(req, res) => {
+    const {  id, username, password } = req.body
+
+    try {
+        const user = await userDb.create({ title, id, subject, rating, price })
+        res.status(200).json(course)
+    } catch (error) {
+
+        res.status(400).json({ error: error.message })
+
+    }
+}
+const getAllUsers = async(req, res) => {
+    const user = await userDb.find({}).sort({ createdAt: -1 })
+
+    res.status(200).json(courses)
+}
+
+
+
+
+module.exports = {
+    AddAUser,
+    getAdmin,
+    getAllCourses,
+    CreateNewUser,
+    getAllUsers
 }
