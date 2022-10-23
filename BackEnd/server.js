@@ -1,11 +1,21 @@
 const express = require('express');
-const courseRouter = require('./routes/courseRouter');
+
 const mongoose = require('mongoose');
 const session = require('express-session');
 const hbs = require('express-handlebars');
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
+
+//router imports
+const courseRouter = require('./routes/courseRouter');
+const loginRouter = require('./routes/loginRouter');
+const adminRouter = require('./routes/adminRouter');
+const signUpRouter = require('./routes/signUpRouter');
+const instructorRouter = require('./routes/InstructorRouter');
+const traineeRouter = require('./routes/traineeRouter');
+
+
 
 //express
 const app = express()
@@ -81,6 +91,14 @@ app.use((req, res, next) => {
 
 //routes
 app.use('/course', courseRouter)
+app.use('/admin', adminRouter)
+app.use('/signUp', signUpRouter)
+app.use('/login', loginRouter)
+app.use('/instructor', instructorRouter)
+app.use('/trainee', traineeRouter)
+
+
+
 
 
 //db connection

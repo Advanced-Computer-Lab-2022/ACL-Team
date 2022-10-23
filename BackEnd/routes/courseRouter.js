@@ -1,16 +1,12 @@
 const express = require('express')
 const course = require('../models/courseSchema')
+
 const {
     createCourse,
-
+ getCourse,
     getAllCourses
 
 } = require('../controller/courseController')
-const {
-    getCourse,
-
-
-} = require('../controller/courseSearchController')
 
 
 const router = express.Router();

@@ -2,10 +2,10 @@ const userDb = require('../models/userSchema')
 
 
 
-const signIn = async(req, res) => {
+const logIn = async(req, res) => {
 
 }
-const signOut = async(req, res) => {
+const logOut = async(req, res) => {
    
    
 }
@@ -20,8 +20,8 @@ const signOut = async(req, res) => {
 
 
 module.exports = {
-    signIn,
-    signOut
+    logIn,
+    logOut
 
    
 
