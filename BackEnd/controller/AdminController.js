@@ -1,5 +1,5 @@
 const AdminDB = require('../models/AdminSchema')
-const userImport=require('../classes/User')
+
 //get Admin
 const getAdmin = async(req, res) => {
     const { id } = req.params

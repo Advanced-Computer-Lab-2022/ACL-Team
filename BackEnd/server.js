@@ -10,10 +10,9 @@ const bcrypt = require('bcrypt');
 //router imports
 const courseRouter = require('./routes/courseRouter');
 const loginRouter = require('./routes/loginRouter');
-const adminRouter = require('./routes/adminRouter');
-const signUpRouter = require('./routes/signUpRouter');
+const adminRouter = require('./routes/AdminRouter');
 const instructorRouter = require('./routes/InstructorRouter');
-
+const signupRouter = require('./routes/signUpRouter');
 
 
 
@@ -92,7 +91,8 @@ app.use((req, res, next) => {
 //routes
 app.use('/course', courseRouter)
 app.use('/admin', adminRouter)
-app.use('/signUp', signUpRouter)
+app.use('/signUp', signupRouter)
+
 app.use('/login', loginRouter)
 app.use('/instructor', instructorRouter)
 
