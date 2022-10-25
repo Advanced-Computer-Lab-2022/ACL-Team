@@ -1,44 +1,44 @@
-const AdminDB = require('../models/AdminSchema')
+const Admin = require('../models/AdminSchema')
+const Instructor = require('../models/InstructorSchema')
+const jwt = require('jsonwebtoken')
 
-//get Admin
-const getAdmin = async(req, res) => {
-    const { id } = req.params
-
-    const Admin = await AdminDB.findById(id)
-
-    if (!Admin) {
-        return res.status(404).json({ error: 'course not found' })
-    }
-
-    res.status(200).json(Admin)
+const createtoken = (_id) => {
+    return jwt.sign({_id}, process.env.secret, {expiresIn: '1d'})
 }
 
-const AddAUser = async(req,res) => {
+const signupAdmin = async(req,res) => {
+    const {username , password , gender} = req.body
 
+    try{
+        const admin = await Admin.signup(username , password, gender)
+        const token = createtoken(admin._id)
+        res.status(200).json({email,token})
+    }
+    catch(error){
+        res.status(400).json({error: error.message})
+    }
+}
+
+const signupInstructor = async(req,res) => {
+    const {name,email,username,password,gender} = req.body
+ 
+    try {
+     const instructor = await Instructor.signup(name,email,username,password,gender)
+     
+     const token = createToken(instructor._id)
+ 
+     
+     res.status(200).json({email,token})
+    }
+    catch(error){
+     res.status(400).json({error: error.message})
+    }
+}
+
+const CreateNewUser = async(req,res) => {
     
 }
-const getAllCourses = async(req, res) => {
-    const courses = await instructorDb.find({}).sort({ createdAt: -1 })
 
-    res.status(200).json(courses)
-}
-const CreateNewUser = async(req, res) => {
-    const {  id, username, password } = req.body
-
-    try {
-        const user = await userDb.create({ title, id, subject, rating, price })
-        res.status(200).json(course)
-    } catch (error) {
-
-        res.status(400).json({ error: error.message })
-
-    }
-}
-const getAllUsers = async(req, res) => {
-    const user = await userDb.find({}).sort({ createdAt: -1 })
-
-    res.status(200).json(courses)
-}
 
 
 // add admin
@@ -51,9 +51,8 @@ const getAllUsers = async(req, res) => {
 
 
 module.exports = {
-    AddAUser,
-    getAdmin,
-    getAllCourses,
-    CreateNewUser,
-    getAllUsers
+    signupAdmin,
+    signupInstructor,
+    CreateNewUser
+
 }

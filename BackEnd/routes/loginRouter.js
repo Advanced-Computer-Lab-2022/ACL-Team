@@ -6,12 +6,11 @@ const {
     loginUser,
     signIn,
     
-
 } = require('../controller/authController')
 
 const router = express.Router()
 
-router.get('/', signIn)
+router.get('/', sign)
 router.post('/', loginUser)
 
 

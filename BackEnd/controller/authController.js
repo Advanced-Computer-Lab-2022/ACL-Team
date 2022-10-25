@@ -1,10 +1,9 @@
 const User = require('../models/userSchema')
 const Instructor = require('../models/InstructorSchema')
 const jwt = require('jsonwebtoken')
-const { create } = require('../models/courseSchema')
 
 const createToken =(_id) =>{
-   return jwt.sign({_id}, "verygoodsecret", {expiresIn: '1d'})
+   return jwt.sign({_id}, proccess.env.secret, {expiresIn: '1d'})
 }
 
 const loginUser = async(req, res) => {
