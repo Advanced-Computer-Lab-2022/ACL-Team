@@ -52,7 +52,7 @@ const UserSchema = new Schema({
     //lesa fee ba2y
 }, { timestamps: true })
 
-UserSchema.statics.signup=async(email,username,password,isCoroprate)=>{
+UserSchema.statics.signup=async (email,username,password,isCoroprate)=>{
     const emailExists =await this.findOne({email})
     const usernameExists =await this.findOne({username})
 
@@ -94,6 +94,7 @@ UserSchema.statics.login = async function(email,password) {
     return user
 
 }
+
 
 
 

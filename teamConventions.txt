@@ -1,0 +1,15 @@
+1- Name = class, Verb = fucntion
+2- USE CAMELCASE ALWAYS{
+    A Class starts with capital : User is the class instance
+    An object always starts with lowerCase : user then it is an object of the user class
+    File names always start with lowerCase
+    
+    A word with a suffix ex: log-in the "in" will not be uppercase because its not a noun or a Verb 
+}
+You should always use Descriptive names 
+
+Don't add un-needed spaces
+
+Any schema file should be imported with the class name example User not UserDb
+
+Failing to comply with teamConventions makes you vulnerable to getting your code thrown

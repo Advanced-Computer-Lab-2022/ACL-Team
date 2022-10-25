@@ -6,13 +6,15 @@ const hbs = require('express-handlebars');
 const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
+const bodyParser = require('body-parser')
 
 //router imports
 const courseRouter = require('./routes/courseRouter');
 const loginRouter = require('./routes/loginRouter');
-const adminRouter = require('./routes/AdminRouter');
+const adminRouter = require('./routes/adminRouter');
+const signUpRouter = require('./routes/signUpRouter');
 const instructorRouter = require('./routes/InstructorRouter');
-const signupRouter = require('./routes/signUpRouter');
+
 
 
 
@@ -40,6 +42,8 @@ app.use(express.static(__dirname + '/frontEnd'));
 
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
+app.use(bodyParser.urlencoded({ extended: false })); // Parses urlencoded bodies
+app.use(bodyParser.json()); // Send JSON responses
     // app.use(passport.initialize())
     // app.use(passport.session())
 
@@ -91,10 +95,10 @@ app.use((req, res, next) => {
 //routes
 app.use('/course', courseRouter)
 app.use('/admin', adminRouter)
-app.use('/signUp', signupRouter)
-
+app.use('/signUp', signUpRouter)
 app.use('/login', loginRouter)
 app.use('/instructor', instructorRouter)
+
 
 
 
