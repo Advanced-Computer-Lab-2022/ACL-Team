@@ -5,11 +5,8 @@ const Schema = mongoose.Schema
 
 
 const UserSchema = new Schema({
-    id: {
-        type: Number,
-        required: true
-    },
-    isCoroprate: {
+    
+    isCorporate: {
         type: Boolean,
         required: true
     },
@@ -52,7 +49,7 @@ const UserSchema = new Schema({
     //lesa fee ba2y
 }, { timestamps: true })
 
-UserSchema.statics.signup=async(email,username,password,isCoroprate)=>{
+UserSchema.statics.signup=async function(email,username,password,isCorporate){
     const emailExists =await this.findOne({email})
     const usernameExists =await this.findOne({username})
 
@@ -71,7 +68,7 @@ UserSchema.statics.signup=async(email,username,password,isCoroprate)=>{
     const salt=await bcrypt.genSalt(10)
     const hash=await bcrypt.hash(password,salt)
 
-    const user=await this.create({email,password: hash,isCoroprate})
+    const user=await this.create({email,username,password: hash, isCorporate})
 
     return user  
 }

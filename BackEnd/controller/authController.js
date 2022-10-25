@@ -1,9 +1,10 @@
 const User = require('../models/userSchema')
+const Instructor = require('../models/InstructorSchema')
 const jwt = require('jsonwebtoken')
 const { create } = require('../models/courseSchema')
 
 const createToken =(_id) =>{
-   return jwt.sign({_id}, proccess.env.secret, {expiresIn: '1d'})
+   return jwt.sign({_id}, "verygoodsecret", {expiresIn: '1d'})
 }
 
 const loginUser = async(req, res) => {
@@ -26,7 +27,7 @@ const signupUser = async(req, res) => {
    const {email,username,password,isCorporate} = req.body
 
    try {
-    const user = await User.signupUser(email,username,password,isCorporate)
+    const user = await User.signup(email,username,password,isCorporate)
     
     const token = createToken(user._id)
 
@@ -37,6 +38,24 @@ const signupUser = async(req, res) => {
     res.status(400).json({error: error.message})
    }
 }
+
+const signupInstructor = async(req, res) => {
+    const {name,email,username,password,gender} = req.body
+ 
+    try {
+     const instructor = await Instructor.signup(name,email,username,password,gender)
+     
+     const token = createToken(instructor._id)
+ 
+     
+     res.status(200).json({email,token})
+    }
+    catch(error){
+     res.status(400).json({error: error.message})
+    }
+ }
+
+
 
 const signOut = async(req, res) => {
 
@@ -58,6 +77,7 @@ module.exports = {
     signIn,
     loginUser,
     signupUser,
+    signupInstructor,
 
    
 

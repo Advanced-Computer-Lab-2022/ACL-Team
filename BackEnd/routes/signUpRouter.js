@@ -5,7 +5,9 @@ const express = require('express')
 const {
     signupUser,
 
-    signOut
+    signOut,
+
+    signupInstructor
 
 } = require('../controller/authController')
 
@@ -13,6 +15,7 @@ const router = express.Router()
 
 router.get('/', signOut)
 router.post('/', signupUser)
+
 
 
 module.exports = router

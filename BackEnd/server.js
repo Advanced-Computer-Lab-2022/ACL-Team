@@ -12,7 +12,7 @@ const courseRouter = require('./routes/courseRouter');
 const loginRouter = require('./routes/loginRouter');
 const adminRouter = require('./routes/AdminRouter');
 const instructorRouter = require('./routes/InstructorRouter');
-const signupRouter = require('./routes/signUpRouter');
+const signupRouter = require('./routes/signupRouter');
 
 
 
@@ -43,7 +43,7 @@ app.use(express.json())
     // app.use(passport.initialize())
     // app.use(passport.session())
 
-mongoose.connect('mongodb+srv://boda:boda123@cluster0.fdovrg9.mongodb.net/?retryWrites=true&w=majority')
+mongoose.connect('mongodb+srv://marwan12:marwan123@aclbase.co6ggt2.mongodb.net/test')
     .then(() => {
         app.listen(port, () => {
             console.log('connected to db & the server is listening', port)
