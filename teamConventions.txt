@@ -12,4 +12,4 @@ Don't add un-needed spaces
 
 Any schema file should be imported with the class name example User not UserDb
 
-Failing to comply with teamConventions makes you vulnerable to getting your code thrown
+Failing to comply with teamConventions makes you vulnerable to getting your code thrown

@@ -3,23 +3,23 @@ const course = require('../models/courseSchema')
 
 const {
     createCourse,
- getCourse,
-    getAllCourses
+    getCourse,
+   
+    getCourseById
 
 } = require('../controller/courseController')
 
 
 const router = express.Router();
 
-router.get('/', getAllCourses)
+router.get('/', createCourse)
 
-router.get('/:id', getCourse)
-router.post('/:id', getCourse)
+router.post('/', getCourseById)
 
-//post still is not working
-router.post('/', createCourse)
+
 
 router.delete('/:id', (req, res) => {
+
         res.json({ mssg: "delete a courses " })
     })
     //update a course
