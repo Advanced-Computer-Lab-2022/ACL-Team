@@ -91,6 +91,13 @@ UserSchema.statics.login = async function(email,password) {
     return user
 
 }
+UserSchema.statics.emailExists = async function(email){
+    return await this.findOne({email})
+}
+UserSchema.statics.usernameExists = async function(username){
+    return await this.findOne({email})
+}
+
 
 
 
