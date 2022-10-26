@@ -80,6 +80,14 @@ InstructorSchema.statics.login = async function(email,password) {
 
 }
 
+InstructorSchema.statics.emailExists = async function(email){
+    return await this.findOne({email})
+}
+InstructorSchema.statics.usernameExists = async function(username){
+    return await this.findOne({email})
+}
+
+
 
 module.exports = mongoose.model('Instructor', InstructorSchema)
 
