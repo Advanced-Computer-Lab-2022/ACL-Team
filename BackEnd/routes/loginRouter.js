@@ -10,7 +10,7 @@ const {
 
 const router = express.Router()
 
-router.get('/', sign)
+router.get('/', signIn)
 router.post('/', loginUser)
 
 
