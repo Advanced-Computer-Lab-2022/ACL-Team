@@ -32,13 +32,16 @@ const getCourseById = async(req, res) => {
 
     res.status(200).json(course)
 }
-
+//get course title and total hours and ratings
+const getAll = async (req,res) => {
+    const courses = await Course.find({} , )
+}
 //create a course
 const createCourse = async(req, res) => {
-    const { id,title,category,instructor_id,summary,price } = req.body
+    const {title , price , category , subject , instructor_id , totalHours , summary } = req.body
 
     try {
-        const course = await Course.create({ id,title,category,instructor_id,summary,price })
+        const course = await Course.addCourse(title , price , category , subject , instructor_id , totalHours , summary)
         res.status(200).json(course)
     } catch (error) {
 

@@ -21,7 +21,7 @@ const signupRouter = require('./routes/signupRouter');
 //express
 const app = express()
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT ;
 
 //initialization
 app.engine('hbs', hbs.engine({
@@ -47,7 +47,7 @@ app.use(bodyParser.json()); // Send JSON responses
     // app.use(passport.initialize())
     // app.use(passport.session())
 
-mongoose.connect('mongodb+srv://marwan12:marwan123@aclbase.co6ggt2.mongodb.net/test')
+mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         app.listen(port, () => {
             console.log('connected to db & the server is listening', port)

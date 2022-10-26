@@ -14,7 +14,7 @@ const router = express.Router();
 
 router.get('/', createCourse)
 
-router.post('/', getCourseById)
+router.post('/', createCourse)
 
 
 

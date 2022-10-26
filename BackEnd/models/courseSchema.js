@@ -3,10 +3,6 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const CourseSchema = new Schema({
-    id: {
-        type: String,
-        required: true
-    },
 
     title: {
         type: String,
@@ -20,7 +16,7 @@ const CourseSchema = new Schema({
     
     ratings: {
         type: Number,
-        // required: true
+        
     },
     
     category: {
@@ -30,7 +26,7 @@ const CourseSchema = new Schema({
     
     subject: {
         type: String,
-        // required: true
+        required: true
     },
 
     instructor_id: {
@@ -38,10 +34,15 @@ const CourseSchema = new Schema({
         required: true
         
     },
+    totalHours: { 
+        type:Number,
+        required:true
 
+    },
     summary: {
         type: String,
         required: true
+        
     },
 
     videoTree: {
@@ -68,22 +69,18 @@ const CourseSchema = new Schema({
 }, { timestamps: true })
 
 
-CourseSchema.index({id:'text'})
-module.exports = mongoose.model('course', CourseSchema)
 
 //courses.find()
-CourseSchema.statics.createCourse=async function(id,title,category,instructor_id,summary,price){
-    const titleExists =await this.findOne({title})
-
-    if(!id || !title || !category || !instructor_id || !summary || !price )
-        throw Error('All fields must be filled')
-    if (titleExists)
-        throw Error('Title is already in use')
-    console.log(title)
-     const course=await this.create({id,title,category,instructor_id,summary,price})
-
-    return course  
-}
+CourseSchema.statics.addCourse = async function(title , price , category , subject , instructor_id , totalHours , summary){
+    const titleExists = await this.findOne({title})
+    if(!title || !price || !category || !subject || !instructor_id || !totalHours)
+        throw error ('all fields must be filled')
+    if(titleExists)
+        throw error('title already in use')
+    const course = await this.create({title , price , category , subject , instructor_id , totalHours , summary})
+    return course    
+        
+}       
 
 CourseSchema.statics.getCourseById=async function(id){
     const courseExists =await this.findOne({id})
@@ -163,6 +160,8 @@ CourseSchema.statics.deleteCourseByTitle=async function(id){
     await this.deleteById(title);
     return course  
 }
+
+module.exports = mongoose.model('course' , CourseSchema)
 
 
 
