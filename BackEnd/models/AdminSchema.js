@@ -6,16 +6,17 @@ const AdminSchema = new Schema({
    
     username: {
         type: String,
-        // required: true
+        required: true
     },
     
     password: {
         type: String,
-        // required: true
+        required: true
     },
     
     gender: {
-        type: String
+        type: String,
+        required: true
     },
     email: {
         type: String
@@ -25,7 +26,7 @@ const AdminSchema = new Schema({
     }
 
 }, { timestamps: true })
-AdminSchema.statics.signup = async function(name,email,username,password,gender){
+AdminSchema.statics.signup = async function(username,password,gender,email,name){
     const usernameExists = await this.findOne({username})
 
     if(!username || !password)
@@ -37,7 +38,7 @@ AdminSchema.statics.signup = async function(name,email,username,password,gender)
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password,salt) 
     
-    const admin = await this.create({username , password: hash })
+    const admin = await this.create({username , password: hash ,gender,email,name})
 
     return admin
 }
@@ -64,7 +65,7 @@ AdminSchema.statics.emailExists = async function(email){
     return await this.findOne({email})
 }
 AdminSchema.statics.usernameExists = async function(username){
-    return await this.findOne({email})
+    return await this.findOne({username})
 }
 
 AdminSchema.index({id:'text'})

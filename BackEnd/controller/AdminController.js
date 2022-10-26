@@ -1,17 +1,18 @@
 const Admin = require('../models/AdminSchema')
 const Instructor = require('../models/InstructorSchema')
+const User = require('../models/userSchema')
 const jwt = require('jsonwebtoken')
 
-const createtoken = (_id) => {
-    return jwt.sign({_id}, process.env.secret, {expiresIn: '1d'})
+const createToken = (_id) => {
+    return jwt.sign({_id}, "verygoodsecret" , {expiresIn: '1d'})
 }
 
 const signupAdmin = async(req,res) => {
-    const {username , password , gender} = req.body
+    const {username , password , gender,email,name} = req.body
 
     try{
-        const admin = await Admin.signup(username , password, gender)
-        const token = createtoken(admin._id)
+        const admin = await Admin.signup(username , password, gender,email,name)
+        const token = createToken(admin._id)
         res.status(200).json({email,token})
     }
     catch(error){
@@ -35,7 +36,20 @@ const signupInstructor = async(req,res) => {
     }
 }
 
-const CreateNewUser = async(req,res) => {
+const signupUser = async(req,res) => {
+     const {email,username,password,isCorporate} = req.body
+
+    try {
+     const user = await User.signup(email,username,password,isCorporate)
+     
+     const token = createToken(user._id)
+ 
+     
+     res.status(200).json({email,token})
+    }
+    catch(error){
+     res.status(400).json({error: error.message})
+    }
     
 }
 
@@ -53,6 +67,6 @@ const CreateNewUser = async(req,res) => {
 module.exports = {
     signupAdmin,
     signupInstructor,
-    CreateNewUser
+    signupUser
 
 }

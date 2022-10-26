@@ -95,7 +95,7 @@ UserSchema.statics.emailExists = async function(email){
     return await this.findOne({email})
 }
 UserSchema.statics.usernameExists = async function(username){
-    return await this.findOne({email})
+    return await this.findOne({username})
 }
 
 

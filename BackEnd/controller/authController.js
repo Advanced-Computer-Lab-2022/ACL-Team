@@ -4,7 +4,7 @@ const Admin = require('../models/AdminSchema')
 const jwt = require('jsonwebtoken')
 
 const createToken =(_id) =>{
-   return jwt.sign({_id}, proccess.env.secret, {expiresIn: '1d'})
+   return jwt.sign({_id}, "verygoodsecret", {expiresIn: '1d'})
 }
 
 const loginUser = async(req, res) => {
