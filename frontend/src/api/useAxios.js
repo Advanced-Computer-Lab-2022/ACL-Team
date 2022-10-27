@@ -2,9 +2,10 @@
 import { useAxios } from "use-axios-client";
 
 const frontport = process.env.frontport || 5000;
+const urlv = "http://localhost:3000/"+frontport;
 export default function App() {
   const { data, error, loading } = useAxios({
-    url: "http://localhost:3000/"
+    url: urlv
   });
 
   if (loading || !data) return "Loading...";
