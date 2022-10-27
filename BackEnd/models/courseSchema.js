@@ -30,7 +30,7 @@ const CourseSchema = new Schema({
     },
 
     instructor_id: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId, ref: 'UserSchema',
         required: true
         
     },
