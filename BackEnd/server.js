@@ -8,6 +8,7 @@ const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser')
 
+
 //router imports
 const courseRouter = require('./routes/courseRouter');
 const loginRouter = require('./routes/loginRouter');
@@ -47,7 +48,10 @@ app.use(bodyParser.json()); // Send JSON responses
     // app.use(passport.initialize())
     // app.use(passport.session())
 
-mongoose.connect(process.env.MONGO_URI)
+
+   
+const conn = process.env.MONGO_URI || 'mongodb+srv://mohamed4016:1234@cluster0.iblfteg.mongodb.net/test';
+mongoose.connect(conn)
     .then(() => {
         app.listen(port, () => {
             console.log('connected to db & the server is listening', port)
