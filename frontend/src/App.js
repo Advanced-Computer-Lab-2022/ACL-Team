@@ -5,6 +5,7 @@ import React from 'react';
 
 import Signin from './Components/Signin';
 import Signup from './pages/Signup';
+import AdminSignup from './pages/admin';
 
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
       <Routes>
       <Route path='/' exact element={<Signin />} />
       <Route path='/signup' exact element={<Signup/>} />
+      <Route path='/admin' exact element={<AdminSignup/>} />
       
       
       {/* <Route path='/SignUp' exact element={<SignUp/>}/>
