@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
-import axios from 'axios'
+
+import apiRouter from '../api/apiRouter'
+ 
+
 
  const AddAdmin = () => {
     const[name,setName] =useState('')
@@ -7,14 +10,10 @@ import axios from 'axios'
     const[username,setUsername] =useState('')
     const[password,setPass] =useState('')
     const[email,setEmail] =useState('')
-
+            // name:name,password:password,gender:gender,email:email,username:username
     const addAdm = async () => {
         console.log("boodaa")
-        const res = await axios
-          .post("http://localhost:3000/admin/addAdm", {
-            name:name,password:password,gender:gender,email:email,username:username
-          })
-          .catch((err) => console.log(err));
+        const res = await apiRouter.addAdmin(name,password,gender,email,username)
         const data = await res.data;
         return data;
       };
