@@ -35,23 +35,7 @@ const signupInstructor = async(req,res) => {
      res.status(400).json({error: error.message})
     }
 }
-const addI = async(req,res)=>{
-    const {name,password,gender,email,username} = req.body 
-   console.log("boda")
-    try {
-        const instructor = new Instructor({name,password,gender,email,username})
-        await instructor.save()
-        
-        //const token = createToken(instructor._id)
-    
-       
-        res.status(200).json({instructor})
 
-       }
-       catch(error){
-        res.status(400).json({error: error.message})
-       }
-}
 
 const signupUser = async(req,res) => {
      const {email,username,password,isCorporate} = req.body
@@ -85,6 +69,4 @@ module.exports = {
     signupAdmin,
     signupInstructor,
     signupUser,
-    addI
-
 }

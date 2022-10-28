@@ -4,10 +4,13 @@ const { signupAdmin, signupInstructor,signupUser, addI} = require('../controller
 
 const router = express.Router()
 
+
+router.post('/', signupAdmin)
+router.post('/instructor', signupInstructor)
+router.post('/user', signupUser)
+
 router.get('/', signupUser)
-router.post('/', signupUser)
-router.get('/:id', signupInstructor)
-router.post('/addI', addI)
+
 
 
 module.exports = router

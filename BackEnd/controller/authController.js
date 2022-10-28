@@ -4,7 +4,7 @@ const Admin = require('../models/AdminSchema')
 const jwt = require('jsonwebtoken')
 
 const createToken =(_id) =>{
-   return jwt.sign({_id}, "verygoodsecret", {expiresIn: '1d'})
+   return jwt.sign({_id}, process.env.secret, {expiresIn: '1d'})
 }
 
 const loginUser = async(req, res) => {
@@ -16,22 +16,14 @@ const loginUser = async(req, res) => {
 
     if((userEmailExists && instructorEmailExists)||(userEmailExists && adminEmailExists) ||(instructorEmailExists && adminEmailExists))
         throw Error("message: E-mail tried to login but it is duplicated in databases")
-    
-        
+          
     if(userEmailExists)
-    {
         await userLogin()
-
-    }
     if(instructorEmailExists)
-    {
         await instructorLogin()
-    }
     if(adminEmailExists)
-    {
         await adminLogin()
-    }
-
+        
     //Implementations of called functions above
 
     async function userLogin() {

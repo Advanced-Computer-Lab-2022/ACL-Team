@@ -80,7 +80,17 @@ CourseSchema.statics.addCourse = async function(title , price , category , subje
     const course = await this.create({title , price , category , subject , instructor_id , totalHours , summary})
     return course    
         
-}       
+}
+CourseSchema.statics.getCoursePrice = async function(id){
+    const courseExists =await this.findOne({id})
+
+    if(!id || !title || !category || !instructor_id || !summary || !price )
+        throw Error('All fields must be filled')
+    if (!courseExists)
+        throw Error('course id not found ')
+
+    return course.price  
+}          
 
 CourseSchema.statics.getCourseById=async function(id){
     const courseExists =await this.findOne({id})
