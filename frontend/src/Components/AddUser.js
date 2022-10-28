@@ -11,7 +11,7 @@ import axios from 'axios'
     const addUsr = async () => {
         console.log("boodaa")
         const res = await axios
-          .post("http://localhost:3000/admin/addUsr", {
+          .post("http://localhost:3000/admin/user", {
             name:name,password:password,gender:gender,email:email,username:username
           })
           .catch((err) => console.log(err));

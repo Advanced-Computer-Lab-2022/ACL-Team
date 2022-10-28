@@ -1,8 +1,21 @@
 import React from "react"
 import { useState } from "react"
+import axios from 'axios'
+
 export default function (props) {
-  const [username,setUsername]= useState(null)  
+  const [email,setemail]= useState(null)  
   const [password,setPassword]= useState(null) 
+
+  const loginUser = async () => {
+
+    const res = await axios
+      .post("http://localhost:3000/signin", {
+        email:email,password:password
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    return data;
+  }
   
   return (
     <div className="Auth-form-container">
@@ -10,13 +23,13 @@ export default function (props) {
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In</h3>
           <div className="form-group mt-3">
-            <label>Username address</label>
+            <label>email address</label>
             <input
-              type="Username"
-              onChange={(e) => setUsername(e.target.value)}
-              value = {username}
+              type="email"
+              onChange={(e) => setemail(e.target.value)}
+              value = {email}
               className="form-control mt-1"
-              placeholder="Enter Username"
+              placeholder="Enter email"
             />
           </div>
           <div className="form-group mt-3">

@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-
+import axios from 'axios'
 
 
 export default function Credentials2(){
@@ -13,14 +13,38 @@ export default function Credentials2(){
         const[corprate,setisCorprate] =useState('')
         
 
+        const [data, setData] = useState({
+          email: "",
+          password: "",
+          firstname:"",
+          gender:"",
+          corprate:""
+
+        });
+        const handleChange = (e) => {
+          const value = e.target.value;
+          setData({
+            ...data,
+            [e.target.name]: value
+          });
+        };
         
 
-        const handleSubmit = async (e) => {
-          e.preventDefault()
-
-          // await signup(username,password)
-          console.log(username,password,firstname,gender,corprate)
-        } 
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          const userData = {
+            email: data.email,
+            password: data.password,
+            firstname: data.firstname,
+            gender: data.password,
+            corprate:data.corprate
+          };
+          axios.post("https://localhost:3000/admin/addI", handleSubmit).then((data) => {
+            console.log(data.status);
+            console.log(data.token);
+          });
+        };
+      
 
         return(
         <div>

@@ -1,6 +1,8 @@
 
 import React, { useState } from 'react';
 import axios from 'axios'
+import apiRouter from '../api/apiRouter'
+
 
  const AddInstructor = () => {
     const[name,setName] =useState('')
@@ -10,14 +12,14 @@ import axios from 'axios'
     const[email,setEmail] =useState('')
 
     const addInst = async () => {
-        console.log("boodaa")
-        const res = await axios
-          .post("http://localhost:3000/admin/addI", {
-            name:name,password:password,gender:gender,email:email,username:username
-          })
-          .catch((err) => console.log(err));
-        const data = await res.data;
-        return data;
+      console.log("boodaa")
+      const res = await axios
+        .post("http://localhost:3000/admin/instructor", {
+          name:name,password:password,gender:gender,email:email,username:username
+        })
+        .catch((err) => console.log(err));
+      const data = await res.data;
+      return data;
       };
       const handleI=(e)=>{
         e.preventDefault()
