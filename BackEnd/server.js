@@ -19,10 +19,14 @@ const signupRouter = require('./routes/signupRouter');
 
 
 
-//express
-const app = express()
 
-const port = process.env.PORT ;
+//express
+
+const app = express()
+const cors = require('cors')
+app.use(cors())
+
+const port = process.env.PORT || 3000 ;
 
 //initialization
 app.engine('hbs', hbs.engine({

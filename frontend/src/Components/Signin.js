@@ -1,23 +1,12 @@
 import React from "react"
-import {useRef, useState } from "react"
-
-
-
+import { useState } from "react"
 export default function (props) {
-  const errRef = useRef();
-
   const [username,setUsername]= useState(null)  
-  const [password,setPassword]= useState(null)
-  const [success,setSuccess]= useState(null)
-  const [errMsg,setErrMsg]= useState(null)
+  const [password,setPassword]= useState(null) 
   
-  const LOGIN_URL ="/login"
-  
-  const handleSubmit = async (e) =>{
-  }
   return (
     <div className="Auth-form-container">
-      <form className="Auth-form" >
+      <form className="Auth-form">
         <div className="Auth-form-content">
           <h3 className="Auth-form-title">Sign In</h3>
           <div className="form-group mt-3">
@@ -46,7 +35,7 @@ export default function (props) {
             </button>
           </div>
           <p className="forgot-password text-right mt-2">
-            Forgot <a href="/signup">password?</a>
+            Forgot <a href="/Home">password?</a>
           </p>
         </div>
       </form>
