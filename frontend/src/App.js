@@ -6,6 +6,13 @@ import React from 'react';
 import Signin from './Components/Signin';
 import Signup from './pages/Signup';
 import AdminSignup from './pages/admin';
+import GuestPage from './pages/guestPage';
+import { TraineePage } from './pages/traineePage';
+import { HomePage } from './pages/homePage';
+import InstructorPage from './pages/instructor';
+import { CourseDashboard } from './pages/courseDashboard';
+import { CoursePage } from './pages/coursePage';
+import { InstructorAddCourse } from './pages/instructorAddCourse';
 
 
 function App() {
@@ -14,9 +21,22 @@ function App() {
 
 <Router>
       <Routes>
-      <Route path='/' exact element={<Signin />} />
+      <Route path='/signin' exact element={<Signin />} />
       <Route path='/signup' exact element={<Signup/>} />
       <Route path='/admin' exact element={<AdminSignup/>} />
+      <Route path='/' exact element={<GuestPage/>} />
+      <Route path='/trainee' exact element={<TraineePage/>} />
+      <Route path='/user' exact element={<HomePage/>} />
+      <Route path='/instructor' exact element={<InstructorPage/>} />
+      <Route path='/course' exact element={<CourseDashboard/>} />
+      <Route path='/course/coursePage' exact element={<CoursePage/>} />
+      <Route path='/instructor/addCourse' exact element={<InstructorAddCourse/>} />
+
+
+
+
+
+
       
       
       {/* <Route path='/SignUp' exact element={<SignUp/>}/>

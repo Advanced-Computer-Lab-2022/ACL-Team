@@ -22,10 +22,11 @@ export default function AdminComp(){
                 Instructor
              </button>   
              <button onClick={()=>{
-                setChoose("AddCorporateTrainee")
+                setChoose("AddUser")
             }} >
                 user
-             </button>  
+             </button> 
+              
              {
                choose==="AddInstructor"&&<AddInstructor/>
 
