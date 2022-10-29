@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
 
+
 const CourseSchema = new Schema({
 
     title: {
@@ -30,7 +31,8 @@ const CourseSchema = new Schema({
     },
 
     instructor_id: {
-        type: mongoose.Schema.Types.ObjectId, ref: 'UserSchema',
+        //type: mongoose.Schema.Types.ObjectId, ref: 'InstructorSchema',
+        type: String,
         required: true
         
     },

@@ -2,7 +2,7 @@ const express = require('express')
 const course = require('../models/courseSchema')
 
 const {
-    createCourse,
+    addCourse,
     getCourse,
     getAllCourses,
     getCourseById
@@ -11,12 +11,12 @@ const {
 
 
 
+
 const router = express.Router();
 
-// router.get('/', createCourse)
+router.get('/', addCourse)
 
-router.post('/', createCourse)
-router.get('/getCourses', getAllCourses) 
+router.post('/', addCourse)
 
 
 

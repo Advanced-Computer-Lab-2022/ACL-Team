@@ -53,7 +53,7 @@ UserSchema.statics.signup=async function(email,username,password,isCorporate){
     const emailExists =await this.findOne({email})
     const usernameExists =await this.findOne({username})
 
-    if(!email || !password)
+    if(!email || !username || !password || !isCorporate)
         throw Error('All fields must be filled')
     if (emailExists)
         throw Error('Email already in use')

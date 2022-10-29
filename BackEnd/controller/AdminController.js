@@ -7,7 +7,7 @@ const createToken = (_id) => {
     return jwt.sign({_id}, "verygoodsecret" , {expiresIn: '1d'})
 }
 
-const signupAdmin = async(req,res) => {
+const addAdmin = async(req,res) => {
     const {username , password , gender,email,name} = req.body
 
     try{
@@ -20,16 +20,15 @@ const signupAdmin = async(req,res) => {
     }
 }
 
-const signupInstructor = async(req,res) => {
+const addInstructor = async(req,res) => {
     const {name,email,username,password,gender} = req.body
  
     try {
      const instructor = await Instructor.signup(name,email,username,password,gender)
      
      const token = createToken(instructor._id)
- 
      
-     res.status(200).json({email,token})
+     res.status(200).json({instructor,token})
     }
     catch(error){
      res.status(400).json({error: error.message})
@@ -37,7 +36,7 @@ const signupInstructor = async(req,res) => {
 }
 
 
-const signupUser = async(req,res) => {
+const addUser = async(req,res) => {
      const {email,username,password,isCorporate} = req.body
 
     try {
@@ -46,7 +45,7 @@ const signupUser = async(req,res) => {
      const token = createToken(user._id)
  
      
-     res.status(200).json({email,token})
+     res.status(200).json({user,token})
     }
     catch(error){
      res.status(400).json({error: error.message})
@@ -66,7 +65,7 @@ const signupUser = async(req,res) => {
 
 
 module.exports = {
-    signupAdmin,
-    signupInstructor,
-    signupUser,
+    addAdmin,
+    addInstructor,
+    addUser,
 }

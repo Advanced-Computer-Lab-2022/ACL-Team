@@ -6,11 +6,11 @@ const {
     AddInstructor,
     getInstructor
 } = require('../controller/instructorController')
-const { createCourse } = require('../controller/courseController')
+const { addCourse } = require('../controller/courseController')
 
 const router = express.Router()
 
-router.post('/addCourse', createCourse)
+router.post('/addCourse', addCourse)
 
 router.get('/', getAllInstructors)
 router.post('/', AddInstructor)
