@@ -54,7 +54,7 @@ app.use(bodyParser.json()); // Send JSON responses
 
 
    
-const conn = process.env.MONGO_URI || 'mongodb+srv://mohamed4016:1234@cluster0.iblfteg.mongodb.net/test';
+const conn = process.env.MONGO_URI || 'mongodb+srv://marwan:marwan12@aclbase.j8munvb.mongodb.net/test';
 mongoose.connect(conn)
     .then(() => {
         app.listen(port, () => {

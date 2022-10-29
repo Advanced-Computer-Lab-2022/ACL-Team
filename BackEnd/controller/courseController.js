@@ -63,7 +63,7 @@ const getAll = async (req,res) => {
     const courses = await Course.find({} , )
 }
 //create a course
-const createCourse = async(req, res) => {
+const addCourse = async(req, res) => {
     const {title , price , category , subject , instructor_id , totalHours , summary } = req.body
 
     try {
@@ -97,7 +97,7 @@ const createCourse = async(req, res) => {
 
 
 module.exports = {
-    createCourse,
+    addCourse,
     getCourse,
     //getAllCourses,
     getCourseById
