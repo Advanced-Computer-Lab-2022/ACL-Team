@@ -13,6 +13,7 @@ import InstructorPage from './pages/instructor';
 import { CourseDashboard } from './pages/courseDashboard';
 import { CoursePage } from './pages/coursePage';
 import { InstructorAddCourse } from './pages/instructorAddCourse';
+import SearchCoursePage from './pages/searchCoursePage';
 
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
       <Route path='/course' exact element={<CourseDashboard/>} />
       <Route path='/course/coursePage' exact element={<CoursePage/>} />
       <Route path='/instructor/addCourse' exact element={<InstructorAddCourse/>} />
+      <Route path='/course/courseShow' exact element={<SearchCoursePage/>} />
+
 
 
 
