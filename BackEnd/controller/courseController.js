@@ -99,6 +99,6 @@ const createCourse = async(req, res) => {
 module.exports = {
     createCourse,
     getCourse,
-    //getAllCourses,
+    getAllCourses,
     getCourseById
 }
