@@ -43,12 +43,19 @@ export default function (props) {
             />
           </div>
           <div className="d-grid gap-2 mt-3">
+
+            <button >
+            <a href="/user">Are you user?</a>
+             </button>
+            <button>
+            <a href="/instructor">Are you Instructor?</a>
+            </button>
             <button type="submit" className="btn btn-primary">
               Submit
             </button>
-          </div>
-          <p className="forgot-password text-right mt-2">
-            Forgot <a href="/Home">password?</a>
+            </div>
+            <p className="forgot-password text-right mt-2">
+            Forgot <a href="/signUp">password?</a>
           </p>
         </div>
       </form>
