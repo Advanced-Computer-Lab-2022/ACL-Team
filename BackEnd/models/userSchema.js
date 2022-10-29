@@ -40,6 +40,14 @@ const UserSchema = new Schema({
     country: {
         type: String,
 
+    }, 
+    firstname: {
+        type: String,
+
+    },
+    lastname: {
+        type: String,
+
     },
     creditCardDetails: {
         type: String,
@@ -49,12 +57,13 @@ const UserSchema = new Schema({
     //lesa fee ba2y
 }, { timestamps: true })
 
-UserSchema.statics.signup=async function(email,username,password,isCorporate){
+UserSchema.statics.signup=async function(email,username,password,isCorporate,firstname,lastname,gender){
+
     const emailExists =await this.findOne({email})
     const usernameExists =await this.findOne({username})
+    
+    
 
-    if(!email || !username || !password || !isCorporate)
-        throw Error('All fields must be filled')
     if (emailExists)
         throw Error('Email already in use')
     if (usernameExists)
@@ -63,16 +72,41 @@ UserSchema.statics.signup=async function(email,username,password,isCorporate){
         throw Error('Email is not valid')
     // if(!validator.isStrongPassword(password))
     //     throw Error('Email is not valid')
-
         
     const salt=await bcrypt.genSalt(10)
     const hash=await bcrypt.hash(password,salt)
 
-    const user=await this.create({email,username,password: hash, isCorporate})
+    const user=await this.create({email,username,password: hash,firstname,lastname,gender ,isCorporate})
 
     return user 
 
+    email,username,password,isCorporate
+}  
+UserSchema.statics.signup=async function(email,username,password,isCorporate){
 
-}
+    const emailExists =await this.findOne({email})
+    const usernameExists =await this.findOne({username})
+    
+    
+
+    if (emailExists)
+        throw Error('Email already in use')
+    if (usernameExists)
+        throw Error('Username already in use')
+    if(!validator.isEmail(email))
+        throw Error('Email is not valid')
+    // if(!validator.isStrongPassword(password))
+    //     throw Error('Email is not valid')
+        
+    const salt=await bcrypt.genSalt(10)
+    const hash=await bcrypt.hash(password,salt)
+
+    const user=await this.create({email,username,password,isCorporate})
+
+    return user 
+
+    
+}    
+
 
 module.exports = mongoose.models.User ||mongoose.model('User', UserSchema)
