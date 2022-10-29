@@ -1,5 +1,5 @@
 import React from 'react'
-import CourseCard from '../Components/courseCard'
+import CourseCard from '../Components/Course/courseCard'
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 

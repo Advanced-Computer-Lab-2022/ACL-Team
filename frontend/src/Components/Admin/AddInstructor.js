@@ -1,35 +1,38 @@
+
 import React, { useState } from 'react';
 import axios from 'axios'
 
- const AddAdmin = () => {
+
+
+ const AddInstructor = () => {
     const[name,setName] =useState('')
     const[gender,setGender] =useState('')
     const[username,setUsername] =useState('')
     const[password,setPass] =useState('')
     const[email,setEmail] =useState('')
 
-    const addAdm = async () => {
-        console.log("boodaa")
-        const res = await axios
-          .post("http://localhost:3000/admin/", {
-            name:name,password:password,gender:gender,email:email,username:username
-          })
-          .catch((err) => console.log(err));
-        const data = await res.data;
-        return data;
+    const addInstructor = async () => {
+      console.log("boodaa")
+      const res = await axios
+        .post("http://localhost:3000/admin/instructor", {
+          name:name,password:password,gender:gender,email:email,username:username
+        })
+        .catch((err) => console.log(err));
+      const data = await res.data;
+      return data;
       };
-      const handleA=(e)=>{
+      const handleSubmitt=(e)=>{
         e.preventDefault()
         console.log("boodaa")
 
-        addAdm().then((data) => console.log(data))
+        addInstructor().then((data) => console.log(data))
       }
   return (
     <div>
     <h3>
-        Adding Admin
+        Adding Instructor
     </h3>
-    <form onSubmit={handleA}>
+    <form onSubmit={handleSubmitt}>
     <label> Name</label>
     <input type="text" 
     onChange={(e) => setName(e.target.value)}
@@ -83,7 +86,7 @@ import axios from 'axios'
     />
 
     <button>
-        Add Admin
+        Add Instructor
     </button>
     </form>
 
@@ -92,4 +95,5 @@ import axios from 'axios'
     </div>
   )
 }
-export default AddAdmin;
+export default AddInstructor;
+
