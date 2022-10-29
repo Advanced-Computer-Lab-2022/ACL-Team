@@ -3,98 +3,106 @@ const Instructor = require('../models/InstructorSchema')
 const Admin = require('../models/AdminSchema')
 const jwt = require('jsonwebtoken')
 
-const createToken =(_id) =>{
-   return jwt.sign({_id}, process.env.secret, {expiresIn: '1d'})
+
+const loginUser = async(req,res) =>{
+    try {
+        const user = await User.login(email, password)
+
+        const token = createToken(user._id)
+        console.log(token)
+
+        res.status(200).json({ user, token })
+    }
+    catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
+const loginAdmin = async(req,res) =>{
+    try {
+        const admin = await Admin.login(admin, password)
+
+        const token = createToken(admin._id)
+
+        res.status(200).json({ admin, token })
+    }
+    catch (error) {
+        res.status(400).json({ error: error.message })
+    }
+}
+const loginInstructor = async(req,res) =>{
+    try {
+        const instructor = await Instructor.login(email, password)
+
+        const token = createToken(instructor._id)
+
+        res.status(200).json({ instructor, token })
+    }
+    catch (error) {
+        res.status(400).json({ error: error.message })
+    }
 }
 
-const loginUser = async(req, res) => {
-    const {email,password} = req.body
 
-    const userEmailExists = User.emailExists(email);
-    const instructorEmailExists = Instructor.emailExists(email);
-    const adminEmailExists = Instructor.emailExists(email);
 
-    if((userEmailExists && instructorEmailExists)||(userEmailExists && adminEmailExists) ||(instructorEmailExists && adminEmailExists))
-        throw Error("message: E-mail tried to login but it is duplicated in databases")
-          
-    if(userEmailExists)
-        await userLogin()
-    if(instructorEmailExists)
-        await instructorLogin()
-    if(adminEmailExists)
-        await adminLogin()
+
+
+
+// ONLY TO BE CALLED AFTER VALIDATING ID AND PASSWORD IT ASSUMES THAT THEY ARE RIGHT
+function createToken(req) {
+
+
+    let jwtSecretKey = process.env.secret || "secret";
+    let data = {
+        "id": req.id,
         
-    //Implementations of called functions above
-
-    async function userLogin() {
-        try {
-            const user = await User.login(email, password)
-
-            const token = createToken(user._id)
-
-            res.status(200).json({ email, token })
-        }
-        catch (error) {
-            res.status(400).json({ error: error.message })
-        }
     }
-
-    async function instructorLogin() {
-        try {
-            const instructor = await User.login(email, password)
-
-            const token = createToken(instructor._id)
-
-            res.status(200).json({ email, token })
-        }
-        catch (error) {
-            res.status(400).json({ error: error.message })
-        }
-    }
-
-    async function adminLogin() {
-        try {
-            const admin = await User.login(admin, password)
-
-            const token = createToken(admin._id)
-
-            res.status(200).json({ email, token })
-        }
-        catch (error) {
-            res.status(400).json({ error: error.message })
-        }
-    }
-}
-//TODO#
-const signup = async(req,res) => {
-    const {email,password} = req.body
-
-    const userEmailExists = User.emailExists(email);
-    const instructorEmailExists = Instructor.emailExists(email);
-    const adminEmailExists = Instructor.emailExists(email);
-
-    if((userEmailExists && instructorEmailExists)||(userEmailExists && adminEmailExists) ||(instructorEmailExists && adminEmailExists))
-        throw Error("message: E-mail tried to login but it is duplicated in databases")
-    
    
+    const token = jwt.sign(data, jwtSecretKey);
+    console.log(token)
+    return token
+ 
     //TODO#
 }
-
+const validateToken = async(_id,res) => {
+    // Tokens are generally passed in the header of the request
+    // Due to security reasons.
+  
+    let tokenHeaderKey = process.env.TOKEN_HEADER_KEY || "secretToken";
+    let jwtSecretKey = process.env.JWT_SECRET_KEY || "secret";
+  
+    try {
+        const token = req.header(tokenHeaderKey);
+  
+        const verified = jwt.verify(token, jwtSecretKey);
+        if(verified){
+            return res.status(200).send("Successfully Verified");
+        }else{
+            // Access Denied
+            return res.status(401).send(error);
+        }
+    } catch (error) {
+        // Access Denied
+        return res.status(401).send(error);
+    }
+};
 const signupUser = async(req, res) => {
-   const {email,username,password,isCorporate} = req.body
+    const {email,username,password,isCorporate,firstname,lastname,gender} = req.query
+ 
+    try {
+ 
+     const user = await User.signup(email,username,password,isCorporate,firstname,lastname,gender)
+     
+     const id = user._id.toHexString()
+     const token = createToken({id})
+ 
+     
+     res.status(200).json({email,token})
+    }
+    catch(error){
+     res.status(400).json({error: error.message})
+    }
+ }
 
-   try {
-    const user = await User.signup(email,username,password,isCorporate)
-    
-    const token = createToken(user._id)
-
-    
-    res.status(200).json({email,token})
-   }
-   catch(error){
-    res.status(400).json({error: error.message})
-   }
-}
 
 const signupInstructor = async(req, res) => {
     const {name,email,username,password,gender} = req.body
@@ -147,8 +155,12 @@ module.exports = {
     signOut,
     signIn,
     loginUser,
+    loginAdmin,
+    loginInstructor,
     signupUser,
     signupInstructor,
+    createToken,
+    validateToken
 
    
 

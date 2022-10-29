@@ -7,6 +7,8 @@ const passport = require('passport');
 const localStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 const bodyParser = require('body-parser')
+const dotenv = require('dotenv');
+const cors = require('cors')
 
 
 //router imports
@@ -20,13 +22,15 @@ const signupRouter = require('./routes/signupRouter');
 
 
 
+
 //express
-
-const app = express()
-const cors = require('cors')
-app.use(cors())
-
 const port = process.env.PORT || 3000 ;
+const app = express()
+
+app.use(cors())
+dotenv.config();
+
+
 
 //initialization
 app.engine('hbs', hbs.engine({
@@ -54,7 +58,7 @@ app.use(bodyParser.json()); // Send JSON responses
 
 
    
-const conn = process.env.MONGO_URI || 'mongodb+srv://marwan:marwan12@aclbase.j8munvb.mongodb.net/test';
+const conn = process.env.MONGO_URI || 'mongodb+srv://mohamed4016:1234@cluster0.iblfteg.mongodb.net/test';
 mongoose.connect(conn)
     .then(() => {
         app.listen(port, () => {
@@ -64,6 +68,7 @@ mongoose.connect(conn)
     .catch((error) => {
         console.log(error)
     })
+
 
 
 const userDb = require('../BackEnd/models/userSchema')
@@ -93,6 +98,9 @@ passport.deserializeUser(function(id, done) {
 //     })
 // }));
 
+
+
+
 //middleware
 
 app.use((req, res, next) => {
@@ -106,6 +114,7 @@ app.use('/admin', adminRouter)
 app.use('/signUp', signUpRouter)
 app.use('/login', loginRouter)
 app.use('/instructor', instructorRouter)
+
 
 
 

@@ -3,47 +3,34 @@ import React, { useState } from 'react';
 import axios from 'axios'
 
 
-export default function Credentials2(){
+        
+        
+
+  export const SignupUser = () => {
         const[email,setEmail] =useState('')
         const[username,setUsername] =useState('')
         const[password,setPass] =useState('')
         const[firstname,setFirstname] =useState('')
         const[lastname,setLastname] =useState('')
         const[gender,setGender] =useState('')
-        const[corprate,setisCorprate] =useState('')
-        
+        const[corprate,setIsCorprate] =useState('')
 
-        const [data, setData] = useState({
-          email: "",
-          password: "",
-          firstname:"",
-          gender:"",
-          corprate:""
+    const handleUserSignup = async () => {
+      console.log("boodaa")
+      const res = await axios
+        .post("http://localhost:3000/signup", {
+          email:email,username:username,password:password,firstname:firstname,lastname:lastname,gender:gender,corprate:corprate
+        })
+        .catch((err) => console.log(err));
+      const data = await res.data;
+      return data;
+      };
+      const handleSubmit =(e)=>{
+        e.preventDefault()
+        console.log("boodaa")
 
-        });
-        const handleChange = (e) => {
-          const value = e.target.value;
-          setData({
-            ...data,
-            [e.target.name]: value
-          });
-        };
-        
-
-        const handleSubmit = (e) => {
-          e.preventDefault();
-          const userData = {
-            email: data.email,
-            password: data.password,
-            firstname: data.firstname,
-            gender: data.password,
-            corprate:data.corprate
-          };
-          axios.post("https://localhost:3000/admin/addI", handleSubmit).then((data) => {
-            console.log(data.status);
-            console.log(data.token);
-          });
-        };
+        handleUserSignup().then((data) => console.log(data))
+      }
       
 
         return(
@@ -51,10 +38,10 @@ export default function Credentials2(){
           <form onSubmit={handleSubmit}>
 
     <div className="form-group">
-    <label>Username</label>
+    <label>email</label>
     <input type="text" 
-    onChange={(e) => setUsername(e.target.value)}
-    value={username}
+    onChange={(e) => setEmail(e.target.value)}
+    value={email}
     
     className="form-control" 
      
@@ -64,10 +51,10 @@ export default function Credentials2(){
   </div>
 
   <div className="form-group">
-    <label>First Name</label>
+    <label>username</label>
     <input type="text" 
-    onChange={(e) => setFirstname(e.target.value)}
-    value={firstname}
+    onChange={(e) => setUsername(e.target.value)}
+    value={username}
     
     className="form-control" 
     
@@ -84,16 +71,16 @@ export default function Credentials2(){
     
     className="form-control" 
      
-    aria-describedby="emailHelp" 
+   
     placeholder="Enter your last name"
     />
   </div>
 
   <div className="form-group">
-    <label>Email address</label>
-    <input type="email" 
-    onChange={(e) => setEmail(e.target.value)}
-    value={email}
+    <label>first name</label>
+    <input  
+    onChange={(e) => setFirstname(e.target.value)}
+    value={firstname}
     
     className="form-control" 
      
@@ -127,9 +114,9 @@ export default function Credentials2(){
 
   <div>
     <label>Are you a corprate trainee?</label><br/>
-    <input type="radio" name="corprate" value="true" onChange={(e) => setisCorprate(e.target.value)} />Yes 
+    <input type="radio" name="corprate" value="true" onChange={(e) => setIsCorprate(e.target.value)} />Yes 
     &nbsp; &nbsp;
-    <input type="radio" name="corprate" value="" onChange={(e) => setisCorprate(e.target.value)} />No
+    <input type="radio" name="corprate" value="" onChange={(e) => setIsCorprate(e.target.value)} />No
   </div><br/>
   
   {/* <div className="dropdown">
@@ -175,3 +162,4 @@ export default function Credentials2(){
         )
     
 }
+
