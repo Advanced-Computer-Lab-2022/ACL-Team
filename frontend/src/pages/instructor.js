@@ -1,5 +1,5 @@
 import React from 'react'
-import InstructorComp from '../Components/instructorComponent'
+import InstructorComp from '../Components/Instructor/instructorComponent'
 
 
 export default function InstructorPage(){

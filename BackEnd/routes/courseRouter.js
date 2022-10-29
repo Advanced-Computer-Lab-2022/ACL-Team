@@ -4,10 +4,12 @@ const course = require('../models/courseSchema')
 const {
     addCourse,
     getCourse,
-   
+    getAllCourses,
     getCourseById
 
-} = require('../controller/courseController')
+} = require('../controller/courseController');
+
+
 
 
 const router = express.Router();

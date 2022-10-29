@@ -1,11 +1,31 @@
 import React from 'react'
+import CourseCard from '../Components/Course/courseCard'
+import { useEffect, useState } from 'react'
+import axios from 'axios';
 
 export const CourseDashboard = () => {
+  const [courses,setCourses] = useState([])
+
+  const getCourses = async () => {
+    console.log("boodaa")
+    const res = await axios.get("http://localhost:3000/course/getCourses")
+    .catch((err) => console.log(err));
+    const data = await res.data;
+    
+    return data;
+    
+  };
+
+  useEffect(() =>{
+    getCourses().then((data) => setCourses(data))
+
+  },[])
+
   return (
     <div>
-        <h3>
-            Courses Overview Page
-        </h3>
+      {courses && courses.map((course) =>(
+        <CourseCard key={course.id} course={course}/>
+      ))} 
     </div>
   )
 }

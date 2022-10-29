@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios'
-import apiRouter from '../api/apiRouter'
+
 
 
  const AddInstructor = () => {
@@ -11,7 +11,7 @@ import apiRouter from '../api/apiRouter'
     const[password,setPass] =useState('')
     const[email,setEmail] =useState('')
 
-    const addInst = async () => {
+    const addInstructor = async () => {
       console.log("boodaa")
       const res = await axios
         .post("http://localhost:3000/admin/instructor", {
@@ -21,18 +21,18 @@ import apiRouter from '../api/apiRouter'
       const data = await res.data;
       return data;
       };
-      const handleI=(e)=>{
+      const handleSubmitt=(e)=>{
         e.preventDefault()
         console.log("boodaa")
 
-        addInst().then((data) => console.log(data))
+        addInstructor().then((data) => console.log(data))
       }
   return (
     <div>
     <h3>
         Adding Instructor
     </h3>
-    <form onSubmit={handleI}>
+    <form onSubmit={handleSubmitt}>
     <label> Name</label>
     <input type="text" 
     onChange={(e) => setName(e.target.value)}

@@ -3,7 +3,7 @@ import './App.css';
 import React from 'react';
 
 
-import Signin from './Components/Signin';
+import Signin from './Components/Authentication/Signin'
 import Signup from './pages/Signup';
 import AdminSignup from './pages/admin';
 import GuestPage from './pages/guestPage';

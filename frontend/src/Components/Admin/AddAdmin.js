@@ -8,7 +8,7 @@ import axios from 'axios'
     const[password,setPass] =useState('')
     const[email,setEmail] =useState('')
 
-    const addAdm = async () => {
+    const addAdmin = async () => {
         console.log("boodaa")
         const res = await axios
           .post("http://localhost:3000/admin/", {
@@ -18,18 +18,18 @@ import axios from 'axios'
         const data = await res.data;
         return data;
       };
-      const handleA=(e)=>{
+      const handleSubmitt=(e)=>{
         e.preventDefault()
         console.log("boodaa")
 
-        addAdm().then((data) => console.log(data))
+        addAdmin().then((data) => console.log(data))
       }
   return (
     <div>
     <h3>
         Adding Admin
     </h3>
-    <form onSubmit={handleA}>
+    <form onSubmit={handleSubmitt}>
     <label> Name</label>
     <input type="text" 
     onChange={(e) => setName(e.target.value)}
