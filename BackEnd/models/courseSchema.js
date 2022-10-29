@@ -114,15 +114,16 @@ CourseSchema.statics.getCourseByTitle=async function(id){
 
     return course  
 }
-CourseSchema.statics.getCourseBySubject=async function(id){
-    const courseExists =await this.findOne({subject})
+CourseSchema.statics.getCoursesBySubject=async function(subjectName){
+    
+    if(!subjectName)
+        throw Error('No filter added')
+    const courses =await this.find({subject: subjectName })
+    
 
-    if(!id || !title || !category || !instructor_id || !summary || !price )
-        throw Error('All fields must be filled')
-    if (!courseExists)
-        throw Error('course not found ')
+    return courses
 
-    return course  
+    
 }
 CourseSchema.statics.getCourseByRating=async function(id){
     const courseExists =await this.findOne({ratings})
@@ -134,15 +135,13 @@ CourseSchema.statics.getCourseByRating=async function(id){
 
     return course  
 }
-CourseSchema.statics.getCourseByPrice=async function(id){
-    const courseExists =await this.findOne({price})
+CourseSchema.statics.getCoursesByPrice= async function(filteredPrice){
+    if(!filteredPrice)
+        throw Error('No filter added')
+    const courses =await this.find({price: filteredPrice })
+    
 
-    if(!id || !title || !category || !instructor_id || !summary || !price )
-        throw Error('All fields must be filled')
-    if (!courseExists)
-        throw Error('course not found ')
-
-    return course  
+    return courses
 }
 CourseSchema.statics.deleteCourseById=async function(id){
     const courseExists =await this.findOne({id})

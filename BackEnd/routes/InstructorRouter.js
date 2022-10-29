@@ -4,7 +4,9 @@ const Instructor = require('../models/InstructorSchema')
 const {
     getAllInstructors,
     AddInstructor,
-    getInstructor
+    getInstructor,
+    editBiography,
+    editEmail
 } = require('../controller/instructorController')
 const { addCourse } = require('../controller/courseController')
 
@@ -13,7 +15,7 @@ const router = express.Router()
 router.post('/addCourse', addCourse)
 
 router.get('/', getAllInstructors)
-router.post('/', AddInstructor)
+router.post('/', editEmail)
 router.get('/:id' , getInstructor)
 
 module.exports = router

@@ -2,10 +2,7 @@ const Course = require('../models/courseSchema')
 
 const Fuse = require('fuse.js')
 
-const options = {
-    includeScore: true,
-    keys: ['name']
-}
+
 
 //get all courses available
 const getAllCourses = async(req, res) => {
@@ -30,19 +27,32 @@ const getCourse = async(req, res) => {
     res.status(200).json(course)
 }
 const getCourseByInstructor = async(req, res) => {
+    
     const courses = await Course.find().sort({ createdAt: -1 })
-    const fuse = new Fuse(courses,options)
+    const options = {
+        includeScore: true,
+        keys: ['name']
+    }
+    const fuse = new Fuse(courses,(options))
     const result = fuse.search(req.instructor._id)
     res.status(200).json(result)
 }
 const getCourseByTitle = async(req, res) => {
     const courses = await Course.find().sort({ createdAt: -1 })
+    const options = {
+        includeScore: true,
+        keys: ['name']
+    }
     const fuse = new Fuse(courses,options)
     const result = fuse.search(req.title)
     res.status(200).json(result)
 }
 const getCourseBySubject = async(req, res) => {
     const courses = await Course.find().sort({ createdAt: -1 })
+    const options = {
+        includeScore: true,
+        keys: ['subject']
+    }
     const fuse = new Fuse(courses,options)
     const result = fuse.search(req.subject)
     res.status(200).json(result)
@@ -76,6 +86,26 @@ const addCourse = async(req, res) => {
     }
 }
 
+const getCoursesBySubject = async (req,res) => {
+    const {subject} = req.body
+     try{
+        const courses = await Course.getCoursesBySubject(subject)
+        res.status(200).json(courses)
+    }catch(error){
+        res.status(400).json({error : error.message})
+    }
+}
+
+const getCoursesByPrice = async (req,res) => {
+    const {filteredPrice} = req.body
+     try{
+        const courses = await Course.getCoursesByPrice(price)
+        res.status(200).json(courses)
+    }catch(error){
+        res.status(400).json({error : error.message})
+    }
+}
+
 
 
 
@@ -100,5 +130,6 @@ module.exports = {
     addCourse,
     getCourse,
     getAllCourses,
-    getCourseById
+    getCourseById,
+    getCoursesBySubject
 }
