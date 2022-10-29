@@ -83,6 +83,26 @@ InstructorSchema.statics.login = async function(email,password) {
     return instructor
 
 }
+InstructorSchema.statics.editBiography = async function( _id,biography){
+    if(!biography){
+        throw Error('No Biography to be updated')
+    }
+    const updatedBio = await this.findOneAndUpdate(_id , biography)
+
+    return updatedBio
+}
+
+
+InstructorSchema.statics.editEmail = async function( _id,email){
+    if(!email){
+        throw Error('No email to be updated')
+    }
+    const updatedBio = await this.findOneAndUpdate(_id , email)
+
+    return updatedBio
+    
+}
+
 
 InstructorSchema.statics.emailExists = async function(email){
     return await this.findOne({email})
