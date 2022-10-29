@@ -8,7 +8,7 @@ import axios from 'axios'
     const[password,setPass] =useState('')
     const[email,setEmail] =useState('')
 
-    const addUser = async () => {
+    const addUsr = async () => {
         console.log("boodaa")
         const res = await axios
           .post("http://localhost:3000/admin/user", {
@@ -18,28 +18,19 @@ import axios from 'axios'
         const data = await res.data;
         return data;
       };
-      const handleSubmitt=(e)=>{
+      const middleware=(e)=>{
         e.preventDefault()
         console.log("boodaa")
 
-        addUser().then((data) => console.log(data))
+        addUsr().then((data) => console.log(data))
       }
   return (
     <div>
     <h3>
         Adding User
     </h3>
-    <form onSubmit={handleSubmitt}>
-    <label> Name</label>
-    <input type="text" 
-    onChange={(e) => setName(e.target.value)}
-    value={name}
-    
-    className="form-control" 
-    
-    aria-describedby="emailHelp" 
-    placeholder="Enter your first name"
-    />
+    <form onSubmit={middleware}>
+
     
     <label>username</label>
     <input 
