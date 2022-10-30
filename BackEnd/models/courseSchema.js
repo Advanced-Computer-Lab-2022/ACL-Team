@@ -74,11 +74,10 @@ const CourseSchema = new Schema({
 
 //courses.find()
 CourseSchema.statics.addCourse = async function(title , price , category , subject , instructor_id , totalHours , summary){
-    const titleExists = await this.findOne({title})
+    
     if(!title || !price || !category || !subject || !instructor_id || !totalHours)
         throw error ('all fields must be filled')
-    if(titleExists)
-        throw error('title already in use')
+    
     const course = await this.create({title , price , category , subject , instructor_id , totalHours , summary})
     return course    
         
@@ -145,7 +144,7 @@ CourseSchema.statics.getCoursesByRatingFromHighToLow = async function(){
 CourseSchema.statics.getCoursesByPrice= async function(filteredPrice){
     if(!filteredPrice)
         throw Error('No filter added')
-    const courses =await this.find({price: filteredPrice })
+    const courses =await this.find({price:filteredPrice})
     
 
     return courses

@@ -8,7 +8,9 @@ const {
     getCourseById,
     getCoursesBySubject,
     getCoursesByPriceFromLowToHigh,
-    getCoursesByPriceFromHighToLow
+    getCoursesByPriceFromHighToLow,
+    getCoursesByPrice
+
 
 } = require('../controller/courseController');
 
@@ -21,6 +23,7 @@ router.get('/', getCoursesByPriceFromHighToLow)
 router.get('/getCourses', getAllCourses)
 router.post('/getCourseBySubject', getCoursesBySubject)
 router.post('/getCourseByPrice', getCoursesByPrice)
+router.post('/',addCourse)
 
 
 

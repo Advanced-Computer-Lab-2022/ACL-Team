@@ -78,7 +78,7 @@ const addCourse = async(req, res) => {
    
     try {
         const course = await Course.addCourse(title , price , category , subject , instructor_id , totalHours , summary)
-        res.status(200).json(course)
+        res.status(200).json({course})
     } catch (error) {
 
         res.status(400).json({ error: error.message })
@@ -97,7 +97,8 @@ const getCoursesBySubject = async (req,res) => {
 }
 
 const getCoursesByPrice = async (req,res) => {
-    const {filteredPrice} = req.body
+    const {price} = req.body
+    console.log(price)
      try{
         const courses = await Course.getCoursesByPrice(price)
         res.status(200).json(courses)
@@ -127,9 +128,9 @@ const getCoursesByPriceFromHighToLow = async (req,res) => {
 }
 
 const getCoursesByRating = async (req,res) => {
-    const {filteredRating} = req.body
+    const {rating} = req.body
     try{
-        const courses = await Course.getCoursesByRating(filteredRating)
+        const courses = await Course.getCoursesByRating(rating)
         res.status(200).json(courses)
     }
     catch(error){
@@ -185,6 +186,7 @@ module.exports = {
     getCoursesByPriceFromHighToLow,
     getCoursesByRating,
     getCoursesByRatingFromLowToHigh,
-    getCoursesByRatingFromHighToLow
+    getCoursesByRatingFromHighToLow,
+    getCoursesByPrice
 
 }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios'
 
- const InstructorAddCourse = () => {
+  const InstructorAddCourseComponent = () => {
     const[title,setTitle] =useState('')
     const[price,setPrice] =useState('')
     const[category,setCategory] =useState('')
@@ -14,11 +14,11 @@ import axios from 'axios'
     const addCourse = async () => {
         console.log("boodaa")
         const res = await axios
-          .post("http:localhost:3000/course" , {
+          .post("http:localhost:3000/instructor/addCourse" , {
             title:title,price:price,category:category,subject:subject,instructor_id:instructor_id,totalHours:totalHours,summary:summary
           })
           .catch((err) => console.log(err));
-        const data = await res.data;
+        const data = await res.data
         console.log(data)
         return data;
       };
@@ -82,14 +82,11 @@ import axios from 'axios'
     value={summary}/>
 
   </div>
-  <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
+  
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
     </div>
   )
 }
-export default InstructorAddCourse;
+export default InstructorAddCourseComponent;

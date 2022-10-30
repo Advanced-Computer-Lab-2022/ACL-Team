@@ -1,4 +1,5 @@
 const Instructor = require('../models/InstructorSchema')
+const Course = require('../models/courseSchema')
 
 //get instructor
 const getInstructorbyId = async(req, res) => {
@@ -23,7 +24,17 @@ const getInstructor = async(req, res) => {
 }
 const AddInstructor = async(req, res) => {
 }
-const createCourse = async(req, res) => {
+const addCourse = async(req, res) => {
+    const {title , price , category , subject , instructor_id , totalHours , summary } = req.body
+    
+    try {
+        const course = await Course.addCourse(title , price , category , subject , instructor_id , totalHours , summary)
+        res.status(200).json({course})
+    } catch (error) {
+
+        res.status(400).json({ error: error.message })
+
+    }
 }
 const editBiography = async(req,res) => {
     const _id = req.params 
@@ -62,7 +73,7 @@ module.exports = {
     getAllCourses,
     AddInstructor,
     getInstructor,
-    createCourse,
+    addCourse,
     editBiography,
     editEmail
 

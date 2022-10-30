@@ -6,9 +6,10 @@ const {
     AddInstructor,
     getInstructor,
     editBiography,
-    editEmail
+    editEmail,
+    addCourse
 } = require('../controller/instructorController')
-const { addCourse } = require('../controller/courseController')
+
 
 const router = express.Router()
 
