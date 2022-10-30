@@ -125,15 +125,22 @@ CourseSchema.statics.getCoursesBySubject=async function(subjectName){
 
     
 }
-CourseSchema.statics.getCourseByRating=async function(id){
-    const courseExists =await this.findOne({ratings})
+CourseSchema.statics.getCoursesByRating=async function(filteredRating){
+    if(!filteredRating)
+        throw Error('No filter added')
+    const courses =await this.find({rating: filteredRating })
+    
 
-    if(!id || !title || !category || !instructor_id || !summary || !price )
-        throw Error('All fields must be filled')
-    if (!courseExists)
-        throw Error('course not found ')
-
-    return course  
+    return courses
+      
+}
+CourseSchema.statics.getCoursesByRatingFromLowToHigh = async function(){
+    const courses = await this.find().sort({rating : 'ascending'})
+    return courses
+}
+CourseSchema.statics.getCoursesByRatingFromHighToLow = async function(){
+    const courses = await this.find().sort({rating : 'descending'})
+    return courses
 }
 CourseSchema.statics.getCoursesByPrice= async function(filteredPrice){
     if(!filteredPrice)
@@ -143,33 +150,21 @@ CourseSchema.statics.getCoursesByPrice= async function(filteredPrice){
 
     return courses
 }
+CourseSchema.statics.getCoursesByPriceFromLowToHigh = async function(){
+    const courses = await this.find().sort({price:'ascending'})
+    return courses
+}
+CourseSchema.statics.getCoursesByPriceFromHighToLow = async function(){
+    const courses = await this.find().sort({price:'descending'})
+    return courses
+}
+
 CourseSchema.statics.deleteCourseById=async function(id){
-    const courseExists =await this.findOne({id})
-    const idExists =await this.findOne({id})
     
-    if(!id || !title || !category || !instructor_id || !summary || !price )
-        throw Error('All fields must be filled')
-    if (!courseExists)
-        throw Error('error happened while deleting ')
-    if (!idExists)
-        throw Error('id not found')
-        
-     await this.deleteById(id);
-    return course  
+    
 }
 CourseSchema.statics.deleteCourseByTitle=async function(id){
-    const courseExists =await this.findOne({title})
-    const titleExists =await this.findOne({title})
-    
-    if(!id || !title || !category || !instructor_id || !summary || !price )
-        throw Error('All fields must be filled')
-    if (!courseExists)
-        throw Error('error happened while deleting ')
-    if (!titleExists)
-        throw Error('course title not found')
-    
-    await this.deleteById(title);
-    return course  
+   
 }
 
 module.exports = mongoose.model('course' , CourseSchema)
