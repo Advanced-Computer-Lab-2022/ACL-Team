@@ -7,6 +7,8 @@ const {
     getAllCourses,
     getCourseById,
     getCoursesBySubject,
+    getCoursesByPrice,
+    getCoursesByRating,
     getCoursesByPriceFromLowToHigh,
     getCoursesByPriceFromHighToLow,
     getCoursesByPrice
@@ -22,8 +24,9 @@ const router = express.Router();
 router.get('/', getCoursesByPriceFromHighToLow)
 router.get('/getCourses', getAllCourses)
 router.post('/getCourseBySubject', getCoursesBySubject)
-router.post('/getCourseByPrice', getCoursesByPrice)
+router.post('/getCoursesByPrice', getCoursesByPrice)
 router.post('/',addCourse)
+router.post('/getCoursesByRating', getCoursesByRating)
 
 
 

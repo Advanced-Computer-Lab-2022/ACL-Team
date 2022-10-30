@@ -2,30 +2,14 @@ import React from 'react'
 import CourseCard from '../Components/Course/courseCard'
 import { useEffect, useState } from 'react'
 import axios from 'axios';
+import Navbar from '../Components/General/navbar';
+import Sidebar from '../Components/drawer';
 
 export const CourseDashboard = () => {
-  const [courses,setCourses] = useState([])
-
-  const getCourses = async () => {
-    console.log("boodaa")
-    const res = await axios.get("http://localhost:3000/course/getCourses")
-    .catch((err) => console.log(err));
-    const data = await res.data;
-    
-    return data;
-    
-  };
-
-  useEffect(() =>{
-    getCourses().then((data) => setCourses(data))
-
-  },[])
-
   return (
     <div>
-      {courses && courses.map((course) =>(
-        <CourseCard key={course._id} course={course}/>
-      ))} 
+      <Navbar/>
+      <Sidebar/>
     </div>
   )
 }
