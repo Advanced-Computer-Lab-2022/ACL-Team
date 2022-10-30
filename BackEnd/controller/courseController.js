@@ -131,5 +131,6 @@ module.exports = {
     getCourse,
     getAllCourses,
     getCourseById,
-    getCoursesBySubject
+    getCoursesBySubject,
+    getCoursesByPrice
 }

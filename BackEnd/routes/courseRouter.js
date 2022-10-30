@@ -6,7 +6,8 @@ const {
     getCourse,
     getAllCourses,
     getCourseById,
-    getCoursesBySubject
+    getCoursesBySubject,
+    getCoursesByPrice
 
 } = require('../controller/courseController');
 
@@ -16,8 +17,9 @@ const {
 const router = express.Router();
 
 router.get('/', addCourse)
-
-router.post('/', getCoursesBySubject)
+router.get('/getCourses', getAllCourses)
+router.post('/getCourseBySubject', getCoursesBySubject)
+router.post('/getCourseByPrice', getCoursesByPrice)
 
 
 

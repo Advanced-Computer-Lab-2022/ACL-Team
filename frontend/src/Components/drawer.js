@@ -1,6 +1,41 @@
+import axios from 'axios'
 import React from 'react'
+import { useState, useEffect } from 'react'
+import CourseCard from './Course/courseCard'
 
 export default function Sidebar() {
+  const [courses,setCourses] = useState(null)
+  const [subject,setSubject] = useState('')
+  const [price,setPrice] = useState(0)
+
+  const getCourseBySubject = async () => {
+    const res = await axios.post("http://localhost:3000/course/getCourseBySubject" , {
+      subject:subject
+    })
+    .catch((err) => console.log(err));
+    const data = await res.data;
+
+    return data;
+  };
+
+  const getCourseByPrice = async () => {
+    const res = await axios.post("http://localhost:3000/course/getCourseBySubject" , {
+      subject:subject
+    })
+    .catch((err) => console.log(err));
+    const data = await res.data;
+
+    return data;
+  };
+
+  useEffect(() => {
+    getCourseBySubject().then((data) => setCourses(data))
+    getCourseByPrice().then((data) => setCourses(data))
+
+  },[])
+
+
+
   return (
     <div>
       <div class="container-fluid">
@@ -12,16 +47,30 @@ export default function Sidebar() {
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <div>
-                          <input type="radio" name="price"/> &nbsp;Free<br/>
-                          <input type="radio" name="price"/> &nbsp;$100<br/>
-                          <input type="radio" name="price"/> &nbsp;$30<br/>
-                        </div><hr/>
-                        <div>
+                        {/* <div>
+                          <label>Price</label><br/>
+                          <input type="number"
+                          onChange={(e) => setPrice}
+                          value={price}
+
+                          className="form-control"
+
+                          aria-describedby="emailHelp" 
+                          placeholder="Enter a price to filer by"
+                          ></input>
+                        </div><hr/> */}
+                        <div onSubmit={getCourseBySubject()}>
                           <label>Subject</label><br></br>
-                          <input type="radio" name="subject"/> &nbsp;Math<br/>
-                          <input type="radio" name="subject"/> &nbsp;English<br/>
-                          <input type="radio" name="subject"/> &nbsp;Programming
+                          <input type="text" 
+                          onChange={(e) => setSubject(e.target.value)}
+                          value={subject}
+    
+                          className="form-control" 
+     
+                          aria-describedby="emailHelp" 
+                          placeholder="Enter a subject to filer by"
+                        />
+                        <button onClick={getCourseBySubject()}>Submit</button>
                         </div><hr/>
                         <div>
                           <label>Rating</label><br></br>
@@ -43,7 +92,9 @@ export default function Sidebar() {
             </div>
         </div>
         <div class="col py-3">
-            Content area...
+        {courses && courses.map((course) =>(
+        <CourseCard key={course._id} course={course}/>
+      ))} 
         </div>
     </div>
 </div>
