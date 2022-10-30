@@ -185,6 +185,7 @@ module.exports = {
     getCoursesByPriceFromHighToLow,
     getCoursesByRating,
     getCoursesByRatingFromLowToHigh,
-    getCoursesByRatingFromHighToLow
+    getCoursesByRatingFromHighToLow,
+    getCoursesByPrice
 
 }

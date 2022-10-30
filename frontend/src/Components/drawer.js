@@ -6,7 +6,8 @@ import CourseCard from './Course/courseCard'
 export default function Sidebar() {
   const [courses,setCourses] = useState(null)
   const [subject,setSubject] = useState('')
-  const [price,setPrice] = useState(0)
+  const [price,setPrice] = useState(null)
+  const [rating,setRating] = useState(null)
 
   const getCourseBySubject = async () => {
     const res = await axios.post("http://localhost:3000/course/getCourseBySubject" , {
@@ -19,8 +20,8 @@ export default function Sidebar() {
   };
 
   const getCourseByPrice = async () => {
-    const res = await axios.post("http://localhost:3000/course/getCourseBySubject" , {
-      subject:subject
+    const res = await axios.post("http://localhost:3000/course/getCoursesByPrice" , {
+      price:price
     })
     .catch((err) => console.log(err));
     const data = await res.data;
@@ -28,11 +29,40 @@ export default function Sidebar() {
     return data;
   };
 
-  useEffect(() => {
-    getCourseBySubject().then((data) => setCourses(data))
-    getCourseByPrice().then((data) => setCourses(data))
+  const getCourseByRating = async () => {
+    const res = await axios.post("http://localhost:3000/course/getCoursesByRating" , {
+      rating:rating
+    })
+    .catch((err) => console.log(err));
+    const data = await res.data;
+
+    return data;
+  };
+
+  const getCourses = async () => {
+    console.log("boodaa")
+    const res = await axios.get("http://localhost:3000/course/getCourses")
+    .catch((err) => console.log(err));
+    const data = await res.data;
+    
+    return data;
+    
+  };
+
+  useEffect(() =>{
+    getCourses().then((data) => setCourses(data))
 
   },[])
+
+  useEffect(() => {
+    getCourseBySubject().then((data) => setCourses(data))
+  },[subject])
+
+  useEffect(() => {
+    getCourseByPrice().then((data) => setCourses(data))
+  },[price])
+
+  
 
 
 
@@ -47,10 +77,12 @@ export default function Sidebar() {
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        {/* <div>
+
+
+                        <div onSubmit={getCourseByPrice()}>
                           <label>Price</label><br/>
                           <input type="number"
-                          onChange={(e) => setPrice}
+                          onChange={(e) => setPrice(e.target.value)}
                           value={price}
 
                           className="form-control"
@@ -58,7 +90,10 @@ export default function Sidebar() {
                           aria-describedby="emailHelp" 
                           placeholder="Enter a price to filer by"
                           ></input>
-                        </div><hr/> */}
+                          <button className="button" onClick={getCourseByPrice()}>Submit</button>
+                        </div><hr/>
+
+
                         <div onSubmit={getCourseBySubject()}>
                           <label>Subject</label><br></br>
                           <input type="text" 
@@ -70,20 +105,24 @@ export default function Sidebar() {
                           aria-describedby="emailHelp" 
                           placeholder="Enter a subject to filer by"
                         />
-                        <button onClick={getCourseBySubject()}>Submit</button>
+                        <button className="button" onClick={getCourseBySubject()}>Submit</button>
                         </div><hr/>
-                        <div>
-                          <label>Rating</label><br></br>
-                          <input type="radio" name="rating"/> &nbsp;5<br/>
-                          <input type="radio" name="rating"/> &nbsp;3<br/>
-                          <input type="radio" name="rating"/> &nbsp;1
+
+
+
+                        <div onSubmit={getCourseByRating()}>
+                          <label>Ratings</label><br></br>
+                          <input type="number" 
+                          onChange={(e) => setRating(e.target.value)}
+                          value={rating}
+    
+                          className="form-control" 
+     
+                          aria-describedby="emailHelp" 
+                          placeholder="Enter a subject to filer by"
+                        />
+                        <button className="button" onClick={getCourseByRating()}>Submit</button>
                         </div><hr/>
-                        <div>
-                          <label>Duration</label><br></br>
-                          <input type="radio" name="duration"/> &nbsp;60<br/>
-                          <input type="radio" name="duration"/> &nbsp;30<br/>
-                          <input type="radio" name="duration"/> &nbsp;15
-                        </div>
                         
                     </li>
                 </ul>
