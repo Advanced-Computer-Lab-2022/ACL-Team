@@ -11,7 +11,6 @@ const {
     getCoursesByRating,
     getCoursesByPriceFromLowToHigh,
     getCoursesByPriceFromHighToLow,
-    getCoursesByPrice
 
 
 } = require('../controller/courseController');

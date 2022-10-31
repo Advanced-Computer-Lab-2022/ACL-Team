@@ -6,10 +6,6 @@ const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
     
-    isCorporate: {
-        type: Boolean,
-        required: true
-    },
     username: {
         type: String,
         required: 'Username is required',
@@ -29,84 +25,37 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
+     name:{
+            "firstname": {
+                "type": "string",
+                required: true
+            },
+            "lastname": {
+                "type": "string",
+                required: true
+            }
+    },
     gender: {
         type: String,
+        required: true
 
     },
-    boughtCourses: {
+    role:{
         type: String,
-
+        enum: ['trainee','corporate_trainee', 'instructor', 'admin' ],
+         required: true
     },
     country: {
         type: String,
 
     }, 
-    firstname: {
-        type: String,
-
-    },
-    lastname: {
-        type: String,
-
-    },
-    creditCardDetails: {
-        type: String,
-
-    },
+    achievments: [{
+        achievment_id:String,//TODO
+        }]
 
     //lesa fee ba2y
-}, { timestamps: true })
-
-UserSchema.statics.signup=async function(email,username,password,isCorporate,firstname,lastname,gender){
-
-    const emailExists =await this.findOne({email})
-    const usernameExists =await this.findOne({username})
-    
-    
-
-    if (emailExists)
-        throw Error('Email already in use')
-    if (usernameExists)
-        throw Error('Username already in use')
-    if(!validator.isEmail(email))
-        throw Error('Email is not valid')
-    // if(!validator.isStrongPassword(password))
-    //     throw Error('Email is not valid')
-        
-    const salt=await bcrypt.genSalt(10)
-    const hash=await bcrypt.hash(password,salt)
-
-    const user=await this.create({email,username,password: hash,firstname,lastname,gender ,isCorporate})
-
-    return user 
-
-    email,username,password,isCorporate
-}  
-UserSchema.statics.signup=async function(email,username,password,isCorporate){
-
-    const emailExists =await this.findOne({email})
-    const usernameExists =await this.findOne({username})
-    
-    
-
-    if (emailExists)
-        throw Error('Email already in use')
-    if (usernameExists)
-        throw Error('Username already in use')
-    if(!validator.isEmail(email))
-        throw Error('Email is not valid')
-    // if(!validator.isStrongPassword(password))
-    //     throw Error('Email is not valid')
-        
-    const salt=await bcrypt.genSalt(10)
-    const hash=await bcrypt.hash(password,salt)
-
-    const user=await this.create({email,username,password,isCorporate})
-
-    return user 
-
-    
-}    
+}, { timestamps: true , collection: "user" })
+   
 
 
 module.exports = mongoose.models.User ||mongoose.model('User', UserSchema)
