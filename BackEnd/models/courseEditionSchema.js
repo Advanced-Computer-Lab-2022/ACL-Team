@@ -7,18 +7,18 @@ const CourseEditionSchema = new Schema({
 
     course_id: {
         type: mongoose.Schema.Types.ObjectId,
-         ref: 'Course',
-         required: true
+        ref: 'Course',
+        required: true
 
     },
     subject: {
         type: String,
-         required: true
+        required: true
     },
     offered_in: {
         type: String,
-        enum: ['Spring','Winter', 'Summer'],
-         required: true
+        enum: ['Spring', 'Winter', 'Summer'],
+        required: true
     },
     discount_id: {
         type: String,
@@ -33,13 +33,16 @@ const CourseEditionSchema = new Schema({
         //TODO
     },
     awards: [{
-        award_id:String,//TODO
-        }]
+        award_id: String, //TODO
+    }],
+    sections: [{
+        section_id: String, //TODO
+    }],
+
+}, {
+    timestamps: true
+})
 
 
 
-}, { timestamps: true })
-
-
-
-module.exports = mongoose.model('course_edition' , CourseEditionSchema)
+module.exports = mongoose.model('courseEdition', CourseEditionSchema)

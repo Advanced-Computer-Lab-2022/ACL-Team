@@ -6,8 +6,8 @@ const Schema = mongoose.Schema
 const CourseSchema = new Schema({
     instructor_id: {
         type: mongoose.Schema.Types.ObjectId,
-         ref: 'Instructor',
-         required: true
+        ref: 'Instructor',
+        required: true
 
     },
     title: {
@@ -23,6 +23,7 @@ const CourseSchema = new Schema({
     },
     summary: {
         type: String,
+        required: true
     },
     price: {
         type: Number,
@@ -37,18 +38,16 @@ const CourseSchema = new Schema({
         type: Number,
     },
     awards: [{
-        award_id:String,//TODO
-        }]
+        award_id: String, //TODO
+    }]
 
 
 
 
-}, { timestamps: true })
+}, {
+    timestamps: true
+})
 
 
 
-module.exports = mongoose.model('course' , CourseSchema)
-
-
-
-
+module.exports = mongoose.model('course', CourseSchema)
