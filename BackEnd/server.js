@@ -24,7 +24,7 @@ const signupRouter = require('./routes/signupRouter');
 
 
 //express
-const port = process.env.PORT || 3000 ;
+const port = process.env.PORT || 3000;
 const app = express()
 
 app.use(cors())
@@ -49,15 +49,20 @@ app.use(express.static(__dirname + '/frontEnd'));
 
 
 
-app.use(express.urlencoded({ extended: false }))
+app.use(express.urlencoded({
+    extended: true
+}))
 app.use(express.json())
-app.use(bodyParser.urlencoded({ extended: false })); // Parses urlencoded bodies
+app.use(bodyParser.urlencoded({
+    extended: false
+})); // Parses urlencoded bodies
 app.use(bodyParser.json()); // Send JSON responses
-    // app.use(passport.initialize())
-    // app.use(passport.session())
+// app.use(passport.initialize())
+// app.use(passport.session())
 
 
-   
+
+//db connection   
 const conn = process.env.MONGO_URI || 'mongodb+srv://mohamed4016:1234@cluster0.iblfteg.mongodb.net/test';
 mongoose.connect(conn)
     .then(() => {
@@ -68,36 +73,6 @@ mongoose.connect(conn)
     .catch((error) => {
         console.log(error)
     })
-
-
-
-const userDb = require('../BackEnd/models/userSchema')
-
-passport.serializeUser(function(user, done) {
-    done(null, user.id)
-})
-
-
-passport.deserializeUser(function(id, done) {
-        userDb.findById(id, function(err, user) {
-            done(err, user)
-        })
-    })
-    //user authentication
-// passport.use(new localStrategy(function(username, password, done) {
-//     userDb.findOne({ username: username }, function(err, user) {
-//         if (err) return done(err);
-//         if (!user) return done(null, false, { message: 'Incorrect username.' });
-
-//         bcrypt.compare(password, user.password, function(err, res) {
-//             if (err) return done(err);
-//             if (res == false) return done(null, false, { message: 'Incorrect password. ' });
-
-//             return done(null, user)
-//         })
-//     })
-// }));
-
 
 
 
@@ -121,17 +96,20 @@ app.use('/instructor', instructorRouter)
 
 
 
-//db connection
 
 
 
 
 
 app.get('/', (req, res) => {
-    res.json({ mssg: 'aaaa' })
+    res.json({
+        mssg: 'aaaa'
+    })
 })
 app.post('/', (req, res) => {
-    res.json({ mssg: 'aaaaa' })
+    res.json({
+        mssg: 'aaaaa'
+    })
 })
 
 

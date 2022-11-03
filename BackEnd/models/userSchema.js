@@ -29,11 +29,14 @@ const UserSchema = new Schema({
         "firstname": {
             "type": "string",
             required: true
+
         },
         "lastname": {
             "type": "string",
             required: true
+
         }
+
     },
     gender: {
         type: String,
@@ -43,7 +46,6 @@ const UserSchema = new Schema({
     role: {
         type: String,
         enum: ['trainee', 'corporate_trainee', 'instructor', 'admin'],
-        required: true
     },
     country: {
         type: String,
@@ -71,7 +73,6 @@ UserSchema.statics.signup = async function (email, username, password, firstname
         username
     })
 
-
     if (emailExists)
         throw Error('Email already in use')
     if (usernameExists)
@@ -88,15 +89,17 @@ UserSchema.statics.signup = async function (email, username, password, firstname
         email,
         username,
         password: hash,
-        firstname,
-        lastname,
+        name: {
+            firstname: firstname,
+            lastname: lastname
+        },
         gender
     })
 
     return user
 
 }
-UserSchema.statics.signup = async function (email, password) {
+UserSchema.statics.login = async function (email, password) {
 
     if (!email || !password)
         throw Error('All fields must be filled')

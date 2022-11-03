@@ -2,21 +2,24 @@ const express = require('express')
 const Instructor = require('../models/InstructorSchema')
 
 const {
-    getAllInstructors,
     AddInstructor,
-    getInstructor,
     editBiography,
     editEmail,
+} = require('../controller/Instructor/instructorController')
+const {
+    viewOfferedCourses,
     addCourse
-} = require('../controller/instructorController')
+} = require('../controller/Instructor/instructorCourseController')
 
 
 const router = express.Router()
 
 router.post('/addCourse', addCourse)
 
-router.get('/', getAllInstructors)
+router.get('/', () => {
+
+})
 router.post('/', editEmail)
-router.get('/:id' , getInstructor)
+router.get('/courseShow', viewOfferedCourses)
 
 module.exports = router

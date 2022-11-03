@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const validator = require('validator')
 const Schema = mongoose.Schema
+const User = require('../models/UserSchema')
 
 const TraineeSchema = new Schema({
 
@@ -12,7 +13,7 @@ const TraineeSchema = new Schema({
 
     },
     isCorporate: {
-        type: boolean,
+        type: Boolean,
         required: true
 
     },
@@ -27,7 +28,7 @@ const TraineeSchema = new Schema({
         course_id: String, //TODO
     }],
     total_points: {
-        type: number,
+        type: Number,
 
     },
     info: [{
@@ -46,7 +47,26 @@ const TraineeSchema = new Schema({
     timestamps: true,
     collection: "trainee"
 })
+TraineeSchema.statics.signup = async function (email, username, password, firstname, lastname, gender) {
+
+    const user = await User.signup(email, username, password, firstname, lastname, gender)
+
+    User.findByIdAndUpdate({
+        _id: user._id
+    }, {
+
+        role: "trainee"
+    })
+
+    const trainee = await this.create({
+        _id: user._id,
+        isCorporate: false
+    })
 
 
+    return trainee
 
-module.exports = mongoose.models.User || mongoose.model('trainee', TraineeSchema)
+}
+
+
+module.exports = mongoose.model('trainee', TraineeSchema)

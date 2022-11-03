@@ -1,4 +1,5 @@
 const User = require('../models/UserSchema')
+const Trainee = require('../models/TraineeSchema')
 const Instructor = require('../models/InstructorSchema')
 const Admin = require('../models/AdminSchema')
 const jwt = require('jsonwebtoken')
@@ -98,7 +99,6 @@ const signupUser = async (req, res) => {
         email,
         username,
         password,
-        isCorporate,
         firstname,
         lastname,
         gender
@@ -106,9 +106,9 @@ const signupUser = async (req, res) => {
 
     try {
 
-        const user = await User.signup(email, username, password, isCorporate, firstname, lastname, gender)
+        const trainee = await Trainee.signup(email, username, password, firstname, lastname, gender)
 
-        const id = user._id.toHexString()
+        const id = trainee._id.toHexString()
         const token = createToken({
             id
         })
