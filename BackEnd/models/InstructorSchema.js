@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const validator = require('validator')
 const Schema = mongoose.Schema
+const User = require('../models/UserSchema')
 
 const InstructorSchema = new Schema({
     _id: {

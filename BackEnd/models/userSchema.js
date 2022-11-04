@@ -46,6 +46,7 @@ const UserSchema = new Schema({
     role: {
         type: String,
         enum: ['trainee', 'corporate_trainee', 'instructor', 'admin'],
+        required: true
     },
     country: {
         type: String,
