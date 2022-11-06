@@ -1,4 +1,4 @@
-const Course = require('../models/courseSchema')
+const Course = require('../models/course/courseSchema')
 const Instructor = require('../models/InstructorSchema')
 const Trainee = require('../models/traineeSchema')
 const User = require('../models/userSchema')

@@ -1,5 +1,5 @@
 const express = require('express')
-const course = require('../models/courseSchema')
+const course = require('../models/course/courseSchema')
 
 const {
     getCourse,
@@ -12,7 +12,7 @@ const {
     getCoursesByPriceFromHighToLow,
 
 
-} = require('../controller/courseController');
+} = require('../controller/course/courseController');
 
 
 

@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Discount = require('../models/discountSchema')
+const Discount = require('./lib/discountSchema')
 const User = require('../models/UserSchema')
 
 const Schema = mongoose.Schema

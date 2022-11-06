@@ -1,5 +1,5 @@
 const Instructor = require('../../models/InstructorSchema')
-const Course = require('../../models/courseSchema')
+const Course = require('../../models/course/courseSchema')
 
 
 
