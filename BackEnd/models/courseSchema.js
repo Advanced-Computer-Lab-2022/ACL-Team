@@ -16,23 +16,28 @@ const CourseSchema = new Schema({
         required: 'title is required',
 
     },
-    total_rating: {
-        type: Number,
-    },
-    category_id: {
+    total_rating: [{
+        rating: Number,
+    }],
+
+    category: { //SHOULD BE AN ID TO CATEGORY TODO
         type: String, //TODO
     },
     summary: {
         type: String,
         required: true
     },
+    subject: {
+        type: String,
+        required: true
+    },
     price: {
         type: Number,
     },
-    max_grade: {
+    maxGrade: {
         type: Number,
     },
-    total_hours: {
+    totalHours: {
         type: Number,
     },
     total_points: {
@@ -49,7 +54,6 @@ const CourseSchema = new Schema({
     timestamps: true
 })
 
-//courses.find()
 CourseSchema.statics.addCourse = async function (title, price, category, subject, instructor_id, totalHours, summary) {
 
     if (!title || !price || !category || !subject || !instructor_id || !totalHours)
@@ -78,31 +82,6 @@ CourseSchema.statics.addCourse = async function (title, price, category, subject
 
     return course
 
-}
-CourseSchema.statics.getCoursePrice = async function (id) {
-    const courseExists = await this.findOne({
-        id
-    })
-
-    if (!id || !title || !category || !instructor_id || !summary || !price)
-        throw Error('All fields must be filled')
-    if (!courseExists)
-        throw Error('course id not found ')
-
-    return course.price
-}
-
-CourseSchema.statics.getCourseById = async function (id) {
-    const courseExists = await this.findOne({
-        id
-    })
-
-    if (!id || !title || !category || !instructor_id || !summary || !price)
-        throw Error('All fields must be filled')
-    if (!courseExists)
-        throw Error('course id not found ')
-
-    return course
 }
 CourseSchema.statics.getCourseByTitle = async function (searchTitle) {
     if (!searchTitle)
@@ -160,6 +139,24 @@ CourseSchema.statics.search = async function (search) {
     const result = fuse.search(search)
     return result
 
+}
+
+CourseSchema.statics.rateCourse = async function (course_id, rating) {
+    const course = await this.findByIdAndUpdate({
+            _id: course_id
+        }, {
+            $push: {
+                total_rating: rating
+            },
+        }
+
+    )
+}
+
+CourseSchema.statics.deleteCourse = async function (course_id) {
+    await this.deleteOne({
+        _id: course_id
+    })
 }
 
 

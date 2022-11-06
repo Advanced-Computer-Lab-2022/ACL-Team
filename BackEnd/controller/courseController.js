@@ -2,8 +2,6 @@ const Course = require('../models/courseSchema')
 
 const Fuse = require('fuse.js')
 
-
-
 //get all courses available
 const getAllCourses = async (req, res) => {
     const courses = await Course.find().sort({
@@ -12,10 +10,6 @@ const getAllCourses = async (req, res) => {
 
     res.status(200).json(courses)
 }
-
-
-
-
 //get a course
 const getCourse = async (req, res) => {
     const _id = req._id

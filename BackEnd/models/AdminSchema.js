@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const User = require('../models/UserSchema')
 
 const AdminSchema = new Schema({
-    _id: {
+    user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
@@ -26,7 +26,7 @@ AdminSchema.statics.signup = async function (email, username, password, firstnam
     })
 
     const admin = await this.create({
-        _id: user._id,
+        user_id: user._id,
     })
 
     return admin

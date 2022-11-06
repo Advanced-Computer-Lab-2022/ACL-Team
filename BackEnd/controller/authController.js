@@ -7,7 +7,13 @@ const jwt = require('jsonwebtoken')
 // ONE LOGIN FOR ALL USERS BUT THREE SIGNUPS
 const loginUser = async (req, res) => {
 
+    const {
+        email,
+        password
+    } = req.body
+
     try {
+
         const user = await User.login(email, password)
 
         const token = createToken(user._id)
@@ -24,6 +30,33 @@ const loginUser = async (req, res) => {
             error: error.message
         })
     }
+}
+
+//SHOULD BE CALLED AFTER CALLING FORGET PASSWORD AND SHOULD WORK FOR ALL USERS
+const changePassword = async (req, res) => {
+    const {
+        _id,
+        email,
+        oldPassword,
+        newPassword
+    } = req.body
+
+
+    try {
+
+        const user = await User.changePassword(email, oldPassword, newPassword);
+
+        res.status(200).json({
+            user,
+            token
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+
+
 }
 // ONLY TO BE CALLED AFTER VALIDATING ID AND PASSWORD IT ASSUMES THAT THEY ARE RIGHT
 function createToken(req) {
@@ -42,7 +75,7 @@ function createToken(req) {
 
     //TODO#
 }
-const validateToken = async (_id, res) => {
+const validateToken = async (req, res) => {
     // Tokens are generally passed in the header of the request
     // Due to security reasons.
 
@@ -72,7 +105,7 @@ const signupTrainee = async (req, res) => {
         firstname,
         lastname,
         gender
-    } = req.query
+    } = req.body
 
     try {
 
@@ -149,13 +182,6 @@ const signupAdmin = async (req, res) => {
         })
     }
 }
-
-
-
-
-
-
-
 
 
 

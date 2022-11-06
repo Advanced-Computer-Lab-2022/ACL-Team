@@ -1,8 +1,8 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
-const validator = require('validator')
-const Schema = mongoose.Schema
+const Discount = require('../models/discountSchema')
 const User = require('../models/UserSchema')
+
+const Schema = mongoose.Schema
 
 const InstructorSchema = new Schema({
     _id: {
@@ -16,6 +16,9 @@ const InstructorSchema = new Schema({
     },
     offered_courses: [{
         course_id: mongoose.Schema.Types.ObjectId, //TODO
+    }],
+    defined_discounts: [{
+        discount_id: mongoose.Schema.Types.ObjectId, //TODO
     }],
 
 
@@ -39,6 +42,34 @@ InstructorSchema.statics.signup = async function (email, username, password, fir
     })
 
     return instructor
+
+}
+
+//percentage is assumed to be like 20
+InstructorSchema.statics.addDiscount = async function (instructor_id, name, percentage, start_date, end_date) {
+    const newPercentage = percentage / 100;
+
+
+    const discount = await Discount.create({
+        name,
+        percentage: newPercentage,
+        start_date,
+        end_date
+
+    })
+
+    await this.findByIdAndUpdate({
+            _id: instructor_id
+        }, {
+            $push: {
+                defined_discounts: discount._id
+            },
+        }
+
+    )
+
+
+    return discount
 
 }
 

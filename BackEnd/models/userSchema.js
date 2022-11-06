@@ -46,7 +46,7 @@ const UserSchema = new Schema({
     role: {
         type: String,
         enum: ['trainee', 'corporate_trainee', 'instructor', 'admin'],
-        required: true
+        default: 'trainee'
     },
     country: {
         type: String,
@@ -119,6 +119,39 @@ UserSchema.statics.login = async function (email, password) {
 
     return user
 
+}
+
+
+UserSchema.statics.changePassword = async function (email, oldPassword, newPassword) {
+
+    if (!email || !oldPassword)
+        throw Error('All fields must be filled')
+
+    const user = await this.findOne({
+        email
+    })
+
+    if (!user)
+        throw Error('Incorrect email')
+
+    const match = await bcrypt.compare(oldPassword, user.password)
+
+    if (!match)
+        throw Error('Incorrect password')
+
+    await this.findByIdAndUpdate({
+        email: email
+    }, {
+        password: newPassword
+    })
+
+    return user
+
+}
+UserSchema.statics.deleteUser = async function (user_id) {
+    await this.deleteOne({
+        _id: user_id
+    })
 }
 
 module.exports = mongoose.models.User || mongoose.model('User', UserSchema)

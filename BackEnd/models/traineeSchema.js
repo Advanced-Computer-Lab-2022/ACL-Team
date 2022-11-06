@@ -6,7 +6,7 @@ const User = require('../models/UserSchema')
 
 const TraineeSchema = new Schema({
 
-    _id: {
+    user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
@@ -59,7 +59,7 @@ TraineeSchema.statics.signup = async function (email, username, password, firstn
     })
 
     const trainee = await this.create({
-        _id: user._id,
+        user_id: user._id,
         isCorporate: false
     })
 

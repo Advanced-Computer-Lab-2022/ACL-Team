@@ -11,7 +11,9 @@ const CourseSectionSchema = new Schema({
         required: true
 
     },
-
+    section_title: {
+        type: String, //TODO
+    },
     total_points: {
         type: Number, //TODO
     },
@@ -29,7 +31,7 @@ const CourseSectionSchema = new Schema({
     videos: [{ //TODO
         video_id: mongoose.Schema.Types.ObjectId,
         ref: 'courseMaterial',
-       // video_url: String, // make sure it exists in material schema
+        // video_url: String, // make sure it exists in material schema
 
     }],
     quizes: [{
@@ -40,6 +42,8 @@ const CourseSectionSchema = new Schema({
 }, {
     timestamps: true
 })
+
+
 
 
 
