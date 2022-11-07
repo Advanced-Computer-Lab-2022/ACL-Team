@@ -16,7 +16,7 @@ const CourseSchema = new Schema({
         required: 'title is required',
 
     },
-    total_rating: [{
+    allRatings: [{
         rating: Number,
     }],
 
@@ -141,22 +141,41 @@ CourseSchema.statics.search = async function (search) {
 
 }
 CourseSchema.statics.rateCourse = async function (course_id, rating) {
+
+    if (!course_id || !rating)
+        throw Error('All fields must be filled')
+
+    const courseExist = await this.findOne({
+        course_id
+    })
+
+    if (!courseExist)
+        throw Error('Course Does not Exist')
+
     const course = await this.findByIdAndUpdate({
             _id: course_id
         }, {
             $push: {
-                totalRating: rating
+                allRatings: rating
             },
         }
 
     )
+    return course;
 }
 CourseSchema.statics.deleteCourse = async function (course_id) {
+    if (!course_id)
+        throw error('All fields must be filled')
+
     await this.deleteOne({
         _id: course_id
     })
 }
 CourseSchema.statics.updateCoursePreview = async function (course_id, previewUrl) {
+
+    if (!course_id || !previewUrl)
+        throw error('All fields must be filled')
+
     const course = await this.findByIdAndUpdate({
             _id: course_id
         }, {

@@ -1,7 +1,7 @@
 const User = require('../models/UserSchema')
-const Trainee = require('../models/TraineeSchema')
+const Trainee = require('../models/traineeSchema')
 const Instructor = require('../models/InstructorSchema')
-const Admin = require('../models/AdminSchema')
+const Admin = require('../models/adminSchema')
 const jwt = require('jsonwebtoken')
 
 // ONE LOGIN FOR ALL USERS BUT THREE SIGNUPS
@@ -111,7 +111,7 @@ const signupTrainee = async (req, res) => {
 
         const trainee = await Trainee.signup(email, username, password, firstname, lastname, gender)
 
-        const id = trainee._id.toHexString()
+        const id = trainee.user_id.toHexString()
         const token = createToken({
             id
         })

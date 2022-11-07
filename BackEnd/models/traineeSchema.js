@@ -6,16 +6,18 @@ const User = require('../models/UserSchema')
 
 const TraineeSchema = new Schema({
 
+    _id: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true
+    },
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
-
     },
     isCorporate: {
         type: Boolean,
         required: true
-
     },
     credticard_details: {
         type: String,
@@ -40,12 +42,9 @@ const TraineeSchema = new Schema({
         company: String
 
     }],
-
-
     //lesa fee ba2y
 }, {
     timestamps: true,
-    collection: "trainee"
 })
 TraineeSchema.statics.signup = async function (email, username, password, firstname, lastname, gender) {
 
@@ -54,9 +53,9 @@ TraineeSchema.statics.signup = async function (email, username, password, firstn
     User.findByIdAndUpdate({
         _id: user._id
     }, {
-
         role: "trainee"
     })
+
 
     const trainee = await this.create({
         user_id: user._id,

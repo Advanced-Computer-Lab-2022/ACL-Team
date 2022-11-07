@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 const {
     addCourse
-} = require('../controller/Instructor/instructorCourseController');
+} = require('../controller/course/instructorCourseController');
 
 jest.setTimeout(100000)
 

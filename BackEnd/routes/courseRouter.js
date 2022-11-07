@@ -13,6 +13,9 @@ const {
 
 
 } = require('../controller/course/courseController');
+const {
+    rateCourse
+} = require('../controller/trainee/traineeController');
 
 
 
@@ -24,6 +27,7 @@ router.get('/getCourses', getAllCourses)
 router.post('/getCourseBySubject', getCoursesBySubject)
 router.post('/getCoursesByPrice', getCoursesByPrice)
 router.post('/getCoursesByRating', getCoursesByRating)
+router.post('/course/rateCourse', rateCourse)
 
 
 

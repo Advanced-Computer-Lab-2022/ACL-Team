@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const Schema = mongoose.Schema
-const User = require('../models/UserSchema')
+const User = require('./UserSchema')
 
 const AdminSchema = new Schema({
     user_id: {

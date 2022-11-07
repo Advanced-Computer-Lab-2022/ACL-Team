@@ -9,7 +9,7 @@ const {
 const {
     viewOfferedCourses,
     addCourse
-} = require('../controller/Instructor/instructorCourseController')
+} = require('../controller/course/instructorCourseController')
 
 
 const router = express.Router()

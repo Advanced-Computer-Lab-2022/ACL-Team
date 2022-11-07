@@ -1,4 +1,4 @@
-const Admin = require('../models/AdminSchema')
+const Admin = require('../models/adminSchema')
 const Instructor = require('../models/InstructorSchema')
 const User = require('../models/userSchema')
 const jwt = require('jsonwebtoken')
