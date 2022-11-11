@@ -33,14 +33,19 @@ const CourseMaterialSchema = new Schema({
         type: Number
     },
     questions: [{
-        question_name: String,
+        question_name: String[unique],
         question: String,
         choices: [{
             choice_1: String,
             choice_2: String,
             choice_3: String,
             choice_4: String,
-        }]
+        }],
+        answer: {
+            type: String,
+            enum: ['choice_1', 'choice_2', 'choice_3', 'choice_4', 'no_answer'],
+            default: 'no_answer'
+        },
     }],
     comments: [{
         comment_id: mongoose.Schema.Types.ObjectId
@@ -54,24 +59,18 @@ const CourseMaterialSchema = new Schema({
 
 //only to be used if video
 // in the video the doc is the video url
-CourseMaterialSchema.statics.editQuizChoices = async function (quiz_id, choice_1, choice_2, choice_3, choice_4) {
-    const choices = [{
-        choice_1: choice_1,
-        choice_2: choice_2,
-        choice_3: choice_3,
-        choice_4: choice_4,
-    }]
-    await this.findByIdAndUpdate({
-        _id: quiz_id
+CourseMaterialSchema.statics.editVideoUrl = async function (video_id, newUrl) {
+
+    return await this.findByIdAndUpdate({
+        _id: video_id
     }, {
-        choices: choices
+        material_doc: newUrl
     })
 
-    return await this.findbyId(quiz_id)
 }
 
-//only to be used if quiz
-CourseMaterialSchema.statics.addQuizQuestion = async function (quiz_id, question_name, question, choice_1, choice_2, choice_3, choice_4) {
+//only to be used if quiz or assignment
+CourseMaterialSchema.statics.addQuestion = async function (material_id, question_name, question, choice_1, choice_2, choice_3, choice_4) {
 
     const question = {
         question_name: question_name,
@@ -85,7 +84,7 @@ CourseMaterialSchema.statics.addQuizQuestion = async function (quiz_id, question
     }
 
     await this.findByIdAndUpdate({
-            _id: quiz_id
+            _id: material_id
         }, {
             $push: {
                 questions: question
@@ -95,31 +94,64 @@ CourseMaterialSchema.statics.addQuizQuestion = async function (quiz_id, question
     )
     return question
 }
-CourseMaterialSchema.statics.editQuizQuestion = async function (quiz_id, newQuestionName, newQuestion) {
+CourseMaterialSchema.statics.editQuestion = async function (material_id, oldQuestionName, newQuestionName, newQuestion) {
 
     await this.findByIdAndUpdate({
-        _id: quiz_id
+        _id: material_id,
+        name: oldQuestionName
     }, {
         name: newQuestionName,
         question: newQuestion
     })
 
-    return await this.findbyId(quiz_id)
+    return await this.findbyId(material_id)
 }
-CourseMaterialSchema.statics.editQuizChoices = async function (quiz_id, choice_1, choice_2, choice_3, choice_4) {
+CourseMaterialSchema.statics.editQuizChoices = async function (material_id, choice_1, choice_2, choice_3, choice_4) {
     const choices = [{
         choice_1: choice_1,
         choice_2: choice_2,
         choice_3: choice_3,
         choice_4: choice_4,
     }]
-    await this.findByIdAndUpdate({
-        _id: quiz_id
+    return await this.findByIdAndUpdate({
+        _id: material_id
     }, {
         choices: choices
     })
 
-    return await this.findbyId(quiz_id)
+}
+CourseMaterialSchema.statics.editAssignmentChoices = async function (material_id, question_name, choice_1, choice_2, choice_3, choice_4) {
+    const choices = [{
+        choice_1: choice_1,
+        choice_2: choice_2,
+        choice_3: choice_3,
+        choice_4: choice_4,
+    }]
+    return await this.findByIdAndUpdate({
+        _id: material_id,
+        name: question_name
+    }, {
+        choices: choices
+    })
+
+}
+CourseMaterialSchema.statics.setQuizAnswer = async function (material_id, choice) {
+    return await this.findByIdAndUpdate({
+        _id: material_id
+    }, {
+        answer: choice
+    })
+
+}
+
+CourseMaterialSchema.statics.setAssignmentAnswer = async function (material_id, question_name, choice) {
+    return await this.findByIdAndUpdate({
+        _id: material_id,
+        name: question_name
+    }, {
+        answer: choice
+    })
+
 }
 
 // Material Creation

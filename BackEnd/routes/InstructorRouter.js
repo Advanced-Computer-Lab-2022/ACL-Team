@@ -8,7 +8,10 @@ const {
 } = require('../controller/Instructor/instructorController')
 const {
     viewOfferedCourses,
-    addCourse
+    addCourse,
+    defineDiscount,
+    applyDiscount,
+    setCoursePreview
 } = require('../controller/course/instructorCourseController')
 
 
@@ -21,5 +24,8 @@ router.get('/', () => {
 })
 router.post('/', editEmail)
 router.get('/courseShow', viewOfferedCourses)
+router.post('/defineDiscount', defineDiscount)
+router.post('/applyDiscount', applyDiscount)
+router.post('/setCoursePreview', setCoursePreview)
 
 module.exports = router

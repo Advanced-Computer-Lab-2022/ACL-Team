@@ -6,6 +6,7 @@ const Schema = mongoose.Schema
 const DiscountSchema = new Schema({
     name: {
         type: String,
+        unique: true
     },
     percentage: {
         type: Number,

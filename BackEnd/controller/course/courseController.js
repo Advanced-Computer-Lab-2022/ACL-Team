@@ -24,6 +24,7 @@ const getCourse = async (req, res) => {
 
     res.status(200).json(course)
 }
+
 const getCourseByInstructor = async (req, res) => {
 
     const courses = await Course.find().sort({
@@ -37,6 +38,7 @@ const getCourseByInstructor = async (req, res) => {
     const result = fuse.search(req.instructor._id)
     res.status(200).json(result)
 }
+
 const getCourseByTitle = async (req, res) => {
     const courses = await Course.find().sort({
         createdAt: -1
@@ -49,6 +51,7 @@ const getCourseByTitle = async (req, res) => {
     const result = fuse.search(req.title)
     res.status(200).json(result)
 }
+
 const getCourseBySubject = async (req, res) => {
     const courses = await Course.find().sort({
         createdAt: -1
@@ -61,6 +64,7 @@ const getCourseBySubject = async (req, res) => {
     const result = fuse.search(req.subject)
     res.status(200).json(result)
 }
+
 const getCourseById = async (req, res) => {
     const id = req.id
 
@@ -143,6 +147,7 @@ const getCoursesByRating = async (req, res) => {
         })
     }
 }
+
 const getCoursesByRatingFromLowToHigh = async (req, res) => {
     try {
         const courses = await Course.getCoursesByRatingFromLowToHigh()
@@ -153,6 +158,7 @@ const getCoursesByRatingFromLowToHigh = async (req, res) => {
         })
     }
 }
+
 const getCoursesByRatingFromHighToLow = async (req, res) => {
     try {
         const courses = await Course.getCoursesByRatingFromHighToLow()
@@ -163,25 +169,6 @@ const getCoursesByRatingFromHighToLow = async (req, res) => {
         })
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 module.exports = {

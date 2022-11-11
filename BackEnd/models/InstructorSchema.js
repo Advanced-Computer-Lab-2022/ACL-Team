@@ -44,11 +44,7 @@ InstructorSchema.statics.signup = async function (email, username, password, fir
     return instructor
 
 }
-
-//percentage is assumed to be like 20
 InstructorSchema.statics.addDiscount = async function (instructor_id, name, percentage, start_date, end_date) {
-    const newPercentage = percentage / 100;
-
 
     const discount = await Discount.create({
         name,
@@ -70,6 +66,11 @@ InstructorSchema.statics.addDiscount = async function (instructor_id, name, perc
 
 
     return discount
+
+}
+//mehtaga had y3mlha ashan feh hagat kteer awy zay el discount abl man apply el discount lazm nt2kd eno aslan bydy el course dah
+InstructorSchema.statics.isTeachCourse = async function (instructor_id, course_id) {
+
 
 }
 
