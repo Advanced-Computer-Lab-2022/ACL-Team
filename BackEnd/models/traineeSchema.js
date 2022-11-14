@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
-const bcrypt = require('bcrypt')
-const validator = require('validator')
 const Schema = mongoose.Schema
 const User = require('../models/UserSchema')
+const Instructor = require('../models/InstructorSchema')
+const Course = require('../models/course/courseSchema')
+const Review = require('../models/lib/reviewSchema')
 
 const TraineeSchema = new Schema({
 
@@ -65,6 +66,44 @@ TraineeSchema.statics.signup = async function (email, username, password, firstn
 
     return trainee
 
+}
+TraineeSchema.statics.reviewInstructor = async function (_id, course_id, instructor_id, type, reviewString) {
+
+    if (!course_id || !instructor_id || !type || !reviewString)
+        throw Error('All fields must be filled')
+
+    const course = await Course.findOne({
+        course_id
+    })
+    const instructor = await Instructor.findOne({
+        instructor_id
+    })
+
+    if (!courseExist)
+        throw Error('Course Does not Exist')
+
+    if (!instructor)
+        throw Error('Instructor Does not Exist')
+
+    const review = await Review.create({
+        reviewer_id: _id,
+        reviewed_id: instructor_id,
+        type,
+        reviewString
+    })
+
+    instructor = await Instructor.findByIdAndUpdate({
+            _id: instructor_id
+        }, {
+            $push: {
+                reviews: review._id,
+                type
+            },
+        }
+
+    )
+
+    return review;
 }
 
 

@@ -10,9 +10,8 @@ const {
     getCoursesByRating,
     getCoursesByPriceFromLowToHigh,
     getCoursesByPriceFromHighToLow,
-
-
 } = require('../controller/course/courseController');
+
 const {
     rateCourse
 } = require('../controller/trainee/traineeController');
@@ -28,9 +27,6 @@ router.post('/getCourseBySubject', getCoursesBySubject)
 router.post('/getCoursesByPrice', getCoursesByPrice)
 router.post('/getCoursesByRating', getCoursesByRating)
 router.post('/course/rateCourse', rateCourse)
-
-
-
 router.delete('/:id', (req, res) => {
 
     res.json({

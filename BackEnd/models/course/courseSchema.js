@@ -89,7 +89,6 @@ CourseSchema.statics.addCourse = async function (title, price, category, subject
     return course
 
 }
-
 CourseSchema.statics.getCourseByTitle = async function (searchTitle) {
     if (!searchTitle)
         throw Error('No Search Written')
@@ -104,7 +103,6 @@ CourseSchema.statics.getCourseByTitle = async function (searchTitle) {
     const result = fuse.search(searchTitle)
     return result
 }
-
 CourseSchema.statics.getCourseByInstructor = async function (searchInstructor) {
     if (!searchInstructor)
         throw Error('No Search Written')
@@ -119,7 +117,6 @@ CourseSchema.statics.getCourseByInstructor = async function (searchInstructor) {
     const result = fuse.search(searchInstructor)
     return result
 }
-
 CourseSchema.statics.getCourseBySubject = async function (searchSubject) {
     if (!searchSubject)
         throw Error('No Search Written')
@@ -134,7 +131,6 @@ CourseSchema.statics.getCourseBySubject = async function (searchSubject) {
     const result = fuse.search(searchSubject)
     return result
 }
-
 CourseSchema.statics.search = async function (search) {
     if (!search)
         throw Error('No Search Written')
@@ -150,7 +146,6 @@ CourseSchema.statics.search = async function (search) {
     return result
 
 }
-
 CourseSchema.statics.rateCourse = async function (course_id, rating) {
 
     if (!course_id || !rating)
@@ -174,7 +169,6 @@ CourseSchema.statics.rateCourse = async function (course_id, rating) {
     )
     return course;
 }
-
 CourseSchema.statics.deleteCourse = async function (course_id) {
     if (!course_id)
         throw error('All fields must be filled')
@@ -183,7 +177,6 @@ CourseSchema.statics.deleteCourse = async function (course_id) {
         _id: course_id
     })
 }
-
 CourseSchema.statics.setCoursePreview = async function (course_id, previewUrl) {
 
     if (!course_id || !previewUrl)
@@ -198,7 +191,6 @@ CourseSchema.statics.setCoursePreview = async function (course_id, previewUrl) {
 
     )
 }
-
 CourseSchema.statics.applyDiscount = async function (course_id, discount_id) {
 
     if (!course_id || !discount_id)

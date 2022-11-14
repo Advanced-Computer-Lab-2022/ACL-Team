@@ -6,19 +6,16 @@ const jwt = require('jsonwebtoken')
 
 // ONE LOGIN FOR ALL USERS BUT THREE SIGNUPS
 const loginUser = async (req, res) => {
-
     const {
         email,
         password
     } = req.body
 
     try {
-
         const user = await User.login(email, password)
 
         const token = createToken(user._id)
         const role = user.role
-
 
         res.status(200).json({
             user,
@@ -31,7 +28,6 @@ const loginUser = async (req, res) => {
         })
     }
 }
-
 //SHOULD BE CALLED AFTER CALLING FORGET PASSWORD AND SHOULD WORK FOR ALL USERS
 const changePassword = async (req, res) => {
     const {
@@ -41,9 +37,7 @@ const changePassword = async (req, res) => {
         newPassword
     } = req.body
 
-
     try {
-
         const user = await User.changePassword(email, oldPassword, newPassword);
 
         res.status(200).json({
@@ -60,7 +54,6 @@ const changePassword = async (req, res) => {
 }
 // ONLY TO BE CALLED AFTER VALIDATING ID AND PASSWORD IT ASSUMES THAT THEY ARE RIGHT
 function createToken(req) {
-
     let jwtSecretKey = process.env.secret || "secret";
     let data = {
         "id": req.id,
@@ -127,7 +120,6 @@ const signupTrainee = async (req, res) => {
         })
     }
 }
-
 const signupInstructor = async (req, res) => {
     const {
         email,
@@ -155,7 +147,6 @@ const signupInstructor = async (req, res) => {
         })
     }
 }
-
 const signupAdmin = async (req, res) => {
     const {
         email,
@@ -182,9 +173,6 @@ const signupAdmin = async (req, res) => {
         })
     }
 }
-
-
-
 module.exports = {
     loginUser,
     signupTrainee,
@@ -192,7 +180,5 @@ module.exports = {
     signupAdmin,
     createToken,
     validateToken
-
-
 
 }

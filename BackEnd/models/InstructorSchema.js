@@ -20,9 +20,14 @@ const InstructorSchema = new Schema({
     defined_discounts: [{
         discount_id: mongoose.Schema.Types.ObjectId, //TODO
     }],
-
-
-
+    reviews: [{
+        review_id: mongoose.Schema.Types.ObjectId,
+        type: String,
+    }],
+    issues: [{
+        issue_id: mongoose.Schema.Types.ObjectId,
+        status: String,
+    }],
 }, {
     timestamps: true
 })

@@ -1,27 +1,23 @@
 const express = require('express');
 
-const mongoose = require('mongoose');
-const session = require('express-session');
-const hbs = require('express-handlebars');
-const passport = require('passport');
-const localStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
+const mongoose = require('mongoose')
+const session = require('express-session')
+const hbs = require('express-handlebars')
+const passport = require('passport')
+const localStrategy = require('passport-local').Strategy
+const bcrypt = require('bcrypt')
 const bodyParser = require('body-parser')
-const dotenv = require('dotenv');
+const dotenv = require('dotenv')
 const cors = require('cors')
 
 
 //router imports
-const courseRouter = require('./routes/courseRouter');
-const loginRouter = require('./routes/loginRouter');
-const adminRouter = require('./routes/adminRouter');
-const signUpRouter = require('./routes/signUpRouter');
-const instructorRouter = require('./routes/InstructorRouter');
-const signupRouter = require('./routes/signupRouter');
-
-
-
-
+const courseRouter = require('./routes/courseRouter')
+const loginRouter = require('./routes/loginRouter')
+const adminRouter = require('./routes/adminRouter')
+const signUpRouter = require('./routes/signUpRouter')
+const instructorRouter = require('./routes/InstructorRouter')
+const userRouter = require('./routes/userRouter')
 
 //express
 const port = process.env.PORT || 3000;
@@ -89,6 +85,7 @@ app.use('/admin', adminRouter)
 app.use('/signUp', signUpRouter)
 app.use('/login', loginRouter)
 app.use('/instructor', instructorRouter)
+app.use('/user', userRouter)
 
 
 

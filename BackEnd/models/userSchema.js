@@ -120,8 +120,6 @@ UserSchema.statics.login = async function (email, password) {
     return user
 
 }
-
-
 UserSchema.statics.changePassword = async function (email, oldPassword, newPassword) {
 
     if (!email || !oldPassword)

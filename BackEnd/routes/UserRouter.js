@@ -1,13 +1,13 @@
 const express = require('express')
 const {
-    signUp
+    rateCourse,
+    reviewInstructor
 } = require('../controller/trainee/traineeController')
 const User = require('../models/userSchema')
 
 const router = express.Router()
 
-router.get('/', getAllUsers)
-router.post('/', signUp)
-router.get('/:id', getAUser)
+router.post('/rateCourse', rateCourse)
+router.post('/reviewInstructor', reviewInstructor)
 
 module.exports = router

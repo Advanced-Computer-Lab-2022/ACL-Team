@@ -4,56 +4,83 @@ const User = require('../models/userSchema')
 const jwt = require('jsonwebtoken')
 
 const createToken = (_id) => {
-    return jwt.sign({_id}, "verygoodsecret" , {expiresIn: '1d'})
+    return jwt.sign({
+        _id
+    }, "verygoodsecret", {
+        expiresIn: '1d'
+    })
 }
+const addAdmin = async (req, res) => {
+    const {
+        username,
+        password,
+        gender,
+        email,
+        name
+    } = req.body
 
-const addAdmin = async(req,res) => {
-    const {username , password , gender,email,name} = req.body
-
-    try{
-        const admin = await Admin.signup(username , password, gender,email,name)
+    try {
+        const admin = await Admin.signup(username, password, gender, email, name)
         const token = createToken(admin._id)
-        res.status(200).json({email,token})
-    }
-    catch(error){
-        res.status(400).json({error: error.message})
-    }
-}
-
-const addInstructor = async(req,res) => {
-    const {name,email,username,password,gender} = req.body
- 
-    try {
-     const instructor = await Instructor.signup(name,email,username,password,gender)
-     
-     const token = createToken(instructor._id)
-     
-     res.status(200).json({instructor,token})
-    }
-    catch(error){
-     res.status(400).json({error: error.message})
+        res.status(200).json({
+            email,
+            token
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
     }
 }
-
-
-const addUser = async(req,res) => {
-     const {email,username,password,isCorporate} = req.body
+const addInstructor = async (req, res) => {
+    const {
+        name,
+        email,
+        username,
+        password,
+        gender
+    } = req.body
 
     try {
-     const user = await User.signup(email,username,password,isCorporate)
-     
-     const token = createToken(user._id)
- 
-     
-     res.status(200).json({user,token})
+        const instructor = await Instructor.signup(name, email, username, password, gender)
+
+        const token = createToken(instructor._id)
+
+        res.status(200).json({
+            instructor,
+            token
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
     }
-    catch(error){
-     res.status(400).json({error: error.message})
-    }
-    
 }
+const addUser = async (req, res) => {
+    const {
+        email,
+        username,
+        password,
+        isCorporate
+    } = req.body
+
+    try {
+        const user = await User.signup(email, username, password, isCorporate)
+
+        const token = createToken(user._id)
 
 
+        res.status(200).json({
+            user,
+            token
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+
+}
 
 // add admin
 //add user

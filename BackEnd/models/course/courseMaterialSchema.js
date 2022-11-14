@@ -56,7 +56,6 @@ const CourseMaterialSchema = new Schema({
 }, {
     timestamps: true
 })
-
 //only to be used if video
 // in the video the doc is the video url
 CourseMaterialSchema.statics.editVideoUrl = async function (video_id, newUrl) {
@@ -68,7 +67,6 @@ CourseMaterialSchema.statics.editVideoUrl = async function (video_id, newUrl) {
     })
 
 }
-
 //only to be used if quiz or assignment
 CourseMaterialSchema.statics.addQuestion = async function (material_id, question_name, question, choice_1, choice_2, choice_3, choice_4) {
 
@@ -143,7 +141,6 @@ CourseMaterialSchema.statics.setQuizAnswer = async function (material_id, choice
     })
 
 }
-
 CourseMaterialSchema.statics.setAssignmentAnswer = async function (material_id, question_name, choice) {
     return await this.findByIdAndUpdate({
         _id: material_id,
@@ -153,9 +150,7 @@ CourseMaterialSchema.statics.setAssignmentAnswer = async function (material_id, 
     })
 
 }
-
 // Material Creation
-
 CourseMaterialSchema.statics.createAssignment = async function (name) {
 
     const assignment = await this.create({
@@ -189,5 +184,4 @@ CourseMaterialSchema.statics.createQuiz = async function (name) {
     return quiz
 
 }
-
 module.exports = mongoose.model('courseMaterial', CourseMaterialSchema)

@@ -116,7 +116,6 @@ const setCoursePreview = async (req, res) => {
 
 
 module.exports = {
-
     addCourse,
     viewOfferedCourses,
     defineDiscount,
