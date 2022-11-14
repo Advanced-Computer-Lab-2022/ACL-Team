@@ -10,15 +10,12 @@ const UserSchema = new Schema({
         type: String,
         required: 'Username is required',
         unique: true
-
     },
     email: {
         type: String,
         required: 'Email is required',
         unique: true,
         match: [/.+\@.+\..+/, 'Please fill a valid email address']
-
-
         //had y3ml regex lel email
     },
     password: {
@@ -29,19 +26,15 @@ const UserSchema = new Schema({
         "firstname": {
             "type": "string",
             required: true
-
         },
         "lastname": {
             "type": "string",
             required: true
-
         }
-
     },
     gender: {
         type: String,
         required: true
-
     },
     role: {
         type: String,
@@ -50,7 +43,6 @@ const UserSchema = new Schema({
     },
     country: {
         type: String,
-
     },
     achievments: [{
         achievment_id: String, //TODO
@@ -58,7 +50,6 @@ const UserSchema = new Schema({
     notifications: [{
         notification_id: mongoose.Schema.Types.ObjectId, //TODO
     }]
-
     //lesa fee ba2y
 }, {
     timestamps: true,

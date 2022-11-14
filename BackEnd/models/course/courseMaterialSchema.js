@@ -23,13 +23,13 @@ const CourseMaterialSchema = new Schema({
     deadline: {
         type: Date, //TODOOOOOOOOOOOOOOOOOOOOOO
     },
-    total_points: {
+    totalPoints: {
         type: Number, //TODO
     },
-    total_hours: {
+    totalHours: {
         type: Number, //TODO
     },
-    maximum_grade: {
+    maxGrade: {
         type: Number
     },
     questions: [{

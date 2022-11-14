@@ -19,6 +19,7 @@ const CourseSchema = new Schema({
     },
     allRatings: [{
         rating: Number,
+        user_id: mongoose.Schema.Types.ObjectId
     }],
     category: { //SHOULD BE AN ID TO CATEGORY TODO
         type: String, //TODO

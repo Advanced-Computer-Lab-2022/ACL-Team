@@ -9,34 +9,33 @@ const CourseSectionSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Course',
         required: true
-
     },
-    section_title: {
-        type: String, //TODO
+    sectionTitle: {
+        type: String,
     },
-    total_points: {
-        type: Number, //TODO
+    totalPoints: {
+        type: Number,
     },
-    total_hours: {
-        type: Number, //TODO
+    totalHours: {
+        type: Number,
     },
-    maximum_grade: {
-        type: Number, //TODO
+    maxGrade: {
+        type: Number,
     },
     assignments: [{
         assignment_id: mongoose.Schema.Types.ObjectId,
         ref: 'courseMaterial',
-
+        maxGrade: Number,
     }],
-    videos: [{ //TODO
+    videos: [{
         video_id: mongoose.Schema.Types.ObjectId,
         ref: 'courseMaterial',
-        // video_url: String, // make sure it exists in material schema
-
+        video_url: String,
     }],
     quizes: [{
         quiz_id: mongoose.Schema.Types.ObjectId,
-        ref: 'courseMaterial', //TODO
+        ref: 'courseMaterial',
+        maxGrade: Number,
     }],
 
 }, {

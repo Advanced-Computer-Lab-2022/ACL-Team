@@ -18,11 +18,30 @@ const CourseProgressSchema = new Schema({
         ref: 'CourseEdition',
         required: true
     },
+    courseReview_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'review',
+    },
     finishedPercentage: {
-        type: Double,
+        type: Number,
+    },
+    totalHours: {
+        type: Number,
+    },
+    maxGrade: {
+        type: Number,
+    },
+    totalPoints: {
+        type: Number,
     },
     finishedHours: {
-        type: Integer,
+        type: Number,
+    },
+    acquiredGrade: {
+        type: Number,
+    },
+    acquiredPoints: {
+        type: Number,
     },
     solvedSections: [{
         section_id: mongoose.Schema.Types.ObjectId, //CourseSection_id
@@ -33,8 +52,8 @@ const CourseProgressSchema = new Schema({
                 choice: ['choice_1', 'choice_2', 'choice_3', 'choice_4'], //Enum 
             }],
             finishedPercentage: Double,
-            AcquiredGrade: Integer,
-            TotalGrade: Integer
+            acquiredGrade: Number,
+            acquiredPoints: Number,
         }],
         solvedAssignments: [{
             assignment_id: mongoose.Schema.Types.ObjectId, //CourseMaterial_id
@@ -43,13 +62,14 @@ const CourseProgressSchema = new Schema({
                 choice: ['choice_1', 'choice_2', 'choice_3', 'choice_4'], //Enum 
             }],
             finishedPercentage: Double,
-            AcquiredGrade: Integer,
-            TotalGrade: Integer
+            acquiredGrade: Number,
+            acquiredPoints: Number,
         }],
         watchedVideos: [{
             video_id: mongoose.Schema.Types.ObjectId, //CourseMaterial_id
             isWatched: Boolean,
             writtenNotes: String,
+            acquiredPoints: Number,
         }],
     }],
 
