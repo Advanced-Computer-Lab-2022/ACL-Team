@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Instructor = require('../InstructorSchema')
-const Discount = require('../lib/discountSchema')
+const Discount = require('../lib/payment/discountSchema')
 
 const Schema = mongoose.Schema
 

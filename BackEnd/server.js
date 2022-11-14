@@ -12,10 +12,10 @@ const cors = require('cors')
 
 
 //router imports
-const courseRouter = require('./routes/courseRouter')
-const loginRouter = require('./routes/loginRouter')
+const courseRouter = require('./routes/course/courseRouter')
+const loginRouter = require('./routes/auth/loginRouter')
 const adminRouter = require('./routes/adminRouter')
-const signUpRouter = require('./routes/signUpRouter')
+const signUpRouter = require('./routes/auth/signUpRouter')
 const instructorRouter = require('./routes/InstructorRouter')
 const userRouter = require('./routes/userRouter')
 

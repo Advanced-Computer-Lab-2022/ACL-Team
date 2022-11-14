@@ -1,6 +1,6 @@
 const Instructor = require('../../models/InstructorSchema')
 const Course = require('../../models/course/courseSchema')
-const Discount = require('../../models/lib/discountSchema')
+const Discount = require('../../models/lib/payment/discountSchema')
 
 
 

@@ -7,7 +7,7 @@ const {
     validateToken,
     loginUser
 
-} = require('../controller/authController')
+} = require('../../controller/authController')
 
 const router = express.Router()
 

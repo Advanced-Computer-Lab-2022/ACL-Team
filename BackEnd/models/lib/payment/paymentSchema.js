@@ -7,21 +7,18 @@ const PaymentSchema = new Schema({
 
     course_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        ref: 'Course',
         required: true
-
     },
     edition_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
-
     },
     user_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
-
     },
     price: {
         type: Number,
