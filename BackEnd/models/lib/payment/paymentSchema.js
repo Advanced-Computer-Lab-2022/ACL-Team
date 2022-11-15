@@ -34,7 +34,7 @@ const PaymentSchema = new Schema({
     },
     currency: {
         type: String,
-        enum: ['egp', 'usd', 'quiz', 'grade'],
+        enum: ['egp', 'usd', 'euro', 'aed'],
         required: true
     },
     discount: {
@@ -43,9 +43,6 @@ const PaymentSchema = new Schema({
         start_date: Date,
         end_data: Date
     },
-
-
-
 
 }, {
     timestamps: true

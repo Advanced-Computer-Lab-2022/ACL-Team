@@ -34,6 +34,7 @@ const CourseSchema = new Schema({
     },
     price: {
         type: Number,
+        required: true,
     },
     maxGrade: {
         type: Number,
@@ -55,6 +56,26 @@ const CourseSchema = new Schema({
     },
     discount_id: {
         type: mongoose.Schema.Types.ObjectId,
+    },
+    subscriberNumber: {
+        type: Number,
+    },
+    reviewNumber: {
+        type: Number,
+    },
+    lectureNumber: {
+        type: Number,
+    },
+    level: {
+        type: String,
+        enum: ['Begginer', 'Intermediate', 'Expert', 'All Levels'],
+        default: 'All Levels',
+        required: true
+    },
+    subject: {
+        type: String,
+        enum: ['Web development', 'Intermediate', 'Expert', 'All Levels'],
+        required: true
     },
 
 }, {
