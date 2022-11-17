@@ -1,18 +1,27 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import "./dropdown.css"
+import "./categoryChoices.css"
 
 const menu = [
   {
-    name: "Course"
+    name: "🔘 It & software"
   },
 
   {
-    name: "Boda"
+    name: "🔘 Development & Data Science"
   },
 
   {
-    name: "Maro"
+    name: "🔘 Personal Development"
+  },
+  {
+    name: "🔘 Health & Fitness"
+  },
+  {
+    name: "🔘 Computer Science"
+  },
+  {
+    name: "🔘 Marketing & Finance"
   }
   // Han7ot ba2y el items ely 3yzenha fl dropdown
 ]
@@ -26,7 +35,7 @@ const MenuButton = ({name}) => (
 );
 
 
-export default function Dropdown() {
+export default function Dropdown2() {
   const [isOpen, setIsOpen] = useState(false)
   
   const handleClick = (e) => {
@@ -47,13 +56,14 @@ export default function Dropdown() {
             name = {item.name}
           />
         ))}
+        
       </div>
       <button onClick={handleClick}>
-        Courses
+        Category
         <span className="material-symbols-outlined">
-          {isOpen ? "x": "⇓"}
+          {isOpen ?"":""}
         </span>
       </button>
-    </div>
-  )
+    </div>
+  )
 }

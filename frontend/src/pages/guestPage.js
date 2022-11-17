@@ -1,5 +1,7 @@
 import React from 'react'
-import Navbar from '../Components/General/navbar'
+import Dropdown from '../Components/General/Buttons/ButtonsList'
+import Navbar from '../Components/General/Navbar/navbar'
+
 
 
 export default function GuestPage() {

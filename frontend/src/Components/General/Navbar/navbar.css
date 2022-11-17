@@ -1,0 +1,81 @@
+.Navbar a{
+    text-decoration: none;
+    color: black;
+    
+  }
+  
+  .Navbar a:hover{
+    text-decoration: none;
+    color: rgb(6, 79, 174);
+  }
+  
+  .Navbar {
+    background-color: azure;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+  }
+  /* .web_title{
+  } */
+
+  /* .Navbar button:hover{
+    background-color: transparent;
+    border: solid;
+    border-color: rgb(6, 79, 174);
+    color: rgb(6, 79, 174);
+  } */
+  
+  
+  .sidemenu_button {
+    width: 30px;
+    border: none;
+    background-color: transparent;
+  }
+  
+  .SearchBar {
+   
+    height: 37px;
+    width: 330px;
+    border: solid 1px;
+    border-color: black;
+    border-radius: 50px;
+  }
+  
+  ul.navbar_paths {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    justify-content: space-between;
+    align-items:  center;
+
+  }
+  
+  ul.navbar_paths > li {
+    display: inline-block;
+    padding: 20px 30px;
+  }
+  
+  .navbar_actions{
+    /* margin-left: 300px; */
+    list-style-type: none;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .navbar_actions ul{
+    padding-left: 0px;
+  }
+  .navbar_actions li{
+    display: inline-block;
+    padding: 10px 10px;
+  }
+  
+  .setting_icon{
+    width: 20px;
+    height: 20px;
+  }
+
+  .dropdown{
+    width: 150px;
+    padding-right: 20px;
+  }
