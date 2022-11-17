@@ -21,15 +21,13 @@ const CourseSchema = new Schema({
         rating: Number,
         user_id: mongoose.Schema.Types.ObjectId
     }],
-    category: { //SHOULD BE AN ID TO CATEGORY TODO
-        type: String, //TODO
-    },
     summary: {
         type: String,
         required: true
     },
     subject: {
         type: String,
+        enum: ['Web Development', 'Intermediate', 'Mathematics', 'Web Design'],
         required: true
     },
     price: {
@@ -72,11 +70,7 @@ const CourseSchema = new Schema({
         default: 'All Levels',
         required: true
     },
-    subject: {
-        type: String,
-        enum: ['Web development', 'Intermediate', 'Expert', 'All Levels'],
-        required: true
-    },
+
 
 }, {
     timestamps: true

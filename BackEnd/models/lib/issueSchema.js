@@ -12,6 +12,11 @@ const IssueSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
+    type: {
+        type: String,
+        enum: ['Payment Issue', 'Refund Request', 'Offensive User'],
+        default: 'Offensive User'
+    },
     status: {
         type: String,
         enum: ['Resolved', 'Pending', 'Unseen'],

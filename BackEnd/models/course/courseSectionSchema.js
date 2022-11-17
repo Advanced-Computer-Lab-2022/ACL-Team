@@ -22,27 +22,37 @@ const CourseSectionSchema = new Schema({
     maxGrade: {
         type: Number,
     },
-    assignments: [{
-        assignment_id: mongoose.Schema.Types.ObjectId,
-        ref: 'courseMaterial',
-        maxGrade: Number,
+    subtitles: [{
+        previewVideoUrl: String,
+        assignments: [{
+            assignment_id: mongoose.Schema.Types.ObjectId,
+            ref: 'courseMaterial',
+            maxGrade: Number,
+        }],
+        videos: [{
+            video_id: mongoose.Schema.Types.ObjectId,
+            ref: 'courseMaterial',
+            video_url: String,
+        }],
+        quizes: [{
+            quiz_id: mongoose.Schema.Types.ObjectId,
+            ref: 'courseMaterial',
+            maxGrade: Number,
+        }],
     }],
-    videos: [{
-        video_id: mongoose.Schema.Types.ObjectId,
-        ref: 'courseMaterial',
-        video_url: String,
-    }],
-    quizes: [{
-        quiz_id: mongoose.Schema.Types.ObjectId,
-        ref: 'courseMaterial',
-        maxGrade: Number,
-    }],
-
 }, {
     timestamps: true
 })
 
+CourseSectionSchema.statics.createSection = async function (course_id, sectionTitle) {
 
+    const section = await this.create({
+        course_id,
+        sectionTitle
+    })
+
+    return section
+}
 
 
 
