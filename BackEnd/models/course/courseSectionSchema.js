@@ -1,10 +1,11 @@
 const mongoose = require('mongoose')
+const courseMaterialSchema = require('./courseMaterialSchema')
 
+//Rabena ma3 el nas el gaya tktb hena
 const Schema = mongoose.Schema
 
 
 const CourseSectionSchema = new Schema({
-
     course_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Course',
@@ -23,36 +24,14 @@ const CourseSectionSchema = new Schema({
         type: Number,
     },
     subtitles: [{
-        previewVideoUrl: String,
-        assignments: [{
-            assignment_id: mongoose.Schema.Types.ObjectId,
-            ref: 'courseMaterial',
-            maxGrade: Number,
-        }],
-        videos: [{
-            video_id: mongoose.Schema.Types.ObjectId,
-            ref: 'courseMaterial',
-            video_url: String,
-        }],
-        quizes: [{
-            quiz_id: mongoose.Schema.Types.ObjectId,
-            ref: 'courseMaterial',
-            maxGrade: Number,
-        }],
+        subtitleHours: mongoose.Schema.Types.ObjectId,
+        maxGrade: Number,
+        totalPoints: Number,
+        totalHours: Number,
     }],
 }, {
     timestamps: true
 })
-
-CourseSectionSchema.statics.createSection = async function (course_id, sectionTitle) {
-
-    const section = await this.create({
-        course_id,
-        sectionTitle
-    })
-
-    return section
-}
 
 
 

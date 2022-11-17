@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const Instructor = require('../InstructorSchema')
 const Discount = require('../lib/payment/discountSchema')
 
+
 const Schema = mongoose.Schema
 
 
@@ -23,16 +24,16 @@ const CourseSchema = new Schema({
     }],
     summary: {
         type: String,
-        required: true
+        required: 'summary is required'
     },
     subject: {
         type: String,
         enum: ['Web Development', 'Intermediate', 'Mathematics', 'Web Design'],
-        required: true
+        required: 'subject is required'
     },
     price: {
         type: Number,
-        required: true,
+        required: 'price is required',
     },
     maxGrade: {
         type: Number,
@@ -48,6 +49,10 @@ const CourseSchema = new Schema({
     }],
     coursePreviewUrl: {
         type: String,
+    },
+    isFree: {
+        type: Boolean,
+        required: true,
     },
     isDiscounted: {
         type: Boolean,
@@ -80,6 +85,12 @@ CourseSchema.statics.addCourse = async function (title, price, category, subject
 
     if (!title || !price || !category || !subject || !instructor_id || !totalHours)
         throw error('All fields must be filled')
+
+    const instructor = await Instructor.findOne({
+        _id: instructor_id
+    })
+    if (!instructor)
+        throw Error('Instructor does not Exist')
 
     const course = await this.create({
         title,
