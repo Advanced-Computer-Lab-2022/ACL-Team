@@ -24,27 +24,43 @@
 .nav-heading {
 	grid-template-columns: 2fr 1fr;
 	grid-template-rows: 1fr;
-	height: 75px;
+	height: 70px;
+	width: 50px;
+
 }
 
 .nav-brand {
-	
+	position: absolute;
     height: 20px;
-    left: 42px;
-    right: 10px;
-    top: 10px;
-    font-family: 'SF Pro Text';
-    font-style: normal;
-    font-weight: 700;
-    font-size: 14px;
-    line-height: 20px;
+    left: 16px;
+	right: 10px;
+    top: 51px;
+    font-family: 'Abhaya Libre Medium';
+	font-weight: 500;
+	font-size: 25px;
+	line-height: 20px;
+}
+.nav-subheading{
+	position: absolute;
+	height: 20px;
+	left: 98px;
+	right: 14px;
+	top: 87px;
+	font-family: 'Abhaya Libre Medium';
+	font-style: normal;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 20px;
+	
+	color: #42526E;
 }
 .nav-brand img {
-	width: 40px;
-    height: 40px;
+	
+	width: 54px;
+    height: 56px;
     left: 18px;
     top:24px;
-	padding: 0 10px;
+	padding:  10px;
 }
 
 .hamburger {
@@ -122,7 +138,7 @@
 	text-transform: uppercase;
 	margin: auto 20px;
 	border-radius: 10px;
-    
+    padding: 30px;
 }
 
 .menu-item-NX {
@@ -140,8 +156,9 @@
 
 }
 .menu-item img {
-	
-    width: 24px;
+	top: 8px;
+	left: 10px;
+    width: 70px;
     height: 24px;
 
 }

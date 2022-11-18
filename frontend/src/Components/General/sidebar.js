@@ -56,8 +56,13 @@ export default function Sidebar() {
             <div className="nav-heading">
                 {isExpanded && (
                     <div className="nav-brand">
-                        <img src="Images/Avatar.svg" alt="" srcset="" />
-                        <p>Mr Marwan</p>
+                        <img src="Images/avatar1.svg" alt="" srcset="" />
+                        Mr Marwan
+                    </div>
+                )}
+                {isExpanded && (
+                    <div className = "nav-subheading">
+                        Software Dev
                     </div>
                 )}
                 <button
