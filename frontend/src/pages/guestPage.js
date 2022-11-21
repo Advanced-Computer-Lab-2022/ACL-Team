@@ -1,14 +1,18 @@
 import React from 'react'
-import Dropdown from '../Components/General/Buttons/ButtonsList'
+// import Dropdown from '../Components/General/Buttons/ButtonsList'
 import Navbar from '../Components/General/Navbar/navbar'
+import "../pages/guestPage.css"
 
 
 
 export default function GuestPage() {
   return (
-    <div>
+    <div className="PageColor">
+
       <Navbar/>
       <h3> Guest Page</h3>
     </div>
+    
   )
+
 }

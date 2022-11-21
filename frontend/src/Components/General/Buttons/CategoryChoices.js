@@ -59,7 +59,10 @@ export default function Dropdown2() {
         
       </div>
       <button onClick={handleClick}>
+        <div className="boda">
         Category
+        </div>
+        
         <span className="material-symbols-outlined">
           {isOpen ?"":""}
         </span>

@@ -6,7 +6,8 @@ import img4 from '../../images/Union.png'
 import img5 from '../../images/app-switcher.png'
 
 import './navbar.css'
-import Dropdown from '../Buttons/ButtonsList'
+// import Dropdown from '../Buttons/ButtonsList'
+import Dropdown2 from '../Buttons/CategoryChoices'
 
 
 export default function Navbar() {
@@ -14,13 +15,13 @@ export default function Navbar() {
     <div>
     <div className="Navbar">
       <button className="sidemenu_button"><img className="setting_icon" src={img5} alt='setting_icon'/></button>
-      <h1 className="web_title">LearnHub</h1>
-      <input type="text" className="SearchBar" placeholder="🔍 Search" />
+      <h1 className="web_title">Learn Hub</h1>
+      <input type="text" className="SearchBar" placeholder=" Search 🔍" />
       
       <div>
         <ul className="navbar_paths">
           <li className="dropdown">
-            <Dropdown/>
+            <Dropdown2/>
           </li>
           <li>
             <a href="/">Tracks</a>
@@ -51,9 +52,7 @@ export default function Navbar() {
             <li>
               <a href='/'><img className="setting_icon" src={img2} alt='help_icon'/></a>
             </li>
-            <li>
-              <a href='/'><img className="setting_icon" src={img1} alt='setting_icon'/></a>
-            </li>
+
             <li>
               <a href='/'><img className="setting_icon" src={img1} alt='setting_icon'/></a>
             </li>
