@@ -15,7 +15,6 @@ import { CoursePage } from './pages/coursePage';
 import { InstructorAddCourse } from './pages/instructorAddCourse';
 import SearchCoursePage from './pages/searchCoursePage';
 import { InstructorEditProfile } from './pages/instructorEditProfile';
-import Dropdown from './Components/General/Buttons/ButtonsList';
 
 
 
@@ -37,7 +36,7 @@ function App() {
       <Route path='/instructor/addCourse' exact element={<InstructorAddCourse/>} />
       <Route path='/course/courseShow' exact element={<SearchCoursePage/>} />
       <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />
-      <Route path='/Meza' exact element={<Dropdown/>} />
+
 
 
 

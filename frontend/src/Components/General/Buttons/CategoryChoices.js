@@ -63,6 +63,7 @@ export default function Dropdown2() {
         Category
         </div>
         
+        Category
         <span className="material-symbols-outlined">
           {isOpen ?"":""}
         </span>

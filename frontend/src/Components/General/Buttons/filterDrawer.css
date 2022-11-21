@@ -1,0 +1,457 @@
+.component-1 {
+  height: 961px;
+  width: 246px;
+  background-color: #ffffff;
+}
+/* .project-nav-(jirasoftwareclassickanban-) {
+  border-radius: 0px 0px 0px 10px;
+  height: 961px;
+  width: 216px;
+  background-color: #ffffff;
+} */
+.watermark {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.frame-1-9 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+}
+.text-1 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 11px;
+  font-family: Abhaya Libre Medium;
+  line-height: 14px;
+  color: #42526e;
+}
+.frame-2-3 {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 10px;
+}
+.text-2 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 11px;
+  font-family: Abhaya Libre Medium;
+  line-height: 14px;
+  color: #5e6c84;
+}
+.shadow {
+  height: 961px;
+  width: 6px;
+  background-color: #ffffff;
+}
+.lightbackground-shadow {
+  opacity: 0.5;
+  height: 961px;
+  width: 3px;
+ 
+  border: 0px solid #969696;
+}
+.crisper {
+  opacity: 0.019999999552965164;
+  height: 961px;
+  width: 1px;
+  background-color: #091e42;
+  border: 0px solid #969696;
+}
+.radiogroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.label-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2px;
+}
+.text-3 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 16px;
+  font-family: Abhaya Libre Medium;
+  line-height: 16px;
+  color: #6b778c;
+}
+.text-4 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 12px;
+  font-family: Abhaya Libre Medium;
+  line-height: 16px;
+  color: #de350b;
+}
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+ 
+}
+.radio-checkbox {
+  height: 24px;
+  width: 24px;
+  background-color: rgba(100, 15, 15, 0);
+}
+.gray {
+  height: 14px;
+  width: 14px;
+}
+.white {
+  height: 10px;
+  width: 10px;
+}
+.text-5 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  font-family: Abhaya Libre Medium;
+  line-height: 20px;
+  color: #091e42;
+}
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+}
+.radio-checkbox {
+  height: 24px;
+  width: 24px;
+  background-color: rgba(255, 255, 255, 0.00009999999747378752);
+}
+.gray {
+  height: 14px;
+  width: 14px;
+}
+.white {
+  height: 10px;
+  width: 10px;
+}
+.text-6 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  font-family: Abhaya Libre Medium;
+  line-height: 20px;
+  color: #091e42;
+}
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+}
+.radio-checkbox {
+  height: 24px;
+  width: 24px;
+  background-color: rgba(255, 255, 255, 0.00009999999747378752);
+}
+.blue {
+  height: 14px;
+  width: 14px;
+}
+.white {
+  height: 4px;
+  width: 4px;
+}
+.text-7 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  font-family: Abhaya Libre Medium;
+  line-height: 20px;
+  color: #091e42;
+}
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+}
+.radio-checkbox {
+  height: 24px;
+  width: 24px;
+  background-color: rgba(255, 255, 255, 0.00009999999747378752);
+}
+.gray {
+  height: 14px;
+  width: 14px;
+}
+.white {
+  height: 10px;
+  width: 10px;
+}
+.text-8 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  font-family: Abhaya Libre Medium;
+  line-height: 20px;
+  color: #091e42;
+}
+.text-9 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 32px;
+  font-family: Actor;
+  line-height: 14px;
+  color: #000000;
+}
+.radiogroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.label-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2px;
+}
+.text-1-0 {
+  text-align: center;
+  vertical-align: top;
+  font-size: 16px;
+  font-family: Abhaya Libre Medium;
+  line-height: 16px;
+  color: #6b778c;
+}
+.text-1-1 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 12px;
+  font-family: Abhaya Libre Medium;
+  line-height: 16px;
+  color: #de350b;
+}
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+}
+.radio-checkbox {
+  height: 24px;
+  width: 24px;
+  background-color: rgba(255, 255, 255, 0.00009999999747378752);
+}
+.gray {
+  height: 14px;
+  width: 14px;
+}
+.white {
+  height: 10px;
+  width: 10px;
+}
+.text-1-2 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  font-family: Abhaya Libre Medium;
+  line-height: 20px;
+  color: #091e42;
+}
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+}
+.radio-checkbox {
+  height: 24px;
+  width: 24px;
+  background-color: rgba(255, 255, 255, 0.00009999999747378752);
+}
+.gray {
+  height: 14px;
+  width: 14px;
+}
+.white {
+  height: 10px;
+  width: 10px;
+}
+.text-1-3 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  font-family: Abhaya Libre Medium;
+  line-height: 20px;
+  color: #091e42;
+}
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+}
+.radio-checkbox {
+  height: 24px;
+  width: 24px;
+  background-color: rgba(255, 255, 255, 0.00009999999747378752);
+}
+.blue {
+  height: 14px;
+  width: 14px;
+}
+.white {
+  height: 4px;
+  width: 4px;
+}
+.text-1-4 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  font-family: Abhaya Libre Medium;
+  line-height: 20px;
+  color: #091e42;
+}
+.radiogroup {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.label-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 2px;
+}
+.text-1-5 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 16px;
+  font-family: Abhaya Libre Medium;
+  line-height: 16px;
+  color: #6b778c;
+}
+.text-1-6 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 12px;
+  font-family: Abhaya Libre Medium;
+  line-height: 16px;
+  color: #de350b;
+}
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+}
+.radio-checkbox {
+  height: 24px;
+  width: 24px;
+  background-color: rgba(255, 255, 255, 0.00009999999747378752);
+}
+.gray {
+  height: 14px;
+  width: 14px;
+}
+.white {
+  height: 10px;
+  width: 10px;
+}
+.text-1-7 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  font-family: Abhaya Libre Medium;
+  line-height: 20px;
+  color: #091e42;
+}
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+}
+.radio-checkbox {
+  height: 24px;
+  width: 24px;
+  background-color: rgba(255, 255, 255, 0.00009999999747378752);
+}
+.gray {
+  height: 14px;
+  width: 14px;
+}
+.white {
+  height: 10px;
+  width: 10px;
+}
+.text-1-8 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  font-family: Abhaya Libre Medium;
+  line-height: 20px;
+  color: #091e42;
+}
+.radio {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 4px;
+}
+.radio-checkbox {
+  height: 24px;
+  width: 24px;
+  background-color: rgba(255, 255, 255, 0.00009999999747378752);
+}
+.blue {
+  height: 14px;
+  width: 14px;
+}
+.white {
+  height: 4px;
+  width: 4px;
+}
+.text-1-9 {
+  text-align: left;
+  vertical-align: top;
+  font-size: 14px;
+  font-family: Abhaya Libre Medium;
+  line-height: 20px;
+  color: #091e42;
+}
+/* .frame-1-9 {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 8px;
+} */
+.boda {
+  border-radius: 0px 0px 0px 10px;
+  height: 603px;
+  width: 240px;
+  background-color: #FAFDFF;
+  
+}
