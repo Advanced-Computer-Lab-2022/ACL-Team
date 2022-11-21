@@ -1,4 +1,5 @@
 import React from 'react';
+import Dropdown from './Buttons/CategoryChoices';
 
 export default function Navbar() {
     return(
@@ -18,6 +19,7 @@ export default function Navbar() {
       </li>
       <li className="nav-item active">
         <a className="nav-link" href="/course">View Courses</a>
+        
       </li>
 
       <li className="nav-item">

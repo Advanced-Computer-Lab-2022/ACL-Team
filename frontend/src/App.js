@@ -15,6 +15,9 @@ import { CoursePage } from './pages/coursePage';
 import { InstructorAddCourse } from './pages/instructorAddCourse';
 import SearchCoursePage from './pages/searchCoursePage';
 import { InstructorEditProfile } from './pages/instructorEditProfile';
+import Dropdown from './Components/General/Buttons/CategoryChoices';
+import FilterDrawer from './Components/General/Buttons/filterDrawer';
+
 
 
 
@@ -36,6 +39,8 @@ function App() {
       <Route path='/instructor/addCourse' exact element={<InstructorAddCourse/>} />
       <Route path='/course/courseShow' exact element={<SearchCoursePage/>} />
       <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />
+      <Route path='/boda' exact element={<FilterDrawer/>} />
+      
 
 
 
