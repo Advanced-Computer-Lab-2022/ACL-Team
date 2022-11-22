@@ -16,6 +16,7 @@ import { InstructorAddCourse } from './pages/instructorAddCourse';
 import SearchCoursePage from './pages/searchCoursePage';
 import { InstructorEditProfile } from './pages/instructorEditProfile';
 import SidebarPage from './pages/sidebarPage';
+import InstructorAddQuizPage from './pages/instructorAddQuizPage';
 
 
 
@@ -38,7 +39,7 @@ function App() {
       <Route path='/course/courseShow' exact element={<SearchCoursePage/>} />
       <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />
       <Route path='/sidebar' exact element={<SidebarPage/>} />
-
+      <Route path='/addquiz' exact element={<InstructorAddQuizPage/>} />
 
 
 
