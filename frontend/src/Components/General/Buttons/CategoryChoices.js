@@ -35,7 +35,7 @@ const MenuButton = ({name}) => (
 );
 
 
-export default function Dropdown() {
+export default function Dropdown2() {
   const [isOpen, setIsOpen] = useState(false)
   
   const handleClick = (e) => {
@@ -59,11 +59,15 @@ export default function Dropdown() {
         
       </div>
       <button onClick={handleClick}>
+        <div className="boda">
+        Category
+        </div>
+        
         Category
         <span className="material-symbols-outlined">
           {isOpen ?"":""}
         </span>
       </button>
-    </div>
-  )
+    </div>
+  )
 }

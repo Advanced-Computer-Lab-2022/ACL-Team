@@ -1,8 +1,9 @@
 const mongoose = require('mongoose')
 
 const Schema = mongoose.Schema
-
-
+//WARNING
+//THIS SCHEMA IS NEVER TO BE USED OUTSIDE COURSE SUBTITLE IT IS FOR INTERNAL USE ONLY. USING MAY WRECK DATABASE INTEGRITY
+//WARNING
 const CourseMaterialSchema = new Schema({
 
     type: {
@@ -148,40 +149,6 @@ CourseMaterialSchema.statics.setAssignmentAnswer = async function (material_id, 
     }, {
         answer: choice
     })
-
-}
-// Material Creation
-CourseMaterialSchema.statics.createAssignment = async function (name) {
-
-    const assignment = await this.create({
-        type: "assignment",
-        name
-    })
-
-    return assignment
-
-}
-CourseMaterialSchema.statics.createVideo = async function (name, video_url, description) {
-
-    const video = await this.create({
-        type: "video",
-        name,
-        material_doc: video_url,
-        description
-
-    })
-
-    return video
-
-}
-CourseMaterialSchema.statics.createQuiz = async function (name) {
-
-    const quiz = await this.create({
-        type: "quiz",
-        name
-    })
-
-    return quiz
 
 }
 module.exports = mongoose.model('courseMaterial', CourseMaterialSchema)

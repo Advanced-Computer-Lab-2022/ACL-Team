@@ -1,7 +1,8 @@
 import React from 'react'
 import Sidebar from '../Components/drawer'
 import "bootstrap/dist/css/bootstrap.css";
-import Navbar from '../Components/General/navbar'
+import Navbar from '../Components/General/Navbar/navbar';
+
 
 export default function ShowCoursePage() {
   return (

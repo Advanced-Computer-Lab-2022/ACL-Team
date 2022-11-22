@@ -1,0 +1,123 @@
+.Navbar a{
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    
+  }
+  
+  .Navbar a:hover{
+    text-decoration: none;
+    color: rgb(6, 79, 174);
+  }
+  
+  .Navbar {
+    background-color: azure;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: auto;
+    height:65px;
+  }
+
+   .web_title{
+    /* position: relative;
+    height: 18px;
+    width: 123px;
+    left:-30px;
+    font-size: 24px; */
+    /* position:sticky;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 24px;
+    font-family: Inter;
+    line-height: 20px;
+    color: #000000;
+    height: 24px;
+    width: 148px;
+    background-color: rgba(255, 255, 255, 0.00009999999747378752); */
+    
+    width:auto;
+    height: auto;
+    text-align: auto;
+    vertical-align: auto;
+    left: 56px;
+    top: 17px;
+    right: 1236px;
+    bottom:22px ;
+    font-size: 24px;
+    font-family: Inter;
+    line-height: 20px;
+    color: #000000;
+    
+  } 
+
+  /* .Navbar button:hover{
+    background-color: transparent;
+    border: solid;
+    border-color: rgb(6, 79, 174);
+    color: rgb(6, 79, 174);
+  } */
+  
+  
+  .sidemenu_button {
+    width: 30px;
+    border: none;
+    background-color: transparent;
+  }
+  
+  .SearchBar {
+    position: relative;
+
+    height: 37px;
+    width: 191px;
+    left: 14px;
+    border: solid 1px;
+    border-color: black;
+    border-radius: 50px;
+  }
+  
+  ul.navbar_paths {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 24px;
+    justify-content: space-between;
+    align-items:  center;
+
+  }
+  
+  ul.navbar_paths > li {
+    display: inline-table;
+    padding: 10px 4px;
+  }
+  
+  .navbar_actions{
+    /* margin-left: 300px; */
+    list-style-type: none;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .navbar_actions ul{
+    padding-left: 0px;
+  }
+  .navbar_actions li{
+    display: inline-block;
+    padding: 10px 10px;
+  }
+  
+  .setting_icon{
+    /* position: relative; */
+    /* left: 14px;  */
+    /* top: 16px;     */
+    /* width: 24px;
+    height: 24px; */
+    border-radius: 16px;
+    top: 15px;
+    height: 32px;
+    width: 32px;
+    background-color: rgba(255, 255, 255, 0.00009999999747378752);
+    
+  }
+
+  .dropdown{
+    width: 150px;
+    padding-right: 20px;
+  }
