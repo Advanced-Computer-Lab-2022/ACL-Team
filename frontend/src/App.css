@@ -72,3 +72,24 @@
   font-weight: 600;
   color: rgb(34, 34, 34);
 }
+
+.Navy_Button{
+  background-color: #253858;
+  border: none;
+  color: #FAFDFF;
+  width: 106px;
+  height: 41px;
+  border-radius: 10px;
+  padding: 10px 0px;
+  font-size: 12px;
+}
+
+.White_Button{
+  background-color: #FAFDFF;
+  color: #253858;
+  width: 106px;
+  height: 41px;
+  border-radius: 10px;
+  padding: 10px 0px;
+  font-size: 12px;
+}

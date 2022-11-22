@@ -2,6 +2,35 @@ body{
     background-color: #76C1EC;
 }
 
+span{
+    font-size: 30px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#sub_videoDescriptions{
+    font-size: 15px;
+    font-weight: bold;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#description{
+    padding-top: 0px;
+    margin-bottom: 0px;
+    padding-left: 15px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.course_description{
+    background-color: #FAFDFF;
+    border-radius: 20px;
+    width: 1213px;
+    margin: 50px auto;
+    padding: 10px 15px;
+}
+
 .video_component{
     margin: 50px auto;
     text-align: center;
@@ -12,25 +41,24 @@ body{
 }
 
 .video_description{
-    background-color: aliceblue;
+    background-color: #FAFDFF;
     width: 1213px;
     margin: 50px auto;
+    padding: 15px 10px;
     text-align: center;
     border-radius: 20px;
 }
 
-.video_description > .label_list{
+.label_list{
     list-style: none;
     line-height: 35px;
     margin: auto;
     text-align: left;
-    padding: 10px 15px;
-    
-   
+    padding: 10px 15px;  
 }
 
 .notes_container{
-    background-color: aliceblue;
+    background-color: #FAFDFF;
     width: 1213px;
     margin: auto;
     text-align: center;
@@ -44,19 +72,28 @@ body{
 }
 
 .notes_container > .notes_text_box > label{
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20   px;
     position: relative;
     bottom: 15px;
 }
 
 .notes_container > .notes_text_box > input{
     border-radius: 10px;
-    width: 500px;
-    height:100px;
+    border: solid #76C1EC;
+    width: 1172px;
+    height:50px;
 }
+
+.notes_container > .notes_text_box > input::placeholder{
+    color: #76C1EC;
+}
+
 .notes_container > .notes_text_box > button{
-    text-align: center;
-    background-color: transparent;
     position: relative;
-    right: 15px;
-    padding-top: 10px;
+    left: 1090px;
+    top: 5px;
+    background-color: transparent;
 }
