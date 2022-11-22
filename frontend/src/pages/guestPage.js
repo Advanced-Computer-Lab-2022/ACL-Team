@@ -1,6 +1,7 @@
 import React from 'react'
 // import Dropdown from '../Components/General/Buttons/ButtonsList'
 import Navbar from '../Components/General/Navbar/navbar'
+import InstructorCard from '../Components/Instructor/instructorCard'
 import "../pages/guestPage.css"
 
 
@@ -10,7 +11,8 @@ export default function GuestPage() {
     <div className="PageColor">
 
       <Navbar/>
-      <h3> Guest Page</h3>
+      <InstructorCard/>
+      <InstructorCard/>
     </div>
     
   )

@@ -1,6 +1,6 @@
 import React from 'react'
-import NavyButton from '../General/Buttons/navyButton';
-import WhiteButton from '../General/Buttons/whiteButton';
+import NavyButton from '../Buttons/navyButton';
+import WhiteButton from '../Buttons/whiteButton';
 import Navbar from '../General/Navbar/navbar'
 import "./videoPage.css"
 

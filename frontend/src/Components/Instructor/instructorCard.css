@@ -1,0 +1,43 @@
+span{
+    font-size: large;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+.instructor_card{
+    width: 305px;
+    height: 430px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.instructor_info{
+    color:#253858;
+    margin-top: 10px;
+    padding-left: 10px;
+    line-height: 25px;
+    width: 500px;
+}
+
+#field{
+    font-weight: lighter;
+}
+
+.instructor_image{
+    border: none;
+    border-radius: 10px;
+}
+
+.instructor_button{
+    position: relative;
+    left: 190px;
+    bottom: 45px;
+}
+
+.instructor_rating{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    bottom: 30px;
+    color: #253858;
+
+}
