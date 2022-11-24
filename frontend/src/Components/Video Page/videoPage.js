@@ -1,8 +1,6 @@
 import React from 'react'
-import NavyButton from '../Buttons/navyButton';
-import WhiteButton from '../Buttons/whiteButton';
 import Navbar from '../General/Navbar/navbar'
-import "./videoPage.css"
+import "../css/videoPage.css"
 
 export default function VideoPage() {
   const x = 5;

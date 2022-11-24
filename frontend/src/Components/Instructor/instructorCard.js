@@ -1,6 +1,6 @@
 import React from 'react'
-import NavyButton from '../Buttons/navyButton'
-import "./instructorCard.css"
+import NavyButton from '../General/Buttons/navyButton'
+import "../css/instructorCard.css"
 import img1 from "../images/Rectangle 123.png"
 import img2 from "../images/NumofCourses.png"
 import img3 from "../images/NumofStudents.png"
@@ -16,7 +16,7 @@ export default function InstructorCard() {
             </div>
 
             <div className="instructor_info">
-                <label><span>Pandy Deem</span></label><br/>
+                <label><span id="inst_name">Pandy Deem</span></label><br/>
                 <label id="field">Web Developer</label>
             </div>
 

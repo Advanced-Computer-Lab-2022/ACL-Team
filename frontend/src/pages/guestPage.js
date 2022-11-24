@@ -2,7 +2,7 @@ import React from 'react'
 // import Dropdown from '../Components/General/Buttons/ButtonsList'
 import Navbar from '../Components/General/Navbar/navbar'
 import InstructorCard from '../Components/Instructor/instructorCard'
-import "../pages/guestPage.css"
+// import "../pages/guestPage.css"
 
 
 
