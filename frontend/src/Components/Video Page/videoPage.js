@@ -9,7 +9,7 @@ export default function VideoPage() {
   const p = "In this video, we will see how we loop through arrays and fetch data from it using indexes";
   const i = "El ragel dah 3shara 3la 3shara!"
   return (
-    <div>
+    <div className="video-page">
       <Navbar/>
 
       <div className="course_description">

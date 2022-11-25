@@ -18,6 +18,8 @@ import SidebarPage from './pages/sidebarPage';
 import VideoPage from './Components/Video Page/videoPage';
 import Navbar from './Components/General/Navbar/navbar';
 import InstructorCard from './Components/Instructor/instructorCard';
+import TemplatePage from './pages/Template/TemplatePage';
+import SignUp from './Components/Authentication/signUp';
 
 
 
@@ -29,7 +31,7 @@ function App() {
 <Router>
       <Routes>
       <Route path='/signin' exact element={<Signin />} />
-      {/* <Route path='/signup' exact element={<NewSignup/>} /> */}
+      <Route path='/signup' exact element={<SignUp/>} />
       <Route path='/admin' exact element={<AdminSignup/>} />
       <Route path='/' exact element={<GuestPage/>} />
       <Route path='/trainee' exact element={<TraineePage/>} />
@@ -45,6 +47,7 @@ function App() {
 
 
       <Route path='/test' exact element={<InstructorCard/>} />
+      <Route path='/test2' exact element={<TemplatePage/>} />
 
 
 

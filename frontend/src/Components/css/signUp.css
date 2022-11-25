@@ -1,0 +1,167 @@
+/* body{
+    background-color: #253858;
+} */
+
+.textbox-style{
+    border: none;
+    border-bottom: #253858 solid;
+}
+
+.textbox-style:focus{
+    outline: none;
+}
+.textbox-style::placeholder{
+    color: rgb(185, 181, 181);
+    font-weight: lighter;
+}
+
+.signup-img > h2{
+    font-size: 200%;
+    color: #FAFDFF;
+    width: 320px;
+    padding-top: 10%;
+    padding-left: 20%;
+}
+.signup-img > img{
+    width: 130%;
+    padding-top: 10%;
+    padding-left: 20%;
+}
+
+.signup-container{
+    background-color: #253858;
+    width: 100vw;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+}
+
+.signup-form{
+    background-color: #FAFDFF;
+    width: 50%;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    
+}
+
+.topper{
+    padding-left: 5%;
+    padding-top: 5%;
+    color:#253858;
+}
+
+.signup-form > hr{
+    width: 25%;
+    margin: 2rem auto;
+}
+
+.block1{
+    display: flex;
+}
+
+.block1 > input{
+    margin: 7% 12% 0px 12%;
+}
+
+.block2 > input{
+    display: block;
+    margin: 30px;
+    margin-left: 12%;
+}
+
+.block3 > input{
+    margin-left: 12%;
+}
+.block4{
+    display: block;
+    color: rgb(185, 181, 181);
+    font-weight: lighter;
+}
+.block4 > label{
+    margin-left: 12%;
+
+}
+
+.block4 > input{
+    margin-top: 10px;
+    margin-left: 25%;
+    color: #253858;
+}
+
+.block5{
+    display: flex;
+}
+
+.block5 > input{
+    margin: 15px 12% 0px 12%;
+}
+
+.TermsandConditions{
+    color: rgb(185, 181, 181);
+    font-weight: lighter;
+    display: block;
+}
+.TermsandConditions > label{
+    
+    margin-left: 12%;
+}
+
+.TermsandConditions > input{
+    margin-top: 10px;
+    margin-left: 25%;
+}
+
+.viewterms{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.viewterms > button{
+    background-color: transparent;
+    border: none;
+    width: 30%;
+    margin-top: 10px;
+    padding: 0px; 
+}
+
+.viewterms > button:hover{
+    color:#253858;
+}
+
+.create-botton{
+    width: 100%;
+    margin: auto;
+    text-align: center;
+}
+
+.create-botton > button{
+    width: 50%;
+    border: none;
+    border-radius: 5px;
+    color: #922C2C;
+    font-weight: bold;
+}
+
+.footer{
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+    font-weight: lighter;
+    color: grey;
+}
+
+.footer > button{
+    border: none;
+    padding: 0px;
+    width: 6%;
+    background-color: transparent;
+    position: relative;
+    bottom: 5px;
+    color: #253858;
+}
+
+.footer > button:hover{
+    color:#922C2C;
+}
+
