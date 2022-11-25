@@ -1,5 +1,5 @@
 import React from 'react'
-import "./quizTitle.css"
+import "../css/quizTitle.css"
 
 export default function QuizTitle() {
   return (

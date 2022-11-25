@@ -9,7 +9,7 @@ import img7 from "../images/Level.png"
 import img8 from "../images/Clock.png"
 import img9 from "../images/students.png"
 
-import "./buyCourseCard.css"
+import "../css/buyCourseCard.css"
 export default function BuyCourseCard() {
   return (
     <div>
@@ -90,6 +90,9 @@ export default function BuyCourseCard() {
                 <p>ou're in the right place at the right time to earn your CCNP with my clear, comprehensive CCNP All-In-One Video Boot Camp!
                     This course is 100% updated for the latest CCNP exams. I'm ready to prepare you for success on the SWITCH 300-115 exam, the ROUTE 300-101 exam, and the TSHOOT 300-125 exam - AND get you ready for real-world networking success with dozens of labs drawn from my real-world networking expericnce.
                 </p>
+            </div>
+            <div className="buy_button">
+                <button className="buy_Course"><label>Buy Course</label>  </button>
             </div>
         </div>
 

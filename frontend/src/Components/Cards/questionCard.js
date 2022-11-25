@@ -1,5 +1,5 @@
 import React from 'react'
-import "./questionCard.css"
+import "../css/questionCard.css"
 export default function QuestionCard() {
   return (
     <div>
