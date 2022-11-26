@@ -26,8 +26,13 @@ import TemplatePage from './pages/Template/TemplatePage';
 import SignUp from './Components/Authentication/signUp';
 import InstructorAddSectionPage from './pages/instructorAddSectionPage';
 import InstructorAddDiscountPage from './pages/instructorAddDiscountPage';
+import CourseCard from './Components/Course/courseCard';
+import Dropdown2 from './Components/General/Buttons/CategoryChoices';
 
 
+import LoginComponent from './Components/LoginComponent';
+import Login from './pages/login';
+import Terms from './pages/terms';
 
 
 
@@ -54,10 +59,13 @@ function App() {
       <Route path='/addquiz' exact element={<InstructorAddQuizPage/>} />
 
       <Route path='/VideoPage' exact element={<VideoPage/>} />
+      <Route path='/login' exact element={<Login/>} />
+      <Route path='/termsAndCond' exact element={<Terms/>} />
       <Route path='/instructor/addSection' exact element={<InstructorAddSectionPage/>} />
 
-      <Route path='/test' exact element={<InstructorCard/>} />
-      <Route path='/test2' exact element={<TemplatePage/>} />
+      <Route path='/test' exact element={<Navbar/>}/>
+      <Route path='/test2' exact element={<Dropdown2/>} />
+      <Route path='/test3' exact element={<CourseCard/>} />
 
 
 

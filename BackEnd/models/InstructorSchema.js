@@ -11,6 +11,9 @@ const InstructorSchema = new Schema({
         required: true
 
     },
+    name: {
+        type: String,
+    },
     biography: {
         type: String,
     },
@@ -20,6 +23,10 @@ const InstructorSchema = new Schema({
     defined_discounts: [{
         discount_id: mongoose.Schema.Types.ObjectId, //TODO
     }],
+    prefferedSubject: {
+        type: String,
+        enum: ['Web Development', 'Intermediate', 'Mathematics', 'Web Design'],
+    },
     reviews: [{
         review_id: mongoose.Schema.Types.ObjectId,
         type: String,
@@ -44,19 +51,20 @@ InstructorSchema.statics.signup = async function (email, username, password, fir
 
     const instructor = await this.create({
         _id: user._id,
+        name:firstname + lastname,
     })
 
     return instructor
 
 }
+
 InstructorSchema.statics.addDiscount = async function (instructor_id, name, percentage, start_date, end_date) {
 
     const discount = await Discount.create({
         name,
-        percentage: newPercentage,
+        percentage,
         start_date,
         end_date
-
     })
 
     await this.findByIdAndUpdate({
@@ -66,9 +74,7 @@ InstructorSchema.statics.addDiscount = async function (instructor_id, name, perc
                 defined_discounts: discount._id
             },
         }
-
     )
-
 
     return discount
 
