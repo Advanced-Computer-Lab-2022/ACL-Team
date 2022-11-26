@@ -4,7 +4,7 @@ import "./videoPage.css"
 
 export default function VideoPage() {
   return (
-    <div>
+    <div className="container">
       <Navbar/>
       <div className = "video_component">
         <iframe src="https://youtu.be/gx4MC8zgX38" width="1213" height="556"></iframe>

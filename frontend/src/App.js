@@ -17,6 +17,9 @@ import SearchCoursePage from './pages/searchCoursePage';
 import { InstructorEditProfile } from './pages/instructorEditProfile';
 import SidebarPage from './pages/sidebarPage';
 import VideoPage from './Components/Video Page/videoPage';
+import LoginComponent from './Components/LoginComponent';
+import Login from './pages/login';
+import Terms from './pages/terms';
 
 
 
@@ -40,6 +43,8 @@ function App() {
       <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />
       <Route path='/sidebar' exact element={<SidebarPage/>} />
       <Route path='/VideoPage' exact element={<VideoPage/>} />
+      <Route path='/login' exact element={<Login/>} />
+      <Route path='/termsAndCond' exact element={<Terms/>} />
 
 
 
