@@ -1,5 +1,5 @@
 import React from 'react'
-import "./filterDrawer.css"
+import "../../css/filterDrawer.css"
 export default function FilterDrawer () {
   return (
     <div className='boda'>

@@ -1,6 +1,7 @@
 import React from 'react'
 import Rating from '../Cards/rating'
-import "./ratingsCard.css"
+import "../css/ratingsCard.css"
+
 
 export default function RatingsCard() {
   return (

@@ -1,6 +1,6 @@
 import React from 'react'
 import QuestionCard from '../Cards/questionCard'
-import "./questionsComponents.css"
+import "../css/questionsComponents.css"
 
 export default function QuestionsComponents() {
   return (

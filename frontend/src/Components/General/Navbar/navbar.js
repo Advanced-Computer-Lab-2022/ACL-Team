@@ -3,9 +3,9 @@ import img1 from '../../images/settings.png'
 import img2 from '../../images/question-circle.png'
 import img3 from '../../images/notification.png'
 import img4 from '../../images/Union.png'
-import img5 from '../../images/app-switcher.png'
+import img5 from '../../images/arrow.png' //img 5 hateb2a back icon
 
-import './navbar.css'
+import '../../css/navbar.css'
 // import Dropdown from '../Buttons/ButtonsList'
 import Dropdown2 from '../Buttons/CategoryChoices'
 
@@ -21,7 +21,7 @@ export default function Navbar() {
       <div>
         <ul className="navbar_paths">
           <li className="dropdown">
-            <Dropdown2/>
+            {/* <Dropdown2/> */}
           </li>
           <li>
             <a href="/">Tracks</a>

@@ -1,5 +1,5 @@
 import React from 'react'
-import "./rating.css"
+import "../css/rating.css"
 import img1 from "../images/Avatar.png"
 import img2 from "../images/Group.png"
 export default function Rating() {

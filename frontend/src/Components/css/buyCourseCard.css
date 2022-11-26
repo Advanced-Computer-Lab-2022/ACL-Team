@@ -201,3 +201,25 @@
 
 }
 
+.buy_button > button{
+    width: 551px;
+    height: 97.8px;
+    border-radius: 10px;
+    position: relative;
+    top: -330px;
+    left: 28px;
+    
+}
+.buy_Course > label{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 25px;
+
+    text-align: center;
+    letter-spacing: 0.2em;
+    color: #FFFFFF;
+
+}
+
