@@ -11,10 +11,11 @@ import { HomePage } from './pages/homePage';
 import InstructorPage from './pages/instructor';
 import { CourseDashboard } from './pages/courseDashboard';
 import { CoursePage } from './pages/coursePage';
-import { InstructorAddCourse } from './pages/instructorAddCourse';
+
 import SearchCoursePage from './pages/searchCoursePage';
 import { InstructorEditProfile } from './pages/instructorEditProfile';
 import SidebarPage from './pages/sidebarPage';
+import { InstructorAddCourse } from './pages/instructorAddCoursePage';
 
 import InstructorAddQuizPage from './pages/instructorAddQuizPage';
 
@@ -23,6 +24,8 @@ import Navbar from './Components/General/Navbar/navbar';
 import InstructorCard from './Components/Instructor/instructorCard';
 import TemplatePage from './pages/Template/TemplatePage';
 import SignUp from './Components/Authentication/signUp';
+import InstructorAddSectionPage from './pages/instructorAddSectionPage';
+import InstructorAddDiscountPage from './pages/instructorAddDiscountPage';
 
 
 
@@ -47,11 +50,11 @@ function App() {
       <Route path='/course/courseShow' exact element={<SearchCoursePage/>} />
       <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />
       <Route path='/sidebar' exact element={<SidebarPage/>} />
-
+      <Route path='/instructor/addDiscount' exact element={<InstructorAddDiscountPage/>} />
       <Route path='/addquiz' exact element={<InstructorAddQuizPage/>} />
 
       <Route path='/VideoPage' exact element={<VideoPage/>} />
-
+      <Route path='/instructor/addSection' exact element={<InstructorAddSectionPage/>} />
 
       <Route path='/test' exact element={<InstructorCard/>} />
       <Route path='/test2' exact element={<TemplatePage/>} />

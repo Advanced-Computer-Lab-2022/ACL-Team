@@ -1,92 +1,51 @@
-import React, { useState } from 'react';
-import axios from 'axios'
+import React from 'react'
+import "../css/instructorAddCourseComponent.css"
+import img1 from "../images/createCourse.png"
 
-  const InstructorAddCourseComponent = () => {
-    const[title,setTitle] =useState('')
-    const[price,setPrice] =useState('')
-    const[category,setCategory] =useState('')
-    const[subject,setSubject] =useState('')
-    const[instructor_id,setInstructorId] =useState('')
-    const[totalHours,setTotalhours] =useState('')
-    const[summary,setSummary] =useState('')
-
-
-    const addCourse = async () => {
-        console.log("boodaa")
-        const res = await axios
-          .post("http:localhost:3000/instructor/addCourse" , {
-            title:title,price:price,category:category,subject:subject,instructor_id:instructor_id,totalHours:totalHours,summary:summary
-          })
-          .catch((err) => console.log(err));
-        const data = await res.data
-        console.log(data)
-        return data;
-      };
-      const handleSubmitt=(e)=>{
-        e.preventDefault()
-        console.log("boodaa33333")
-        
-
-        addCourse().then((data) => console.log(data))
-      }
+export default function InstructorAddCourseComponent() {
   return (
     <div>
-     <form onSubmit={handleSubmitt}>
-  <div class="form-group">
-    <label for="exampleInputEmail1">Course Title</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Please enter the course title"
-    onChange={(e) => setTitle(e.target.value)}
-    value={title}/>
-    
-    
-  </div>
-  <div class="form-group">
-    <label for="exampleInputPassword1">price</label>
-    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password"
-    onChange={(e) => setPrice(e.target.value)}
-    value={price}/>
-  </div>
+      <div className="instructor-addCourse">
+        <div className="instructor-icon1">
+          <img src={img1} alt="icon"/>
+        </div>
+        <div className="instructor-title">
+          <h1>Create Course </h1>
+        </div>
+        <div className="instructor_name">
+          <input type="textbox" placeholder='Course Instructor Name'/>
+        </div>
+        <div className="instructor_LastName">
+          <input type="textbox" placeholder='Course Title'/>
+        </div>
+        <div className="line1">
+          <hr></hr>
+        </div>
+        <div className="instructor_price">
+          <input type="textbox" placeholder='Price'/>
+        </div>
+        <div className="instructor_URL">
+          <input type="textbox" placeholder='Course Preview Video Url'/>
+        </div>
+        <div className="line2">
+          <hr></hr>
+        </div>
+        <div className="instructor_Category">
+          
+        </div>
+        <div className="line3">
+          <hr></hr>
+        </div>
+        <div className="instructor_Summary">
+          <input type="textbox" placeholder='Course Summary'/>
+        </div>
+        <div className="instructor_Button">
+          <button className="Navy_Button"> Create Course </button>
 
-  <div class="form-group">
-    <label for="exampleInputEmail1">category</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="A reasonable price is better"
-    onChange={(e) => setCategory(e.target.value)}
-    value={category}/>
-    <small id="emailHelp" class="form-text text-muted">Can always be changed later.</small>
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">subject </label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Minumum 20 words"
-    onChange={(e) => setSubject(e.target.value)}
-    value={subject}/>
+        </div>
+        
 
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">instructor_id </label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Minumum 20 words"
-    onChange={(e) => setInstructorId(e.target.value)}
-    value={instructor_id}/>
-
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">totalHours </label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Minumum 20 words"
-    onChange={(e) => setTotalhours(e.target.value)}
-    value={totalHours}/>
-
-  </div>
-  <div class="form-group">
-    <label for="exampleInputEmail1">summary </label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Minumum 20 words"
-    onChange={(e) => setSummary(e.target.value)}
-    value={summary}/>
-
-  </div>
-  
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
+      </div>
     </div>
   )
 }
-export default InstructorAddCourseComponent;

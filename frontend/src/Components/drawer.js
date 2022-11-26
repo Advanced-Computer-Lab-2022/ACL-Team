@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useState, useEffect } from 'react'
-import CourseCard from './Course/courseCard'
+import CourseCard from './Cards/courseCard'
 
 export default function Sidebar() {
   const [courses,setCourses] = useState(null)
