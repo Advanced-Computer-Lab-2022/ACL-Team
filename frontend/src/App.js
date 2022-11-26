@@ -25,6 +25,9 @@ import TemplatePage from './pages/Template/TemplatePage';
 import SignUp from './Components/Authentication/signUp';
 
 
+import LoginComponent from './Components/LoginComponent';
+import Login from './pages/login';
+import Terms from './pages/terms';
 
 
 
@@ -51,6 +54,8 @@ function App() {
       <Route path='/addquiz' exact element={<InstructorAddQuizPage/>} />
 
       <Route path='/VideoPage' exact element={<VideoPage/>} />
+      <Route path='/login' exact element={<Login/>} />
+      <Route path='/termsAndCond' exact element={<Terms/>} />
 
 
       <Route path='/test' exact element={<InstructorCard/>} />
