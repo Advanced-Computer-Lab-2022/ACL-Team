@@ -1,12 +1,11 @@
 import React from 'react'
-import NewSignup from '../Components/Authentication/NewSignup'
-
+import SignUp from '../Components/Authentication/signUp'
 import { SignupUser } from '../Components/Authentication/signUpForm'
 
 export default function Signup() {
   return (
     <div>
-       <NewSignup/>
+       <SignUp/>
     </div>
   )
 }

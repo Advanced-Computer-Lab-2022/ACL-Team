@@ -1,7 +1,7 @@
 import React from 'react'
 // import Dropdown from '../Components/General/Buttons/ButtonsList'
 import Navbar from '../Components/General/Navbar/navbar'
-import "../pages/guestPage.css"
+import "../Components/css/guestPage.css"
 import image1 from "../Components/images/image1.svg"
 import image2 from "../Components/images/Learn.svg"
 import image3 from "../Components/images/sponser.svg"
@@ -66,7 +66,7 @@ export default function GuestPage() {
         <div className='card1'>
         <img className='profile' src ={image9} alt ='image'></img>
         <button  className='button7'>Join now</button>
-        <p className=" coursecount">19 Courses</p>
+        <p className=" coursecount">19 Coursesd </p>
         <p className=" studentcount">25,599 Students</p>
         <p className=" starcount">3</p>
         <p className=" name">Mazen Hejazy</p>

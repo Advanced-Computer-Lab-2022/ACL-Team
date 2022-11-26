@@ -1,6 +1,6 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import "./categoryChoices.css"
+import "../../css/categoryChoices.css"
 
 const menu = [
   {

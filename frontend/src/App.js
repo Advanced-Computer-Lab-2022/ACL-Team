@@ -4,7 +4,6 @@ import React from 'react';
 
 
 import Signin from './Components/Authentication/Signin'
-import Signup from './pages/Signup';
 import AdminSignup from './pages/admin';
 import GuestPage from './pages/guestPage';
 import { TraineePage } from './pages/traineePage';
@@ -16,7 +15,16 @@ import { InstructorAddCourse } from './pages/instructorAddCourse';
 import SearchCoursePage from './pages/searchCoursePage';
 import { InstructorEditProfile } from './pages/instructorEditProfile';
 import SidebarPage from './pages/sidebarPage';
+
+import InstructorAddQuizPage from './pages/instructorAddQuizPage';
+
 import VideoPage from './Components/Video Page/videoPage';
+import Navbar from './Components/General/Navbar/navbar';
+import InstructorCard from './Components/Instructor/instructorCard';
+import TemplatePage from './pages/Template/TemplatePage';
+import SignUp from './Components/Authentication/signUp';
+
+
 import LoginComponent from './Components/LoginComponent';
 import Login from './pages/login';
 import Terms from './pages/terms';
@@ -30,7 +38,7 @@ function App() {
 <Router>
       <Routes>
       <Route path='/signin' exact element={<Signin />} />
-      <Route path='/signup' exact element={<Signup/>} />
+      <Route path='/signup' exact element={<SignUp/>} />
       <Route path='/admin' exact element={<AdminSignup/>} />
       <Route path='/' exact element={<GuestPage/>} />
       <Route path='/trainee' exact element={<TraineePage/>} />
@@ -42,11 +50,16 @@ function App() {
       <Route path='/course/courseShow' exact element={<SearchCoursePage/>} />
       <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />
       <Route path='/sidebar' exact element={<SidebarPage/>} />
+
+      <Route path='/addquiz' exact element={<InstructorAddQuizPage/>} />
+
       <Route path='/VideoPage' exact element={<VideoPage/>} />
       <Route path='/login' exact element={<Login/>} />
       <Route path='/termsAndCond' exact element={<Terms/>} />
 
 
+      <Route path='/test' exact element={<InstructorCard/>} />
+      <Route path='/test2' exact element={<TemplatePage/>} />
 
 
 

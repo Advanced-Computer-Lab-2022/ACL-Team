@@ -1,0 +1,225 @@
+.card_frame{
+    background-color: #FFFFFF;
+    width: 608px;
+    height: 854px;
+    position: relative;
+    top:-680px;
+    left:620px;
+    border-radius: 10px;
+    
+}
+.image{
+    position: relative;
+    width: 608px;
+    height:256px;
+}
+.title{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #253858;
+    position: relative;
+    left: 26px;
+    top: 10px;
+}
+.category > label{
+    font-family: 'Dokdo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #253858;
+    position: relative;
+    left: 272px;
+    top: -10px;
+
+}
+.category > label1{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #253858;
+    position: relative;
+    left: 307px;
+    top: -10px;
+
+}
+.icons{
+    position: relative;
+    left:496px ;
+    top: -35px;
+}
+.subtitle{
+    width: 336px;
+    height: 56.06px;
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #253858;
+    position: relative;
+    left: 26px;
+    top: -20px;
+}
+.ratings{
+    position: relative;
+    left: 26px;
+    top: 140px;
+}
+.ratings_label{
+    width: 100px;
+    height:29.82px;
+    background-color: #253858;
+    border-radius: 5px;
+    position: relative;
+    top: -130px;
+    left: 170px;
+}
+.ratings_label > label{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 10px;
+    line-height: 25px;
+    text-align: center;
+    letter-spacing: 0.2em;
+    color: #FAFDFF;
+    
+}
+.price_icon{
+    position: relative;
+    left: 447px;
+    top: -160px;
+}
+.price_label{
+    position: relative;
+    left: 492px;
+    top: -190px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #081F32;
+}
+.currency_label{
+    position: relative;
+    left: 560px;
+    top: -215px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+}
+.level_icon{
+    position: relative;
+    left: 26px;
+    top:-180px
+}
+.level_label{
+    position: relative;
+    left: 56px;
+    top:-210px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+}
+.hours_icon{
+    position: relative;
+    left: 174px;
+    top:-232px
+}
+.hours_label{
+    position: relative;
+    left: 218.66px;
+    top: -265px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+}
+.lessons_icon{
+    position: relative;
+    left: 307px;
+    top:-285px
+}
+.lessons_label{
+    position: relative;
+    left: 350.54px;
+    top: -315px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+}
+.students_icon{
+    position: relative;
+    left: 447px;
+    top: -340px;
+}
+.students_label{
+    position: relative;
+    left: 480px;
+    top: -365px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+}
+.description_course{
+    width: 543px;
+    height: 229px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 25px;
+    color: #6E798C;
+    position: relative;
+    left: 24px;
+    top:-350px ;
+
+}
+
+.buy_button > button{
+    width: 551px;
+    height: 97.8px;
+    border-radius: 10px;
+    position: relative;
+    top: -330px;
+    left: 28px;
+    
+}
+.buy_Course > label{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 25px;
+
+    text-align: center;
+    letter-spacing: 0.2em;
+    color: #FFFFFF;
+
+}
+

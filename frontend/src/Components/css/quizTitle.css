@@ -1,0 +1,70 @@
+
+.title_frame{
+    border-radius: 20px;
+    width: 1351px;
+    height: 226px;
+    background-color: #F4F4F4;
+    position: relative;
+    top: 107px;
+    left: 250px;
+}
+.title_frame > label {
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 25px;
+    color: #081F32;
+    position: relative;
+    top: 46px;
+    left: 31px;
+}
+.title_frame > label1 {
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 25px;
+    color: #081F32;
+    position: relative;
+    top: 46px;
+    left: 150px;
+}
+.title_frame > label2 {
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 25px;
+    color: #081F32;
+    position: relative;
+    top: 46px;
+    left: 250px;
+}
+.title_frame >  label3{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 48px;
+    line-height: 25px;
+    color: #6E798C;
+    position: relative;
+    top: 133px;
+    left: -300px ;
+
+}
+.title_frame >  label4{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+    color: #6E798C;
+    width:6px;
+    height: 56px;
+    position: relative;
+    top:117px;
+    left: -10px;
+    
+}
+
