@@ -20,6 +20,8 @@ import Navbar from './Components/General/Navbar/navbar';
 import InstructorCard from './Components/Instructor/instructorCard';
 import TemplatePage from './pages/Template/TemplatePage';
 import SignUp from './Components/Authentication/signUp';
+import CourseCard from './Components/Course/courseCard';
+import Dropdown2 from './Components/General/Buttons/CategoryChoices';
 
 
 
@@ -46,8 +48,9 @@ function App() {
       <Route path='/VideoPage' exact element={<VideoPage/>} />
 
 
-      <Route path='/test' exact element={<InstructorCard/>} />
-      <Route path='/test2' exact element={<TemplatePage/>} />
+      <Route path='/test' exact element={<Navbar/>}/>
+      <Route path='/test2' exact element={<Dropdown2/>} />
+      <Route path='/test3' exact element={<CourseCard/>} />
 
 
 

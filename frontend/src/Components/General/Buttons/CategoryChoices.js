@@ -4,7 +4,7 @@ import "../../css/categoryChoices.css"
 
 const menu = [
   {
-    name: "🔘 It & software"
+    name: "🔘 It"
   },
 
   {
@@ -28,14 +28,15 @@ const menu = [
 
 const MenuButton = ({name}) => (
   <button>
-    <span className="material-symbols-outlined">
+    {/* <span>
       {name}
-    </span>
+    </span> */}
+    {name}
   </button>
 );
 
 
-export default function Dropdown2() {
+export default function Dropdown() {
   const [isOpen, setIsOpen] = useState(false)
   
   const handleClick = (e) => {
@@ -59,13 +60,9 @@ export default function Dropdown2() {
         
       </div>
       <button onClick={handleClick}>
-        <div className="boda">
         Category
-        </div>
-        
-        Category
-        <span className="material-symbols-outlined">
-          {isOpen ?"":""}
+        <span>
+          {isOpen ?"x":""}
         </span>
       </button>
     </div>

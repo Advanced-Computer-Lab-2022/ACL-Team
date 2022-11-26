@@ -1,5 +1,5 @@
 import React from 'react';
-import "./courseCard.css"
+import "../css/courseCard.css"
 import img1 from "../images/Course Image.png"
 import img2 from "../images/Clock Icon.png"
 import img3 from "../images/Lesson Icon.png"
