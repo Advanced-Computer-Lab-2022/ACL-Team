@@ -37,6 +37,7 @@ const CourseSubtitleSchema = new Schema({
     },
     subtitlePreviewVideoUrl: {
         type: String,
+        required: true,
     },
     assignments: [{
         assignment_id: mongoose.Schema.Types.ObjectId,
@@ -57,8 +58,8 @@ const CourseSubtitleSchema = new Schema({
 }, {
     timestamps: true
 })
-CourseSubtitleSchema.statics.createSubtitle = async function (course_id, section_id, title) {
-    if (!title || !course_id || !section_id)
+CourseSubtitleSchema.statics.createSubtitle = async function (course_id, section_id, title,subtitlePreviewVideoUrl) {
+    if (!title || !course_id || !section_id || !subtitlePreviewVideoUrl)
         throw error('All fields must be filled')
     const course = await Course.findOne({
         _id: course_id
@@ -74,7 +75,8 @@ CourseSubtitleSchema.statics.createSubtitle = async function (course_id, section
     const subtitle = await this.create({
         course_id,
         section_id,
-        title
+        title,
+        subtitlePreviewVideoUrl
     })
     return subtitle;
 }
