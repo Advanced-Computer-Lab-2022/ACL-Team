@@ -1,0 +1,31 @@
+
+
+.question_frame{
+    border-radius: 20px;
+    width: 1351px;
+    height: 587px;
+    background-color: #f4f4f4;
+}
+.question1_comp{
+    position: relative;
+    left: 20px;
+    top: 65px;
+    
+}
+.question2_comp{
+    position: relative;
+    left:699px;
+    top: -121px;
+}
+
+.question3_comp{
+    position: relative;
+    left:20px;
+    top: -68px;
+}
+
+.question4_comp{
+    position: relative;
+    left: 699px;
+    top: -255px;
+}

@@ -1,0 +1,129 @@
+.rating_card{
+    width: 514px;
+    height: 329px;
+    background-color: #FFFFFF;
+    border-radius: 20px;
+}
+.rating_card > h1 {
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #253858;
+    position: relative;
+    top: 23px;
+    left:18px;
+}
+.rating_card > h2 {
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #253858;
+    position: relative;
+    top: 30px;
+    left: 90px;
+}
+.rating_card > img {
+    position: relative;
+    top: 58px;
+    left: 22px;
+    
+    
+}
+.rating_card > label{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+    position: relative;
+    top: 25px;
+    left: 100px;
+
+}
+.rating_card > label1{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+    position: relative;
+    top: 25px;
+    left: 130px;
+
+}
+.rating_card > label2{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+    position: relative;
+    top: 50px;
+    left: -15px;
+
+
+}
+.rating_card > p{
+    width: 467px;
+    height: 100px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 25px;
+    color: #6E798C;
+    position: relative;
+    top: 60px;
+    left: 20px;
+
+}
+.rating_card > label3{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+    position: relative;
+    top: 70px;
+    left: 25px;
+}
+.rating_card > img{
+    position: relative;
+    top: -150px;
+    left: -150px;
+}
+.star1{
+    position: relative;
+    top: -151px;
+    left: 10px;
+}
+.star2{
+    position: relative;
+    top: -175px;
+    left: 35px;
+}
+.star3{
+    position: relative;
+    top: -199px;
+    left: 60px;
+}
+.star4{
+    position: relative;
+    top: -223px;
+    left: 85px;
+}
+.star5{
+    position: relative;
+    top: -247px;
+    left: 110px;
+}

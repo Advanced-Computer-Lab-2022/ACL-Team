@@ -1,0 +1,37 @@
+.ratings_cards{
+    width: 1206px;
+    height: 709px;
+    display: flex;
+}
+.rating1{
+    width: 514px;
+    height: 329px;
+    position: relative;
+    top: 950px;
+    left: 60px;
+
+}
+.rating2{
+    width: 514px;
+    height: 329px;
+    position: relative;
+    top: 950px;
+    left: 200px;
+
+}
+.rating3{
+    width: 514px;
+    height: 329px;
+    position: relative;
+    top: 1350px;
+    left: -970px;
+
+}
+.rating4{
+    width: 514px;
+    height: 329px;
+    position: relative;
+    top: 1350px;
+    left: -825px;
+
+}
