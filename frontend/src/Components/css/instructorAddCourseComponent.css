@@ -1,0 +1,97 @@
+.instructor-addCourse{
+    width: 920px;
+    height: 630px;
+    background-color: aliceblue;
+    border-radius: 10px;
+   
+}
+
+.instructor-icon1{
+    position: relative;
+    left: 73px;
+    top: 33px;
+}
+.instructor-title{
+    position: relative;
+    left: 182px;
+    top: -10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 35px;
+    letter-spacing: 0.08em;
+    color: #253858;
+
+}
+.instructor_name > input{
+    position: relative;
+    top: 50.92px;
+    left: 206px;
+    border-radius: 10px;
+    
+    
+}
+.instructor_LastName > input{
+    position: relative;
+    top: 18px;
+    left: 571px;
+    border-radius: 10px;
+}
+.line1 > hr{
+    width: 340px;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: 40px;
+
+}
+.instructor_price > input{
+    position: relative;
+    top: 70px;
+    left: 206px;
+    border-radius: 10px;
+}
+.instructor_URL > input{
+    position: relative;
+    top: 100px;
+    left: 206px;
+    border-radius: 10px;
+}
+.line2 > hr{
+    width: 340px;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: 120px;
+
+}
+.line3 > hr{
+    width: 340px;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: 200px;
+
+}
+.instructor_Summary > input{
+    position: relative;
+    top: 220px;
+    left: 206px;
+    height: 100px;
+    width: 570px;
+    border-radius: 10px;
+}
+.instructor_Button > button{
+    background-color: #253858;
+    border: none;
+    color: #FAFDFF;
+    width: 106px;
+    height: 41px;
+    border-radius: 10px;
+    padding: 10px 0px;
+    font-size: 12px;
+    position: relative;
+    top: 230px;
+    left: 800px;
+}

@@ -104,7 +104,8 @@ const signupTrainee = async (req, res) => {
 
         const trainee = await Trainee.signup(email, username, password, firstname, lastname, gender)
 
-        const id = trainee.user_id.toHexString()
+        const id = trainee.user_id
+        
         const token = createToken({
             id
         })
@@ -138,7 +139,7 @@ const signupInstructor = async (req, res) => {
 
 
         res.status(200).json({
-            email,
+            instructor,
             token
         })
     } catch (error) {

@@ -6,16 +6,20 @@ const Schema = mongoose.Schema
 const DiscountSchema = new Schema({
     name: {
         type: String,
-        unique: true
+        unique: true,
+        required : true
     },
     percentage: {
         type: Number,
+        required : true
     },
     start_date: {
         type: Date,
+        required : true
     },
     end_date: {
         type: Date,
+        required : true
     },
 }, {
     timestamps: true

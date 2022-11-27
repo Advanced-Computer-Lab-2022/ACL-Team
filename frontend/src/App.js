@@ -11,10 +11,11 @@ import { HomePage } from './pages/homePage';
 import InstructorPage from './pages/instructor';
 import { CourseDashboard } from './pages/courseDashboard';
 import { CoursePage } from './pages/coursePage';
-import { InstructorAddCourse } from './pages/instructorAddCourse';
+
 import SearchCoursePage from './pages/searchCoursePage';
 import { InstructorEditProfile } from './pages/instructorEditProfile';
 import SidebarPage from './pages/sidebarPage';
+import { InstructorAddCourse } from './pages/instructorAddCoursePage';
 
 import InstructorAddQuizPage from './pages/instructorAddQuizPage';
 
@@ -22,8 +23,16 @@ import VideoPage from './Components/Video Page/videoPage';
 import Navbar from './Components/General/Navbar/navbar';
 import InstructorCard from './Components/Instructor/instructorCard';
 import TemplatePage from './pages/Template/TemplatePage';
+
 import SignUpInstructor from './Components/Authentication/signUpInstructor';
 import SignUpTrainee from './Components/Authentication/signUpTrainee';
+
+import SignUp from './Components/Authentication/signUp';
+import InstructorAddSectionPage from './pages/instructorAddSectionPage';
+import InstructorAddDiscountPage from './pages/instructorAddDiscountPage';
+import CourseCard from './Components/Cards/courseCard';
+import Dropdown2 from './Components/General/Buttons/CategoryChoices';
+
 
 
 import LoginComponent from './Components/LoginComponent';
@@ -53,16 +62,21 @@ function App() {
       <Route path='/course/courseShow' exact element={<SearchCoursePage/>} />
       <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />
       <Route path='/sidebar' exact element={<SidebarPage/>} />
-
+      <Route path='/instructor/addDiscount' exact element={<InstructorAddDiscountPage/>} />
       <Route path='/addquiz' exact element={<InstructorAddQuizPage/>} />
 
       <Route path='/VideoPage' exact element={<VideoPage/>} />
       <Route path='/login' exact element={<Login/>} />
       <Route path='/termsAndCond' exact element={<Terms/>} />
+      <Route path='/instructor/addSection' exact element={<InstructorAddSectionPage/>} />
 
 
       <Route path='/test' exact element={<InstructorCard/>} />
       <Route path='/test2' exact element={<TemplatePage/>} />
+
+      <Route path='/test' exact element={<Navbar/>}/>
+      <Route path='/test2' exact element={<Dropdown2/>} />
+
       <Route path='/test3' exact element={<CourseCard/>} />
 
 

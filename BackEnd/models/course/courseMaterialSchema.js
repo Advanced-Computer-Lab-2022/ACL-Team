@@ -34,7 +34,7 @@ const CourseMaterialSchema = new Schema({
         type: Number
     },
     questions: [{
-        question_name: String[unique],
+        question_name: String,
         question: String,
         choices: [{
             choice_1: String,
@@ -71,7 +71,7 @@ CourseMaterialSchema.statics.editVideoUrl = async function (video_id, newUrl) {
 //only to be used if quiz or assignment
 CourseMaterialSchema.statics.addQuestion = async function (material_id, question_name, question, choice_1, choice_2, choice_3, choice_4) {
 
-    const question = {
+    const questionObject = {
         question_name: question_name,
         question: question,
         choices: [{
@@ -86,12 +86,12 @@ CourseMaterialSchema.statics.addQuestion = async function (material_id, question
             _id: material_id
         }, {
             $push: {
-                questions: question
+                questions: questionObject
             },
         }
 
     )
-    return question
+    return questionObject
 }
 CourseMaterialSchema.statics.editQuestion = async function (material_id, oldQuestionName, newQuestionName, newQuestion) {
 

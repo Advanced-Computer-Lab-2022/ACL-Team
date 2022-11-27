@@ -9,12 +9,11 @@ const TraineeSchema = new Schema({
 
     _id: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
-    user_id: {
-        type: mongoose.Schema.Types.ObjectId,
+        required: true,
         ref: 'User',
-        required: true
+    },
+    name: {
+        type: String,
     },
     isCorporate: {
         type: Boolean,
@@ -48,19 +47,18 @@ const TraineeSchema = new Schema({
     timestamps: true,
 })
 TraineeSchema.statics.signup = async function (email, username, password, firstname, lastname, gender) {
+    
+    const role = 'trainee'
+    const user = await User.signup(email, username, password, firstname, lastname, gender,role)
 
-    const user = await User.signup(email, username, password, firstname, lastname, gender)
+    const _id = user._id;
 
-    User.findByIdAndUpdate({
-        _id: user._id
-    }, {
-        role: "trainee"
-    })
-
+    
 
     const trainee = await this.create({
-        user_id: user._id,
-        isCorporate: false
+        _id,
+        isCorporate: false,
+        name:firstname + lastname,
     })
 
 

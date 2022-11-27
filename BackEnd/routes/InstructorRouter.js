@@ -11,7 +11,8 @@ const {
     addCourse,
     defineDiscount,
     applyDiscount,
-    setCoursePreview
+    setCoursePreview,
+    addCourseSection
 } = require('../controller/course/instructorCourseController')
 
 
@@ -22,6 +23,7 @@ router.post('/addCourse', addCourse)
 router.get('/', () => {
 
 })
+router.post('/addCourseSection', addCourseSection)
 router.post('/', editEmail)
 router.get('/courseShow', viewOfferedCourses)
 router.post('/defineDiscount', defineDiscount)

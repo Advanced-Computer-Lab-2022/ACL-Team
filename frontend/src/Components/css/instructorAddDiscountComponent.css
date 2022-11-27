@@ -1,0 +1,99 @@
+.instructor-addDiscount{
+    width: 920px;
+    height: 571px;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+.section-icon1{
+    position: relative;
+    left: 73px;
+    top: 33px;
+}
+.discount-title{
+    position: relative;
+    left: 182px;
+    top: -20px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 35px;
+    letter-spacing: 0.08em;
+    color: #253858;
+
+}
+.discount_name > input{
+    position: relative;
+    top: 50.92px;
+    left: 206px;
+    border-radius: 10px;
+    
+    
+}
+.discount_LastName > input{
+    position: relative;
+    top: 18px;
+    left: 571px;
+    border-radius: 10px;
+}
+.discount_line1 > hr{
+    width: 340px;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: 40px;
+
+}
+.discount_price > input{
+    position: relative;
+    top: 60px;
+    left: 206px;
+    border-radius: 10px;
+}
+.discount_line2 > hr{
+    width: 340px;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    top: 80px;
+
+}
+.discount-subtitle{
+    position: relative;
+    left: 182px;
+    top: 90px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 35px;
+    letter-spacing: 0.08em;
+    color: #253858;
+
+}
+.discount_start > input{
+    position: relative;
+    top: 120px;
+    left: 206px;
+    border-radius: 10px;
+}
+.discount_end > input{
+    position: relative;
+    top: 150px;
+    left: 206px;
+    border-radius: 10px;
+}
+
+.discount_Button > button{
+    background-color: #253858;
+    border: none;
+    color: #FAFDFF;
+    width: 106px;
+    height: 41px;
+    border-radius: 10px;
+    padding: 10px 0px;
+    font-size: 12px;
+    position: relative;
+    top: 190px;
+    left: 800px;
+}
