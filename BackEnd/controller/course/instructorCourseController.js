@@ -1,6 +1,7 @@
 const Instructor = require('../../models/InstructorSchema')
 const Course = require('../../models/course/courseSchema')
 const Discount = require('../../models/lib/payment/discountSchema')
+const courseSectionSchema = require('../../models/course/courseSectionSchema')
 
 
 
@@ -112,6 +113,30 @@ const setCoursePreview = async (req, res) => {
         })
     }
 }
+const addCourseSection = async (req, res) => {
+    
+    const {
+        course_id,
+        sectionTitle,
+        subtitelTitle,
+        subtitlePreviewVideoUrl,
+    } = req.body
+
+    console.log(req)
+    try {
+        const section = await courseSectionSchema.addSection(course_id, sectionTitle,subtitelTitle,subtitlePreviewVideoUrl)
+        res.status(200).json({
+            section
+        })
+    } catch (error) {
+
+        res.status(400).json({
+            error: error.message
+        })
+
+    }
+
+}
 
 
 
@@ -120,6 +145,6 @@ module.exports = {
     viewOfferedCourses,
     defineDiscount,
     applyDiscount,
-    setCoursePreview
-
+    setCoursePreview,
+    addCourseSection
 }
