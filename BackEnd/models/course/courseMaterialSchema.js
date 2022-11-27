@@ -151,4 +151,4 @@ CourseMaterialSchema.statics.setAssignmentAnswer = async function (material_id, 
     })
 
 }
-module.exports = mongoose.model('courseMaterial', CourseMaterialSchema)
+module.exports = mongoose.model('course Material', CourseMaterialSchema)

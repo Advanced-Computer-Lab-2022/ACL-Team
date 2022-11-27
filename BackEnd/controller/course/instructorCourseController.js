@@ -114,7 +114,7 @@ const setCoursePreview = async (req, res) => {
     }
 }
 const addCourseSection = async (req, res) => {
-    
+
     const {
         course_id,
         sectionTitle,
@@ -122,7 +122,6 @@ const addCourseSection = async (req, res) => {
         subtitlePreviewVideoUrl,
     } = req.body
 
-    console.log(req)
     try {
         const section = await courseSectionSchema.addSection(course_id, sectionTitle,subtitelTitle,subtitlePreviewVideoUrl)
         res.status(200).json({

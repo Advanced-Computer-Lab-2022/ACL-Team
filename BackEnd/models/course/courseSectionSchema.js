@@ -58,4 +58,4 @@ CourseSectionSchema.statics.addSection = async function (course_id, sectionTitle
 }
 
 
-module.exports = mongoose.model('courseSectionSchema', CourseSectionSchema)
+module.exports = mongoose.model('course Section', CourseSectionSchema)
