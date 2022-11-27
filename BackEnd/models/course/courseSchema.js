@@ -26,12 +26,12 @@ const CourseSchema = new Schema({
         type: String,
         required: 'summary is required'
     },
-    subject: {
+    category: {
         type: String,
         enum: ['Web Development', 'Intermediate', 'Mathematics', 'Web Design'],
-        required: 'subject is required'
+        required: 'category is required'
     },
-    price: {
+    price: {// all prices here are in egp and should be converted first
         type: Number,
         required: 'price is required',
     },
@@ -81,9 +81,9 @@ const CourseSchema = new Schema({
     timestamps: true
 })
 
-CourseSchema.statics.addCourse = async function (title, price, category, subject, instructor_id, totalHours, summary) {
+CourseSchema.statics.addCourse = async function (title, price, category, instructor_id, summary,coursePreviewUrl) {
 
-    if (!title || !price || !category || !subject || !instructor_id || !totalHours)
+    if (!title || !price || !category || !instructor_id || !summary || !coursePreviewUrl)
         throw error('All fields must be filled')
 
     const instructor = await Instructor.findOne({
@@ -91,15 +91,20 @@ CourseSchema.statics.addCourse = async function (title, price, category, subject
     })
     if (!instructor)
         throw Error('Instructor does not Exist')
-
+   
+        const isFree = false;
+    
+        if(price == 0)
+            isFree = true
+    
     const course = await this.create({
         title,
         price,
         category,
-        subject,
         instructor_id,
-        totalHours,
-        summary
+        summary,
+        isFree,
+        coursePreviewUrl
     })
 
     // Add the course to the instructor
@@ -144,18 +149,18 @@ CourseSchema.statics.getCourseByInstructor = async function (searchInstructor) {
     const result = fuse.search(searchInstructor)
     return result
 }
-CourseSchema.statics.getCourseBySubject = async function (searchSubject) {
-    if (!searchSubject)
+CourseSchema.statics.getCourseBycategory = async function (searchcategory) {
+    if (!searchcategory)
         throw Error('No Search Written')
     const courses = await this.find().sort({
         createdAt: -1
     })
     const options = {
         includeScore: true,
-        keys: ['subject']
+        keys: ['category']
     }
     const fuse = new Fuse(courses, options)
-    const result = fuse.search(searchSubject)
+    const result = fuse.search(searchcategory)
     return result
 }
 CourseSchema.statics.search = async function (search) {
@@ -166,7 +171,7 @@ CourseSchema.statics.search = async function (search) {
     })
     const options = {
         includeScore: true,
-        keys: ['subject', 'title']
+        keys: ['category', 'title']
     }
     const fuse = new Fuse(courses, options)
     const result = fuse.search(search)
@@ -229,6 +234,11 @@ CourseSchema.statics.applyDiscount = async function (course_id, discount_id) {
     const discount = await Discount.find({
         _id: discount_id
     })
+
+    if (!course)
+        throw Error('Course Does not Exist')
+    if (!discount)
+        throw Error('Discount Does not Exist')
 
     return await this.findByIdAndUpdate({
         _id: course_id

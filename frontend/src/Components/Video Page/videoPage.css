@@ -1,0 +1,60 @@
+
+
+.video_component{
+    margin: 50px auto;
+    text-align: center;
+}
+
+.video_component > iframe{
+    border-radius: 20px;
+}
+
+.video_description{
+    background-color: aliceblue;
+    width: 1213px;
+    margin: 50px auto;
+    text-align: center;
+    border-radius: 20px;
+}
+
+.video_description > .label_list{
+    list-style: none;
+    line-height: 35px;
+    margin: auto;
+    text-align: left;
+    padding: 10px 15px;
+    
+   
+}
+
+.notes_container{
+    background-color: aliceblue;
+    width: 1213px;
+    margin: auto;
+    text-align: center;
+    border-radius: 20px;
+    padding: 20px 0px;
+}
+
+.notes_container > .notes_text_box{
+    text-align: left;
+    padding: 5px 20px;
+}
+
+.notes_container > .notes_text_box > label{
+    position: relative;
+    bottom: 15px;
+}
+
+.notes_container > .notes_text_box > input{
+    border-radius: 10px;
+    width: 500px;
+    height:100px;
+}
+.notes_container > .notes_text_box > button{
+    text-align: center;
+    background-color: transparent;
+    position: relative;
+    right: 15px;
+    padding-top: 10px;
+}

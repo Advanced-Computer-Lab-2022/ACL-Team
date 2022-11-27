@@ -22,14 +22,14 @@ const addCourse = async (req, res) => {
         title,
         price,
         category,
-        subject,
         instructor_id,
         totalHours,
         summary
     } = req.body
 
     try {
-        const course = await Course.addCourse(title, price, category, subject, instructor_id, totalHours, summary)
+        
+        const course = await Course.addCourse(title, price, category, instructor_id, totalHours, summary)
         res.status(200).json({
             course
         })

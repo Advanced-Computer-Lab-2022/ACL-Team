@@ -1,0 +1,157 @@
+.title{
+    text-align: center;
+    vertical-align: top;
+    font-size: 60px;
+    font-family: Montserrat;
+    line-height: 20px;
+    color: #000000;
+    position: relative;
+    top: 100px;
+    left: 100px;
+}
+.form {
+    height: 304px;
+    width: 573px;
+  }
+  /* .username {
+    height: 69px;
+    width: 573px;
+  }
+  .rectangle {
+    border-radius: 4px;
+    height: 69px;
+    width: 573px;
+    border: 1px solid #000000;
+  } */
+  .user {
+    text-align: center;
+    vertical-align: top;
+    font-size: 27px;
+    font-family: Montserrat;
+    line-height: 20px;
+    color: #000000;
+    height: 69px;
+    width: 573px;
+    background-color: #76C1EC;
+    position: relative;
+    bottom: -300px;
+    left: 800px;
+  }
+  .img-2 {
+    height: 30px;
+    width: 38px;
+    background-color: #ffffff;
+  }
+  /* .password {
+    height: 69px;
+    width: 573px;
+  } */
+  /* .rectangle {
+    border-radius: 4px;
+    height: 69px;
+    width: 573px;
+    border: 1px solid #000000;
+  } */
+  .pass {
+    text-align: center;
+    vertical-align: top;
+    font-size: 27px;
+    font-family: Montserrat;
+    line-height: 20px;
+    color: #000000;
+    height: 69px;
+    width: 573px;
+    background-color: #76C1EC;
+    position: relative;
+    bottom: -350px;
+    left: 800px;
+  }
+  .img-4 {
+    height: 30px;
+    width: 38px;
+    background-color: #ffffff;
+  }
+  .loginbtn {
+    height: 52px;
+    width: 323px;
+  }
+  /* .btnprimary {
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 16px 36px;
+    gap: 10px;
+    background-color: #4d77ff;
+  } */
+  .text-5 {
+    text-align: left;
+    vertical-align: top;
+    font-size: 16px;
+    font-family: Manrope;
+    letter-spacing: 3%;
+    line-height: 20%;
+    color: #000000;
+  }
+
+  
+.buttonborder{
+    color: #000000;
+   border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 16px 36px;
+  gap: 10px;
+  background-color: #4d77ff;
+  height: 52px;
+  width: 323px;
+  border-color: #4d77ff;
+  position: relative;
+  bottom:-300px;
+  left: 937px;
+  }
+  .line{
+    transform: rotate(-90deg);
+  height: 0px;
+  width: 960px;
+  border: 1px solid #ebeced;
+  position: relative;
+  bottom: -70px;
+  }
+  .mess{
+    text-align: center;
+  vertical-align: top;
+  font-size: 16px;
+  font-family: Montserrat;
+  line-height: 20px;
+  color: #ffffff;
+  position: relative;
+  bottom: -350px;
+  left: 370px;
+  }
+  .register{
+    text-align: middle;
+  vertical-align: middle;
+  font-size: 14px;
+  font-family: Montserrat;
+  line-height: 18%;
+  color: #030000;
+  background-color: #f2f2f2;
+  position: relative;
+  bottom: -380px;
+  left: 1045px;
+
+  }
+  .image1{
+    position: relative;
+    bottom: 110px;
+    left: 870px;
+  }
+  .image2{
+    position: relative;
+    bottom: -10px;
+    left: 830px;
+  }
