@@ -26,7 +26,7 @@ import TemplatePage from './pages/Template/TemplatePage';
 import SignUp from './Components/Authentication/signUp';
 import InstructorAddSectionPage from './pages/instructorAddSectionPage';
 import InstructorAddDiscountPage from './pages/instructorAddDiscountPage';
-import CourseCard from './Components/Course/courseCard';
+import CourseCard from './Components/Cards/courseCard';
 import Dropdown2 from './Components/General/Buttons/CategoryChoices';
 
 
