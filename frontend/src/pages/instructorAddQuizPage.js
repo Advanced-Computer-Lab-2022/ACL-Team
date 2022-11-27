@@ -1,22 +1,16 @@
 import React from 'react'
-import QuestionCard from '../Components/Cards/questionCard'
-import QuizTitle from '../Components/Cards/quizTitle'
+import InstructorAddQuizComponent from '../Components/Instructor/instructorAddQuizComponent'
 import Navbar from '../Components/General/Navbar/navbar'
-import QuestionsComponents from '../Components/Instructor/questionsComponents'
-import "../Components/css/instructorAddQuizPage.css"
 
-export default function InstructorAddQuizPage() {
+export default function instructorAddQuizPage() {
   return (
     <div>
       <Navbar/>
-      <div classname="title_comp">
-        <QuizTitle/>
+      <div className="page_comp">
+        <InstructorAddQuizComponent/>
       </div>
-      
-      <div className="question_comp">
-        <QuestionsComponents/>
 
-      </div>
+
     </div>
   )
 }
