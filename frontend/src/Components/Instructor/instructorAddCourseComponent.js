@@ -1,8 +1,41 @@
 import React from 'react'
 import "../css/instructorAddCourseComponent.css"
 import img1 from "../images/createCourse.png"
+import  { useState } from 'react';
+import axios from 'axios'
+
+
+
 
 export default function InstructorAddCourseComponent() {
+const[name,setName] =useState('')
+const[title,setTitle] =useState('')
+const[price,setPrice] =useState('')
+const[video,SetVideo] =useState('')
+const[Summary,setSummary] =useState('')
+// const[category,setCategory] =useState('')
+
+const instructorAddCourse = async () => {
+  // console.log("boodaa")
+  const res = await axios
+    .post("http://localhost:3000/instructor/addCourse", {
+      name:name,title:title,price:price,video:video,Summary:Summary
+    })
+    .catch((err) => console.log(err));
+    const data = await res.data;
+  return data;
+};
+const handleSubmitt=(e)=>{
+  e.preventDefault()
+  console.log("yarab")
+
+
+  
+
+  instructorAddCourse().then((data) => console.log(data))
+
+}
+
   return (
     <div>
       <div className="instructor-addCourse">
@@ -12,21 +45,42 @@ export default function InstructorAddCourseComponent() {
         <div className="instructor-title">
           <h1>Create Course </h1>
         </div>
+
+        <form onSubmit={handleSubmitt}>
+
         <div className="instructor_name">
-          <input type="textbox" placeholder='Course Instructor Name'/>
+          <input 
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          type="textbox" placeholder='Course Instructor Name'/>
         </div>
         <div className="instructor_LastName">
-          <input type="textbox" placeholder='Course Title'/>
+          <input 
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+          type="textbox" placeholder='Course Title'/>
         </div>
         <div className="line1">
           <hr></hr>
         </div>
         <div className="instructor_price">
-          <input type="textbox" placeholder='Price'/>
+          <input
+            onChange={(e) => setPrice(e.target.value)}
+            value={price} 
+          type="textbox" placeholder='Price'/>
         </div>
         <div className="instructor_URL">
-          <input type="textbox" placeholder='Course Preview Video Url'/>
+          <input
+            onChange={(e) => SetVideo(e.target.value)}
+            value={video}
+           type="textbox" placeholder='Course Preview Video Url'/>
         </div>
+        {/* <div className="instructor_category">
+          <input
+            onChange={(e) => setCategory(e.target.value)}
+            value={category} 
+          type="textbox" placeholder='category'/>
+        </div> */}
         <div className="line2">
           <hr></hr>
         </div>
@@ -37,12 +91,17 @@ export default function InstructorAddCourseComponent() {
           <hr></hr>
         </div>
         <div className="instructor_Summary">
-          <input type="textbox" placeholder='Course Summary'/>
+          <input 
+            onChange={(e) => setSummary(e.target.value)}
+            value={Summary}
+          type="textbox" placeholder='Course Summary'/>
         </div>
         <div className="instructor_Button">
           <button className="Navy_Button"> Create Course </button>
 
         </div>
+
+        </form>
         
 
       </div>

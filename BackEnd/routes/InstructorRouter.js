@@ -18,7 +18,7 @@ const {
 
 const router = express.Router()
 
-router.post('/addCourse', addCourse)
+
 
 router.get('/', () => {
 
@@ -29,5 +29,6 @@ router.get('/courseShow', viewOfferedCourses)
 router.post('/defineDiscount', defineDiscount)
 router.post('/applyDiscount', applyDiscount)
 router.post('/setCoursePreview', setCoursePreview)
+router.post('/addCourse', addCourse)
 
 module.exports = router
