@@ -23,6 +23,10 @@ import VideoPage from './Components/Video Page/videoPage';
 import Navbar from './Components/General/Navbar/navbar';
 import InstructorCard from './Components/Instructor/instructorCard';
 import TemplatePage from './pages/Template/TemplatePage';
+
+import SignUpInstructor from './Components/Authentication/signUpInstructor';
+import SignUpTrainee from './Components/Authentication/signUpTrainee';
+
 import SignUp from './Components/Authentication/signUp';
 import InstructorAddSectionPage from './pages/instructorAddSectionPage';
 import InstructorAddDiscountPage from './pages/instructorAddDiscountPage';
@@ -30,9 +34,11 @@ import CourseCard from './Components/Cards/courseCard';
 import Dropdown2 from './Components/General/Buttons/CategoryChoices';
 
 
+
 import LoginComponent from './Components/LoginComponent';
 import Login from './pages/login';
 import Terms from './pages/terms';
+import CourseCard from './Components/Course/courseCard';
 
 
 
@@ -43,8 +49,9 @@ function App() {
 <Router>
       <Routes>
       <Route path='/signin' exact element={<Signin />} />
-      <Route path='/signup' exact element={<SignUp/>} />
-      <Route path='/admin' exact element={<AdminSignup/>} />
+      <Route path='/signup/instructor' exact element={<SignUpInstructor/>} />
+      <Route path='/signup/' exact element={<SignUpTrainee/>} />
+      {/* <Route path='/admin' exact element={<AdminSignup/>} /> */}
       <Route path='/' exact element={<GuestPage/>} />
       <Route path='/trainee' exact element={<TraineePage/>} />
       <Route path='/user' exact element={<HomePage/>} />
@@ -63,8 +70,13 @@ function App() {
       <Route path='/termsAndCond' exact element={<Terms/>} />
       <Route path='/instructor/addSection' exact element={<InstructorAddSectionPage/>} />
 
+
+      <Route path='/test' exact element={<InstructorCard/>} />
+      <Route path='/test2' exact element={<TemplatePage/>} />
+
       <Route path='/test' exact element={<Navbar/>}/>
       <Route path='/test2' exact element={<Dropdown2/>} />
+
       <Route path='/test3' exact element={<CourseCard/>} />
 
 

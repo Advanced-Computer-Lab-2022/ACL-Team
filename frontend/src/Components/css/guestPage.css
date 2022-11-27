@@ -251,6 +251,8 @@
 }
 .instructors_card{
 display: flex;
+position: relative;
+left: -50px;
 
 
 }
@@ -278,5 +280,10 @@ display: flex;
   line-height: auto;
   color: #dfe1e6;
   background-color:#253858
+  
+}
+.coursecard{
+  position: relative;
+  left: 200px;
   
 }

@@ -10,10 +10,11 @@ import image5 from "../Components/images/profile1.svg"
 import image9 from "../Components/images/profile2.png"
 import image10 from "../Components/images/profile3.png"
 import image11 from "../Components/images/profile4.svg"
-
+import CourseCard from "../Components/Course/courseCard"
 import image6 from "../Components/images/hat.svg"
 import image7 from "../Components/images/grad.svg"
 import image8 from "../Components/images/star.svg"
+
 
 
 
@@ -34,7 +35,7 @@ export default function GuestPage() {
       </div>
         </div> 
         <div className='button1c'>
-        <button  className='button1'>Start Learning</button>
+        <button  className='button1'>Start Learning</button >
         </div>
         <div className='button2c'>
         <button  className='button2'>Login</button>
@@ -103,8 +104,16 @@ export default function GuestPage() {
         </div>
 
         </div>
+
+
+              
+       <div className='coursecard'>
+        <CourseCard />
         
-       
+        <CourseCard />
+        
+        
+       </div>
 
      
       
