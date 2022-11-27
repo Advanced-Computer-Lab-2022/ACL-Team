@@ -1,4 +1,5 @@
-import React from 'react'
+import React , {useState} from 'react'
+import axios from 'axios'
 import "../css/instructorAddCourseComponent.css"
 import img1 from "../images/createCourse.png"
 import  { useState } from 'react';
@@ -38,6 +39,7 @@ const handleSubmitt=(e)=>{
 
   return (
     <div>
+      <form onSubmit={handleSubmit}>
       <div className="instructor-addCourse">
         <div className="instructor-icon1">
           <img src={img1} alt="icon"/>
@@ -85,7 +87,7 @@ const handleSubmitt=(e)=>{
           <hr></hr>
         </div>
         <div className="instructor_Category">
-          
+          <CategoryChoices onChange={(e) => setCategory(e.target.value)} value = {Category}/>
         </div>
         <div className="line3">
           <hr></hr>
@@ -97,7 +99,7 @@ const handleSubmitt=(e)=>{
           type="textbox" placeholder='Course Summary'/>
         </div>
         <div className="instructor_Button">
-          <button className="Navy_Button"> Create Course </button>
+          <button className="Navy_Button" type="submit"> Create Course </button>
 
         </div>
 
@@ -105,6 +107,7 @@ const handleSubmitt=(e)=>{
         
 
       </div>
+      </form>
     </div>
   )
 }

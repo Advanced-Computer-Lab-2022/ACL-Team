@@ -28,8 +28,11 @@ const InstructorSchema = new Schema({
         enum: ['Web Development', 'Intermediate', 'Mathematics', 'Web Design'],
     },
     reviews: [{
+        reviewer_id: mongoose.Schema.Types.ObjectId,
         review_id: mongoose.Schema.Types.ObjectId,
-        type: String,
+        //type: String,
+        reviewString : String,
+        
     }],
     issues: [{
         issue_id: mongoose.Schema.Types.ObjectId,

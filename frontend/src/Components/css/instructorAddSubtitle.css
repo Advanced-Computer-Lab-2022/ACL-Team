@@ -1,0 +1,58 @@
+.subtitle_frame{
+    position: relative;
+    top: 533px;
+    left: 106px;
+    width: 920px;
+    height: 349px;
+    background-color: aliceblue;
+    border-radius: 10px;
+}
+.addsubtitle
+.subtitle_icon1 {
+    position: relative;
+    left: 73px;
+    top: 33px;
+}
+.subtitle_title{
+    position: relative;
+    left: 182px;
+    top: -10px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 35px;
+    letter-spacing: 0.08em;
+    color: #253858;
+}
+.component_container
+.subtitle_coursetitle > input{
+    position: relative;
+    top: 50.92px;
+    left: 206px;
+    border-radius: 10px;
+}
+.subtitle_sectiontitle > input{
+    position: relative;
+    top: 20px;
+    left: 578px;
+    border-radius: 10px;
+}
+.subtitle_URL > input{
+    position: relative;
+    top: 70px;
+    left: 206px;
+    border-radius: 10px;
+}
+.subtitle_ti > input{
+    position: relative;
+    top: 40px;
+    left: 578px;
+    border-radius: 10px;
+}
+.subtitle_button
+.Navy_Button{
+    position: relative;
+    top: 60px;
+    left: 731px;
+}

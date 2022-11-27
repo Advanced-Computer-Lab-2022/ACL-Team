@@ -2,6 +2,7 @@ import React from 'react'
 import img1 from "../images/createCourse.png"
 import "../css/instructorAddDiscountComponent.css"
 export default function InstructorAddDiscountComponent() {
+  
   return (
     <div>
          <div className="instructor-addDiscount">
