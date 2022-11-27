@@ -38,6 +38,9 @@ import Dropdown2 from './Components/General/Buttons/CategoryChoices';
 import LoginComponent from './Components/LoginComponent';
 import Login from './pages/login';
 import Terms from './pages/terms';
+import QuizPage from './pages/quizPage';
+import InstructorAddSubtitle from './Components/Instructor/instructorAddSubtitle';
+import InstructorCoursePage from './pages/instructorCoursePage';
 
 
 
@@ -63,15 +66,19 @@ function App() {
       <Route path='/sidebar' exact element={<SidebarPage/>} />
       <Route path='/instructor/addDiscount' exact element={<InstructorAddDiscountPage/>} />
       <Route path='/addquiz' exact element={<InstructorAddQuizPage/>} />
-
+      <Route path='/quizPage' exact element={<QuizPage/>} />
       <Route path='/VideoPage' exact element={<VideoPage/>} />
       <Route path='/login' exact element={<Login/>} />
       <Route path='/termsAndCond' exact element={<Terms/>} />
       <Route path='/instructor/addSection' exact element={<InstructorAddSectionPage/>} />
 
+      <Route path='/instructor/coursepage' exact element={<InstructorCoursePage/>} />
+
+
 
       <Route path='/test' exact element={<InstructorCard/>} />
       <Route path='/test2' exact element={<TemplatePage/>} />
+
 
       <Route path='/test' exact element={<Navbar/>}/>
       <Route path='/test2' exact element={<Dropdown2/>} />

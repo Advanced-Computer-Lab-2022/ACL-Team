@@ -1,0 +1,15 @@
+body{
+    background-color: #76C1EC;
+}
+
+.question_comp{
+    position: relative;
+    top: 125px;
+    left: 250px;
+}
+.title_comp{
+    position: relative;
+    top: 107px;
+    left: 47px;
+    right: 42px;
+}
