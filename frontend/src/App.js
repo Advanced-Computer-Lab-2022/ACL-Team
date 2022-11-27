@@ -38,7 +38,6 @@ import Dropdown2 from './Components/General/Buttons/CategoryChoices';
 import LoginComponent from './Components/LoginComponent';
 import Login from './pages/login';
 import Terms from './pages/terms';
-import CourseCard from './Components/Course/courseCard';
 
 
 
