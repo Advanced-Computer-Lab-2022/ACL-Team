@@ -8,6 +8,7 @@ const User = require('../models/userSchema')
 const router = express.Router()
 
 router.post('/rateCourse', rateCourse)
+
 router.post('/reviewInstructor', reviewInstructor)
 
 module.exports = router
