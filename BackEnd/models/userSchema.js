@@ -56,7 +56,7 @@ const UserSchema = new Schema({
     collection: "user"
 })
 
-UserSchema.statics.signup = async function (email, username, password, firstname, lastname, gender) {
+UserSchema.statics.signup = async function (email, username, password, firstname, lastname, gender,role) {
 
     const emailExists = await this.findOne({
         email
@@ -85,7 +85,8 @@ UserSchema.statics.signup = async function (email, username, password, firstname
             firstname: firstname,
             lastname: lastname
         },
-        gender
+        gender,
+        role
     })
 
     return user

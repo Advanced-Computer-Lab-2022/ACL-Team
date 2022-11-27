@@ -22,6 +22,7 @@ router.post('/addCourse', addCourse)
 router.get('/', () => {
 
 })
+router.post('/addCourseSection', editEmail)
 router.post('/', editEmail)
 router.get('/courseShow', viewOfferedCourses)
 router.post('/defineDiscount', defineDiscount)

@@ -23,13 +23,13 @@ const addCourse = async (req, res) => {
         price,
         category,
         instructor_id,
-        totalHours,
-        summary
+        summary,
+        coursePreviewUrl
     } = req.body
 
     try {
         
-        const course = await Course.addCourse(title, price, category, instructor_id, totalHours, summary)
+        const course = await Course.addCourse(title, price, category, instructor_id, summary,coursePreviewUrl)
         res.status(200).json({
             course
         })

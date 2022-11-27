@@ -103,8 +103,8 @@ CourseSchema.statics.addCourse = async function (title, price, category, instruc
         category,
         instructor_id,
         summary,
+        coursePreviewUrl,
         isFree,
-        coursePreviewUrl
     })
 
     // Add the course to the instructor
