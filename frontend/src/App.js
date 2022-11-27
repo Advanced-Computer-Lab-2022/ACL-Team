@@ -27,7 +27,7 @@ import TemplatePage from './pages/Template/TemplatePage';
 import SignUpInstructor from './Components/Authentication/signUpInstructor';
 import SignUpTrainee from './Components/Authentication/signUpTrainee';
 
-import SignUp from './Components/Authentication/signUp';
+import SignUp from './Components/Authentication/signUpForm';
 import InstructorAddSectionPage from './pages/instructorAddSectionPage';
 import InstructorAddDiscountPage from './pages/instructorAddDiscountPage';
 import CourseCard from './Components/Cards/courseCard';
