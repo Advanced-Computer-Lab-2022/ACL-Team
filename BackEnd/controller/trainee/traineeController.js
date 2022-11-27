@@ -5,12 +5,13 @@ const Trainee = require('../../models/traineeSchema')
 
 const rateCourse = async (req, res) => {
     const {
+        user_id,
         course_id,
         rating
     } = req.body
 
     try {
-        const course = await Course.rateCourse(course_id, rating)
+        const course = await Course.rateCourse(user_id,course_id, rating)
 
         res.status(200).json({
             course,
@@ -30,9 +31,9 @@ const reviewInstructor = async (req, res) => {
         type,
         reviewString
     } = req.body
-
+    console.log(req.body)
     try {
-        const review = await Trainee.reviewInstructor(_id, course_id, instructor_id, type, reviewString)
+        const review = await Trainee.reviewInstructor(_id,instructor_id, type, reviewString)
 
         res.status(200).json({
             review,

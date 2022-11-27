@@ -53,7 +53,9 @@ CourseSectionSchema.statics.addSection = async function (course_id, sectionTitle
 
     const subtitle = await courseSubtitleSchema.createSubtitle(course_id, section_id, subtitelTitle,subtitlePreviewVideoUrl)
 
+    return section;
+
 }
 
 
-module.exports = mongoose.model('courseSection', CourseSectionSchema)
+module.exports = mongoose.model('course Section', CourseSectionSchema)

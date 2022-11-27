@@ -9,12 +9,11 @@ const TraineeSchema = new Schema({
 
     _id: {
         type: mongoose.Schema.Types.ObjectId,
-        required: true
-    },
-    user_id: {
-        type: mongoose.Schema.Types.ObjectId,
+        required: true,
         ref: 'User',
-        required: true
+    },
+    name: {
+        type: String,
     },
     isCorporate: {
         type: Boolean,
@@ -48,56 +47,54 @@ const TraineeSchema = new Schema({
     timestamps: true,
 })
 TraineeSchema.statics.signup = async function (email, username, password, firstname, lastname, gender) {
+    
+    const role = 'trainee'
+    const user = await User.signup(email, username, password, firstname, lastname, gender,role)
 
-    const user = await User.signup(email, username, password, firstname, lastname, gender)
+    const _id = user._id;
 
-    User.findByIdAndUpdate({
-        _id: user._id
-    }, {
-        role: "trainee"
-    })
-
+    
 
     const trainee = await this.create({
-        user_id: user._id,
-        isCorporate: false
+        _id,
+        isCorporate: false,
+        name:firstname + lastname,
     })
 
 
     return trainee
 
 }
-TraineeSchema.statics.reviewInstructor = async function (_id, course_id, instructor_id, type, reviewString) {
+TraineeSchema.statics.reviewInstructor = async function (_id, instructor_id, type, reviewString) {
 
-    if (!course_id || !instructor_id || !type || !reviewString)
+    if (!_id || !instructor_id || !type || !reviewString)
         throw Error('All fields must be filled')
 
-    const course = await Course.findOne({
-        course_id
-    })
     const instructor = await Instructor.findOne({
         instructor_id
     })
-
-    if (!courseExist)
-        throw Error('Course Does not Exist')
-
     if (!instructor)
         throw Error('Instructor Does not Exist')
 
     const review = await Review.create({
         reviewer_id: _id,
-        reviewed_id: instructor_id,
-        type,
-        reviewString
+        reviewed_id:instructor_id,
+        type : type,
+        review : reviewString,
     })
+
+    const instructorReview = {
+        reviewer_id:_id,
+        review_id: review._id.toString(),
+        reviewString:reviewString,
+        
+    }
 
     instructor = await Instructor.findByIdAndUpdate({
             _id: instructor_id
         }, {
             $push: {
-                reviews: review._id,
-                type
+                reviews: instructorReview
             },
         }
 

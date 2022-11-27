@@ -79,4 +79,4 @@ const CourseProgressSchema = new Schema({
 
 
 
-module.exports = mongoose.model('CourseProgress', CourseProgressSchema)
+module.exports = mongoose.model('Course Progress', CourseProgressSchema)

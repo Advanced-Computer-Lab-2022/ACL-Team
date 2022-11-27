@@ -103,8 +103,8 @@ CourseSchema.statics.addCourse = async function (title, price, category, instruc
         category,
         instructor_id,
         summary,
+        coursePreviewUrl,
         isFree,
-        coursePreviewUrl
     })
 
     // Add the course to the instructor
@@ -178,7 +178,7 @@ CourseSchema.statics.search = async function (search) {
     return result
 
 }
-CourseSchema.statics.rateCourse = async function (course_id, rating) {
+CourseSchema.statics.rateCourse = async function (user_id,course_id, rating) {
 
     if (!course_id || !rating)
         throw Error('All fields must be filled')
@@ -190,11 +190,16 @@ CourseSchema.statics.rateCourse = async function (course_id, rating) {
     if (!courseExist)
         throw Error('Course Does not Exist')
 
+    const ratingObject = {
+        rating:rating,
+        user_id:user_id
+    }
+
     const course = await this.findByIdAndUpdate({
             _id: course_id
         }, {
             $push: {
-                allRatings: rating
+                allRatings: ratingObject
             },
         }
 
@@ -248,4 +253,4 @@ CourseSchema.statics.applyDiscount = async function (course_id, discount_id) {
     })
 
 }
-module.exports = mongoose.model('course', CourseSchema)
+module.exports = mongoose.model('Course', CourseSchema)
