@@ -43,4 +43,4 @@ const CourseEditionSchema = new Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('courseEdition', CourseEditionSchema)
+module.exports = mongoose.model('course Edition', CourseEditionSchema)

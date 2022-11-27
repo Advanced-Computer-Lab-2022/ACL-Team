@@ -270,4 +270,4 @@ CourseSubtitleSchema.statics.addVideo = async function (course_id, section_id, s
 }
 
 
-module.exports = mongoose.model('courseSubtitle', CourseSubtitleSchema)
+module.exports = mongoose.model('course Subtitle', CourseSubtitleSchema)
