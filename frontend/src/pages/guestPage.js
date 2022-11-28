@@ -35,10 +35,10 @@ export default function GuestPage() {
       </div>
         </div> 
         <div className='button1c'>
-        <button  className='button1'>Start Learning</button >
+        <button  className='button1'><a href="/signup">Start Learning</a></button >
         </div>
         <div className='button2c'>
-        <button  className='button2'>Login</button>
+        <button  className='button2'><a href="/login">Login</a></button>
         </div>
         <div>
         <button  className='button3'>Discover</button>
