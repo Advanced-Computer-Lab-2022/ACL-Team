@@ -75,6 +75,9 @@ const CourseSchema = new Schema({
         default: 'All Levels',
         required: true
     },
+    previewImage: {//TODO
+        type: String,
+    },
 
 
 }, {
@@ -105,6 +108,7 @@ CourseSchema.statics.addCourse = async function (title, price, category, instruc
         summary,
         coursePreviewUrl,
         isFree,
+        isDiscounted : false,
     })
 
     // Add the course to the instructor
@@ -165,7 +169,7 @@ CourseSchema.statics.getCourseBycategory = async function (searchcategory) {
 }
 CourseSchema.statics.search = async function (search) {
     if (!search)
-        throw Error('No Search Written')
+        throw Error('No KeyWord Written')
     const courses = await this.find().sort({
         createdAt: -1
     })
@@ -233,23 +237,25 @@ CourseSchema.statics.applyDiscount = async function (course_id, discount_id) {
     if (!course_id || !discount_id)
         throw error('All fields must be filled')
 
-    const course = await this.find({
+    const course = await this.findOne({
         _id: course_id
     })
-    const discount = await Discount.find({
+    const discount = await Discount.findOne({
         _id: discount_id
     })
-
     if (!course)
         throw Error('Course Does not Exist')
     if (!discount)
         throw Error('Discount Does not Exist')
 
+
+
     return await this.findByIdAndUpdate({
         _id: course_id
     }, {
-        discount_id,
-        price: course.price - (course.price / (discount.percentage / 100))
+        isDiscounted : true,
+        price: course.price - ( (discount.percentage / 100) * course.price ),
+        discount_id: discount_id,
     })
 
 }

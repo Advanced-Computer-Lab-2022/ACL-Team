@@ -53,8 +53,8 @@ app.use(bodyParser.urlencoded({
     extended: false
 })); // Parses urlencoded bodies
 app.use(bodyParser.json()); // Send JSON responses
-// app.use(passport.initialize())
-// app.use(passport.session())
+ //app.use(passport.initialize())
+ //app.use(passport.session())
 
 
 
@@ -63,7 +63,7 @@ const conn = process.env.MONGO_URI || 'mongodb+srv://mohamed4016:1234@cluster0.i
 mongoose.connect(conn)
     .then(() => {
         app.listen(port, () => {
-            console.log('connected to db & the server is listening', port)
+            console.log('connected to db & the server is listening on ', port)
         })
     })
     .catch((error) => {
@@ -108,6 +108,3 @@ app.post('/', (req, res) => {
         mssg: 'aaaaa'
     })
 })
-
-
-//listen for request

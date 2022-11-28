@@ -1,5 +1,6 @@
 const Instructor = require('../../models/InstructorSchema')
 const Course = require('../../models/course/courseSchema')
+const User = require('../../models/UserSchema')
 
 //get instructor
 const getInstructorbyId = async (req, res) => {
@@ -16,11 +17,13 @@ const getInstructorbyId = async (req, res) => {
     return res.status(200).json(instructor)
 }
 
-const editBiography = async (req, res) => {
-    const _id = req.params
-    const biography = req.body
+const changeBiography = async (req, res) => {
+    const {
+        _id,
+        newBiography
+    } = req.body
     try {
-        const newbio = await Instructor.editBiography(_id, biography)
+        const newbio = await Instructor.changeBiography(_id, newBiography)
         res.status(200).json(newbio)
     } catch (error) {
         res.status(404).json({
@@ -29,14 +32,17 @@ const editBiography = async (req, res) => {
     }
 
 }
-const editEmail = async (req, res) => {
-    const _id = req.params
-    const Email = req.body
-
+const changeEmail = async (req, res) => {
+    
+    const {
+        _id,
+        email,
+        newEmail,
+    } = req.body
 
     try {
-        const email = await Instructor.editBiography(_id, Email)
-        res.status(200).json(email)
+        const user = await User.changeEmail(_id,email,newEmail)
+        res.status(200).json(user)
     } catch (error) {
         res.status(404).json({
             error: error.message
@@ -49,7 +55,7 @@ const editEmail = async (req, res) => {
 
 module.exports = {
 
-    editBiography,
-    editEmail,
+    changeBiography,
+    changeEmail,
 
 }

@@ -42,19 +42,24 @@ const addCourse = async (req, res) => {
 
     }
 }
-const defineDiscount = async (req, res) => {
+const addDiscount = async (req, res) => {
     const {
         _id,
         name,
         percentage,
         start_date,
-        end_date
+        end_date,
+        course_id
     } = req.body
 
     try {
-        const discount = await Instructor.defineDiscount(_id, name, percentage, start_date, end_date)
+        const discount = await Instructor.addDiscount(_id, name, percentage, start_date, end_date)
+
+        const course = await Course.applyDiscount(course_id, discount._id)
+
         res.status(200).json({
-            discount
+            discount,
+            course
         })
     } catch (error) {
 
@@ -65,17 +70,21 @@ const defineDiscount = async (req, res) => {
     }
 
 }
+
+// mesh bnstkhdmha dlwa2ty 3ayza tt3ml tany
 const applyDiscount = async (req, res) => {
     const {
         _id,
         course_id,
-        discountName,
+        discount_id,
     } = req.body
 
     try {
 
+       
+        // we need to check here that the instructor teaches tthis course
         const discount = await Discount.findOne({
-            name: discountName
+            _id: discount_id
         })
         if (!discount)
             throw Error('Discount does not exist please type the name correctly')
@@ -142,7 +151,7 @@ const addCourseSection = async (req, res) => {
 module.exports = {
     addCourse,
     viewOfferedCourses,
-    defineDiscount,
+    addDiscount,
     applyDiscount,
     setCoursePreview,
     addCourseSection

@@ -15,7 +15,7 @@ const CourseMaterialSchema = new Schema({
         type: String, //TODOOOOOOOOOOOOOOOOOOOOOO
     },
     name: {
-        type: String, //TODOOOOOOOOOOOOOOOOOOOOOO
+        type: String,
         required: true
     },
     description: {
@@ -31,7 +31,7 @@ const CourseMaterialSchema = new Schema({
         type: Number, //TODO
     },
     maxGrade: {
-        type: Number
+        type: Number,
     },
     questions: [{
         question_name: String,
@@ -49,8 +49,8 @@ const CourseMaterialSchema = new Schema({
         },
     }],
     comments: [{
-        comment_id: mongoose.Schema.Types.ObjectId
-        //TODO
+        commenter_id: mongoose.Schema.Types.ObjectId,
+        comment : String,
     }],
 
 
@@ -69,7 +69,7 @@ CourseMaterialSchema.statics.editVideoUrl = async function (video_id, newUrl) {
 
 }
 //only to be used if quiz or assignment
-CourseMaterialSchema.statics.addQuestion = async function (material_id, question_name, question, choice_1, choice_2, choice_3, choice_4) {
+CourseMaterialSchema.statics.addQuestion = async function (material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer) {
 
     const questionObject = {
         question_name: question_name,
@@ -79,7 +79,8 @@ CourseMaterialSchema.statics.addQuestion = async function (material_id, question
             choice_2: choice_2,
             choice_3: choice_3,
             choice_4: choice_4,
-        }]
+        }],
+        answer
     }
 
     await this.findByIdAndUpdate({

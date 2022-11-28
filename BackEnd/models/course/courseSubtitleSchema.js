@@ -1,7 +1,6 @@
 const mongoose = require('mongoose')
 const courseMaterialSchema = require('./courseMaterialSchema')
 const Course = require('./courseSchema')
-const courseSectionSchema = require('./courseSectionSchema')
 const CourseSectionSchema = require('./courseSectionSchema')
 
 
@@ -86,16 +85,16 @@ CourseSubtitleSchema.statics.createSubtitle = async function (course_id, section
     return subtitle;
 }
 
-CourseSubtitleSchema.statics.addQuizQuestion = async function (course_id, section_id, subtitle_id, material_id, question_name, question, choice_1, choice_2, choice_3, choice_4) {
+CourseSubtitleSchema.statics.addQuizQuestion = async function (course_id, section_id, subtitle_id, material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer) {
     if (!course_id || !section_id || !subtitle_id || !material_id || !question_name || !question || !choice_1 || !choice_2 || !choice_3 || !choice_4)
         throw error('All fields must be filled')
 
     const course = await Course.findOne({
         _id: course_id
     })
-    const section = await CourseSectionSchema.findOne({
-        _id: section_id
-    })
+    // const section = await CourseSectionSchema.findOne({
+    //     _id: section_id
+    // })
     const subtitle = await this.findOne({
         _id: subtitle_id
     })
@@ -106,15 +105,15 @@ CourseSubtitleSchema.statics.addQuizQuestion = async function (course_id, sectio
 
     if (!course)
         throw Error('Course does not Exist')
-    if (!section)
-        throw Error('Section does not Exist')
+    // if (!section)
+    //     throw Error('Section does not Exist')
     if (!subtitle)
         throw Error('Section does not Exist')
     if (!material)
         throw Error('Quiz does not Exist')
 
 
-    const questionObject = await courseMaterialSchema.addQuestion(material_id, question_name, question, choice_1, choice_2, choice_3, choice_4)
+    const questionObject = await courseMaterialSchema.addQuestion(material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer)
 
     return questionObject;
 }
@@ -159,9 +158,9 @@ CourseSubtitleSchema.statics.addQuiz = async function (course_id, section_id, su
     const course = await Course.findOne({
         _id: course_id
     })
-    const section = await CourseSectionSchema.findOne({
-        _id: section_id
-    })
+    // const section = await CourseSectionSchema.findOne({
+    //     _id: section_id
+    // })
     const subtitle = await this.findOne({
         _id: subtitle_id
     })
@@ -169,15 +168,15 @@ CourseSubtitleSchema.statics.addQuiz = async function (course_id, section_id, su
     if (!course)
         throw Error('Course does not Exist')
 
-    if (!section)
-        throw Error('Section does not Exist')
+    // if (!section)
+    //     throw Error('Section does not Exist')
 
     if (!subtitle)
         throw Error('Section does not Exist')
 
     const quiz = await courseMaterialSchema.create({
         type: "quiz",
-        quizName
+        name:quizName,
     })
 
     await this.findByIdAndUpdate({
