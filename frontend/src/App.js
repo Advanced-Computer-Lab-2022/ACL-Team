@@ -41,6 +41,8 @@ import Terms from './pages/terms';
 import QuizPage from './pages/quizPage';
 import InstructorAddSubtitle from './Components/Instructor/instructorAddSubtitle';
 import InstructorCoursePage from './pages/instructorCoursePage';
+import RateCourse from './Components/Cards/rateCourse';
+import RateInstructor from './Components/Cards/rateInstructor';
 
 
 
@@ -65,7 +67,7 @@ function App() {
       <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />
       <Route path='/sidebar' exact element={<SidebarPage/>} />
       <Route path='/instructor/addDiscount' exact element={<InstructorAddDiscountPage/>} />
-      <Route path='/addquiz' exact element={<InstructorAddQuizPage/>} />
+      <Route path='/instructor/addquiz' exact element={<InstructorAddQuizPage/>} />
       <Route path='/quizPage' exact element={<QuizPage/>} />
       <Route path='/VideoPage' exact element={<VideoPage/>} />
       <Route path='/login' exact element={<Login/>} />
@@ -83,7 +85,7 @@ function App() {
       <Route path='/test' exact element={<Navbar/>}/>
       <Route path='/test2' exact element={<Dropdown2/>} />
 
-      <Route path='/test3' exact element={<CourseCard/>} />
+      <Route path='/test3' exact element={<RateInstructor/>} />
 
 
 

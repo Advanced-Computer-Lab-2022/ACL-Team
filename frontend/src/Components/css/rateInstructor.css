@@ -1,0 +1,71 @@
+.rateInstructor_frame{
+    width:920px ;
+    height: 434px;
+    background-color: aliceblue;
+    border-radius: 20px;
+}
+.rateInstructor_container{
+    position: relative;
+    left:60px;
+    top: 50px;
+}
+.rateInstructor_header
+.rateInstructor-title{
+    position: relative;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 35px;
+    letter-spacing: 0.08em;
+    color: #253858;
+    left:100px ;
+    top: -50px;
+
+}
+.rateInstructor_inputs
+.rateInstructor_instructorName{
+    position: relative;
+    left: 130px;
+}
+.rateInstructor_instructorName > input{
+    
+    border-radius: 10px;
+    
+}
+.rateInstructor_InstructorTitle{
+    position: relative;
+    left: 450px;
+    top: -30px;
+}
+.rateInstructor_InstructorTitle > input{
+    
+    border-radius: 10px;
+    
+}
+.rateInstructor_line1 > hr{
+    width: 340px;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    left: -50px;
+    top: 30px;
+   
+
+}
+.rateInstructor_rating{
+    position: relative;
+    left: 130px;
+    top: 50px;
+    
+}
+.rateInstructor_rating > input{
+    
+    border-radius: 10px;
+    
+}
+.rateInstructor_button{
+    position: relative;
+    top: 150px;
+    left: 700px;
+}
