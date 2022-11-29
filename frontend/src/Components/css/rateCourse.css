@@ -1,0 +1,70 @@
+.rateCourse_frame{
+    width:920px ;
+    height: 434px;
+    background-color: aliceblue;
+    border-radius: 20px;
+}
+.rateCourse_container{
+    position: relative;
+    left:60px;
+    top: 50px;
+}
+.rateCourse_header
+.rateCourse-title{
+    position: relative;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 35px;
+    letter-spacing: 0.08em;
+    color: #253858;
+    left:100px ;
+    top: -50px;
+
+}
+.rateCourse_inputs
+.rateCourse_instructorName{
+    position: relative;
+    left: 130px;
+}
+.rateCourse_instructorName > input{
+    
+    border-radius: 10px;
+    
+}
+.rateCourse_courseTitle{
+    position: relative;
+    left: 450px;
+    top: -30px;
+}
+.rateCourse_courseTitle > input{
+    
+    border-radius: 10px;
+    
+}
+.rateCourse_line1 > hr{
+    width: 340px;
+    text-align: center;
+    margin: auto;
+    position: relative;
+    left: -50px;
+   
+
+}
+.rateCourse_rating{
+    position: relative;
+    left: 130px;
+    top: 20px;
+    
+}
+.rateCourse_rating > input{
+    
+    border-radius: 10px;
+    
+}
+.rateCourse_button{
+    position: relative;
+    top: 70px;
+    left: 700px;
+}
