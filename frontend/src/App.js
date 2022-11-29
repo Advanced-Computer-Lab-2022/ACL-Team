@@ -85,7 +85,8 @@ function App() {
       <Route path='/test' exact element={<Navbar/>}/>
       <Route path='/test2' exact element={<Dropdown2/>} />
 
-      <Route path='/test3' exact element={<RateInstructor/>} />
+      {/* <Route path='/test3' exact element={<RateInstructor/>} /> */}
+      <Route path='/rateInstructor' exact element={<RateInstructor/>} />
 
 
 
