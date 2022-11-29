@@ -42,12 +42,13 @@ const addQuizQuestion = async (req, res) => {
         choice_2,
         choice_3,
         choice_4,
-        answer
+        answer,
+        grade
     } = req.body
 
     try {
         
-        const quiz = await courseSubtitle.addQuizQuestion(course_id, section_id, subtitle_id, material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer)
+        const quiz = await courseSubtitle.addQuizQuestion(course_id, section_id, subtitle_id, material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer,grade)
         res.status(200).json({
             quiz
         })
@@ -69,12 +70,13 @@ const editQuestion = async (req, res) => {
         choice_2,
         choice_3,
         choice_4,
-        answer
+        answer,
+        grade
     } = req.body
 
     try {
         
-        const question = await CourseMaterial.editQuestion(material_id, question_id, newQuestionName, newQuestion,choice_1, choice_2, choice_3, choice_4,answer)
+        const question = await CourseMaterial.editQuestion(material_id, question_id, newQuestionName, newQuestion,choice_1, choice_2, choice_3, choice_4,answer,grade)
         res.status(200).json({
             question
         })

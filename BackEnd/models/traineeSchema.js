@@ -4,7 +4,7 @@ const User = require('../models/UserSchema')
 const Instructor = require('../models/InstructorSchema')
 const Course = require('../models/course/courseSchema')
 const Review = require('../models/lib/reviewSchema')
-const CourseProgress = require('./course/courseProgressSchema')
+const CourseProgress = require('./course/courseProgress/courseProgressSchema')
 
 const TraineeSchema = new Schema({
 

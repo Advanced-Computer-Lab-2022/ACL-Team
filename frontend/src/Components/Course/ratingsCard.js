@@ -3,6 +3,7 @@ import Rating from '../Cards/rating'
 import "../css/ratingsCard.css"
 
 
+
 export default function RatingsCard() {
   return (
     <div>
@@ -18,7 +19,7 @@ export default function RatingsCard() {
             </div>
             <div className="rating4">
                 <Rating/>
-            </div>
+            </div>   
 
         </div>
     </div>

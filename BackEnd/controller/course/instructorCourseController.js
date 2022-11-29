@@ -19,6 +19,7 @@ const viewOfferedCourses = async (req, res) => {
     return res.status(200).json(courses)
 }
 const addCourse = async (req, res) => {
+
     const {
         title,
         price,
@@ -27,9 +28,9 @@ const addCourse = async (req, res) => {
         summary,
         coursePreviewUrl
     } = req.body
-
+    console.log(req.body)
     try {
-        
+
         const course = await Course.addCourse(title, price, category, instructor_id, summary,coursePreviewUrl)
         res.status(200).json({
             course
@@ -51,6 +52,7 @@ const addDiscount = async (req, res) => {
         end_date,
         course_id
     } = req.body
+    console.log(req.body)
 
     try {
         const discount = await Instructor.addDiscount(_id, name, percentage, start_date, end_date)
@@ -128,7 +130,7 @@ const addCourseSection = async (req, res) => {
         course_id,
         sectionTitle,
         subtitelTitle,
-        subtitlePreviewVideoUrl,
+        subtitlePreviewVideoUrl
     } = req.body
 
     try {

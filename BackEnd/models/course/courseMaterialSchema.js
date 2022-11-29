@@ -60,7 +60,17 @@ CourseMaterialSchema.statics.editVideoUrl = async function (video_id, newUrl) {
 
 }
 //only to be used if quiz or assignment
-CourseMaterialSchema.statics.addQuestion = async function (material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer) {
+CourseMaterialSchema.statics.addQuestion = async function (material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer,grade) {
+
+    if (!material_id || !question_name || !question || !choice_1 || !choice_2 || !choice_3 || !choice_4 || !answer || !grade)
+        throw error('All fields must be filled')
+
+    const material = await this.findOne({
+        _id:material_id
+    })
+    
+    if (!material)
+        throw Error('This Material Does not Exist')
 
     const choices={
         choice_1: choice_1,
@@ -73,7 +83,8 @@ CourseMaterialSchema.statics.addQuestion = async function (material_id, question
         questionTitle:question_name,
         question,
         choices,
-        answer
+        answer,
+        maxGrade:grade
     })
 
     const questionObject = {
@@ -92,13 +103,17 @@ CourseMaterialSchema.statics.addQuestion = async function (material_id, question
     return questions
 }
 
-CourseMaterialSchema.statics.editQuestion = async function (material_id, question_id, newQuestionName, newQuestion, choice_1, choice_2, choice_3, choice_4,answer) {
+CourseMaterialSchema.statics.editQuestion = async function (material_id, question_id, newQuestionName, newQuestion, choice_1, choice_2, choice_3, choice_4,answer,grade) {
+
+    if (!material_id || !question_id || !newQuestionName|| !newQuestion || !choice_1 || !choice_2 || !choice_3 || !choice_4 || !answer || !grade)
+        throw error('All fields must be filled')
 
     const material = await this.findOne({
-        _id: material_id,
+        _id:material_id
     })
-    if(!material)
-        throw Error('Course Material Not Found')
+    
+    if (!material)
+        throw Error('This Material Does not Exist')
 
     const choices={
         choice_1: choice_1,
@@ -112,7 +127,8 @@ CourseMaterialSchema.statics.editQuestion = async function (material_id, questio
             questionTitle: newQuestionName,
             question:newQuestion,
             choices,
-            answer
+            answer,
+            maxGrade:grade
         })
 }
 
