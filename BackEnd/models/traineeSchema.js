@@ -4,6 +4,7 @@ const User = require('../models/UserSchema')
 const Instructor = require('../models/InstructorSchema')
 const Course = require('../models/course/courseSchema')
 const Review = require('../models/lib/reviewSchema')
+const CourseProgress = require('./course/courseProgressSchema')
 
 const TraineeSchema = new Schema({
 
@@ -23,22 +24,23 @@ const TraineeSchema = new Schema({
         type: String,
 
     },
-    owned_courses: [{
+    ownedCourses: [{
+        course_id: mongoose.Schema.Types.ObjectId,
+        courseTitle:String, //TODO
+    }],
+    followedCourses: [{
         course_id: String, //TODO
     }],
-    followed_courses: [{
-        course_id: String, //TODO
-    }],
-    total_points: {
+    totalPoints: {
         type: Number,
 
     },
     info: [{
         degree: String,
-        current_job_title: String,
-        university_name: String,
-        university_faculty: String,
-        years_experience: String,
+        currentJobTitle: String,
+        universityName: String,
+        universityFaculty: String,
+        yearsExperience: String,
         company: String
 
     }],
@@ -101,6 +103,47 @@ TraineeSchema.statics.reviewInstructor = async function (_id, instructor_id, typ
     )
 
     return review;
+}
+//Should only be called after payment is confirmed
+TraineeSchema.statics.joinCourse = async function (_id, course_id) {
+
+    if (!_id || !course_id)
+        throw Error('All fields must be filled')
+
+    const user = await User.findOne({
+        _id
+    })
+    if (!user)
+        throw Error('User Does not Exist')
+
+    const course = await Course.findOne({
+        course_id
+    })
+    if (!course)
+        throw Error('Course Does not Exist')
+
+    const courseProgress = await CourseProgress.create({
+        course_id,
+        user_id:_id,
+        courseTitle:course.title,
+        username:user.username,
+    })
+
+    const courseObj = {
+        course_id:course_id,
+        courseTitle:course.title
+    }
+    const trainee = await this.findByIdAndUpdate({
+            _id
+        }, {
+            $push: {
+                ownedCourses: courseObj
+            },
+        }
+
+    )
+
+    return trainee;
 }
 
 

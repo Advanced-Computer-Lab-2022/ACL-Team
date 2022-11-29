@@ -14,7 +14,11 @@ const {
     setCoursePreview,
     addCourseSection
 } = require('../controller/course/instructorCourseController')
-const { addQuiz, addQuizQuestion } = require('../controller/course/instructorSectionController')
+const {
+    addQuiz,
+    addQuizQuestion,
+    editQuestion
+} = require('../controller/course/instructorSectionController')
 
 
 const router = express.Router()
@@ -34,5 +38,6 @@ router.post('/setCoursePreview', setCoursePreview)
 router.post('/addCourse', addCourse)
 router.post('/addQuiz', addQuiz)
 router.post('/addQuizQuestion', addQuizQuestion)
+router.post('/editQuestion', editQuestion)
 
 module.exports = router

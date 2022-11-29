@@ -16,7 +16,6 @@ const CourseProgressSchema = new Schema({
     course_edition: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'CourseEdition',
-        required: true
     },
     courseReview_id: {
         type: mongoose.Schema.Types.ObjectId,
@@ -24,6 +23,12 @@ const CourseProgressSchema = new Schema({
     },
     finishedPercentage: {
         type: Number,
+    },
+    courseTitle: {
+        type: String,
+    },
+    username: {
+        type: String,
     },
     totalHours: {
         type: Number,
@@ -46,27 +51,30 @@ const CourseProgressSchema = new Schema({
     solvedSections: [{
         section_id: mongoose.Schema.Types.ObjectId, //CourseSection_id
         solvedQuizzes: [{
-            quiz_id: mongoose.Schema.Types.ObjectId, //CourseMaterial_id
+            quiz_id: mongoose.Schema.Types.ObjectId,//CourseMaterial_id
+            subtitle_id:mongoose.Schema.Types.ObjectId, //CourseSubtitle_id
             questions_answers: [{
                 question_id: mongoose.Schema.Types.ObjectId,
                 choice: ['choice_1', 'choice_2', 'choice_3', 'choice_4'], //Enum 
             }],
-            finishedPercentage: Double,
+            finishedPercentage: Number,
             acquiredGrade: Number,
             acquiredPoints: Number,
         }],
         solvedAssignments: [{
             assignment_id: mongoose.Schema.Types.ObjectId, //CourseMaterial_id
+            subtitle_id:mongoose.Schema.Types.ObjectId, //CourseSubtitle_id
             questions_answers: [{
                 question_id: mongoose.Schema.Types.ObjectId,
                 choice: ['choice_1', 'choice_2', 'choice_3', 'choice_4'], //Enum 
             }],
-            finishedPercentage: Double,
+            finishedPercentage: Number,
             acquiredGrade: Number,
             acquiredPoints: Number,
         }],
         watchedVideos: [{
             video_id: mongoose.Schema.Types.ObjectId, //CourseMaterial_id
+            subtitle_id:mongoose.Schema.Types.ObjectId, //CourseSubtitle_id
             isWatched: Boolean,
             writtenNotes: String,
             acquiredPoints: Number,

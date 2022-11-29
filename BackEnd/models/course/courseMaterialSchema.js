@@ -1,11 +1,12 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const Question = require('./questionSchema');
 
 const Schema = mongoose.Schema
+var ObjectID = require('mongodb').ObjectID;
 //WARNING
 //THIS SCHEMA IS NEVER TO BE USED OUTSIDE COURSE SUBTITLE IT IS FOR INTERNAL USE ONLY. USING MAY WRECK DATABASE INTEGRITY
 //WARNING
 const CourseMaterialSchema = new Schema({
-
     type: {
         type: String,
         enum: ['assignment', 'video', 'quiz', 'grade'],
@@ -34,19 +35,9 @@ const CourseMaterialSchema = new Schema({
         type: Number,
     },
     questions: [{
-        question_name: String,
-        question: String,
-        choices: [{
-            choice_1: String,
-            choice_2: String,
-            choice_3: String,
-            choice_4: String,
-        }],
-        answer: {
-            type: String,
-            enum: ['choice_1', 'choice_2', 'choice_3', 'choice_4', 'no_answer'],
-            default: 'no_answer'
-        },
+        question_id: mongoose.Schema.Types.ObjectId,
+        questionTitle:String,
+       
     }],
     comments: [{
         commenter_id: mongoose.Schema.Types.ObjectId,
@@ -71,18 +62,24 @@ CourseMaterialSchema.statics.editVideoUrl = async function (video_id, newUrl) {
 //only to be used if quiz or assignment
 CourseMaterialSchema.statics.addQuestion = async function (material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer) {
 
-    const questionObject = {
-        question_name: question_name,
-        question: question,
-        choices: [{
-            choice_1: choice_1,
-            choice_2: choice_2,
-            choice_3: choice_3,
-            choice_4: choice_4,
-        }],
-        answer
+    const choices={
+        choice_1: choice_1,
+        choice_2: choice_2,
+        choice_3: choice_3,
+        choice_4: choice_4,
     }
+    const questions = await Question.create({
+        material_id,
+        questionTitle:question_name,
+        question,
+        choices,
+        answer
+    })
 
+    const questionObject = {
+        question_id:question._id,
+        questionTitle:question_name
+    }
     await this.findByIdAndUpdate({
             _id: material_id
         }, {
@@ -92,20 +89,34 @@ CourseMaterialSchema.statics.addQuestion = async function (material_id, question
         }
 
     )
-    return questionObject
+    return questions
 }
-CourseMaterialSchema.statics.editQuestion = async function (material_id, oldQuestionName, newQuestionName, newQuestion) {
 
-    await this.findByIdAndUpdate({
+CourseMaterialSchema.statics.editQuestion = async function (material_id, question_id, newQuestionName, newQuestion, choice_1, choice_2, choice_3, choice_4,answer) {
+
+    const material = await this.findOne({
         _id: material_id,
-        name: oldQuestionName
-    }, {
-        name: newQuestionName,
-        question: newQuestion
     })
+    if(!material)
+        throw Error('Course Material Not Found')
 
-    return await this.findbyId(material_id)
+    const choices={
+        choice_1: choice_1,
+        choice_2: choice_2,
+        choice_3: choice_3,
+        choice_4: choice_4,
+    }
+        return await Question.findByIdAndUpdate({
+            _id: question_id
+        }, {
+            questionTitle: newQuestionName,
+            question:newQuestion,
+            choices,
+            answer
+        })
 }
+
+//Men awel hena mosamam mesh 3aref en el quizes ba2et f table lwahdaha
 CourseMaterialSchema.statics.editQuizChoices = async function (material_id, choice_1, choice_2, choice_3, choice_4) {
     const choices = [{
         choice_1: choice_1,
