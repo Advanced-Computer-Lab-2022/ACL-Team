@@ -9,18 +9,18 @@ import img1 from "../images/createCourse.png"
 
 
 export default function InstructorAddCourseComponent() {
-const[name,setName] =useState('')
+ const[name,setName] =useState('')
 const[title,setTitle] =useState('')
 const[price,setPrice] =useState('')
-const[video,SetVideo] =useState('')
-const[Summary,setSummary] =useState('')
-// const[category,setCategory] =useState('')
-
+const[coursePreviewUrl,SetVideo] =useState('')
+const[summary,setSummary] =useState('')
+ const[category,setCategory] =useState('')
+ const[instructor_id,setinstructor_id] =useState('')
 const instructorAddCourse = async () => {
   // console.log("boodaa")
   const res = await axios
     .post("http://localhost:3000/instructor/addCourse", {
-      name:name,title:title,price:price,video:video,Summary:Summary
+      title:title,price:price,category:category,instructor_id:instructor_id,summary:summary,coursePreviewUrl:coursePreviewUrl,
     })
     .catch((err) => console.log(err));
     const data = await res.data;
@@ -34,6 +34,7 @@ const handleSubmitt=(e)=>{
   
 
   instructorAddCourse().then((data) => console.log(data))
+  console.log("hiiii")
 
 }
 
@@ -50,12 +51,12 @@ const handleSubmitt=(e)=>{
 
         <form onSubmit={handleSubmitt}>
 
-        <div className="instructor_name">
+         <div className="instructor_name">
           <input 
           onChange={(e) => setName(e.target.value)}
           value={name}
           type="textbox" placeholder='Course Instructor Name'/>
-        </div>
+        </div> 
         <div className="instructor_LastName">
           <input 
             onChange={(e) => setTitle(e.target.value)}
@@ -74,15 +75,22 @@ const handleSubmitt=(e)=>{
         <div className="instructor_URL">
           <input
             onChange={(e) => SetVideo(e.target.value)}
-            value={video}
+            value={coursePreviewUrl}
            type="textbox" placeholder='Course Preview Video Url'/>
         </div>
-        {/* <div className="instructor_category">
+         <div className="instructor_category">
           <input
             onChange={(e) => setCategory(e.target.value)}
             value={category} 
           type="textbox" placeholder='category'/>
-        </div> */}
+        </div> 
+
+        <div className="instructor_id">
+          <input
+            onChange={(e) => setinstructor_id(e.target.value)}
+            value={instructor_id} 
+          type="textbox" placeholder='id'/>
+        </div>
         <div className="line2">
           <hr></hr>
         </div>
@@ -93,7 +101,7 @@ const handleSubmitt=(e)=>{
         <div className="instructor_Summary">
           <input 
             onChange={(e) => setSummary(e.target.value)}
-            value={Summary}
+            value={summary}
           type="textbox" placeholder='Course Summary'/>
         </div>
         <div className="instructor_Button">
