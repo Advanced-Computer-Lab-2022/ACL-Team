@@ -132,13 +132,14 @@ UserSchema.statics.changePassword = async function (email, oldPassword, newPassw
     if (!match)
         throw Error('Incorrect password')
 
-    await this.findByIdAndUpdate({
-        email: email
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(newPassword, salt)
+    
+    return await this.findByIdAndUpdate({
+        _id: user._id
     }, {
-        password: newPassword
+        password: hash
     })
-
-    return user
 
 }
 
