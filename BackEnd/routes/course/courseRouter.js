@@ -27,10 +27,11 @@ router.use("/courseStudy", CourseStudyRouter)
 
 
 router.get('/', getCoursesByPriceFromHighToLow)
-router.get('/getCourses', getAllCourses)
+router.get('/getAllCourses', getAllCourses)
 router.post('/getCourseBySubject', getCoursesBySubject)
 router.post('/getCoursesByPrice', getCoursesByPrice)
 router.post('/getCoursesByRating', getCoursesByRating)
+
 router.post('/course/rateCourse', rateCourse)
 
 

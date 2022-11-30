@@ -2,9 +2,9 @@ const express = require('express')
 const Instructor = require('../models/InstructorSchema')
 
 const {
-    AddInstructor,
     changeBiography,
     changeEmail,
+    getInstructorbyId,
 } = require('../controller/Instructor/instructorController')
 const {
     viewOfferedCourses,
@@ -12,19 +12,20 @@ const {
     addDiscount,
     applyDiscount,
     setCoursePreview,
-    addCourseSection
-} = require('../controller/course/instructorCourseController')
+    addCourseSection,
+    addVideo
+} = require('../controller/Instructor/instructorCourseController')
 const {
     addQuiz,
     addQuizQuestion,
     editQuestion
-} = require('../controller/course/instructorSectionController')
+} = require('../controller/Instructor/instructorSectionController')
 
 
 const router = express.Router()
 
 
-
+router.get('/getInstructor', getInstructorbyId)
 router.get('/', () => {
 
 })
@@ -37,6 +38,7 @@ router.post('/applyDiscount', applyDiscount)
 router.post('/setCoursePreview', setCoursePreview)
 router.post('/addCourse', addCourse)
 router.post('/addQuiz', addQuiz)
+router.post('/addVideo', addVideo)
 router.post('/addQuizQuestion', addQuizQuestion)
 router.post('/editQuestion', editQuestion)
 

@@ -52,7 +52,10 @@ export default function GuestPage() {
         <div className='instructors_card'>
 
         <div className='card1'>
-        <img className='profile' src ={image5} alt ='image'></img>
+          <a href='/rateInstructor'>
+          <img className='profile' src ={image5} alt ='image'></img>
+          </a>
+        
         <button  className='button6'>Join now</button>
         <p className=" coursecount">19 Courses</p>
         <p className=" studentcount">25,599 Students</p>
@@ -61,13 +64,15 @@ export default function GuestPage() {
         <p className=" job">UI/UX Designer</p>
         <img className='hat' src ={image6} alt ='image'></img>
         <img className='grad' src ={image7} alt ='image'></img>
-        <a href='/rateInstructor'>
+        <a href='/rateCourse'>
         <img className='star' src ={image8} alt ='image'></img>
         </a>
         </div>
 
         <div className='card1'>
-        <img className='profile' src ={image9} alt ='image'></img>
+          <a href='/rateInstructor' >
+          <img className='profile' src ={image9} alt ='image'></img>
+          </a>
         <button  className='button7'>Join now</button>
         <p className=" coursecount">19 Coursesd </p>
         <p className=" studentcount">25,599 Students</p>
@@ -76,13 +81,15 @@ export default function GuestPage() {
         <p className=" job">UI/UX Designer</p>
         <img className='hat' src ={image6} alt ='image'></img>
         <img className='grad' src ={image7} alt ='image'></img>
-        <a href='/rateInstructor'>
+        <a href='/rateCourse'>
         <img className='star' src ={image8} alt ='image'></img>
         </a>
         </div>
 
         <div className='card1'>
-        <img className='profile' src ={image10} alt ='image'></img>
+          <a href='/rateInstructor'>
+          <img className='profile' src ={image10} alt ='image'></img>
+          </a>
         <button  className='button7'>Join now</button>
         <p className=" coursecount">19 Courses</p>
         <p className=" studentcount">25,599 Students</p>
@@ -91,14 +98,16 @@ export default function GuestPage() {
         <p className=" job">UI/UX Designer</p>
         <img className='hat' src ={image6} alt ='image'></img>
         <img className='grad' src ={image7} alt ='image'></img>
-        <a href='/rateInstructor'>
+        <a href='/rateCourse'>
         <img className='star' src ={image8} alt ='image'></img>
         </a>
         </div>
 
         <div className='card1'>
-        <img className='profile4' src ={image11} alt ='image'></img>
-        <button  className='button7'>Join now</button>
+          <a href='/rateInstructor'> 
+          <img className='profile4' src ={image11} alt ='image'></img>
+          </a>
+          <button  className='button7'>Join now</button>
         <p className=" coursecount">19 Courses</p>
         <p className=" studentcount">25,599 Students</p>
         <p className=" starcount">3</p>
@@ -106,7 +115,7 @@ export default function GuestPage() {
         <p className=" job">UI/UX Designer</p>
         <img className='hat' src ={image6} alt ='image'></img>
         <img className='grad' src ={image7} alt ='image'></img>
-        <a href='/rateInstructor'>
+        <a href='/rateCourse'>
         <img className='star' src ={image8} alt ='image'></img>
         </a>
        
