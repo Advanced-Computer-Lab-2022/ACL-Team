@@ -49,7 +49,10 @@ const UserSchema = new Schema({
     }],
     notifications: [{
         notification_id: mongoose.Schema.Types.ObjectId, //TODO
-    }]
+    }],
+    profileImage: {//TODO
+        type: String,
+    },
     //lesa fee ba2y
 }, {
     timestamps: true,
@@ -129,13 +132,36 @@ UserSchema.statics.changePassword = async function (email, oldPassword, newPassw
     if (!match)
         throw Error('Incorrect password')
 
-    await this.findByIdAndUpdate({
-        email: email
+    const salt = await bcrypt.genSalt(10)
+    const hash = await bcrypt.hash(newPassword, salt)
+    
+    return await this.findByIdAndUpdate({
+        _id: user._id
     }, {
-        password: newPassword
+        password: hash
     })
 
-    return user
+}
+
+UserSchema.statics.changeEmail = async function (_id,email, newEmail) {
+
+    if (!email || !newEmail || !_id)
+        throw Error('All fields must be filled')
+
+    const user = await this.findOne({
+        email
+    })
+
+    if (!user)
+        throw Error('Incorrect email')
+
+
+    return await this.findByIdAndUpdate({
+        _id
+    }, {
+        email: newEmail
+    })
+
 
 }
 UserSchema.statics.deleteUser = async function (user_id) {

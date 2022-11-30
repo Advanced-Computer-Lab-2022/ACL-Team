@@ -27,4 +27,4 @@ const DiscountSchema = new Schema({
 
 
 
-module.exports = mongoose.model('discount', DiscountSchema)
+module.exports = mongoose.model('Discounts', DiscountSchema)

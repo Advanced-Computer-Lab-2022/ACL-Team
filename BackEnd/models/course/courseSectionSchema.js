@@ -25,18 +25,22 @@ const CourseSectionSchema = new Schema({
         type: Number,
     },
     subtitles: [{
-        subtitleHours: mongoose.Schema.Types.ObjectId,
+        subtitle_id : mongoose.Schema.Types.ObjectId,
+        subtitleTitle: String,
         maxGrade: Number,
         totalPoints: Number,
         totalHours: Number,
     }],
+    previewImage: {//TODO
+        type: String,
+    },
 }, {
     timestamps: true
 })
 
 CourseSectionSchema.statics.addSection = async function (course_id, sectionTitle,subtitelTitle,subtitlePreviewVideoUrl) {
 
-    if (!course_id || !sectionTitle)
+    if (!course_id || !sectionTitle || !subtitelTitle || !subtitlePreviewVideoUrl)
         throw error('All fields must be filled')
 
     const course = await this.find({
@@ -53,7 +57,24 @@ CourseSectionSchema.statics.addSection = async function (course_id, sectionTitle
 
     const subtitle = await courseSubtitleSchema.createSubtitle(course_id, section_id, subtitelTitle,subtitlePreviewVideoUrl)
 
-    return section;
+
+    const subtitleObj = {
+        subtitle_id : subtitle._id,
+        subtitelTitle,
+        maxGrade: 0,
+        totalPoints: 0,
+        totalHours: 0,
+    }
+
+    const sectionObj = await this.findByIdAndUpdate({
+        _id: section_id
+    }, {
+        $push: {
+            subtitles: subtitleObj
+        },
+    }
+    )
+    return sectionObj;
 
 }
 

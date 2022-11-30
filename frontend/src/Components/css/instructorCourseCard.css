@@ -1,0 +1,231 @@
+.InstructorCourse_frame{
+   width: 1218px;
+   height: 314px; 
+   background-color: aliceblue;
+   position: relative;
+   top: 157px;
+   left:106px;
+   border-radius: 30px;
+}
+.InstructorCourse_container
+.InstructorCourse_image > img{
+    position: relative;
+    top: 38px;
+    left: 42px;
+    width: 161px;
+    height: 170px;
+}
+.InstructorCourse_title_container
+.InstructorCourse_category > h1{
+    position: relative;
+    top: -160px;
+    left:237px;
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 24px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #253858;
+}
+.InstructorCourse_title{
+    width: 353px;
+    height: 75;
+    position: relative;
+    top: -130px;
+    left: 237px;
+    
+}
+.InstructorCourse_title > h1{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 24px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #253858;
+
+}
+.InstructorCourse_description{
+    width: 347px;
+    height: 80px;
+    position: relative;
+    left: 249px;
+    top: -130px;
+}
+.InstructorCourse_description > p {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: #6E798C;
+
+}
+.InstructorCourse_buttons{
+    display: flex;
+}
+.InstructorCourse_buttons
+.InstructorCourse_button1{
+    position: relative;
+    top: -100px;
+    left: 74px;
+}
+.InstructorCourse_button1 > button{
+    width: 129.99px;
+    height: 49.53px;
+    
+}
+.InstructorCourse_button1
+.Navy_Button > a{
+    color: aliceblue;
+}
+.InstructorCourse_button2{
+    position: relative;
+    top: -100px;
+    left: 100px;
+}
+.InstructorCourse_button2 > button{
+    width: 129.99px;
+    height: 49.53px;
+}
+.InstructorCourse_button2
+.Navy_Button > a{
+    color: aliceblue;
+}
+.InstructorCourse_button3{
+    position: relative;
+    top: -100px;
+    left: 150px;
+}
+.InstructorCourse_button3 > button{
+    width: 129.99px;
+    height: 49.53px;
+}
+.InstructorCourse_button3
+.Navy_Button > a{
+    color: aliceblue;
+}
+.InstructorCourse_footer
+.InstructorCourse_level{
+    position: relative;
+    left: 624px;
+    top: -130px;
+}
+.InstructorCourse_level > label{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+    position: relative;
+    left: 10px;
+}
+.InstructorCourse_hours{
+    position: relative;
+    left: 790px;
+    top: -155px;
+}
+.InstructorCourse_hours > label{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+    position: relative;
+    left: 10px;
+}
+.InstructorCourse_lessons{
+    position: relative;
+    left: 920px;
+    top: -180px;
+}
+.InstructorCourse_lessons > label{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+    position: relative;
+    left: 10px;
+}
+.InstructorCourse_students{
+    position: relative;
+    left: 1050px;
+    top: -205px;
+}
+.InstructorCourse_students > label{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+    position: relative;
+    left: 10px;
+}
+.InstructorCourse_price{
+    position: relative;
+    left: 1050px;
+    top: -280px;
+}
+.InstructorCourse_price > label{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+    position: relative;
+    left: 10px;
+}
+.InstructorCourse_body{
+    position: relative;
+    left: 723px;
+    bottom: 500px;
+    display: flex;
+}
+.InstructorCourse_body
+.InstructorCourse_body_sections{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 25px;
+    color: #081F32;
+}
+.InstructorCourse_body_tutorials{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 25px;
+    color: #081F32;
+    position: relative;
+    left: 123px;
+}
+.InstructorCourse_body_videos{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 25px;
+    color: #081F32;
+    position: relative;
+    top: 70px;
+    left: -270px;
+}
+.InstructorCourse_body_quizez{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 25px;
+    color: #081F32;
+    position: relative;
+    top: 70px;
+    left: -130px;
+}

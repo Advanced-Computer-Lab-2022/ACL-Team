@@ -9,7 +9,9 @@ router.post('/', addAdmin)
 router.post('/instructor', addInstructor)
 router.post('/user', addUser)
 
-router.get('/', addUser)
+router.get('/', ()=>{
+    
+})
 
 
 

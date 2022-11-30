@@ -61,7 +61,9 @@ export default function GuestPage() {
         <p className=" job">UI/UX Designer</p>
         <img className='hat' src ={image6} alt ='image'></img>
         <img className='grad' src ={image7} alt ='image'></img>
+        <a href='/rateInstructor'>
         <img className='star' src ={image8} alt ='image'></img>
+        </a>
         </div>
 
         <div className='card1'>
@@ -74,7 +76,9 @@ export default function GuestPage() {
         <p className=" job">UI/UX Designer</p>
         <img className='hat' src ={image6} alt ='image'></img>
         <img className='grad' src ={image7} alt ='image'></img>
+        <a href='/rateInstructor'>
         <img className='star' src ={image8} alt ='image'></img>
+        </a>
         </div>
 
         <div className='card1'>
@@ -87,7 +91,9 @@ export default function GuestPage() {
         <p className=" job">UI/UX Designer</p>
         <img className='hat' src ={image6} alt ='image'></img>
         <img className='grad' src ={image7} alt ='image'></img>
+        <a href='/rateInstructor'>
         <img className='star' src ={image8} alt ='image'></img>
+        </a>
         </div>
 
         <div className='card1'>
@@ -100,7 +106,10 @@ export default function GuestPage() {
         <p className=" job">UI/UX Designer</p>
         <img className='hat' src ={image6} alt ='image'></img>
         <img className='grad' src ={image7} alt ='image'></img>
+        <a href='/rateInstructor'>
         <img className='star' src ={image8} alt ='image'></img>
+        </a>
+       
         </div>
 
         </div>

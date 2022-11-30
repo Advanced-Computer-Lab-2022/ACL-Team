@@ -21,7 +21,8 @@ const InstructorSchema = new Schema({
         course_id: mongoose.Schema.Types.ObjectId, //TODO
     }],
     defined_discounts: [{
-        discount_id: mongoose.Schema.Types.ObjectId, //TODO
+        discount_id: mongoose.Schema.Types.ObjectId,
+        discountName :String 
     }],
     prefferedSubject: {
         type: String,
@@ -38,6 +39,7 @@ const InstructorSchema = new Schema({
         issue_id: mongoose.Schema.Types.ObjectId,
         status: String,
     }],
+    
 }, {
     timestamps: true
 })
@@ -59,18 +61,32 @@ InstructorSchema.statics.signup = async function (email, username, password, fir
 
 InstructorSchema.statics.addDiscount = async function (instructor_id, name, percentage, start_date, end_date) {
 
+    const instructor = await this.findOne({
+        _id: instructor_id
+    })
+
+    if (!instructor)
+        throw Error('Instructor does not Exist')
+
     const discount = await Discount.create({
         name,
         percentage,
         start_date,
         end_date
     })
+    if(!discount)
+        throw Error('Discount not created')
+
+    const discountObj = {
+        discount_id : discount._id,
+        discountName:name
+    }
 
     await this.findByIdAndUpdate({
             _id: instructor_id
         }, {
             $push: {
-                defined_discounts: discount._id
+                defined_discounts: discountObj
             },
         }
     )
@@ -83,6 +99,27 @@ InstructorSchema.statics.isTeachCourse = async function (instructor_id, course_i
 
 
 }
+InstructorSchema.statics.changeBiography = async function (_id,newBiography) {
+
+    if ( !_id ||!newBiography )
+        throw Error('All fields must be filled')
+
+    const user = await this.findOne({
+        _id
+    })
+
+    if (!user)
+        throw Error('Incorrect id / User not Found')
+
+
+    return await this.findByIdAndUpdate({
+        _id
+    }, {
+        biography: newBiography
+    })
+
+}
+
 
 
 
