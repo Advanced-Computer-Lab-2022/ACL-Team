@@ -85,8 +85,8 @@ CourseSubtitleSchema.statics.createSubtitle = async function (course_id, section
     return subtitle;
 }
 
-CourseSubtitleSchema.statics.addQuizQuestion = async function (course_id, section_id, subtitle_id, material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer) {
-    if (!course_id || !section_id || !subtitle_id || !material_id || !question_name || !question || !choice_1 || !choice_2 || !choice_3 || !choice_4)
+CourseSubtitleSchema.statics.addQuizQuestion = async function (course_id, section_id, subtitle_id, material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer,grade) {
+    if (!course_id || !section_id || !subtitle_id || !material_id || !question_name || !question || !choice_1 || !choice_2 || !choice_3 || !choice_4 || !answer || !grade )
         throw error('All fields must be filled')
 
     const course = await Course.findOne({
@@ -113,7 +113,7 @@ CourseSubtitleSchema.statics.addQuizQuestion = async function (course_id, sectio
         throw Error('Quiz does not Exist')
 
 
-    const questionObject = await courseMaterialSchema.addQuestion(material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer)
+    const questionObject = await courseMaterialSchema.addQuestion(material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer,grade)
 
     return questionObject;
 }
