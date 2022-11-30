@@ -18,6 +18,7 @@ const adminRouter = require('./routes/adminRouter')
 const signUpRouter = require('./routes/auth/signUpRouter')
 const instructorRouter = require('./routes/InstructorRouter')
 const traineeRouter = require('./routes/traineeRouter')
+const userRouter = require('./routes/userRouter')
 
 //express
 const port = process.env.PORT || 3000;
@@ -86,6 +87,7 @@ app.use('/signUp', signUpRouter)
 app.use('/login', loginRouter)
 app.use('/instructor', instructorRouter)
 app.use('/trainee', traineeRouter)
+app.use('/user', userRouter)
 
 
 

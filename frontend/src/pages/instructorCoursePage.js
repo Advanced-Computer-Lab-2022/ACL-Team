@@ -1,20 +1,19 @@
 import React from 'react'
 import InstructorAddSubtitle from '../Components/Instructor/instructorAddSubtitle'
-import Navbar from '../Components/General/Navbar/navbar'
-import CourseCard from "../Components/Cards/courseCard"
 import InstructorCourseCard from '../Components/Instructor/instructorCourseCard'
+import InstNavbar from '../Components/General/Navbar/instructorNavbar'
 export default function InstructorCoursePage() {
   return (
     
     <div>
-        <Navbar/>
+        {/* <InstNavbar/>
         <div className="coursepage_component1">
           <InstructorCourseCard/>
         </div>
         
         <div className="coursepage_component2">
           <InstructorAddSubtitle/>
-        </div>
+        </div> */}
         
     </div>
   )

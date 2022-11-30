@@ -2,6 +2,7 @@ const Instructor = require('../../models/InstructorSchema')
 const Course = require('../../models/course/courseSchema')
 const Discount = require('../../models/lib/payment/discountSchema')
 const courseSectionSchema = require('../../models/course/courseSectionSchema')
+const CourseMaterial = require('../../models/course/courseMaterialSchema')
 
 
 
@@ -147,6 +148,35 @@ const addCourseSection = async (req, res) => {
     }
 
 }
+const addVideo = async (req, res) => {
+
+    const {
+        name,
+        videoUrl,
+        description,
+        duration,
+    } = req.body
+
+    try {
+        const video = await CourseMaterial.create({
+            type:"video",
+            name,
+            material_doc:videoUrl,
+            description,
+            duration,
+        })
+        res.status(200).json({
+            video
+        })
+    } catch (error) {
+
+        res.status(400).json({
+            error: error.message
+        })
+
+    }
+
+}
 
 
 
@@ -156,5 +186,6 @@ module.exports = {
     addDiscount,
     applyDiscount,
     setCoursePreview,
-    addCourseSection
+    addCourseSection,
+    addVideo,
 }
