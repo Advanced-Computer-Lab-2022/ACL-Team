@@ -40,7 +40,7 @@ const CourseSectionSchema = new Schema({
 
 CourseSectionSchema.statics.addSection = async function (course_id, sectionTitle,subtitelTitle,subtitlePreviewVideoUrl) {
 
-    if (!course_id || !sectionTitle)
+    if (!course_id || !sectionTitle || !subtitelTitle || !subtitlePreviewVideoUrl)
         throw error('All fields must be filled')
 
     const course = await this.find({

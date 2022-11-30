@@ -25,6 +25,10 @@ const QuestionSchema = new Schema({
         enum: ['choice_1', 'choice_2', 'choice_3', 'choice_4', 'no_answer'],
         default: 'no_answer'
     },
+    maxGrade: {
+        type: Number,
+        required: true,
+    },
 }, {
     timestamps: true
 })
