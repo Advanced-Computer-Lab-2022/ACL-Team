@@ -72,7 +72,7 @@ TraineeSchema.statics.reviewInstructor = async function (_id, instructor_id, typ
     if (!_id || !instructor_id || !type || !reviewString)
         throw Error('All fields must be filled')
 
-    const instructor = await Instructor.findOne({
+    var instructor = await Instructor.findOne({
         instructor_id
     })
     if (!instructor)

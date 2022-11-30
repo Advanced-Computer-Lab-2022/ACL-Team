@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
     padding: 10px 0px;
-    height: 6vh;
+    height: 80px;
 }
 
 .sidemenu_button {
@@ -12,12 +12,12 @@
     background-color: transparent;
     /* padding: 0px 10px; */
     margin-top: 5px;
-    margin-left: 25px;
+    margin-left: 20px;
   }
 
 .Nav-title{
     padding: 5px 0px;
-    margin-left: 100px;
+    margin-left: 20px;
 }
 
 .Nav-search{
@@ -47,7 +47,7 @@
 
 .Nav-actions > ul > li > a{
   text-decoration: none;
-  font-size: 160%;
+  font-size: 20px;
   padding: 50px;
   color: #253858;
 }

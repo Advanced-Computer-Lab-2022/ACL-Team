@@ -43,7 +43,6 @@ const rateCourse = async (req, res) => {
 const reviewInstructor = async (req, res) => {
     const {
         _id,
-        course_id,
         instructor_id,
         type,
         reviewString

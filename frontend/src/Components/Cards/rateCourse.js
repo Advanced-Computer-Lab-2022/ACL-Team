@@ -1,4 +1,3 @@
-
 import "../css/rateCourse.css"
 import React , {useState} from 'react'
 import axios from 'axios'
@@ -67,7 +66,7 @@ const handleSubmitt=(e)=>{
 
           </div>
           <div className="rateCourse_button">
-            <button className="Navy_Button" type="submit"> Rate Course </button>
+            <button className="Navy_Button" type="submit"> Submit </button>
           </div>
 
         </div>

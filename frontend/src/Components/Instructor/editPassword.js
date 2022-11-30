@@ -1,7 +1,7 @@
 import React from 'react'
 import img1 from "../images/createCourse.png"
 
-export default function EditBio() {
+export default function EditPassword() {
   return (
     <div>
       <div className="rateCourse_frame">
@@ -11,22 +11,22 @@ export default function EditBio() {
               <img src={img1} alt="icon"/>
             </div>
             <div className="rateCourse-title">
-              <h1>Edit Biography</h1>
+              <h1>Email</h1>
             </div>
           </div>
           <div className="rateCourse_inputs">
             <div className="rateCourse_instructorName">
-              <input type = "textbox" placeholder="Edit Biography"/>
+              <input type = "textbox" placeholder="Enter your Email"/>
             </div><hr/>
-            {/* <div className="rateCourse_courseTitle">
-              <input type = "textbox" placeholder="Course Title"/>
-            </div> */}
-            {/* <div className="rateCourse_line1">
+            <div className="rateCourse_courseTitle">
+              <input type = "textbox" placeholder="Old Password"/>
+            </div>
+            <div className="rateCourse_line1">
               <hr></hr>
-            </div> */}
-            {/* <div className="rateCourse_rating">
-              <input type = "textbox" placeholder="Rating"/>
-            </div> */}
+            </div>
+            <div className="rateCourse_rating">
+              <input type = "textbox" placeholder="New Password"/>
+            </div>
 
           </div>
           <div className="rateCourse_button">
