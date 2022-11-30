@@ -53,8 +53,8 @@ app.use(bodyParser.urlencoded({
     extended: false
 })); // Parses urlencoded bodies
 app.use(bodyParser.json()); // Send JSON responses
- //app.use(passport.initialize())
- //app.use(passport.session())
+//  app.use(passport.initialize())
+//  app.use(passport.session())
 
 
 
