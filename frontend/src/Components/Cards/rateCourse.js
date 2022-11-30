@@ -1,5 +1,6 @@
 import React from 'react'
 import "../css/rateCourse.css"
+import NavyButton from '../General/Buttons/navyButton'
 import img1 from "../images/createCourse.png"
 
 export default function RateCourse() {
@@ -31,7 +32,7 @@ export default function RateCourse() {
 
           </div>
           <div className="rateCourse_button">
-            <button className="Navy_Button" type="submit"> Rate Course </button>
+            <button className="Navy_Button" type="submit"> Submit </button>
           </div>
 
         </div>

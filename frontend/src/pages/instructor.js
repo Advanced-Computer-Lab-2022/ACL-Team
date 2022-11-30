@@ -1,39 +1,20 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import CourseCard from '../Components/Cards/courseCard';
-
-//import InstructorComp from '../Components/Instructor/instructorComponent'
-export default function InstructorPage(){
-  const [InstCourses,setInstCourses] = useState([]);
-
-  const params = new URLSearchParams(Window.location.search);
-  // const instId = params.get('user._id');
-  const instId = '6385171ad519acc29b21ec0b';
-  console.log(instId);
-
-
-  const getInstructorCourses = async () =>{
-    await axios.get(`http://localhost:3000/instructor/courseShow?_id=${instId}`)
-    .then(
-      (res) => {
-        const courses = res.data;
-        setInstCourses(InstCourses)
-        return courses;
-        
-      }
-    )
-  }
-
-  useEffect(() => {
-    getInstructorCourses().then((courses) => setInstCourses(courses));
-  },[]);
-  
-  
+import React from 'react'
+import InstructorAddSubtitle from '../Components/Instructor/instructorAddSubtitle'
+import InstructorCourseCard from '../Components/Instructor/instructorCourseCard'
+import InstNavbar from '../Components/General/Navbar/instructorNavbar'
+export default function InstructorHomePage() {
   return (
+    
     <div>
-      {InstCourses.map((InstCourse) => (
-        <CourseCard course={InstCourse}/>
-    ))}
+        <InstNavbar/>
+        <div className="coursepage_component1">
+          <InstructorCourseCard/>
+        </div>
+        
+        <div className="coursepage_component2">
+          <InstructorAddSubtitle/>
+        </div>
+        
     </div>
   )
 }
