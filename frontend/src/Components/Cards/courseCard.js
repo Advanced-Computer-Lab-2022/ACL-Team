@@ -1,4 +1,6 @@
 import React from 'react';
+import { useState , useEffect} from 'react';
+import axios from 'axios';
 import "../css/courseCard.css"
 import img1 from "../images/Course Image.png"
 import img2 from "../images/Clock Icon.png"
@@ -6,8 +8,24 @@ import img3 from "../images/Lesson Icon.png"
 import img4 from "../images/Level Icon.png"
 
 export default function CourseCard({course}) {
-  const x = "Mazen Mahmoud Hejazy"
+  const [instructorName,setInstructorName] = useState('');
 
+  const getInstructor = async () => {
+    const res = await axios.get("http://localhost:3000/instructor/getInstructor" , {_id: course.instructor_id})
+    .catch((err) => console.log(err));
+    const data = await res.data;
+    
+    return data;
+    
+  };
+
+  useEffect(() =>{
+    
+    getInstructor().then((data) => setInstructorName(data.name))
+
+  },[])
+
+console.log(course.instructor_id); 
   return (
     <div className="course-details"> 
 

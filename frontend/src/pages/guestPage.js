@@ -126,10 +126,6 @@ export default function GuestPage() {
 
               
        <div className='coursecard'>
-        <CourseCard />
-        
-        <CourseCard />
-        
         
        </div>
 

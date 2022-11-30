@@ -24,7 +24,7 @@ export const TraineePage = () => {
   const [courses,setCourses] = useState([]);
 
   const getCourses = async () => {
-    const res = await axios.get("http://localhost:3000/course/getCourses")
+    const res = await axios.get("http://localhost:3000/course/getAllCourses")
     .catch((err) => console.log(err));
     const data = await res.data;
     
