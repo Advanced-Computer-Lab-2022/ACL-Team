@@ -36,7 +36,7 @@ const handleSubmitt=(e)=>{
   return (
     <div>
       <div className="rateInstructor_frame">
-      <form onSubmit={handleSubmitt}>
+      
         <div className="rateInstructor_container">
           <div className="rateInstructor_header">
             <div className="rateInstructor-icon1">
@@ -91,7 +91,7 @@ const handleSubmitt=(e)=>{
 
         </div>
         
-        </form>
+     
       </div>
       
 

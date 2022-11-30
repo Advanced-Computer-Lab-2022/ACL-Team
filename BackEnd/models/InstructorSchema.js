@@ -123,4 +123,5 @@ InstructorSchema.statics.changeBiography = async function (_id,newBiography) {
 
 
 
+
 module.exports = mongoose.model('Instructor', InstructorSchema)
