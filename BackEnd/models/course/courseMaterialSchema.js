@@ -13,7 +13,7 @@ const CourseMaterialSchema = new Schema({
         required: true
     },
     material_doc: {
-        type: String, //TODOOOOOOOOOOOOOOOOOOOOOO
+        type: String, //video URL
     },
     name: {
         type: String,
@@ -34,6 +34,9 @@ const CourseMaterialSchema = new Schema({
     maxGrade: {
         type: Number,
     },
+    duration: {
+        type: Number, //Mainly for video //TODO //ALWAYS IN HOURS
+    },
     questions: [{
         question_id: mongoose.Schema.Types.ObjectId,
         questionTitle:String,
@@ -50,15 +53,17 @@ const CourseMaterialSchema = new Schema({
 })
 //only to be used if video
 // in the video the doc is the video url
-CourseMaterialSchema.statics.editVideoUrl = async function (video_id, newUrl) {
+
+CourseMaterialSchema.statics.editVideoUrl = async function (material_id, newUrl) {
 
     return await this.findByIdAndUpdate({
-        _id: video_id
+        _id: material_id
     }, {
         material_doc: newUrl
     })
 
 }
+
 //only to be used if quiz or assignment
 CourseMaterialSchema.statics.addQuestion = async function (material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer,grade) {
 
