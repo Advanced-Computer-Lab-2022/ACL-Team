@@ -1,0 +1,15 @@
+.instructor_card_big{
+    width: 500px;
+    height: 709px;
+}
+
+.instructor_image_big > img{
+    width: 500px;
+}
+
+.instructor_button_big{
+    width: 100px;
+    position: relative;
+    left:390px;
+    bottom: 60px;
+}
