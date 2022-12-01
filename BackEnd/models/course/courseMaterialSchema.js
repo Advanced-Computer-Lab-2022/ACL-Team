@@ -64,7 +64,6 @@ CourseMaterialSchema.statics.editVideoUrl = async function (material_id, newUrl)
 
 }
 
-//only to be used if quiz or assignment
 CourseMaterialSchema.statics.addQuestion = async function (material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer,grade) {
 
     if (!material_id || !question_name || !question || !choice_1 || !choice_2 || !choice_3 || !choice_4 || !answer || !grade)
@@ -96,12 +95,24 @@ CourseMaterialSchema.statics.addQuestion = async function (material_id, question
         question_id:question._id,
         questionTitle:question_name
     }
+
+    if(material.maxGrade == undefined)
+    {
+        await this.findByIdAndUpdate({
+            _id: material_id
+        }, {
+            maxGrade: 0
+        }
+
+    )
+    }
     await this.findByIdAndUpdate({
             _id: material_id
         }, {
             $push: {
                 questions: questionObject
             },
+            maxGrade: (material.maxGrade + (~~grade))
         }
 
     )
