@@ -4,7 +4,7 @@ const User = require('../../models/UserSchema')
 
 //get instructor
 const getInstructorbyId = async (req, res) => {
-    const _id = req.params
+    const _id = req.query
 
     const instructor = await Instructor.findById(_id)
 
@@ -39,6 +39,7 @@ const changeEmail = async (req, res) => {
         email,
         newEmail,
     } = req.body
+    console.log(req.body)
 
     try {
         const user = await User.changeEmail(_id,email,newEmail)
@@ -57,5 +58,5 @@ module.exports = {
 
     changeBiography,
     changeEmail,
-
+    getInstructorbyId,
 }

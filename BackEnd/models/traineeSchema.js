@@ -143,6 +143,19 @@ TraineeSchema.statics.joinCourse = async function (_id, course_id) {
 
     )
 
+    const enrolledStudent = {
+        user_id: user._id,
+        username:user.username, 
+    }
+    
+    await Course.findByIdAndUpdate({
+        _id:course_id
+    },{
+        $push: {
+            enrolledStudents: enrolledStudent
+        },
+    })
+
     return trainee;
 }
 
