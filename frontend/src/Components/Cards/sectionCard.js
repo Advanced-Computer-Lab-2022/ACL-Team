@@ -4,7 +4,7 @@ import img2 from "../images/Clock Icon.png"
 import img3 from "../images/Lesson Icon.png"
 import img4 from "../images/Level Icon.png"
 import "../css/sectionCard.css"
-export default function SectionCard() {
+export default function SectionCard({section}) {
   return (
     <div>
         <div className="section-details"> 
@@ -14,7 +14,7 @@ export default function SectionCard() {
             </div>
 
             <div className="section-text">
-                <h1>title section</h1>
+                <h1>{section.sectionTitle}</h1>
 
                 
                 <p>

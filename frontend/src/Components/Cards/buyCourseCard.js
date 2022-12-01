@@ -10,6 +10,7 @@ import img8 from "../images/Clock.png"
 import img9 from "../images/students.png"
 
 import "../css/buyCourseCard.css"
+import { Link } from 'react-router-dom'
 export default function BuyCourseCard({courseID}) {
   return (
     <div>
@@ -90,7 +91,10 @@ export default function BuyCourseCard({courseID}) {
                 <p>
                     {courseID.summary}
                 </p>
-                <button>View Sections</button>
+                <Link to={`/trainee/sectionPage/${courseID}`}>
+                    <button>View Sections</button>
+                </Link>
+                
             </div>
             
             <div className="buy_button">
