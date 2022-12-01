@@ -11,7 +11,7 @@ export default function CourseCard({course}) {
   const [instructorName,setInstructorName] = useState('');
 
   const getInstructor = async () => {
-    const res = await axios.get("http://localhost:3000/instructor/getInstructor" , {_id: course.instructor_id})
+    const res = await axios.get(`http://localhost:3000/instructor/getInstructor?_id=${course.instructor_id}`)
     .catch((err) => console.log(err));
     const data = await res.data;
     
@@ -23,9 +23,7 @@ export default function CourseCard({course}) {
     
     getInstructor().then((data) => setInstructorName(data.name))
 
-  },[])
-
-console.log(course.instructor_id); 
+  },[]);
   return (
     <div className="course-details"> 
 
@@ -35,7 +33,7 @@ console.log(course.instructor_id);
 
      <div className="course-text">
         <h3>{course.title}</h3>
-        <h6><label id="light-font">by {course.instructor_id}</label></h6>
+        <h6><label id="light-font">by {instructorName}</label></h6>
         <p>
           {course.summary}
         </p>

@@ -3,8 +3,8 @@ import BuyCourseCard from '../Components/Cards/buyCourseCard'
 import Rating from '../Components/Cards/rating'
 import RatingsCard from '../Components/Course/ratingsCard'
 import Navbar from '../Components/General/Navbar/navbar'
-import InstructorCard from '../Components/Instructor/instructorCard'
 import "../Components/css/coursePage.css"
+import InstructorCardBig from '../Components/Instructor/instructorCardBig'
 
 export const CoursePage = () => {
   return (
@@ -19,7 +19,7 @@ export const CoursePage = () => {
         <BuyCourseCard/>
       </div>
       <div className="inst_card">
-        <InstructorCard/>
+        <InstructorCardBig/>
       </div>
       <div>
         

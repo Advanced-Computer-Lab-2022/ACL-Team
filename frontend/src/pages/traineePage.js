@@ -37,6 +37,11 @@ export const TraineePage = () => {
 
   },[])
 
+  const params = new URLSearchParams(window.location.search);
+  const courseId = params.get('_id');
+  console.log(courseId)
+
+
   return (
     <div className="trainee-page">
 

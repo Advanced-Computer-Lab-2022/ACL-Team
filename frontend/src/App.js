@@ -47,6 +47,7 @@ import InstructorHomePage from './pages/instructor';
 import InstructorEditBio from './pages/instructorEditBio';
 import InstructorEditEmail from './pages/instructorEditEmail';
 import InstructorEditPassword from './pages/instructorEditPassword';
+import InstructorCardBig from './Components/Instructor/instructorCardBig';
 
 
 
@@ -85,11 +86,10 @@ function App() {
 
 
 
-      <Route path='/test' exact element={<InstructorCard/>} />
       <Route path='/test2' exact element={<TemplatePage/>} />
 
 
-      <Route path='/test' exact element={<Navbar/>}/>
+      <Route path='/test' exact element={<InstructorCardBig/>}/>
       <Route path='/test2' exact element={<Dropdown2/>} />
 
       {/* <Route path='/test3' exact element={<RateInstructor/>} /> */}
