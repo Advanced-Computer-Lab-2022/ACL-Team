@@ -2,6 +2,7 @@ const Course = require('../../models/course/courseSchema')
 
 const Fuse = require('fuse.js')
 const CourseSection = require('../../models/course/courseSectionSchema')
+const CourseSubtitle = require('../../models/course/courseSubtitleSchema')
 
 //get all courses available
 const getAllCourses = async (req, res) => {
@@ -173,18 +174,59 @@ const getCourseSections = async (req, res) => {
         if (!course)
             throw Error('Course Does not Exist')
 
-        const courses = await CourseSection.find({
+        const sections = await CourseSection.find({
             course_id : _id
         })
-        res.status(200).json(courses)
+        if (!sections)
+            throw Error('No Sections Exist in this Course')
+
+        res.status(200).json(sections)
     } catch (error) {
         res.status(400).json({
             error: error.message
         })
     }
-    
-
 }
+const getCourseSubtitles = async (req, res) => {
+
+    const {
+        course_id,
+        section_id,
+    } = req.query
+
+    console.log(req.query)
+
+    try {
+        if ( !course_id || !section_id)
+        throw Error('All fields must be filled')
+
+        const course = await Course.find({
+            course_id
+        })
+        if (!course)
+            throw Error('Course Does not Exist')
+
+        const sections = await CourseSection.find({
+            course_id
+        })
+        if (!sections)
+            throw Error('No Sections Exist in this Course')
+
+        const subtitles = await CourseSubtitle.find({
+            course_id,
+            section_id
+        })
+        if (!subtitles)//THIS ERROR SHOULD NEVER APPEAR AS WE ALWAYS MAKE THE COURSE AND HANDLE IT IF IT APPEARED D:
+            throw Error('No Subtitles Exist in this Course') 
+
+        res.status(200).json(subtitles)
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+
 
 
 module.exports = {
@@ -197,6 +239,7 @@ module.exports = {
     getCoursesByRatingFromLowToHigh,
     getCoursesByRatingFromHighToLow,
     getCoursesByPrice,
-    getCourseSections
+    getCourseSections,
+    getCourseSubtitles
 
 }
