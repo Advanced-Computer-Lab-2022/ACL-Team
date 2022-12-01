@@ -78,6 +78,11 @@ const CourseSchema = new Schema({
     previewImage: {//TODO
         type: String,
     },
+    enrolledStudents: [{
+        user_id: mongoose.Schema.Types.ObjectId,
+        username:String, 
+    }],
+
 
 
 }, {
