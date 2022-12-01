@@ -16,7 +16,7 @@ export default function InstructorCardBig() {
             </div>
 
             <div className="instructor_info_big">
-                <label><span id="inst_name">Mazen hejazy</span></label><br/>
+                <label><span id="inst_name">Mazen Hejazy</span></label><br/>
                 <label id="field">Web Developer</label>
             </div>
 
