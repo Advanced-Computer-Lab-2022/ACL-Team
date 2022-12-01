@@ -1,0 +1,262 @@
+
+.instructor_review{
+    position: relative;
+    left: 25px;
+    top: 100px;
+    width: 1334px;
+    height: 467px;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+.pp{
+    position: relative;
+    top: 30px;
+    left: 30px;
+    border-radius: 15px;
+    height: 388px;
+    width: 308px;
+
+    
+}
+.name{
+    position: relative;
+    bottom: 350px;
+    left: 400px;
+    text-align: left;
+  vertical-align: top;
+  font-size: 64px;
+  font-family: Armata;
+  line-height: auto;
+  color: #253858;
+}
+.email{
+    position: relative;
+    bottom: 380px;
+    left: 410px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 20px;
+    font-family: Aclonica;
+    line-height: auto;
+    color: #adadad;
+}
+.emailR{
+    position: relative;
+    bottom: 390px;
+    left: 410px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 14px;
+    font-family: Aclonica;
+    line-height: auto;
+    color: #253858;
+}
+.date{
+    position: relative;
+    bottom: 390px;
+    left: 410px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 20px;
+    font-family: Aclonica;
+    line-height: auto;
+    color: #adadad;
+}
+.dateR{
+    position: relative;
+    bottom: 400px;
+    left: 410px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 14px;
+    font-family: Aclonica;
+    line-height: auto;
+    color: #253858;
+}
+.address{
+    position: relative;
+    bottom: 400px;
+    left: 410px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 20px;
+    font-family: Aclonica;
+    line-height: auto;
+    color: #adadad;
+
+}
+.addressR{
+    position: relative;
+    bottom: 400px;
+    left: 410px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 14px;
+    font-family: Aclonica;
+    line-height: auto;
+    color: #253858;
+}
+.icon{
+    position: relative;
+    bottom: 600px;
+    left: 1150px;
+    height: 140px;
+  width: 140px;
+}
+.review{
+    position: relative;
+    bottom: 550px;
+    left: 650px;
+    text-align: left;
+    vertical-align: top;
+    font-size: 18px;
+    font-family: Open Sans;
+    line-height: 27%;
+    color: #adadad;
+    line-height: 1;
+}
+.cont{
+    width: 500px;
+    
+}
+.auth{
+    position: relative;
+    bottom: 630px;
+    text-align: center;
+  vertical-align: middle;
+  font-size: 108px;
+  font-family: DM Serif Display;
+  line-height: 25%;
+  color: #253858;
+}
+.Name{
+    position: relative;
+    bottom: 500px;
+    left: 700px;
+    text-align: left;
+  vertical-align: top;
+  font-size: 26px;
+  font-family: DM Serif Display;
+  letter-spacing: 3%;
+  line-height: 25%;
+  color: #253858;
+}
+.work{
+    position: relative;
+    bottom: -200px;
+    left: 500px;
+    width: 290px;
+    height: 78px;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+.courseComplete{
+    position: relative;
+    bottom: -100px;
+    left: 900px;
+    width: 208px;
+    height: 104px;
+    border-radius: 10px;
+    background-color: aliceblue;
+
+}
+.courseProgress{
+    position: relative;
+    left: 1160px;
+    bottom: 3px;
+    width: 208px;
+    height: 104px;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+.workCSS{
+    position: relative;
+    bottom: -25px;
+    left: 50px;
+
+    text-align: center;
+  vertical-align: middle;
+  font-size: 15px;
+  font-family: Ubuntu;
+  line-height: auto;
+  color: #253858;
+}
+.button1{
+    position: relative;
+    left: 20px;
+    bottom: 20px;
+}
+.text-1{
+    position: relative;
+    bottom: -10px;
+    left: 40px;
+    text-align: left;
+  vertical-align: top;
+  font-size: 16px;
+  font-family: Roboto;
+  line-height: 24%;
+  color: #253858;
+  line-height: 1;
+}
+.text-2{
+    position: relative;
+    left: 70px;
+    bottom: 10px;
+    text-align: left;
+  vertical-align: top;
+  font-size: 64px;
+  font-family: Baloo Bhai;
+  line-height: auto;
+  color: #253858;
+}
+.quarter{
+    position: relative;
+    top: 150px;
+    left: 200px;
+    width: 417.87px;
+    height: 183px;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+.text-2-1{
+    text-align: center;
+  vertical-align: middle;
+  font-size: 58px;
+  font-family: Abyssinica SIL;
+  line-height: auto;
+  color: #253858;
+}
+.text-1-1{
+    text-align: center;
+  vertical-align: middle;
+  font-size: 18px;
+  font-family: Abyssinica SIL;
+  line-height: auto;
+  color: #adadad;
+}
+.quarter2{
+    position: relative;
+    top: -30PX;
+    left: 750px;
+    width: 417.87px;
+    height: 183px;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+.quarter3{
+    position: relative;
+    left: 200px;
+    width: 417.87px;
+    height: 183px;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
+.quarter4{
+    position: relative;
+    left: 750px;
+    top: -180px;
+    width: 417.87px;
+    height: 183px;
+    border-radius: 10px;
+    background-color: aliceblue;
+}
