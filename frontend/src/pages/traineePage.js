@@ -44,12 +44,6 @@ export const TraineePage = () => {
     getCourses().then((data) => setCourses(data))
 
   },[])
-
-  const params = new URLSearchParams(window.location.search);
-  const courseId = params.get('_id');
-  console.log(courseId)
-
-
   return (
     <div className="trainee-page">
 
