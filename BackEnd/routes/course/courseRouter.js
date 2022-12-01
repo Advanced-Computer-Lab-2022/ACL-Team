@@ -2,7 +2,6 @@ const express = require('express')
 const course = require('../../models/course/courseSchema')
 const CourseStudyRouter = require("./courseStudyRouter")
 const {
-    getCourse,
     getAllCourses,
     getCourseById,
     getCoursesBySubject,
@@ -26,11 +25,12 @@ router.use("/courseStudy", CourseStudyRouter)
 
 
 
-router.get('/', getCoursesByPriceFromHighToLow)
+router.get('/', getCourseById)
 router.get('/getAllCourses', getAllCourses)
 router.post('/getCourseBySubject', getCoursesBySubject)
 router.post('/getCoursesByPrice', getCoursesByPrice)
 router.post('/getCoursesByRating', getCoursesByRating)
+
 
 router.post('/course/rateCourse', rateCourse)
 

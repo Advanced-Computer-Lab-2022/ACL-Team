@@ -11,8 +11,8 @@ const getAllCourses = async (req, res) => {
     res.status(200).json(courses)
 }
 //get a course
-const getCourse = async (req, res) => {
-    const _id = req._id
+const getCourseById = async (req, res) => {
+    const _id = req.query
 
     const course = await Course.findById(_id)
 
@@ -63,20 +63,6 @@ const getCourseBySubject = async (req, res) => {
     const fuse = new Fuse(courses, options)
     const result = fuse.search(req.subject)
     res.status(200).json(result)
-}
-
-const getCourseById = async (req, res) => {
-    const id = req.id
-
-    const course = await Course.findById(id);
-
-    if (!course) {
-        return res.status(404).json({
-            error: 'course not found'
-        })
-    }
-
-    res.status(200).json(course)
 }
 //get course title and total hours and ratings
 const getAll = async (req, res) => {
@@ -172,7 +158,6 @@ const getCoursesByRatingFromHighToLow = async (req, res) => {
 
 
 module.exports = {
-    getCourse,
     getAllCourses,
     getCourseById,
     getCoursesBySubject,

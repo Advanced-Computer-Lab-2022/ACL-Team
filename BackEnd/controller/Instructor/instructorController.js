@@ -39,6 +39,7 @@ const changeEmail = async (req, res) => {
         email,
         newEmail,
     } = req.body
+    console.log(req.body)
 
     try {
         const user = await User.changeEmail(_id,email,newEmail)

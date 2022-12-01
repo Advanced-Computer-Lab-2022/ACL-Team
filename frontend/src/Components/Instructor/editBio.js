@@ -1,7 +1,35 @@
-import React from 'react'
+
 import img1 from "../images/createCourse.png"
+import React , {useState} from 'react'
+import axios from 'axios'
+
 
 export default function EditBio() {
+const[_id,set_id] =useState('')
+const[newBiography,setNewBio] =useState('')
+
+const changeBio = async () => {
+  // console.log("boodaa")
+  const res = await axios
+    .post("http://localhost:3000/instructor/changeBiography", {
+     _id:_id,newBiography:newBiography
+    })
+    .catch((err) => console.log(err));
+    const data = await res.data;
+  return data;
+};
+const handleSubmitt=(e)=>{
+  e.preventDefault()
+  console.log("yarab")
+
+
+  
+
+  changeBio().then((data) => console.log(data))
+  console.log("hiiii")
+
+}
+
   return (
     <div>
       <div className="rateCourse_frame">
@@ -14,9 +42,19 @@ export default function EditBio() {
               <h1>Edit Biography</h1>
             </div>
           </div>
+          <form onSubmit={handleSubmitt}>
           <div className="rateCourse_inputs">
+          <div className="rateCourse_instructorName">
+              <input
+              onChange={(e) => set_id(e.target.value)}
+              value={_id}
+               type = "textbox" placeholder="your_id"/>
+            </div><hr/>
             <div className="rateCourse_instructorName">
-              <input type = "textbox" placeholder="Edit Biography"/>
+              <input 
+              onChange={(e) => setNewBio(e.target.value)}
+              value={newBiography}
+              type = "textbox" placeholder="Edit Biography"/>
             </div><hr/>
             {/* <div className="rateCourse_courseTitle">
               <input type = "textbox" placeholder="Course Title"/>
@@ -32,6 +70,7 @@ export default function EditBio() {
           <div className="rateCourse_button">
             <button className="Navy_Button" type="submit"> Submit </button>
           </div>
+          </form>
 
         </div>
       </div>

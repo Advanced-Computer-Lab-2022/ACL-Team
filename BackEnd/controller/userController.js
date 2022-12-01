@@ -9,7 +9,7 @@ const changePassword = async (req, res) => {
         oldPassword,
         newPassword
     } = req.body
-
+    console.log(req.body)
     try {
         
         const user = await User.changePassword(email, oldPassword, newPassword)
