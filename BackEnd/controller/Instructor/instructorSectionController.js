@@ -45,7 +45,7 @@ const addQuizQuestion = async (req, res) => {
         answer,
         grade
     } = req.body
-
+    console.log(req.body)
     try {
         
         const quiz = await courseSubtitle.addQuizQuestion(course_id, section_id, subtitle_id, material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer,grade)

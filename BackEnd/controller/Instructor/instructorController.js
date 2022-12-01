@@ -4,7 +4,7 @@ const User = require('../../models/UserSchema')
 
 //get instructor
 const getInstructorbyId = async (req, res) => {
-    const _id = req.params
+    const _id = req.query
 
     const instructor = await Instructor.findById(_id)
 
@@ -58,5 +58,5 @@ module.exports = {
 
     changeBiography,
     changeEmail,
-
+    getInstructorbyId,
 }

@@ -4,6 +4,7 @@ const Instructor = require('../models/InstructorSchema')
 const {
     changeBiography,
     changeEmail,
+    getInstructorbyId,
 } = require('../controller/Instructor/instructorController')
 const {
     viewOfferedCourses,
@@ -24,7 +25,7 @@ const {
 const router = express.Router()
 
 
-
+router.get('/getInstructor', getInstructorbyId)
 router.get('/', () => {
 
 })
