@@ -1,5 +1,13 @@
-import React from 'react'
-import CourseCard from '../Components/Cards/courseCard'
+import React from 'react';
+import CourseCard from '../Components/Cards/courseCard';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
 
 import {useState,useEffect} from 'react';
 import axios from 'axios';

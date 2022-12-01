@@ -6,6 +6,7 @@ import img1 from "../images/Course Image.png"
 import img2 from "../images/Clock Icon.png"
 import img3 from "../images/Lesson Icon.png"
 import img4 from "../images/Level Icon.png"
+import { Link } from 'react-router-dom';
 
 export default function CourseCard({course}) {
   const [instructorName,setInstructorName] = useState('');
@@ -32,7 +33,10 @@ export default function CourseCard({course}) {
      </div>
 
      <div className="course-text">
-        <h3>{course.title}</h3>
+        <Link to={`/course/coursePage/${course._id}`}>
+          <h3>{course.title}</h3>
+        </Link>
+
         <h6><label id="light-font">by {instructorName}</label></h6>
         <p>
           {course.summary}
