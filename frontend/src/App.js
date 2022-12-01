@@ -47,6 +47,7 @@ import InstructorHomePage from './pages/instructor';
 import InstructorEditBio from './pages/instructorEditBio';
 import InstructorEditEmail from './pages/instructorEditEmail';
 import InstructorEditPassword from './pages/instructorEditPassword';
+import UserPage from './pages/UserPage';
 
 
 
@@ -95,6 +96,7 @@ function App() {
       {/* <Route path='/test3' exact element={<RateInstructor/>} /> */}
       <Route path='/rateInstructor' exact element={<RateInstructor/>} />
       <Route path='/rateCourse' exact element={<RateCourse/>} />
+      <Route path='/userpage' exact element={<UserPage/>}/>
 
 
 
@@ -107,7 +109,7 @@ function App() {
       <Route path='/Instructor' exact element={<Inst/>}/>
       <Route path='/InstructorProfile' exact element={<InstProfile/>}/>
       <Route path='/course' exact element={<Course/>}/>
-      <Route path='/user' exact element={<UserPage/>}/>
+       
       <Route path='/userProfile' exact element={<UserProfile/>}/> */}
 
 
