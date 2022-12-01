@@ -90,7 +90,9 @@ export default function BuyCourseCard({courseID}) {
                 <p>
                     {courseID.summary}
                 </p>
+                <button>View Sections</button>
             </div>
+            
             <div className="buy_button">
                 <button className="buy_Course"><label>Buy Course</label>  </button>
             </div>
