@@ -43,7 +43,7 @@ const CourseSubtitleSchema = new Schema({
     assignments: [{
         assignment_id: mongoose.Schema.Types.ObjectId,
        // ref: 'courseMaterial',
-        maxGrade: Number,
+        maxGrade: Number,//TODO
     }],
     videos: [{
         video_id: mongoose.Schema.Types.ObjectId,
@@ -53,7 +53,7 @@ const CourseSubtitleSchema = new Schema({
     quizes: [{
         quiz_id: mongoose.Schema.Types.ObjectId,
        // ref: 'courseMaterial',
-        maxGrade: Number,
+        maxGrade: Number,//TODO
     }],
 
 }, {

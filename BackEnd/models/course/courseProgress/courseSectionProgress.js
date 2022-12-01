@@ -26,6 +26,11 @@ const CourseSectionProgressSchema = new Schema({
     username: {
         type: String,
     },
+    courseTitle: {
+        type: String,
+        ref: 'Course',
+        //required: true
+    },
     sectionTitle: {
         type: String,
         required: true
@@ -81,8 +86,6 @@ CourseSectionProgressSchema.statics.documentExists = async function (user_id,cou
         return true
     }
 }
-
-
 CourseSectionProgressSchema.statics.answerQuestion = async function (user_id,course_id,section_id,material_id, question_id,choice) {
     
     if (!user_id || !course_id || !section_id || !material_id|| !question_id|| !choice)
@@ -125,7 +128,8 @@ CourseSectionProgressSchema.statics.answerQuestion = async function (user_id,cou
             course_id,
             section_id,
             username:user.username,
-            sectionTitle : section.sectionTitle
+            sectionTitle : section.sectionTitle,
+            courseTitle : course.title,
         })
     }
 
@@ -162,7 +166,6 @@ CourseSectionProgressSchema.statics.answerQuestion = async function (user_id,cou
         },
     })
 }
-
 CourseSectionProgressSchema.statics.getQuestionGrade = async function (user_id,course_id,section_id,material_id,question_id) {
    if (!user_id || !course_id || !section_id || !material_id|| !question_id)
         throw error('All fields must be filled')
@@ -215,5 +218,57 @@ CourseSectionProgressSchema.statics.getQuestionGrade = async function (user_id,c
 
     return returnedGrade
 }
+CourseSectionProgressSchema.statics.getQuizGrade = async function (user_id,course_id,section_id,material_id) {
+    if (!user_id || !course_id || !section_id || !material_id)
+         throw error('All fields must be filled')
+ 
+     const material = await CourseMaterial.findOne({
+         _id:material_id
+     })
+     if (!material)
+         throw Error('This Material Does not Exist')
+ 
+     const user = await User.findOne({
+         _id:user_id
+     })
+     if (!user)
+         throw Error('This User Does not Exist')
+  
+     const section = await CourseSection.findOne({
+         _id:section_id
+     }) 
+     if (!section)
+         throw Error('This Section Does not Exist')
+         
+     const question = await Question.findOne({
+         _id:question_id
+     })  
+     if (!question)
+         throw Error('This Question Does not Exist')
+ 
+     const sectionProgress = await this.findOne({
+         user_id,
+         course_id,
+         section_id,
+     })
+     var returnedGrade = -100000
+ 
+     for (let i = 0; i < sectionProgress.solvedQuizzes.length; i++) {
+         
+         if(sectionProgress.solvedQuizzes[i].quiz_id == material_id)
+         {
+            
+            if(sectionProgress.solvedQuizzes[i].questionsAnswers[0].question_id == question_id)
+            {
+             returnedGrade = sectionProgress.solvedQuizzes[i].questionsAnswers[0].acquiredGrade
+            }
+         }
+             
+       }
+     if(returnedGrade == -100000)
+       throw Error('Question is Not Answered')
+ 
+     return returnedGrade
+ }
 
 module.exports = mongoose.model('Section Progress', CourseSectionProgressSchema)

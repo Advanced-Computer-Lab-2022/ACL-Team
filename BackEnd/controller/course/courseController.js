@@ -1,6 +1,8 @@
 const Course = require('../../models/course/courseSchema')
 
 const Fuse = require('fuse.js')
+const CourseSection = require('../../models/course/courseSectionSchema')
+const CourseSubtitle = require('../../models/course/courseSubtitleSchema')
 
 //get all courses available
 const getAllCourses = async (req, res) => {
@@ -11,8 +13,8 @@ const getAllCourses = async (req, res) => {
     res.status(200).json(courses)
 }
 //get a course
-const getCourse = async (req, res) => {
-    const _id = req._id
+const getCourseById = async (req, res) => {
+    const _id = req.query
 
     const course = await Course.findById(_id)
 
@@ -63,20 +65,6 @@ const getCourseBySubject = async (req, res) => {
     const fuse = new Fuse(courses, options)
     const result = fuse.search(req.subject)
     res.status(200).json(result)
-}
-
-const getCourseById = async (req, res) => {
-    const id = req.id
-
-    const course = await Course.findById(id);
-
-    if (!course) {
-        return res.status(404).json({
-            error: 'course not found'
-        })
-    }
-
-    res.status(200).json(course)
 }
 //get course title and total hours and ratings
 const getAll = async (req, res) => {
@@ -170,9 +158,78 @@ const getCoursesByRatingFromHighToLow = async (req, res) => {
     }
 }
 
+const getCourseSections = async (req, res) => {
+
+    const {
+        _id
+    } = req.query
+
+    try {
+        if (!_id)
+        throw Error('All fields must be filled')
+
+        const course = await Course.find({
+            _id
+        })
+        if (!course)
+            throw Error('Course Does not Exist')
+
+        const sections = await CourseSection.find({
+            course_id : _id
+        })
+        if (!sections)
+            throw Error('No Sections Exist in this Course')
+
+        res.status(200).json(sections)
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+const getCourseSubtitles = async (req, res) => {
+
+    const {
+        course_id,
+        section_id,
+    } = req.query
+
+    console.log(req.query)
+
+    try {
+        if ( !course_id || !section_id)
+        throw Error('All fields must be filled')
+
+        const course = await Course.find({
+            course_id
+        })
+        if (!course)
+            throw Error('Course Does not Exist')
+
+        const sections = await CourseSection.find({
+            course_id
+        })
+        if (!sections)
+            throw Error('No Sections Exist in this Course')
+
+        const subtitles = await CourseSubtitle.find({
+            course_id,
+            section_id
+        })
+        if (!subtitles)//THIS ERROR SHOULD NEVER APPEAR AS WE ALWAYS MAKE THE COURSE AND HANDLE IT IF IT APPEARED D:
+            throw Error('No Subtitles Exist in this Course') 
+
+        res.status(200).json(subtitles)
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+
+
 
 module.exports = {
-    getCourse,
     getAllCourses,
     getCourseById,
     getCoursesBySubject,
@@ -181,6 +238,8 @@ module.exports = {
     getCoursesByRating,
     getCoursesByRatingFromLowToHigh,
     getCoursesByRatingFromHighToLow,
-    getCoursesByPrice
+    getCoursesByPrice,
+    getCourseSections,
+    getCourseSubtitles
 
 }
