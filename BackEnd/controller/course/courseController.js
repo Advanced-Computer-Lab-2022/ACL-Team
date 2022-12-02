@@ -3,6 +3,7 @@ const Course = require('../../models/course/courseSchema')
 const Fuse = require('fuse.js')
 const CourseSection = require('../../models/course/courseSectionSchema')
 const CourseSubtitle = require('../../models/course/courseSubtitleSchema')
+const Question = require('../../models/course/questionSchema')
 
 //get all courses available
 const getAllCourses = async (req, res) => {
@@ -226,6 +227,30 @@ const getCourseSubtitles = async (req, res) => {
         })
     }
 }
+const getQuestion = async (req, res) => {
+
+    const {
+        _id
+    } = req.query
+
+    try {
+        if (!_id)
+        throw Error('All fields must be filled')
+
+        const question = await Question.findById({
+            _id
+        })
+        console.log(question)
+        if (!question)
+            throw Error('Question Does not Exist')
+
+        res.status(200).json(question)
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
 
 
 
@@ -240,6 +265,7 @@ module.exports = {
     getCoursesByRatingFromHighToLow,
     getCoursesByPrice,
     getCourseSections,
-    getCourseSubtitles
+    getCourseSubtitles,
+    getQuestion
 
 }

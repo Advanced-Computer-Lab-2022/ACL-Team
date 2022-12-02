@@ -9,6 +9,7 @@ export default function VideoPage() {
   const c = "El course dah msh a7san 7aga 3matan"
   const p = "In this video, we will see how we loop through arrays and fetch data from it using indexes";
   const i = "El ragel dah 3shara 3la 3shara!"
+
   return (
     <div className="video-page">
       <Navbar/>
@@ -32,7 +33,7 @@ export default function VideoPage() {
       height="556"  
       className = "video_component">
       <ReactPlayer 
-
+      
       url={'https://www.youtube.com/watch?v=9b0BOLD7-iw'}/>
       </div>
       <div className="video_description">

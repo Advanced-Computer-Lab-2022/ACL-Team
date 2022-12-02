@@ -11,11 +11,13 @@ const {
     getCoursesByPriceFromHighToLow,
     getCourseSections,
     getCourseSubtitles,
+    getQuestion,
 } = require('../../controller/course/courseController');
 
 const {
     rateCourse
 } = require('../../controller/trainee/traineeController');
+const { getQuestionGrade } = require('../../controller/trainee/traineeCourseController');
 
 
 
@@ -31,6 +33,7 @@ router.get('/', getCourseById)
 router.get('/getAllCourses', getAllCourses)
 router.get('/CourseSections', getCourseSections)
 router.get('/CourseSubtitles', getCourseSubtitles)
+router.get('/Question', getQuestion)
 
 router.post('/getCourseBySubject', getCoursesBySubject)
 router.post('/getCoursesByPrice', getCoursesByPrice)
