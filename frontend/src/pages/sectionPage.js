@@ -5,11 +5,13 @@ import SectionCard from '../Components/Cards/sectionCard'
 import Navbar from '../Components/General/Navbar/navbar'
 import axios from 'axios'
 export default function SectionPage() {
-    const{id} = useParams();
+    const{courseid} = useParams();
     const [sections,setSections] = useState([]);
 
+    
+
     const getsectionsbyCourse_id = async () => {
-        const res = await axios.get(`http://localhost:3000/course/CourseSections?_id=${id}`)
+        const res = await axios.get(`http://localhost:3000/course/CourseSections?_id=${courseid}`)
         .catch((err) => console.log(err));
         const data = await res.data;
         
@@ -27,6 +29,7 @@ export default function SectionPage() {
   return (
     <div>
         <Navbar/>
+        <h2>{courseid}</h2>
         <div className="sectionPage_comp">
 
         {sections && sections.map((section) =>(
