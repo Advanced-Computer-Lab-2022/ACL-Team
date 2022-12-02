@@ -68,7 +68,7 @@ InstructorSchema.statics.addDiscount = async function (instructor_id, name, perc
     if (!instructor)
         throw Error('Instructor does not Exist')
 
-    const discount = await Discount.create({
+    var discount = await Discount.create({
         name,
         percentage,
         start_date,
@@ -77,7 +77,7 @@ InstructorSchema.statics.addDiscount = async function (instructor_id, name, perc
     if(!discount)
         throw Error('Discount not created')
 
-    const discountObj = {
+    var discountObj = {
         discount_id : discount._id,
         discountName:name
     }

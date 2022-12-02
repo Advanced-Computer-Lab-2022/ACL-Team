@@ -1,0 +1,35 @@
+.container{
+    border-radius: 10px;
+    height: 600px;
+    position: relative;
+    left: 10px;
+    top: 100px;
+}
+.Label{
+    text-align: left;
+    vertical-align: top;
+    font-size: 30px;
+    font-family: Poppins;
+    letter-spacing: 8%;
+    line-height: 35%;
+    color: #253858;
+    position: relative;
+    left: 90px;
+}
+.text{
+    text-align: left;
+    vertical-align: top;
+    font-size: 17px;
+    font-family: Poppins;
+    letter-spacing: 8%;
+    line-height: 1;
+    color: #253858;
+    position: relative;
+    top: 40px;
+    left: 130px;
+}
+.button1-1{
+    position: relative;
+    left: 490px;
+    border-radius: 10px;
+}

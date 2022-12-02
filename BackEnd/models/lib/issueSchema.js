@@ -14,8 +14,8 @@ const IssueSchema = new Schema({
     },
     type: {
         type: String,
-        enum: ['Payment Issue', 'Refund Request', 'Offensive User'],
-        default: 'Offensive User'
+        enum: ['Technical', 'Financial', 'Other'],
+        default: 'Other'
     },
     status: {
         type: String,
@@ -30,9 +30,12 @@ const IssueSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Admin',
     },
+    resolverComment: {
+        type: String,
+    },
 
 }, {
     timestamps: true
 })
 
-module.exports = mongoose.model('IssueSchema', IssueSchema)
+module.exports = mongoose.model('Issue Schema', IssueSchema)

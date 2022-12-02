@@ -1,4 +1,6 @@
 import React from 'react'
+import { useState, useEffect } from 'react';
+import axios from 'axios'
 import img1 from "../images/Hotel.png"
 import img2 from "../images/Swimming.png"
 import img3 from "../images/Wi-Fi.png"
@@ -10,7 +12,7 @@ import img8 from "../images/Clock.png"
 import img9 from "../images/students.png"
 
 import "../css/buyCourseCard.css"
-export default function BuyCourseCard() {
+export default function BuyCourseCard({course}) {
   return (
     <div>
         <div className="card_frame">
@@ -18,12 +20,12 @@ export default function BuyCourseCard() {
                 <img src = {img1} alt = "course photo"/>
             </div>
             <div className="title">
-                <label>Software Engineering</label>
+                <label>{course.title}</label>
 
             </div>
             <div className="category">
-                <label>>></label>
-                <label1>Networks</label1>
+                <label></label>
+                <label1>{course.category}</label1>
             </div>
             <div className="icons">
                 <img src={img2} alt="icon1"/>
@@ -31,7 +33,7 @@ export default function BuyCourseCard() {
                 <img src={img4} alt="icon3"/>
             </div>
             <div className="subtitle">
-                <p>CCNP All-in-1 Video Boot Camp With Chris Bryant</p>
+                <p>{course.title} With Chris Bryant</p>
             </div>
             <div className="ratings">
                 <div className="star1">
@@ -57,7 +59,7 @@ export default function BuyCourseCard() {
                 <img src={img6} alt="price"/>
             </div>
             <div className="price_label">
-                <label>2000</label>
+                <label>{course.price}</label>
             </div>
             <div className="currency_label">
                 <label>EGP</label>
@@ -66,13 +68,13 @@ export default function BuyCourseCard() {
                 <img src={img7} alt="level Icon"/>
             </div>
             <div className="level_label">
-                <label>Medium level</label>
+                <label>{course.level} level</label>
             </div>
             <div className="hours_icon">
                 <img src={img8} alt="level Icon"/>
             </div>
             <div className="hours_label">
-                <label>42 hours</label>
+                <label>{course.totalHours} hours</label>
             </div>
             <div className="lessons_icon">
                 <img src={img6} alt="level Icon"/>
@@ -87,8 +89,8 @@ export default function BuyCourseCard() {
                 <label>25,599 Students</label>
             </div>
             <div className="description_course">
-                <p>ou're in the right place at the right time to earn your CCNP with my clear, comprehensive CCNP All-In-One Video Boot Camp!
-                    This course is 100% updated for the latest CCNP exams. I'm ready to prepare you for success on the SWITCH 300-115 exam, the ROUTE 300-101 exam, and the TSHOOT 300-125 exam - AND get you ready for real-world networking success with dozens of labs drawn from my real-world networking expericnce.
+                <p>
+                    {course.summary}
                 </p>
             </div>
             <div className="buy_button">
