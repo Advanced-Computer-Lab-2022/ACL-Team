@@ -240,7 +240,6 @@ const getQuestion = async (req, res) => {
         const question = await Question.findById({
             _id
         })
-        console.log(question)
         if (!question)
             throw Error('Question Does not Exist')
 

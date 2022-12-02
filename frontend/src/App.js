@@ -51,11 +51,13 @@ import InstructorEditPassword from './pages/instructorEditPassword';
 import UserPage from './pages/UserPage';
 import InstructorCardBig from './Components/Instructor/instructorCardBig';
 
+import SectionPage from './pages/sectionPage';
 import TermsInstructor from './pages/TermsInstructor';
 import TermsTrainee from './pages/TermsTrainee';
 import AllCourses from './pages/AllCourses';
 
 
+import SubtitlePage from './pages/subtitlePage';
 
 
 
@@ -92,8 +94,9 @@ function App() {
       <Route path='/instructor/editBio' exact element={<InstructorEditBio/>} />
       <Route path='/instructor/editMail' exact element={<InstructorEditEmail/>} />
       <Route path='/instructor/editPassword' exact element={<InstructorEditPassword/>} />
-      <Route path='signUp/instructor/termsinstructor' exact element={<TermsInstructor/>} />
-      <Route path='/TermsTrainee' exact element={<TermsTrainee/>} />
+      <Route path='/trainee/sectionPage/:courseid' exact element={<SectionPage/>} /> 
+      <Route path='/trainee/SubtitlePage/:sectionid' exact element={<SubtitlePage/>} />      
+      <Route path='signUp/instructor/terms_instructor' exact element={<Terms_Instructor/>} />
 
 
 

@@ -3,6 +3,7 @@ const Course = require('../../models/course/courseSchema')
 const Trainee = require('../../models/traineeSchema')
 const CourseProgress = require('../../models/course/courseProgress/courseProgressSchema')
 const CourseSectionProgress = require('../../models/course/courseProgress/courseSectionProgress')
+const CourseMaterial = require('../../models/course/courseMaterialSchema')
 
 const answerQuestion = async (req, res) => {
     const {
@@ -68,6 +69,49 @@ const getQuizGrade = async (req, res) => {
         })
     }
 }
+const getJoinedCourses = async (req, res) => {
+    const {
+        _id,
+
+    } = req.query
+
+    try {
+        const trainee = await Trainee.findOne({
+            _id
+        })
+        var ownedCourses = trainee.ownedCourses
+
+
+        res.status(200).json({
+            ownedCourses,
+        })
+
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+const getMaterial = async (req, res) => {
+    const {
+        material_id,
+    } = req.query
+    
+    try {
+        
+        const material = await CourseMaterial.findOne({
+            _id:material_id
+        })
+
+        res.status(200).json({
+            material
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
 
 
 
@@ -77,5 +121,7 @@ const getQuizGrade = async (req, res) => {
 module.exports = {
     answerQuestion,
     getQuestionGrade,
-    getQuizGrade
+    getQuizGrade,
+    getJoinedCourses,
+    getMaterial
 }
