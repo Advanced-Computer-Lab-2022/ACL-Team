@@ -96,7 +96,8 @@ function App() {
       <Route path='/instructor/editPassword' exact element={<InstructorEditPassword/>} />
       <Route path='/trainee/sectionPage/:courseid' exact element={<SectionPage/>} /> 
       <Route path='/trainee/SubtitlePage/:sectionid' exact element={<SubtitlePage/>} />      
-      <Route path='signUp/instructor/terms_instructor' exact element={<Terms_Instructor/>} />
+      <Route path='signUp/instructor/termsInstructor' exact element={<TermsInstructor/>} />
+      <Route path='/TermsTrainee' exact element={<TermsTrainee/>} />
 
 
 
