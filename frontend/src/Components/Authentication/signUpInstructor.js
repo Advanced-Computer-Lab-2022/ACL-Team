@@ -47,7 +47,7 @@ export default function SignUp()  {
            
         <div className="signup-form">
             <div className="topper">
-                 <h1>Create Account</h1>
+                 <h1>Create Account Instructor 🧑‍🏫</h1>
             </div>
  
 
@@ -92,9 +92,9 @@ export default function SignUp()  {
                 className="textbox-style" value="female" checked={gender == 'female'} onChange={handleChange} type="radio"  name="gender"/> &nbsp; Female
                 <br/>
                 <br/>
-                <label>isCorprate</label><br/>
+                {/* <label>isCorprate</label><br/>
                 <input className="textbox-style" type="radio" value="True" name="isCorprate"/>&nbsp; True
-                <input className="textbox-style" type="radio" value="False" name="isCorprate"/>&nbsp; False
+                <input className="textbox-style" type="radio" value="False" name="isCorprate"/>&nbsp; False */}
             </div><hr/>
 
             <div className="block5">
@@ -116,11 +116,16 @@ export default function SignUp()  {
                 <label>Do you agree to our terms and conditions?</label><br/>
                 <input type="radio" Value="True" name="Terms"/>&nbsp; True
                 <input type="radio" Value="False" name="Terms"/>&nbsp; False
+
+                <a href="/signup/instructor/terms_instructor">
+               <p className='signTerms'> view terms and conditions</p>
+              </a>
             </div>
        
 
             <div className="viewterms">
-                <button> view terms and conditions</button>
+
+                
             </div>
 
             <div>

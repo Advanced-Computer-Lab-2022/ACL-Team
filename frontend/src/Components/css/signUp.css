@@ -133,6 +133,9 @@
     width: 100%;
     margin: auto;
     text-align: center;
+    position: relative;
+    left: 60px;
+    width: 300px;
 }
 
 .create-botton > button{
@@ -154,7 +157,7 @@
 .footer > button{
     border: none;
     padding: 0px;
-    width: 6%;
+    width: 10%;
     background-color: transparent;
     position: relative;
     bottom: 5px;
@@ -163,5 +166,9 @@
 
 .footer > button:hover{
     color:#922C2C;
+}
+.signTerms{
+    position: relative;
+    left: 80px;
 }
 
