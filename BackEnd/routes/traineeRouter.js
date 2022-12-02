@@ -1,4 +1,5 @@
 const express = require('express')
+const { requestCourse } = require('../controller/trainee/corporateController')
 const {
     rateCourse,
     reviewInstructor,
@@ -24,6 +25,10 @@ router.get('/quizGrade', getQuizGrade)
 
 router.get('/myCourses', getJoinedCourses)
 
+
+//ALL ROUTES BELOW HERE ARE FOR CORPORATE TRAINEE ONLY
+
+router.post('/requestCourse', requestCourse)
 
 
 module.exports = router
