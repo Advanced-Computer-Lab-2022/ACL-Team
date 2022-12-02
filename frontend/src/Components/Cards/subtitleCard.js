@@ -13,15 +13,19 @@ export default function SubtitleCard({subtitle}) {
             </div>
 
             <div className="section-text">
-                <h1>{subtitle.maxGrade}</h1> 
+                <h1>{subtitle.title}</h1> 
                 {/* Make sure of el title variable bta3 el subtitle */}
 
                 
                 <p>
-                  <Link>
+                  <Link to={`/trainee/MaterialPage/${subtitle.course_id}&${subtitle.section_id}`}>
                     <button>View Material</button>
                   </Link>   
                 </p>
+                <p></p>
+                {/* <p>
+                  {subtitle.quizes.object._id}
+                </p> */}
             </div>
 
             <div className="section-info">
