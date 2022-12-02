@@ -18,6 +18,9 @@ export default function QuestionsComponents() {
             <div className="question4_comp">
             <QuestionCard/>
             </div>
+            <div className="submit_button">
+              <button className="Navy_Button"> Submit </button>
+            </div>
         </div>
     </div>
   )
