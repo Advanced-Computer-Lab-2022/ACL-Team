@@ -58,6 +58,7 @@ import AllCourses from './pages/AllCourses';
 
 
 import SubtitlePage from './pages/subtitlePage';
+import MaterialPage from './pages/materialPage';
 
 
 
@@ -95,7 +96,9 @@ function App() {
       <Route path='/instructor/editMail' exact element={<InstructorEditEmail/>} />
       <Route path='/instructor/editPassword' exact element={<InstructorEditPassword/>} />
       <Route path='/trainee/sectionPage/:courseid' exact element={<SectionPage/>} /> 
-      <Route path='/trainee/SubtitlePage/:sectionid' exact element={<SubtitlePage/>} />      
+      <Route path='/trainee/SubtitlePage/:courseid&:sectionid' exact element={<SubtitlePage/>} />
+      <Route path='/trainee/MaterialPage/:courseid&:sectionid' exact element={<MaterialPage/>} />
+      <Route path='/quizPage/:quizid' exact element={<QuizPage/>} />    
       <Route path='signUp/instructor/termsInstructor' exact element={<TermsInstructor/>} />
       <Route path='/TermsTrainee' exact element={<TermsTrainee/>} />
 

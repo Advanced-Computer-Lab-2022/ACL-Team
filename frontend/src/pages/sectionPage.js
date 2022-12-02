@@ -11,7 +11,7 @@ export default function SectionPage() {
     
 
     const getsectionsbyCourse_id = async () => {
-        const res = await axios.get(`http://localhost:3000/course/CourseSections?_id=${courseid}`)
+        const res = await axios.get(`http://localhost:3000/lib/CourseSections?_id=${courseid}`)
         .catch((err) => console.log(err));
         const data = await res.data;
         
