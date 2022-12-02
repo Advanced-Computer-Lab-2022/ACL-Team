@@ -30,7 +30,7 @@ const getMaterial = async (req, res) => {
     const {
         material_id,
     } = req.query
-    
+    console.log(req.query)
     try {
         
         const material = await CourseMaterialSchema.findOne({

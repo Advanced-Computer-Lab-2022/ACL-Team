@@ -1,5 +1,4 @@
 
-
 .question_frame{
     border-radius: 20px;
     width: 1351px;
@@ -28,4 +27,9 @@
     position: relative;
     left: 699px;
     top: -255px;
+}
+.submit_button > button{
+    position: relative;
+    left: 624px;
+    top: -230px;
 }
