@@ -1,17 +1,11 @@
 import React from 'react'
-import { useState , useEffect } from 'react'
-import axios from 'axios'
 import img1 from "../images/Course Image.png"
-import img2 from "../images/Clock Icon.png"
-import img3 from "../images/Lesson Icon.png"
-import img4 from "../images/Level Icon.png"
-import "../css/sectionCard.css"
 import { Link } from 'react-router-dom'
 
-export default function SectionCard({section}) {
-
+export default function SubtitleCard({subtitle}) {
   return (
     <div>
+        <div>
         <div className="section-details"> 
 
             <div className="section-img">
@@ -19,14 +13,19 @@ export default function SectionCard({section}) {
             </div>
 
             <div className="section-text">
-                <h1>{section.sectionTitle}</h1>
+                <h1>{subtitle.title}</h1> 
+                {/* Make sure of el title variable bta3 el subtitle */}
 
                 
                 <p>
-                  <Link to={`/trainee/SubtitlePage/${section.course_id}&${section._id}`}>
-                    <button>View Subtitles</button>
+                  <Link to={`/trainee/MaterialPage/${subtitle.course_id}&${subtitle.section_id}`}>
+                    <button>View Material</button>
                   </Link>   
                 </p>
+                <p></p>
+                {/* <p>
+                  {subtitle.quizes.object._id}
+                </p> */}
             </div>
 
             <div className="section-info">
@@ -34,6 +33,7 @@ export default function SectionCard({section}) {
 
             </div>
             </div>
+    </div>
     </div>
   )
 }

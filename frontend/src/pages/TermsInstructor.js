@@ -1,6 +1,6 @@
 import React from 'react'
 import "../Components/css/terms.css"
-export default function Terms_Instructor() {
+export default function TermsInstructor() {
   return (
     <div>
          <div className='container'>

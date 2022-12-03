@@ -43,7 +43,13 @@ const UserSchema = new Schema({
     },
     country: {
         type: String,
+        enum: ['Egypt', 'United Arab Emirates', 'Saudi Arabia', 'Qatar'],
+        default: 'Egypt'
     },
+    unresolvedIssues: [{
+        Issue_id: mongoose.Schema.Types.ObjectId,
+        issue : String, 
+    }],
     achievments: [{
         achievment_id: String, //TODO
     }],

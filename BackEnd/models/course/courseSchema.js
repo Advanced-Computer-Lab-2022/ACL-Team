@@ -82,6 +82,10 @@ const CourseSchema = new Schema({
         user_id: mongoose.Schema.Types.ObjectId,
         username:String, 
     }],
+    unresolvedIssues: [{
+        Issue_id: mongoose.Schema.Types.ObjectId,
+        issue : String, 
+    }],
 
 
 
@@ -92,7 +96,7 @@ const CourseSchema = new Schema({
 CourseSchema.statics.addCourse = async function (title, price, category, instructor_id, summary,coursePreviewUrl) {
 
     if (!title || !price || !category || !instructor_id || !summary || !coursePreviewUrl)
-        throw error('All fields must be filled')
+        throw Error('All fields must be filled')
 
     const instructor = await Instructor.findOne({
         _id: instructor_id
@@ -211,7 +215,6 @@ CourseSchema.statics.rateCourse = async function (user_id,course_id, rating) {
                 allRatings: ratingObject
             },
         }
-
     )
     return course;
 }

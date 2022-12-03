@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const IssueSchema = new Schema({
-    issueRequester_id: {
+    requester_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
@@ -33,9 +33,14 @@ const IssueSchema = new Schema({
     resolverComment: {
         type: String,
     },
+    comments: [{
+        commenter_id: mongoose.Schema.Types.ObjectId,
+        comment : String,
+    }],
 
 }, {
     timestamps: true
 })
 
-module.exports = mongoose.model('Issue Schema', IssueSchema)
+
+module.exports = mongoose.model('Issues', IssueSchema)

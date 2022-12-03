@@ -93,11 +93,16 @@ export default function BuyCourseCard({course}) {
                 <p>
                     {course.summary}
                 </p>
-                <Link to={`/trainee/sectionPage/${course._id}`}>
-                    <button>View Sections</button>
-                </Link>
                 
+
             </div>
+
+            <div className="link-to-section">
+                <Link to={`/trainee/sectionPage/${course._id}`}>
+                    <a>View Sections</a>
+                </Link>
+            </div>
+            
             
             <div className="buy_button">
                 <button className="buy_Course"><label>Buy Course</label>  </button>

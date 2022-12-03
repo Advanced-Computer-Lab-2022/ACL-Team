@@ -31,9 +31,7 @@ router.use("/courseStudy", CourseStudyRouter)
 
 router.get('/', getCourseById)
 router.get('/getAllCourses', getAllCourses)
-router.get('/CourseSections', getCourseSections)
-router.get('/CourseSubtitles', getCourseSubtitles)
-router.get('/Question', getQuestion)
+
 
 router.post('/getCourseBySubject', getCoursesBySubject)
 router.post('/getCoursesByPrice', getCoursesByPrice)

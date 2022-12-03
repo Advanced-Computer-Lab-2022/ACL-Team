@@ -120,7 +120,10 @@ export default function SignUp()  {
        
 
             <div className="viewterms">
-                <button> view terms and conditions</button>
+              <a href='/termsTrainee'>
+              <p> view terms and conditions</p>
+              </a>
+               
             </div>
 
             <div>

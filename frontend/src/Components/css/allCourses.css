@@ -1,0 +1,10 @@
+.all{
+    text-align: left;
+  vertical-align: top;
+  font-size: 70px;
+  font-family: Roboto;
+  line-height: auto;
+  color: #253858;
+  position: relative;
+  left: 30px;
+}

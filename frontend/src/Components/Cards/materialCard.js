@@ -8,7 +8,23 @@ import img4 from "../images/Level Icon.png"
 import "../css/sectionCard.css"
 import { Link } from 'react-router-dom'
 
-export default function SectionCard({section}) {
+export default function MaterialCard({materialID}) {
+
+    const [material,setMaterial] = useState([]);
+
+    const getMaterial = async () => {
+        const res = await axios.get(
+          `localhost:3000/lib/CourseMaterial?material_id=${materialID}`)
+        .catch((err) => console.log(err));
+        const data = await res.data;
+        console.log(data);
+        return data;
+        
+      };
+    
+      useEffect(() =>{
+        getMaterial().then((data) => setMaterial(data))
+      },[])
 
   return (
     <div>
@@ -19,12 +35,14 @@ export default function SectionCard({section}) {
             </div>
 
             <div className="section-text">
-                <h1>{section.sectionTitle}</h1>
+                <h1>{material.name}</h1>
+                
+                
 
                 
                 <p>
-                  <Link to={`/trainee/SubtitlePage/${section.course_id}&${section._id}`}>
-                    <button>View Subtitles</button>
+                  <Link to={`/quizPage/${material._id}`}>
+                    <button>View Material</button>
                   </Link>   
                 </p>
             </div>
