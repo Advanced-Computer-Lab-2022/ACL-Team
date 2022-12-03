@@ -10,7 +10,6 @@ const joinCourse = async (req, res) => {
 
     try {
         const trainee = await Trainee.joinCourse(_id,course_id)
-
         res.status(200).json({
             trainee,
         })
@@ -28,6 +27,8 @@ const rateCourse = async (req, res) => {
     } = req.body
 
     try {
+        if(!user_id)
+            throw Error('userID not Entered')
         const course = await Course.rateCourse(user_id,course_id, rating)
 
         res.status(200).json({

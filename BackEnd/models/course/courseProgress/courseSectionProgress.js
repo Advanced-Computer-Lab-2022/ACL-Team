@@ -35,6 +35,18 @@ const CourseSectionProgressSchema = new Schema({
         type: String,
         required: true
     },
+    totalHours: {
+        type: Number,
+        default : 0,
+    },
+    materialNumber: {
+        type: Number,
+        default : 0,
+    },
+    totalPoints: {
+        type: Number,
+        default : 0,
+    },
     solvedQuizzes: [{
         quiz_id: mongoose.Schema.Types.ObjectId,//CourseMaterial_id
         //subtitle_id:mongoose.Schema.Types.ObjectId, //CourseSubtitle_id
@@ -52,11 +64,11 @@ const CourseSectionProgressSchema = new Schema({
         subtitle_id:mongoose.Schema.Types.ObjectId, //CourseSubtitle_id
         questionsAnswers: [{
             question_id: mongoose.Schema.Types.ObjectId,
-            choice: ['choice_1', 'choice_2', 'choice_3', 'choice_4'], //Enum 
+            choice: ['choice_1', 'choice_2', 'choice_3', 'choice_4'],
+            acquiredGrade: Number, //Enum 
         }],
-        finishedPercentage: Number,
-        acquiredGrade: Number,
-        acquiredPoints: Number,//TODO
+        // finishedPercentage: Number,
+        // acquiredPoints: Number,//TODO
     }],
     watchedVideos: [{
         video_id: mongoose.Schema.Types.ObjectId, //CourseMaterial_id

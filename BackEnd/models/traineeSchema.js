@@ -152,8 +152,9 @@ TraineeSchema.statics.joinCourse = async function (_id, course_id) {
         _id:course_id
     },{
         $push: {
-            enrolledStudents: enrolledStudent
+            enrolledStudents: enrolledStudent,
         },
+        subscriberNumber : ~~course.subscriberNumber + 1
     })
 
     return trainee;

@@ -16,7 +16,6 @@ const UserSchema = new Schema({
         required: 'Email is required',
         unique: true,
         match: [/.+\@.+\..+/, 'Please fill a valid email address']
-        //had y3ml regex lel email
     },
     password: {
         type: String,
@@ -38,7 +37,7 @@ const UserSchema = new Schema({
     },
     role: {
         type: String,
-        enum: ['trainee', 'corporate_trainee', 'instructor', 'admin'],
+        enum: ['trainee', 'corporate trainee', 'instructor', 'admin'],
         default: 'trainee'
     },
     country: {
@@ -56,14 +55,14 @@ const UserSchema = new Schema({
     notifications: [{
         notification_id: mongoose.Schema.Types.ObjectId, //TODO
     }],
-    profileImage: {//TODO
-        type: String,
+    profileImage: {
+        type: Buffer,
     },
     //lesa fee ba2y
-}, {
-    timestamps: true,
-    collection: "user"
-})
+    }, {
+        timestamps: true,
+        collection: "user"
+    })
 
 UserSchema.statics.signup = async function (email, username, password, firstname, lastname, gender,role) {
 

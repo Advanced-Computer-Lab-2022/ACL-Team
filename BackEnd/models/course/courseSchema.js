@@ -18,6 +18,11 @@ const CourseSchema = new Schema({
         required: 'title is required',
 
     },
+    averageRating: {
+        type: Number,
+        default : 0,
+
+    },
     allRatings: [{
         rating: Number,
         user_id: mongoose.Schema.Types.ObjectId
@@ -37,12 +42,19 @@ const CourseSchema = new Schema({
     },
     maxGrade: {
         type: Number,
+        default : 0,
     },
     totalHours: {
         type: Number,
+        default : 0,
+    },
+    materialNumber: {
+        type: Number,
+        default : 0,
     },
     totalPoints: {
         type: Number,
+        default : 0,
     },
     awards: [{
         award_id: String, //TODO
@@ -56,18 +68,18 @@ const CourseSchema = new Schema({
     },
     isDiscounted: {
         type: Boolean,
+        default : false,
     },
     discount_id: {
         type: mongoose.Schema.Types.ObjectId,
     },
     subscriberNumber: {
         type: Number,
+        default : 0,
     },
     reviewNumber: {
         type: Number,
-    },
-    lectureNumber: {
-        type: Number,
+        default : 0,
     },
     level: {
         type: String,
@@ -208,7 +220,7 @@ CourseSchema.statics.rateCourse = async function (user_id,course_id, rating) {
         user_id:user_id
     }
 
-    const course = await this.findByIdAndUpdate({
+    var course = await this.findByIdAndUpdate({
             _id: course_id
         }, {
             $push: {
@@ -216,6 +228,22 @@ CourseSchema.statics.rateCourse = async function (user_id,course_id, rating) {
             },
         }
     )
+    course =  await this.findOne({
+        _id : course_id
+    })
+    var ratingNumber = 0
+    var ratingSum = 0;
+    for (let i = 0; i < course.allRatings.length; i++) {
+        ratingSum = course.allRatings[i].rating + ratingSum
+        ratingNumber++
+      }
+
+    course = await this.findByIdAndUpdate({
+        _id: course_id
+    }, {
+        averageRating : ratingSum / ratingNumber
+    })
+    
     return course;
 }
 CourseSchema.statics.deleteCourse = async function (course_id) {

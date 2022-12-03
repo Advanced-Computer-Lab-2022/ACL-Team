@@ -227,7 +227,7 @@ const grantCourse = async (req, res) => {
         if(!request)
             throw Error('No unseen Issues Exist')
 
-        const trainee = await Trainee.joinCourse(request.requester_id,request.course_id)
+        await Trainee.joinCourse(request.requester_id,request.course_id)
 
 
         request = await CourseRequest.findByIdAndUpdate({

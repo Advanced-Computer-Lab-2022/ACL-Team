@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const courseMaterialSchema = require('./courseMaterialSchema')
 const Course = require('./courseSchema')
-const CourseSectionSchema = require('./courseSectionSchema')
+const CourseSection = require('./courseSectionSchema')
 
 
 
@@ -26,12 +26,20 @@ const CourseSubtitleSchema = new Schema({
     },
     totalHours: {
         type: Number,
+        default : 0,
+    },
+    type:{
+        type: String,
+        enum: ['Lecture', 'Tutorial', 'Revision'],
+        default: 'Lecture'
     },
     totalPoints: {
         type: Number,
+        default : 0,
     },
     materialNumber: {
         type: Number,
+        default : 0,
     },
     maxGrade: {
         type: Number,
@@ -59,20 +67,20 @@ const CourseSubtitleSchema = new Schema({
 }, {
     timestamps: true
 })
-CourseSubtitleSchema.statics.createSubtitle = async function (course_id, section_id, title,subtitlePreviewVideoUrl) {
-    if (!title || !course_id || !section_id || !subtitlePreviewVideoUrl)
+CourseSubtitleSchema.statics.createSubtitle = async function (course_id, section_id, title,subtitlePreviewVideoUrl,type) {
+    if ( !title || !course_id || !section_id || !subtitlePreviewVideoUrl || !type )
         throw error('All fields must be filled')
 
-        // mesh shaghal ama bythato bas homa lazm ythato
-        // const course = await Course.findById({
-        //     _id: course_id
-        // })
-        // const section = await courseSectionSchema.find({
+       // mesh shaghal ama bythato bas homa lazm ythato
+        const course = await Course.findOne({
+            _id: course_id
+        })
+        // const section = await CourseSection.findOne({
         //     _id: section_id,
             
         // })
-        // if (!course)
-        //     throw Error('Course does not Exist')
+        if (!course)
+            throw Error('Course does not Exist')
         // if (!section)
         //     throw Error('Section does not Exist')
 
@@ -80,12 +88,12 @@ CourseSubtitleSchema.statics.createSubtitle = async function (course_id, section
         course_id,
         section_id,
         title,
-        subtitlePreviewVideoUrl
+        subtitlePreviewVideoUrl,
+        type
     })
     return subtitle;
 }
-
-CourseSubtitleSchema.statics.addQuizQuestion = async function (course_id, section_id, subtitle_id, material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer,grade) {
+CourseSubtitleSchema.statics.addQuestion = async function (course_id, section_id, subtitle_id, material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer,grade) {
     if (!course_id || !section_id || !subtitle_id || !material_id || !question_name || !question || !choice_1 || !choice_2 || !choice_3 || !choice_4 || !answer || !grade )
         throw error('All fields must be filled')
 
@@ -117,42 +125,9 @@ CourseSubtitleSchema.statics.addQuizQuestion = async function (course_id, sectio
 
     return questionObject;
 }
-CourseSubtitleSchema.statics.addAssignmentQuestion = async function (course_id, section_id, subtitle_id, material_id, question_name, question, choice_1, choice_2, choice_3, choice_4) {
-    if (!course_id || !section_id || !subtitle_id || !material_id || !question_name || !question || !choice_1 || !choice_2 || !choice_3 || !choice_4)
-        throw error('All fields must be filled')
-
-    const course = await Course.findOne({
-        _id: course_id
-    })
-    const section = await CourseSectionSchema.findOne({
-        _id: section_id
-    })
-    const subtitle = await this.findOne({
-        _id: subtitle_id
-    })
-    const material = await this.find({
-        'assignments.assignment_id': material_id
-    })
-
-    if (!course)
-        throw Error('Course does not Exist')
-    if (!section)
-        throw Error('Section does not Exist')
-    if (!subtitle)
-        throw Error('Subtitle does not Exist')
-    if (!material)
-        throw Error('Assignment does not Exist')
-
-
-    const questionObject = await courseMaterialSchema.addQuestion(material_id, question_name, question, choice_1, choice_2, choice_3, choice_4)
-
-    return questionObject;
-}
-
-
 //MATERIAL CREATION
-CourseSubtitleSchema.statics.addQuiz = async function (course_id, section_id, subtitle_id, quizName) {
-    if (!course_id || !section_id || !subtitle_id || !quizName)
+CourseSubtitleSchema.statics.addQuiz = async function (course_id, section_id, subtitle_id, quizName,duration,points) {
+    if (!course_id || !section_id || !subtitle_id || !quizName || !duration || !points) 
         throw error('All fields must be filled')
 
     const course = await Course.findOne({
@@ -178,6 +153,14 @@ CourseSubtitleSchema.statics.addQuiz = async function (course_id, section_id, su
         type: "quiz",
         name:quizName,
     })
+    
+    await Course.findByIdAndUpdate({
+        _id: course_id
+    }, {
+        materialNumber: ~~course.materialNumber + 1,
+        totalHours : ~~course.totalHours + ~~duration,
+        totalPoints : ~~course.totalPoints + ~~points
+    })
 
     await this.findByIdAndUpdate({
         _id: subtitle_id
@@ -187,18 +170,19 @@ CourseSubtitleSchema.statics.addQuiz = async function (course_id, section_id, su
         },
     })
 
+
     return quiz;
 }
-CourseSubtitleSchema.statics.addAssignment = async function (course_id, section_id, subtitle_id, assignmentName) {
-    if (!course_id || !section_id || !subtitle_id || !assignmentName)
+CourseSubtitleSchema.statics.addAssignment = async function (course_id, section_id, subtitle_id, assignmentName,duration,points) {
+    if (!course_id || !section_id || !subtitle_id || !assignmentName || !duration || !points)
         throw error('All fields must be filled')
 
     const course = await Course.findOne({
         _id: course_id
     })
-    const section = await CourseSectionSchema.findOne({
-        _id: section_id
-    })
+    // const section = await CourseSectionSchema.findOne({
+    //     _id: section_id
+    // })
     const subtitle = await this.findOne({
         _id: subtitle_id
     })
@@ -206,16 +190,25 @@ CourseSubtitleSchema.statics.addAssignment = async function (course_id, section_
     if (!course)
         throw Error('Course does not Exist')
 
-    if (!section)
-        throw Error('Section does not Exist')
+    // if (!section)
+    //     throw Error('Section does not Exist')
 
     if (!subtitle)
         throw Error('Section does not Exist')
 
     const assignment = await courseMaterialSchema.create({
         type: "assignment",
-        assignmentName
+        name:assignmentName
     })
+
+    await Course.findByIdAndUpdate({
+        _id: course_id
+    }, {
+        materialNumber: ~~course.materialNumber + 1,
+        totalHours : ~~course.totalHours + ~~duration,
+        totalPoints : ~~course.totalPoints + ~~points
+    })
+
 
     await this.findByIdAndUpdate({
         _id: subtitle_id
@@ -227,16 +220,16 @@ CourseSubtitleSchema.statics.addAssignment = async function (course_id, section_
 
     return assignment;
 }
-CourseSubtitleSchema.statics.addVideo = async function (course_id, section_id, subtitle_id, videoName, videoUrl, videoDescription) {
-    if (!course_id || !section_id || !subtitle_id || !videoName || !videoUrl || !videoDescription)
+CourseSubtitleSchema.statics.addVideo = async function (course_id, section_id, subtitle_id, videoName, videoUrl, videoDescription,duration,points) {
+    if (!course_id || !section_id || !subtitle_id || !videoName || !videoUrl || !videoDescription || !duration || !points)
         throw error('All fields must be filled')
 
     const course = await Course.findOne({
         _id: course_id
     })
-    const section = await courseSectionSchema.findOne({
-        _id: section_id
-    })
+    // const section = await CourseSectionSchema.findOne({
+    //     _id: section_id
+    // })
     const subtitle = await this.findOne({
         _id: subtitle_id
     })
@@ -244,17 +237,25 @@ CourseSubtitleSchema.statics.addVideo = async function (course_id, section_id, s
     if (!course)
         throw Error('Course does not Exist')
 
-    if (!section)
-        throw Error('Section does not Exist')
+    // if (!section)
+    //     throw Error('Section does not Exist')
 
     if (!subtitle)
         throw Error('Section does not Exist')
 
     const video = await courseMaterialSchema.create({
         type: "video",
-        videoName,
+        name:videoName,
         material_doc: videoUrl,
         videoDescription
+    })
+
+    await Course.findByIdAndUpdate({
+        _id: course_id
+    }, {
+        materialNumber: ~~course.materialNumber + 1,
+        totalHours : ~~course.totalHours + ~~duration,
+        totalPoints : ~~course.totalPoints + ~~points
     })
 
     await this.findByIdAndUpdate({
@@ -267,6 +268,7 @@ CourseSubtitleSchema.statics.addVideo = async function (course_id, section_id, s
 
     return video;
 }
+
 
 
 module.exports = mongoose.model('course Subtitle', CourseSubtitleSchema)
