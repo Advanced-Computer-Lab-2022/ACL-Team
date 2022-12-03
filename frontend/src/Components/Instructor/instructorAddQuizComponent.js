@@ -105,10 +105,15 @@ export default function InstructorAddQuizComponent() {
               value={subtitle_id}
               type="textbox" placeholder='Subtitle_id' />
             </div>
+            
             <div className="quiz_LastName">
+            <input type="textbox" placeholder='Duration'/>
+               <input type="textbox" placeholder='Points'/>
               <input onChange={(e) => setQuizname(e.target.value)}
                 value={quizName}
                type="textbox" placeholder='Quiz Title' />
+               
+               
             </div>
             <div className="quiz_button">
             <button className="Navy_Button" type="submit"> Create Quiz </button>

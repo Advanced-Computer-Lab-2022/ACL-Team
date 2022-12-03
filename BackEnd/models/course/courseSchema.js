@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Instructor = require('../InstructorSchema')
 const Discount = require('../lib/payment/discountSchema')
+const Fuse = require('fuse.js')
 
 
 const Schema = mongoose.Schema
@@ -176,12 +177,37 @@ CourseSchema.statics.getCourseBycategory = async function (searchcategory) {
     const result = fuse.search(searchcategory)
     return result
 }
+CourseSchema.statics.getCoursesByPrice = async function(filteredprice){
+    if(!filteredprice)
+        throw Error('no search written')
+    const courses = await this.find({
+        price:filteredprice
+    })
+    .sort({
+        createdAt: -1
+        })
+    
+    return courses
+}
+CourseSchema.statics.getCoursesByCategory = async function(searchcategory){
+    if(!searchcategory)
+        throw Error('no search written')
+    const courses = await this.find({
+        category:searchcategory
+    })
+    .sort({
+        createdAt: -1
+        })
+    
+    return courses
+}
 CourseSchema.statics.search = async function (search) {
     if (!search)
         throw Error('No KeyWord Written')
     const courses = await this.find().sort({
         createdAt: -1
     })
+    
     const options = {
         includeScore: true,
         keys: ['category', 'title']
