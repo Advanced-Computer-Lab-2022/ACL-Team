@@ -5,7 +5,12 @@ const {
     reviewInstructor,
     joinCourse
 } = require('../controller/trainee/traineeController')
-const { answerQuestion, getQuestionGrade, getQuizGrade, getJoinedCourses } = require('../controller/trainee/traineeCourseController')
+const {
+    answerQuestion,
+    getQuestionGrade,
+    getQuizGrade,
+    getJoinedCourses
+} = require('../controller/trainee/traineeCourseController')
 const User = require('../models/userSchema')
 
 const router = express.Router()
@@ -17,7 +22,6 @@ router.post('/rateCourse', rateCourse)
 router.post('/reviewInstructor', reviewInstructor)
 
 router.post('/answerQuestion', answerQuestion)
-
 
 router.get('/questionGrade', getQuestionGrade)
 

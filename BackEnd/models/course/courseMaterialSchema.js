@@ -27,19 +27,27 @@ const CourseMaterialSchema = new Schema({
     },
     totalPoints: {
         type: Number, //TODO
-    },
-    totalHours: {
-        type: Number, //TODO
+        default:0
     },
     maxGrade: {
         type: Number,
+        default:0
     },
     duration: {
-        type: Number, //Mainly for video //TODO //ALWAYS IN HOURS
+        type: Number, //ALWAYS IN HOURS
+        default:0
     },
     questions: [{
         question_id: mongoose.Schema.Types.ObjectId,
         questionTitle:String,
+        question:String,
+        choices: [{
+            choice_1: String,
+            choice_2: String,
+            choice_3: String,
+            choice_4: String,
+        }],
+        answer:String,
     }],
     comments: [{
         commenter_id: mongoose.Schema.Types.ObjectId,
@@ -89,8 +97,12 @@ CourseMaterialSchema.statics.addQuestion = async function (material_id, question
     })
 
     const questionObject = {
-        question_id:question._id,
-        questionTitle:question_name
+        question_id:questions._id,
+        questionTitle:question_name,
+        question,
+        choices,
+        answer,
+
     }
 
     if(material.maxGrade == undefined)

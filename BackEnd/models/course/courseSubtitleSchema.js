@@ -106,9 +106,8 @@ CourseSubtitleSchema.statics.addQuestion = async function (course_id, section_id
     const subtitle = await this.findOne({
         _id: subtitle_id
     })
-    const material = await this.find({
-        'quizes.quiz_id': material_id
-
+    var material = await courseMaterialSchema.findOne({
+        _id: material_id
     })
 
     if (!course)
@@ -118,10 +117,16 @@ CourseSubtitleSchema.statics.addQuestion = async function (course_id, section_id
     if (!subtitle)
         throw Error('Section does not Exist')
     if (!material)
-        throw Error('Quiz does not Exist')
+        throw Error('Material does not Exist')
 
 
     const questionObject = await courseMaterialSchema.addQuestion(material_id, question_name, question, choice_1, choice_2, choice_3, choice_4,answer,grade)
+
+    material = await courseMaterialSchema.findByIdAndUpdate({
+        _id :material_id
+    }, {
+        maxGrade: ~~material.maxGrade + ~~questionObject.maxGrade
+    })
 
     return questionObject;
 }
