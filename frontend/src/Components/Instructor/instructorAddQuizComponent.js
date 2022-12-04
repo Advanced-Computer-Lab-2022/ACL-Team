@@ -8,7 +8,9 @@ export default function InstructorAddQuizComponent() {
   const [course_id,setCourse_id] = useState('')
   const [section_id,setSection_id] = useState('')
   const [subtitle_id,setSubtitle_id] = useState('') 
-  const [material_id,setMaterial_id] = useState('') 
+  const [material_id,setMaterial_id] = useState('')
+  const [quizDuration,setQuizDuration] = useState('') 
+  const [quizPoints, setQuizPoints] = useState('')
 
   const [quizName , setQuizname] = useState('')
  
@@ -24,11 +26,14 @@ export default function InstructorAddQuizComponent() {
   const section_id1 = section_id
   const Subtitle_id1 = subtitle_id
   const material_id1=material_id
+  const duration = quizDuration;
+  const points = quizPoints;
   const instructorAddQuiz = async () => {
     // console.log("boodaa")
     const res = await axios
       .post("http://localhost:3000/instructor/addQuiz", {
-        course_id:course_id,section_id:section_id,subtitle_id:subtitle_id,quizName:quizName
+        course_id:course_id,section_id:section_id,subtitle_id:subtitle_id,quizName:quizName,
+        duration:duration, points:quizPoints
 
       })
       .catch((err) => console.log(err));
@@ -38,10 +43,10 @@ export default function InstructorAddQuizComponent() {
   const instructorAddQuestion = async () => {
     // console.log("boodaa")
     const res = await axios
-      .post("http://localhost:3000/instructor/addQuizQuestion", {
+      .post("http://localhost:3000/instructor/addQuestion", {
         course_id:course_id1,section_id:section_id1,subtitle_id:Subtitle_id1,material_id:material_id1,
         question_name:question_name,question:question,choice_1:choice_1,choice_2:choice_2,choice_3:choice_3,
-        choice_4:choice_4,answer:answer,grade,grade
+        choice_4:choice_4,answer:answer,grade:grade
 
 
       })
@@ -104,6 +109,16 @@ export default function InstructorAddQuizComponent() {
               <input onChange={(e) => setSubtitle_id(e.target.value)}
               value={subtitle_id}
               type="textbox" placeholder='Subtitle_id' />
+            </div>
+            <div className="quiz_name">
+              <input onChange={(e) => setQuizDuration(e.target.value)}
+              value={quizDuration}
+              type="textbox" placeholder='Duration' />
+            </div>
+            <div className="quiz_name">
+              <input onChange={(e) => setQuizPoints(e.target.value)}
+              value={quizPoints}
+              type="textbox" placeholder='Points' />
             </div>
             <div className="quiz_LastName">
               <input onChange={(e) => setQuizname(e.target.value)}

@@ -1,17 +1,16 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import QuestionCard from '../Components/Cards/questionCard'
 import QuizTitle from '../Components/Cards/quizTitle'
 import Navbar from '../Components/General/Navbar/navbar'
 import QuestionsComponents from '../Components/Instructor/questionsComponents'
 import "../Components/css/quizPage.css"
 import { useParams } from 'react-router-dom'
+import QuestionCard2 from '../Components/Cards/questionCard2'
 
 export default function QuizPage() {
 
   const { materialID } = useParams();
-  const [material, setMaterial] = useState([]);
   const [questions, setQuestion] = useState([]);
 
   const getMaterialByID = async () => {
@@ -23,10 +22,6 @@ export default function QuizPage() {
   };
 
   useEffect(() =>{
-    getMaterialByID().then((data) => setMaterial(data.material))
-  },[])
-
-  useEffect(() =>{
     getMaterialByID().then((data) => setQuestion(data.material.questions))
   },[])
 
@@ -34,14 +29,14 @@ export default function QuizPage() {
   return (
     <div>
       <Navbar/>
-      <div classname="title_comp">
-        {/* <QuizTitle title={material.title}/> */}
-        {/* <p>Hello</p> */}
-      </div>
+      {/* <div classname="title_comp">
+        <QuizTitle title={material.title}/>
+        <p>Hello</p>
+      </div> */}
 
       {questions && questions.map((question) =>(
-          // <QuestionsComponents questionID={question._id}/>
-          <p>{question._id}</p>
+          <QuestionCard2 question_id={question.question_id}/>
+          // <p>{question.question_id}</p>
         ))}
       
       {/* <div className="question_comp">
