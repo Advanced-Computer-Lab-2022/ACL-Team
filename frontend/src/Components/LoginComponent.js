@@ -54,6 +54,7 @@ export default function LoginComponent() {
 
     </div>
     <div>
+ 
         <button  className='buttonborder'>Login</button>
     </div>
 
@@ -64,9 +65,12 @@ export default function LoginComponent() {
 
 
 
-    <p className="mess">I DONT HAVE AN ACCOUNT</p>
+    <p className="mess"> DONT HAVE AN ACCOUNT ?</p>
     <div>
-        <button  className='register'>Register</button>
+      <a href='/signup'>
+      <button  className='register'>Register</button>
+      </a>
+        
     </div>
 
     <img className='image1' src ={login} alt ='image'></img>

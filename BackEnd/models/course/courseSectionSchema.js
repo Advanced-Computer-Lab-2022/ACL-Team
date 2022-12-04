@@ -15,15 +15,15 @@ const CourseSectionSchema = new Schema({
     sectionTitle: {
         type: String,
     },
-    totalPoints: {
-        type: Number,
-    },
-    totalHours: {
-        type: Number,
-    },
-    maxGrade: {
-        type: Number,
-    },
+    // totalPoints: {
+    //     type: Number,    //Ghaleban mesh hanstkhdmhom bttl3 3altool mel subtitle 3ala el course table
+    // },
+    // totalHours: {
+    //     type: Number,
+    // },
+    // maxGrade: {
+    //     type: Number,
+    // },
     subtitles: [{
         subtitle_id : mongoose.Schema.Types.ObjectId,
         subtitleTitle: String,
@@ -55,8 +55,7 @@ CourseSectionSchema.statics.addSection = async function (course_id, sectionTitle
     })    
     const section_id = section._id;
 
-    const subtitle = await courseSubtitleSchema.createSubtitle(course_id, section_id, subtitelTitle,subtitlePreviewVideoUrl)
-
+    const subtitle = await courseSubtitleSchema.createSubtitle(course_id, section_id, subtitelTitle,subtitlePreviewVideoUrl,'Lecture')
 
     const subtitleObj = {
         subtitle_id : subtitle._id,

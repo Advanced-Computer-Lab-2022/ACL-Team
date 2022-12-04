@@ -1,5 +1,6 @@
 import React from 'react';
 import CourseCard from '../Components/Cards/courseCard';
+import TraineeNavbar from "../Components/General/Navbar/TraineeNavbar"
 
 import {
   BrowserRouter as Router,
@@ -44,10 +45,22 @@ export const TraineePage = () => {
     getCourses().then((data) => setCourses(data))
 
   },[])
+
+   
+    
+    
+  
   return (
     <div className="trainee-page">
+      <TraineeNavbar/>
+      <div className='nav'>
+     
+      </div>
+     
 
+     
       <h1>Learn Through our Experts</h1>
+      
 
       <div className="instructors_card">
         <div className='card1'>
@@ -56,7 +69,7 @@ export const TraineePage = () => {
           <p className=" coursecount">19 Courses</p>
           <p className=" studentcount">25,599 Students</p>
           <p className=" starcount">3</p>
-          <p className=" name">Abdullah shoeib</p>
+          <p className=" name12">Abdullah shoeib</p>
           <p className=" job">UI/UX Designer</p>
           <img className='hat' src ={image6} alt ='image'></img>
           <img className='grad' src ={image7} alt ='image'></img>
@@ -71,7 +84,7 @@ export const TraineePage = () => {
           <p className=" coursecount">19 Coursesd </p>
           <p className=" studentcount">25,599 Students</p>
           <p className=" starcount">3</p>
-          <p className=" name">Mazen Hejazy</p>
+          <p className=" name12">Mazen Hejazy</p>
           <p className=" job">UI/UX Designer</p>
           <img className='hat' src ={image6} alt ='image'></img>
           <img className='grad' src ={image7} alt ='image'></img>
@@ -86,7 +99,7 @@ export const TraineePage = () => {
           <p className=" coursecount">19 Courses</p>
           <p className=" studentcount">25,599 Students</p>
           <p className=" starcount">3</p>
-          <p className=" name">Marwan Ashraf</p>
+          <p className=" name12">Marwan Ashraf</p>
           <p className=" job">UI/UX Designer</p>
           <img className='hat' src ={image6} alt ='image'></img>
           <img className='grad' src ={image7} alt ='image'></img>
@@ -101,7 +114,7 @@ export const TraineePage = () => {
           <p className=" coursecount">19 Courses</p>
           <p className=" studentcount">25,599 Students</p>
           <p className=" starcount">3</p>
-          <p className=" name">Ghazouly El-hendy</p>
+          <p className=" name12">Ghazouly El-hendy</p>
           <p className=" job">UI/UX Designer</p>
           <img className='hat' src ={image6} alt ='image'></img>
           <img className='grad' src ={image7} alt ='image'></img>
@@ -112,9 +125,22 @@ export const TraineePage = () => {
         
       </div>
 
-      {courses && courses.map((course) =>(
+      
+      
+      {courses && courses.map((course , i) =>(
+        i<3 &&
         <CourseCard course={course}/>
-      ))} 
+        
+      ))}
+      <a href='/trainee/allCourses'>
+      <button >
+        Show More
+      </button>
+      
+        </a> 
+     
+      
+
       
       
     </div>

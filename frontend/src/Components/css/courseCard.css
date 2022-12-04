@@ -1,5 +1,8 @@
 .course-details{
+   
+
     display: flex;
+  
     background-color: #FAFDFF;
     border-radius: 10px;
     width: 992px;
@@ -31,4 +34,9 @@
 #light-font{
     font-weight: lighter;
     color: grey;
+}
+.border{
+    display: flex;
+    padding: 20px;
+    width: 1040px;
 }

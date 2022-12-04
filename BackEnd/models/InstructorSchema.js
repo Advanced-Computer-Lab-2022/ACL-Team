@@ -9,7 +9,6 @@ const InstructorSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
-
     },
     name: {
         type: String,
@@ -33,7 +32,6 @@ const InstructorSchema = new Schema({
         review_id: mongoose.Schema.Types.ObjectId,
         //type: String,
         reviewString : String,
-        
     }],
     issues: [{
         issue_id: mongoose.Schema.Types.ObjectId,

@@ -4,29 +4,27 @@ const Schema = mongoose.Schema
 const User = require('./UserSchema')
 
 const AdminSchema = new Schema({
-    user_id: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true
+    // user_id: {
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref: 'User',
+    //     required: true
 
-    },
+    // },
 
 }, {
     timestamps: true
 })
 
 AdminSchema.statics.signup = async function (email, username, password, firstname, lastname, gender) {
-    const user = await User.signup(email, username, password, firstname, lastname, gender)
 
-    User.findByIdAndUpdate({
-        _id: user._id
-    }, {
+    const role = 'admin'
 
-        role: "instructor"
-    })
+    const user = await User.signup(email, username, password, firstname, lastname, gender,role)
+
+    const _id = user._id;
 
     const admin = await this.create({
-        user_id: user._id,
+        _id
     })
 
     return admin
