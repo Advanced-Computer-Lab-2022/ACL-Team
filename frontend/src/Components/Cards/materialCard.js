@@ -41,7 +41,7 @@ export default function MaterialCard({materialID}) {
                 
                 <p>
                   <Link to={`/quizPage/${material._id}`}>
-                    <button>View Material</button>
+                    <button>View Quiz</button>
                   </Link>   
                 </p>
             </div>
