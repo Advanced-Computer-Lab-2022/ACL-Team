@@ -100,7 +100,7 @@ function App() {
       <Route path='/trainee/SubtitlePage/:courseid&:sectionid' exact element={<SubtitlePage/>} />
       <Route path='/trainee/MaterialPage/:courseid&:sectionid' exact element={<MaterialPage/>} />
       <Route path='/quizPage/:materialID' exact element={<QuizPage/>} />    
-      <Route path='signUp/instructor/terms_instructor' exact element={<Terms_Instructor/>} />
+      <Route path='signUp/instructor/terms_instructor' exact element={<TermsInstructor/>} />
 
 
 
