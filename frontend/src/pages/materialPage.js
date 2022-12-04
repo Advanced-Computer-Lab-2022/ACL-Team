@@ -16,7 +16,7 @@ const [quizes,setQuizes] = useState([]);
       `http://localhost:3000/lib/CourseSubtitles?course_id=${courseid}&section_id=${sectionid}`)
     .catch((err) => console.log(err));
     const data = await res.data;
-    console.log(data);
+    // console.log(data);
     return data;
     
     
@@ -36,8 +36,8 @@ const [quizes,setQuizes] = useState([]);
         
 
         {quizes && quizes.map((quiz) =>(
-          // <MaterialCard materialID={quiz._id}/>
-          <p>{quiz._id}</p>
+          <MaterialCard materialID={quiz._id}/>
+          // <p>{quiz._id}</p>
         ))}
 
     </div>

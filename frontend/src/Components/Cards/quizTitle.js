@@ -1,11 +1,11 @@
 import React from 'react'
 import "../css/quizTitle.css"
 
-export default function QuizTitle() {
+export default function QuizTitle({title}) {
   return (
     <div>
         <div className="title_frame">
-            <label>Mathematics III</label>
+            <label> {title} </label>
             <label1>Section II</label1>
             <label2>Tutorial III</label2>
             <label3>Quiz I</label3>

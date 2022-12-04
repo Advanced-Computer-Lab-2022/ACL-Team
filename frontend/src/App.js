@@ -53,6 +53,7 @@ import SectionPage from './pages/sectionPage';
 import Terms_Instructor from './pages/Terms_Instructor';
 import SubtitlePage from './pages/subtitlePage';
 import MaterialPage from './pages/materialPage';
+import QuestionsComponents from './Components/Instructor/questionsComponents';
 
 
 
@@ -78,7 +79,7 @@ function App() {
       <Route path='/sidebar' exact element={<SidebarPage/>} />
       <Route path='/instructor/addDiscount' exact element={<InstructorAddDiscountPage/>} />
       <Route path='/instructor/addquiz' exact element={<InstructorAddQuizPage/>} />
-      <Route path='/quizPage' exact element={<QuizPage/>} />
+      {/* <Route path='/quizPage' exact element={<QuizPage/>} /> */}
       <Route path='/VideoPage' exact element={<VideoPage/>} />
       <Route path='/login' exact element={<Login/>} />
       <Route path='/termsAndCond' exact element={<Terms/>} />
@@ -91,16 +92,17 @@ function App() {
       <Route path='/trainee/sectionPage/:courseid' exact element={<SectionPage/>} /> 
       <Route path='/trainee/SubtitlePage/:courseid&:sectionid' exact element={<SubtitlePage/>} />
       <Route path='/trainee/MaterialPage/:courseid&:sectionid' exact element={<MaterialPage/>} />
-      <Route path='/quizPage/:quizid' exact element={<QuizPage/>} />    
+      <Route path='/quizPage/:materialID' exact element={<QuizPage/>} />    
       <Route path='signUp/instructor/terms_instructor' exact element={<Terms_Instructor/>} />
 
 
 
       <Route path='/test2' exact element={<TemplatePage/>} />
+      <Route path='/test10' exact element={<QuestionsComponents/>} />
 
 
       <Route path='/test' exact element={<InstructorCardBig/>}/>
-      <Route path='/test2' exact element={<Dropdown2/>} />
+      <Route path='/test5' exact element={<QuestionsComponents/>} />
 
       {/* <Route path='/test3' exact element={<RateInstructor/>} /> */}
       <Route path='/rateInstructor' exact element={<RateInstructor/>} />

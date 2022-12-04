@@ -15,7 +15,7 @@ export default function CourseCard({course}) {
     const res = await axios.get(`http://localhost:3000/instructor/getInstructor?_id=${course.instructor_id}`)
     .catch((err) => console.log(err));
     const data = await res.data;
-    
+  
     return data;
     
   };
