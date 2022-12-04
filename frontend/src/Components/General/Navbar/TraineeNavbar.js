@@ -1,5 +1,6 @@
 import React from 'react'
-import "../../css/navbar.css"
+// import "../../css/navbar.css"
+import "../../css/traineeNavbar.css"
 import search from "../../images/search.png"
 import img1 from "../../images/Union.png"
 import img2 from "../../images/notification.png"
@@ -10,10 +11,47 @@ import img6 from "../../images/arrow.png"
 import Dropdown2 from '../Buttons/CategoryChoices'
 import { InstructorEditProfile } from '../../../pages/instructorEditProfile'
 import NavyButton from '../Buttons/navyButton'
+import { useState,useEffect } from 'react'
+import CourseCard from '../../Cards/courseCard'
+import axios from 'axios'
 
 export default function TraineeNavbar() {
+    const [searchedword,setSearchedword] = useState('')
+    const [courses,setCourses] = useState([])
+    const courseSearch = async () => {
+        console.log("boodaa")
+        const res = await axios.post("http://localhost:3000/course/search" , {
+            searchedword:searchedword
+        })
+        .catch((err) => console.log(err));
+        const data = await res.data;
+        
+        return data;
+        
+      };
+      const getCourses = async () => {
+        console.log("boodaa")
+        const res = await axios.get("http://localhost:3000/course/getAllCourses")
+        .catch((err) => console.log(err));
+        const data = await res.data;
+        
+        return data;
+        
+      };
+    useEffect(() =>{
+        getCourses().then((data) => setCourses(data))
+    
+      },[])
+      useEffect(() =>{
+        courseSearch().then((data) => setCourses(data))
+    
+      },[])  
+      
+
+
   return (
-    <div className="Nav-signedIn">
+    <div>
+    <div className="Nav-signedIn2">
 
         <div>
             <button className="sidemenu_button"><img className="setting_icon" src={img6} alt="back-page-icon" /></button>
@@ -23,8 +61,10 @@ export default function TraineeNavbar() {
             <h2>LearnHub</h2>
         </div> 
        
-        <div className="Nav-search">
-            <input type="textbox" placeholder="  Search ..."/>
+        <div  className="Nav-search" onSubmit={courseSearch()}>
+            <input onChange={(e) => setSearchedword(e.target.value)}
+            value={searchedword}
+            type="textbox" placeholder="  Search ..."/>
         </div> 
 
         <div className="Nav-actions">
@@ -47,7 +87,13 @@ export default function TraineeNavbar() {
             <a href=""><img src={img5} alt="icon"/></a>
 
         </div>
-
     </div>
+
+        {courses && courses.map((course) =>(
+            <CourseCard  key={course._id}  course={course}/>
+        ))} 
+
+</div>
+
   )
 }
