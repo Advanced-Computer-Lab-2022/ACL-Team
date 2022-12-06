@@ -46,6 +46,7 @@ const handleSubmitt=(e)=>{
               <h1>Review Instructor </h1>
             </div>
           </div>
+          <form onSubmit={handleSubmitt}>
           <div className="rateInstructor_inputs">
             
             <div className="rateInstructor_instructorName">
@@ -86,6 +87,8 @@ const handleSubmitt=(e)=>{
           <div className="rateInstructor_button">
             <button className="Navy_Button" type="submit"> Rate Instructor </button>
           </div>
+          </form>
+          
           
           
 
