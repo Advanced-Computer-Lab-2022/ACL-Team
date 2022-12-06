@@ -26,10 +26,10 @@ export default function QuestionCard2({question_id}) {
     <div>
         <h2>{question.questionTitle}</h2>
         <h2>Q: {question.question}</h2>
-        <h2>a: {question.choices[0].choice_1}</h2>
+        {/* <h2>a: {question.choices[0].choice_1}</h2>
         <h2>b: {question.choices[0].choice_2}</h2> 
         <h2>c: {question.choices[0].choice_3}</h2>
-        <h2>d: {question.choices[0].choice_4}</h2> <hr/>
+        <h2>d: {question.choices[0].choice_4}</h2> <hr/> */}
     </div>
   )
 }
