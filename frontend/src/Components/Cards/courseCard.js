@@ -34,7 +34,7 @@ export default function CourseCard({course}) {
  </div>
 
  <div className="course-text">
-    <Link to={`/course/coursePage/${course._id}`}>
+    <Link to={`/course/coursePage/`}>
       <h3>{course.title}</h3>
     </Link>
 

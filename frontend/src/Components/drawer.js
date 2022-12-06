@@ -3,15 +3,15 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 import CourseCard from './Cards/courseCard'
 
-export default function Sidebar() {
+export default function Drawer() {
   const [courses,setCourses] = useState(null)
-  const [subject,setSubject] = useState('')
+  const [category,setCategory] = useState('')
   const [price,setPrice] = useState(null)
   const [rating,setRating] = useState(null)
 
-  const getCourseBySubject = async () => {
-    const res = await axios.post("http://localhost:3000/course/getCourseBySubject" , {
-      subject:subject
+  const getCourseByCategory = async () => {
+    const res = await axios.post("http://localhost:3000/course/getCourseByCategory" , {
+      category:category
     })
     .catch((err) => console.log(err));
     const data = await res.data;
@@ -41,7 +41,7 @@ export default function Sidebar() {
 
   const getCourses = async () => {
     console.log("boodaa")
-    const res = await axios.get("http://localhost:3000/course/getCourses")
+    const res = await axios.get("http://localhost:3000/course/getAllCourses")
     .catch((err) => console.log(err));
     const data = await res.data;
     
@@ -55,8 +55,8 @@ export default function Sidebar() {
   },[])
 
   useEffect(() => {
-    getCourseBySubject().then((data) => setCourses(data))
-  },[subject])
+    getCourseByCategory().then((data) => setCourses(data))
+  },[category])
 
   useEffect(() => {
     getCourseByPrice().then((data) => setCourses(data))
@@ -94,18 +94,18 @@ export default function Sidebar() {
                         </div><hr/>
 
 
-                        <div onSubmit={getCourseBySubject()}>
-                          <label>Subject</label><br></br>
+                        <div onSubmit={getCourseByCategory()}>
+                          <label>Category</label><br></br>
                           <input type="text" 
-                          onChange={(e) => setSubject(e.target.value)}
-                          value={subject}
+                          onChange={(e) => setCategory(e.target.value)}
+                          value={category}
     
                           className="form-control" 
      
                           aria-describedby="emailHelp" 
                           placeholder="Enter a subject to filer by"
                         />
-                        <button className="button" onClick={getCourseBySubject()}>Submit</button>
+                        <button className="button" onClick={getCourseByCategory()}>Submit</button>
                         </div><hr/>
 
 

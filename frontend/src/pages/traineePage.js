@@ -52,9 +52,9 @@ export const TraineePage = () => {
   
   return (
     <div className="trainee-page">
+      
+      <div className='nav2'>
       <TraineeNavbar/>
-      <div className='nav'>
-     
       </div>
      
 

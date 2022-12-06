@@ -59,6 +59,8 @@ import AllCourses from './pages/AllCourses';
 
 import SubtitlePage from './pages/subtitlePage';
 import MaterialPage from './pages/materialPage';
+import Drawer from './Components/drawer';
+import Search from './pages/search';
 import QuestionsComponents from './Components/Instructor/questionsComponents';
 
 
@@ -105,7 +107,7 @@ function App() {
 
 
       <Route path='/test2' exact element={<TemplatePage/>} />
-      <Route path='/test10' exact element={<QuestionsComponents/>} />
+      <Route path='/test3' exact element={<Drawer/>} />      <Route path='/test10' exact element={<QuestionsComponents/>} />
 
 
       <Route path='/test' exact element={<InstructorCardBig/>}/>
@@ -116,6 +118,8 @@ function App() {
       <Route path='/rateCourse' exact element={<RateCourse/>} />
       <Route path='/userpage' exact element={<UserPage/>}/>
       <Route path='trainee/allCourses' exact element={<AllCourses/>}/>
+      <Route path='trainee/search' exact element={<Search/>}/>
+
       
 
 

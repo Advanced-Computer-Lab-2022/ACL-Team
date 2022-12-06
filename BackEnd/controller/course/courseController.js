@@ -72,12 +72,12 @@ const getAll = async (req, res) => {
     const courses = await Course.find({}, )
 }
 
-const getCoursesBySubject = async (req, res) => {
+const getCoursesByCategory = async (req, res) => {
     const {
-        subject
+        category
     } = req.body
     try {
-        const courses = await Course.getCoursesBySubject(subject)
+        const courses = await Course.getCoursesByCategory(category)
         res.status(200).json(courses)
     } catch (error) {
         res.status(400).json({
@@ -90,6 +90,7 @@ const getCoursesByPrice = async (req, res) => {
     const {
         price
     } = req.body
+    console.log(req.body)
     console.log(price)
     try {
         const courses = await Course.getCoursesByPrice(price)
@@ -112,6 +113,22 @@ const getCoursesByPriceFromLowToHigh = async (req, res) => {
     }
 }
 
+const search = async (req, res) => {
+    const {
+        searchedword
+    } = req.body
+    console.log(req.body)
+    
+    try {
+        const courses = await Course.search(searchedword)
+        
+        res.status(200).json(courses)
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
 const getCoursesByPriceFromHighToLow = async (req, res) => {
     try {
         const courses = await Course.getCoursesByPriceFromHighToLow()
@@ -256,7 +273,7 @@ const getQuestion = async (req, res) => {
 module.exports = {
     getAllCourses,
     getCourseById,
-    getCoursesBySubject,
+    getCoursesByCategory,
     getCoursesByPriceFromLowToHigh,
     getCoursesByPriceFromHighToLow,
     getCoursesByRating,
@@ -265,6 +282,7 @@ module.exports = {
     getCoursesByPrice,
     getCourseSections,
     getCourseSubtitles,
-    getQuestion
+    getQuestion,
+    search
 
 }
