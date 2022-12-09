@@ -2,12 +2,15 @@ import React from 'react'
 import "./loginComponent.css"
 import login from "./images/user.svg"
 import lock from "./images/lock.svg"
-import  { useState } from 'react';
+import  { useState , useEffect} from 'react';
 import axios from 'axios'
+import { Link } from 'react-router-dom';
 
 export default function LoginComponent() {
   const[password,setPass] =useState('')
   const[email,setEmail] =useState('')
+  const[userID,setUserID] = useState([])
+
   const loginUser = async () => {
     // console.log("boodaa")
     const res = await axios
@@ -16,6 +19,7 @@ export default function LoginComponent() {
       })
       .catch((err) => console.log(err));
     const data = await res.data;
+    console.log(userID)
     return data;
   };
   const handleSubmitt=(e)=>{
@@ -23,9 +27,13 @@ export default function LoginComponent() {
     console.log("hi")
     
 
-    loginUser().then((data) => console.log(data))
- 
+    loginUser().then((data) => console.log(data));
+    // loginUser().then((data) => console.log(data.user._id));
   }
+
+  useEffect(() =>{ 
+    loginUser().then((data) => setUserID(data.user._id))
+  });
 
   return (
     <div>
@@ -55,7 +63,11 @@ export default function LoginComponent() {
     </div>
     <div>
  
-        <button  className='buttonborder'>Login</button>
+        <button  className='buttonborder'>
+          <Link to={`/instructor/${userID}`}>
+            Login
+          </Link>
+        </button>
     </div>
 
     <div className="line" />

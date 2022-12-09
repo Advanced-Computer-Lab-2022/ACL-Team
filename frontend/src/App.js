@@ -78,7 +78,7 @@ function App() {
       <Route path='/' exact element={<GuestPage/>} />
       <Route path='/trainee' exact element={<TraineePage/>} />
       <Route path='/user' exact element={<HomePage/>} />
-      <Route path='/instructor' exact element={<InstructorHomePage/>} />
+      <Route path='/instructor/:id' exact element={<InstructorHomePage/>} />
       <Route path='/course' exact element={<CourseDashboard/>} />
       <Route path='/course/coursePage/:id' exact element={<CoursePage/>} />
       <Route path='/instructor/addCourse' exact element={<InstructorAddCourse/>} />
