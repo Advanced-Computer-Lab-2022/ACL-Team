@@ -102,12 +102,15 @@ function App() {
       <Route path='/trainee/SubtitlePage/:courseid&:sectionid' exact element={<SubtitlePage/>} />
       <Route path='/trainee/MaterialPage/:courseid&:sectionid' exact element={<MaterialPage/>} />
       <Route path='/quizPage/:materialID' exact element={<QuizPage/>} />    
-      <Route path='signUp/instructor/terms_instructor' exact element={<TermsInstructor/>} />
+      <Route path='signUp/instructor/termsInstructor' exact element={<TermsInstructor/>} />
+      <Route path='signUp/trainee/termsTrainee' exact element={<TermsTrainee/>} />
+
 
 
 
       <Route path='/test2' exact element={<TemplatePage/>} />
-      <Route path='/test3' exact element={<Drawer/>} />      <Route path='/test10' exact element={<QuestionsComponents/>} />
+      <Route path='/trainee/filterCourses' exact element={<Drawer/>} />      
+      <Route path='/test10' exact element={<QuestionsComponents/>} />
 
 
       <Route path='/test' exact element={<InstructorCardBig/>}/>

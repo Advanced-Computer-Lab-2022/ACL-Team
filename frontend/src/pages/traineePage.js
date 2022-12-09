@@ -132,7 +132,7 @@ export const TraineePage = () => {
         <CourseCard course={course}/>
         
       ))}
-      <a href='/trainee/allCourses'>
+      <a href='/trainee/filterCourses'>
       <button >
         Show More
       </button>
