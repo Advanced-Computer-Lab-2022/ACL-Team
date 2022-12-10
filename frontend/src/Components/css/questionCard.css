@@ -6,104 +6,199 @@
     border-radius: 20px;
     background-color: #76C1EC;
 }
-.question_container
-.question_title {
-
-  position: relative;
-  left: 189px;
-  bottom: 150px;
+.questions_frame > label{
+    position: absolute;
+    width: 282.35px;
+    height: 25px;
+    left: 189.69px;
+    top: 8px;
+    color: #081F32;
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 25px;
 }
-.question_title > h1{
-  width: 381.39px;
-  height: 58px;
-  font-family: 'DM Serif Display';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 25px;
-  color: #081F32;
+.questions_frame > label1{
+    position: absolute;
+    width: 389.31px;
+    height: 25px;
+    left: 189.69px;
+    top: 41px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: #6E798C;
 }
-.question_title > h2{
-  width: 244px;
-  height: 51px;
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 25px;
-  color: #6E798C;
-  position: relative;
-  top: -30px;
-
+.questions_frame > label2{
+    position: absolute;
+    width: 63.9px;
+    height: 25px;
+    left: 475.23px;
+    top: 61px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #081F32;
 }
-.question_level{
-  position: relative;
-  left: 500px;
-  top: -240px;
-}
-.question_level > img{
-  position: relative;
-  left: -20px;
-
-}
-.question_level > label{
-  position: relative;
-  left: -10px;
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 25px;
-  color: #081F32;
-
-
-}
-.question_level > label1{
-  font-family: 'Open Sans';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 25px;
-  color: #6E798C;
+.questions_frame > label3{
+    position: absolute;
+    width: 34.94px;
+    height: 25px;
+    left: 545.12px;
+    top: 62px;
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 25px;
+    color: #6E798C;
 
 }
-.question_choices{
-  position: relative;
-  top: -220px;
-  left: 187.7px;
+.questions_frame > img{
+    position: absolute;
+    width: 23.96px;
+    height: 24px;
+    left: 439.29px;
+    top: 60px;
 }
-.question_choice1and2
-.question_choice1 > label{
-  position: relative;
-  left: 10px;
-}
-.question_choice2 > input{
-  position: relative;
-  top: 30px;
-}
-.question_choice2 > label{
-  position: relative;
-  top: 30px;
-  left: 10px;
-}
-.question_choice3and4{
-  position: relative;
-  left: 170px;
-  top: -45px;
+
+.questions_frame > label4{
+    position: absolute;
+    left: 187.7px;
+    top: 100px;
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 25px;
+    color: #081F32;
 
 }
-.question_choice3 > label{
-  position: relative;
-  left: 10px;
+.questions_frame > label5{
+    position: absolute;
+    left: 449.28px;
+    top: 100px;
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 25px;
+    color: #081F32;
+
 }
-.question_choice4 > label{
-  position: relative;
-  left: 10px;
-  top: 27px;
+.questions_frame > label6{
+    position: absolute;
+    left: 187.87px;
+    top: 150px;
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 25px;
+    color: #081F32;
+
 }
-.question_choice4 > input{
-  position: relative;
+.questions_frame > label7{
+    position: absolute;
+    left: 449.28px;
+    top: 150px;
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 25px;
+    color: #081F32;
+
+}
+.container {
+    display: block;
+    position: absolute;
+    left: 100px;
+    top:189px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
   
-  top: 27px;
-}
+  /* Hide the browser's default radio button */
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom radio button */
+  /* .checkmark {
+    position: absolute;
+    top: 107px;
+    left: 329.78px;
+    height: 20px;
+    width: 23.55px;
+    background-color: #FE7558;
+    border-radius: 50%;
+  } */
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+    background-color: #FE7558;
+  }
+  
+  /* When the radio button is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+    background-color: #FE7558;
+  }
+  
+  /* Create the indicator (the dot/circle - hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the indicator (dot/circle) when checked */
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the indicator (dot/circle) */
+  .container .checkmark:after {
+       top: 9px;
+      left: 9px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: white;
+  }
+  .choice1{
+position: relative;
+top: 100px;
+left: 130px;
 
+  }
+  .choice2{
+    position: relative;
+    top: 118px;
+    left: 130px;
+  }
+  .choice3{
+    position: relative;
+    top: 50px;
+    left: 330px;
+  }
+  .choice4{
+    position: relative;
+    top: 70px;
+    left: 330px;
+  }
+  .mcq{
+
+
+  }
