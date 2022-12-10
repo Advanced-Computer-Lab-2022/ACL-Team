@@ -142,6 +142,7 @@ UserSchema.statics.changePassword = async function (email, oldPassword, newPassw
     })
 
 }
+
 UserSchema.statics.changeEmail = async function (_id,email, newEmail) {
 
     if (!email || !newEmail || !_id)

@@ -54,6 +54,8 @@ import InstructorCardBig from './Components/Instructor/instructorCardBig';
 import TermsInstructor from './pages/TermsInstructor';
 import TermsTrainee from './pages/TermsTrainee';
 import AllCourses from './pages/AllCourses';
+import Temp from './pages/Temp';
+
 
 
 
@@ -100,7 +102,7 @@ function App() {
       <Route path='/test2' exact element={<TemplatePage/>} />
 
 
-      <Route path='/test' exact element={<InstructorCardBig/>}/>
+      <Route path='/test' exact element={<Temp/>}/>
       <Route path='/test2' exact element={<Dropdown2/>} />
 
       {/* <Route path='/test3' exact element={<RateInstructor/>} /> */}

@@ -136,7 +136,7 @@
   }
   
   /* Create a custom radio button */
-  .checkmark {
+  /* .checkmark {
     position: absolute;
     top: 107px;
     left: 329.78px;
@@ -144,7 +144,7 @@
     width: 23.55px;
     background-color: #FE7558;
     border-radius: 50%;
-  }
+  } */
   
   /* On mouse-over, add a grey background color */
   .container:hover input ~ .checkmark {
@@ -177,5 +177,28 @@
       border-radius: 50%;
       background: white;
   }
+  .choice1{
+position: relative;
+top: 100px;
+left: 130px;
+
+  }
+  .choice2{
+    position: relative;
+    top: 118px;
+    left: 130px;
+  }
+  .choice3{
+    position: relative;
+    top: 50px;
+    left: 330px;
+  }
+  .choice4{
+    position: relative;
+    top: 70px;
+    left: 330px;
+  }
+  .mcq{
 
 
+  }
