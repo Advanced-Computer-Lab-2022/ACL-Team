@@ -64,12 +64,9 @@ import MaterialPage from './pages/materialPage';
 import Drawer from './Components/drawer';
 import Search from './pages/search';
 import QuestionsComponents from './Components/Instructor/questionsComponents';
+import QuestionCard from './Components/Cards/questionCard';
 
-import SubtitlePage from './pages/subtitlePage';
-import MaterialPage from './pages/materialPage';
-import Drawer from './Components/drawer';
-import Search from './pages/search';
-import QuestionsComponents from './Components/Instructor/questionsComponents';
+
 
 
 
@@ -96,7 +93,7 @@ function App() {
       <Route path='/sidebar' exact element={<SidebarPage/>} />
       <Route path='/instructor/addDiscount/:courseID&:instructorID' exact element={<InstructorAddDiscountPage/>} />
       <Route path='/instructor/addquiz/:courseID' exact element={<InstructorAddQuizPage/>} />
-      {/* <Route path='/quizPage' exact element={<QuizPage/>} /> */}
+      <Route path='/quizPage' exact element={<QuizPage/>} /> 
       <Route path='/VideoPage' exact element={<VideoPage/>} />
       <Route path='/login' exact element={<Login/>} />
       <Route path='/termsAndCond' exact element={<Terms/>} />
@@ -118,7 +115,7 @@ function App() {
 
       <Route path='/test2' exact element={<TemplatePage/>} />
       <Route path='/trainee/filterCourses' exact element={<Drawer/>} />      
-      <Route path='/test10' exact element={<QuestionsComponents/>} />
+      <Route path='/test10' exact element={<QuestionCard/>} />
 
 
       <Route path='/test' exact element={<Temp/>}/>
