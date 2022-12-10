@@ -4,7 +4,7 @@ import "../css/instructorAddQuizComponent.css"
 import axios from 'axios'
 
 
-export default function InstructorAddQuizComponent() {
+export default function InstructorAddQuizComponent({courseID}) {
   const [course_id,setCourse_id] = useState('')
   const [section_id,setSection_id] = useState('')
   const [subtitle_id,setSubtitle_id] = useState('') 
@@ -32,7 +32,7 @@ export default function InstructorAddQuizComponent() {
     // console.log("boodaa")
     const res = await axios
       .post("http://localhost:3000/instructor/addQuiz", {
-        course_id:course_id,section_id:section_id,subtitle_id:subtitle_id,quizName:quizName,
+        course_id:courseID,section_id:section_id,subtitle_id:subtitle_id,quizName:quizName,
         duration:duration, points:quizPoints
 
       })

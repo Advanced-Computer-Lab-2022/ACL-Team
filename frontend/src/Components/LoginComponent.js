@@ -28,7 +28,6 @@ export default function LoginComponent() {
     
 
     loginUser().then((data) => console.log(data));
-    // loginUser().then((data) => console.log(data.user._id));
   }
 
   useEffect(() =>{ 

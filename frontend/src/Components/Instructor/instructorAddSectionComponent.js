@@ -3,16 +3,15 @@ import img1 from "../images/createCourse.png"
 import "../css/instructorAddSectionComponent.css"
 import  {useState} from 'react'
 import axios from 'axios'
-export default function InstructorAddSectionComponent() {
+export default function InstructorAddSectionComponent({courseID}) {
   const[subtitlePreviewVideoUrl,setURL] =useState('')
   const[subtitelTitle,setSubtitleTitle] =useState('')
   const[sectionTitle,setSectionTitle] =useState('')
-  const[course_id,setCourse_id] =useState('')
   const instructorAddSection = async () => {
     // console.log("boodaa")
     const res = await axios
       .post("http://localhost:3000/instructor/addCourseSection", {
-       course_id:course_id,sectionTitle:sectionTitle,subtitelTitle:subtitelTitle,subtitlePreviewVideoUrl:subtitlePreviewVideoUrl
+       course_id:courseID,sectionTitle:sectionTitle,subtitelTitle:subtitelTitle,subtitlePreviewVideoUrl:subtitlePreviewVideoUrl
       })
       .catch((err) => console.log(err));
       const data = await res.data;
@@ -42,11 +41,6 @@ export default function InstructorAddSectionComponent() {
             <form onSubmit={handleSubmitt}>
             <div className="section_name">
             <input type="textbox" placeholder='Course Instructor Name'/>
-            </div>
-            <div className="section_LastName">
-            <input onChange={(e) => setCourse_id(e.target.value)}
-            value={course_id}
-            type="textbox" placeholder='Course ID'/>
             </div>
             <div className="section_line1">
             <hr></hr>

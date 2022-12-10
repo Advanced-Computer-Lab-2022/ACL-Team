@@ -86,13 +86,13 @@ function App() {
       <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />
       <Route path='/TraineeEditProfile' exact element={<TraineeEditProfile/>} />
       <Route path='/sidebar' exact element={<SidebarPage/>} />
-      <Route path='/instructor/addDiscount' exact element={<InstructorAddDiscountPage/>} />
-      <Route path='/instructor/addquiz' exact element={<InstructorAddQuizPage/>} />
+      <Route path='/instructor/addDiscount/:courseID&:instructorID' exact element={<InstructorAddDiscountPage/>} />
+      <Route path='/instructor/addquiz/:courseID' exact element={<InstructorAddQuizPage/>} />
       {/* <Route path='/quizPage' exact element={<QuizPage/>} /> */}
       <Route path='/VideoPage' exact element={<VideoPage/>} />
       <Route path='/login' exact element={<Login/>} />
       <Route path='/termsAndCond' exact element={<Terms/>} />
-      <Route path='/instructor/addSection' exact element={<InstructorAddSectionPage/>} />
+      <Route path='/instructor/addSection/:courseID' exact element={<InstructorAddSectionPage/>} />
 
       <Route path='/instructor/coursepage' exact element={<InstructorCoursePage/>} />
       <Route path='/instructor/editBio' exact element={<InstructorEditBio/>} />
