@@ -55,7 +55,15 @@ import SectionPage from './pages/sectionPage';
 import TermsInstructor from './pages/TermsInstructor';
 import TermsTrainee from './pages/TermsTrainee';
 import AllCourses from './pages/AllCourses';
+import Temp from './pages/Temp';
 
+
+
+import SubtitlePage from './pages/subtitlePage';
+import MaterialPage from './pages/materialPage';
+import Drawer from './Components/drawer';
+import Search from './pages/search';
+import QuestionsComponents from './Components/Instructor/questionsComponents';
 
 import SubtitlePage from './pages/subtitlePage';
 import MaterialPage from './pages/materialPage';
@@ -113,7 +121,7 @@ function App() {
       <Route path='/test10' exact element={<QuestionsComponents/>} />
 
 
-      <Route path='/test' exact element={<InstructorCardBig/>}/>
+      <Route path='/test' exact element={<Temp/>}/>
       <Route path='/test5' exact element={<QuestionsComponents/>} />
 
       {/* <Route path='/test3' exact element={<RateInstructor/>} /> */}
