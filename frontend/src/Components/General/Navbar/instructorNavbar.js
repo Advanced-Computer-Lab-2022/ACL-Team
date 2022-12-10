@@ -21,6 +21,7 @@ export default function InstNavbar() {
 
         <div className="Nav-title">
             <h2>LearnHub</h2>
+            <a href="/instructor/coursepage">My Courses</a>
         </div> 
        
         <div className="Nav-search">

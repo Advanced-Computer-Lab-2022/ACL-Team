@@ -5,6 +5,8 @@ import img2 from "../images/Level Icon.png"
 import img3 from "../images/Clock Icon.png"
 import img4 from "../images/Lesson Icon.png"
 import img5 from "../images/students.png"
+import img6 from "../images/star.svg"
+
 import { Link } from 'react-router-dom'
 export default function InstructorCourseCard({course , instructor}) {
   return (
@@ -70,6 +72,10 @@ export default function InstructorCourseCard({course , instructor}) {
                     <div className="InstructorCourse_price">
                         <img src = {img4} alt="level"/>
                         <label> {course.price} EGP</label>
+                    </div>
+                    <div className="InstructorCourse_rating">
+                        <img src = {img6} alt="level"/>
+                        <label> Average {course.averageRating}</label>
                     </div>
                 </div>
                 <div className="InstructorCourse_body">
