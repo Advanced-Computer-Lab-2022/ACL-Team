@@ -79,7 +79,7 @@ function App() {
       <Route path='/signin' exact element={<Signin />} />
       <Route path='/signup/instructor' exact element={<SignUpInstructor/>} />
       <Route path='/signup/' exact element={<SignUpTrainee/>} />
-      {/* <Route path='/admin' exact element={<AdminSignup/>} /> */}
+      <Route path='/admin' exact element={<AdminSignup/>} />
       <Route path='/' exact element={<GuestPage/>} />
       <Route path='/trainee' exact element={<TraineePage/>} />
       <Route path='/user' exact element={<HomePage/>} />

@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios'
 
  const AddAdmin = () => {
-    const[name,setName] =useState('')
+    const[firstname,setfirstName] =useState('')
+    const[lastname,setlastName] =useState('')
     const[gender,setGender] =useState('')
     const[username,setUsername] =useState('')
     const[password,setPass] =useState('')
@@ -12,7 +13,7 @@ import axios from 'axios'
         console.log("boodaa")
         const res = await axios
           .post("http://localhost:3000/admin/", {
-            name:name,password:password,gender:gender,email:email,username:username
+            email:email,username:username,password:password,firstname:firstname,lastname:lastname , gender:gender
           })
           .catch((err) => console.log(err));
         const data = await res.data;
@@ -30,10 +31,10 @@ import axios from 'axios'
         Adding Admin
     </h3>
     <form onSubmit={handleSubmitt}>
-    <label> Name</label>
+    <label> FirstName</label>
     <input type="text" 
-    onChange={(e) => setName(e.target.value)}
-    value={name}
+    onChange={(e) => setfirstName(e.target.value)}
+    value={firstname}
     
     className="form-control" 
     
@@ -41,24 +42,24 @@ import axios from 'axios'
     placeholder="Enter your first name"
     />
     
-    <label>username</label>
+    <label>LastName</label>
     <input 
+    onChange={(e) => setlastName(e.target.value)}
+    value={lastname}
+    
+    className="form-control" 
+     
+    aria-describedby="emailHelp" 
+    placeholder="Enter your Last Name"
+    />
+    <label >Username</label>
+    <input type="text" 
     onChange={(e) => setUsername(e.target.value)}
     value={username}
     
     className="form-control" 
      
-    aria-describedby="emailHelp" 
-    placeholder="Enter email"
-    />
-    <label >Password</label>
-    <input type="password" 
-    onChange={(e) => setPass(e.target.value)}
-    value={password}
-    
-    className="form-control" 
-     
-    placeholder="Password"
+    placeholder="Username"
     />
     <label>Email address</label>
     <input type="email" 
@@ -69,6 +70,16 @@ import axios from 'axios'
      
     aria-describedby="emailHelp" 
     placeholder="Enter email"
+    />
+    <label>Password</label>
+    <input type="password" 
+    onChange={(e) => setPass(e.target.value)}
+    value={password}
+    
+    className="form-control" 
+     
+    aria-describedby="emailHelp" 
+    placeholder="Enter Your Password"
     />
 
 <label> Gender</label>

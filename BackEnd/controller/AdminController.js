@@ -15,15 +15,16 @@ const createToken = (_id) => {
 }
 const addAdmin = async (req, res) => {
     const {
-        username,
-        password,
-        gender,
-        email,
-        name
+        email, 
+        username, 
+        password, 
+        firstname, 
+        lastname, 
+        gender
     } = req.body
-
+    console.log(req.body)
     try {
-        const admin = await Admin.signup(username, password, gender, email, name)
+        const admin = await Admin.signup(email, username, password, firstname, lastname, gender)
         const token = createToken(admin._id)
         res.status(200).json({
             email,
@@ -37,15 +38,16 @@ const addAdmin = async (req, res) => {
 }
 const addInstructor = async (req, res) => {
     const {
-        name,
-        email,
-        username,
-        password,
+        email, 
+        username, 
+        password, 
+        firstname, 
+        lastname, 
         gender
     } = req.body
 
     try {
-        const instructor = await Instructor.signup(name, email, username, password, gender)
+        const instructor = await Instructor.signup(email, username, password, firstname, lastname, gender)
 
         const token = createToken(instructor._id)
 
@@ -61,14 +63,17 @@ const addInstructor = async (req, res) => {
 }
 const addUser = async (req, res) => {
     const {
-        email,
-        username,
-        password,
-        isCorporate
+        email, 
+        username, 
+        password, 
+        firstname, 
+        lastname, 
+        gender,
+        role
     } = req.body
 
     try {
-        const user = await User.signup(email, username, password, isCorporate)
+        const user = await User.signup(email, username, password, firstname, lastname, gender,role)
 
         const token = createToken(user._id)
 
