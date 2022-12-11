@@ -65,6 +65,7 @@ import Drawer from './Components/drawer';
 import Search from './pages/search';
 import QuestionsComponents from './Components/Instructor/questionsComponents';
 import QuestionCard from './Components/Cards/questionCard';
+import QuestionCard2 from './Components/Cards/questionCard2';
 
 
 
@@ -115,7 +116,7 @@ function App() {
 
       <Route path='/test2' exact element={<TemplatePage/>} />
       <Route path='/trainee/filterCourses' exact element={<Drawer/>} />      
-      <Route path='/test10' exact element={<QuestionCard/>} />
+      <Route path='/test10' exact element={<QuestionCard2/>} />
 
 
       <Route path='/test' exact element={<Temp/>}/>

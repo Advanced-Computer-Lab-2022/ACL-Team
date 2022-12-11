@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import SubtitleCard from '../Components/Cards/subtitleCard';
 
 export default function SubtitlePage() {
@@ -9,6 +9,7 @@ export default function SubtitlePage() {
 const {courseid} = useParams();
 const {sectionid} = useParams();
 const [subtitles,setSubtitles] = useState([]);
+const [videoLink, setVideoLink] = useState('');
 
  const getSubtitleBySectionId = async () => {
     const res = await axios.get(
@@ -34,7 +35,8 @@ const [subtitles,setSubtitles] = useState([]);
 
         {subtitles && subtitles.map((subtitle) =>(
           <SubtitleCard subtitle={subtitle}/>
-        ))}
+        ))}
+
 
     </div>
   )

@@ -2,8 +2,13 @@ import React from 'react'
 import Navbar from '../General/Navbar/navbar'
 import "../css/videoPage.css"
 import ReactPlayer from 'react-player/youtube'
+import { useLocation } from 'react-router-dom'
 
 export default function VideoPage() {
+
+  const location = useLocation();
+  const videoLink = location.state;
+
   const x = 5;
   const number_of_notes = 15;
   const c = "El course dah msh a7san 7aga 3matan"
@@ -32,9 +37,7 @@ export default function VideoPage() {
       width="1213"
       height="556"  
       className = "video_component">
-      <ReactPlayer 
-      
-      url={'https://www.youtube.com/watch?v=9b0BOLD7-iw'}/>
+      <ReactPlayer url={videoLink}/>
       </div>
       <div className="video_description">
         <ul className="label_list">
