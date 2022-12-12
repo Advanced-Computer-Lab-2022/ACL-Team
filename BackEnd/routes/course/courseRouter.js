@@ -4,7 +4,7 @@ const CourseStudyRouter = require("./courseStudyRouter")
 const {
     getAllCourses,
     getCourseById,
-    getCoursesBySubject,
+    getCoursesByCategory,
     getCoursesByPrice,
     getCoursesByRating,
     getCoursesByPriceFromLowToHigh,
@@ -12,6 +12,7 @@ const {
     getCourseSections,
     getCourseSubtitles,
     getQuestion,
+    search
 } = require('../../controller/course/courseController');
 
 const {
@@ -31,14 +32,12 @@ router.use("/courseStudy", CourseStudyRouter)
 
 router.get('/', getCourseById)
 router.get('/getAllCourses', getAllCourses)
-router.get('/CourseSections', getCourseSections)
-router.get('/CourseSubtitles', getCourseSubtitles)
-router.get('/Question', getQuestion)
 
-router.post('/getCourseBySubject', getCoursesBySubject)
+
+router.post('/getCourseByCategory', getCoursesByCategory)
 router.post('/getCoursesByPrice', getCoursesByPrice)
 router.post('/getCoursesByRating', getCoursesByRating)
-
+router.post('/search', search)
 
 router.post('/course/rateCourse', rateCourse)
 

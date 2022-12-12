@@ -52,9 +52,9 @@ export const TraineePage = () => {
   
   return (
     <div className="trainee-page">
+      
+      <div className='nav2'>
       <TraineeNavbar/>
-      <div className='nav'>
-     
       </div>
      
 
@@ -132,7 +132,7 @@ export const TraineePage = () => {
         <CourseCard course={course}/>
         
       ))}
-      <a href='/trainee/allCourses'>
+      <a href='/trainee/filterCourses'>
       <button >
         Show More
       </button>

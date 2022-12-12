@@ -1,10 +1,13 @@
 import React from "react"
-import { useState } from "react"
+import { useState , useEffect } from "react"
 import axios from 'axios'
+import { Link } from "react-router-dom"
 
 export default function (props) {
   const [email,setemail]= useState(null)  
   const [password,setPassword]= useState(null) 
+  const [userData,setUserData] = useState(null)
+
 
   const loginUser = async () => {
 
@@ -14,8 +17,14 @@ export default function (props) {
       })
       .catch((err) => console.log(err));
     const data = await res.data;
+    console.log(data.role)
     return data;
   }
+
+  useEffect(() =>{ 
+    loginUser().then((data) => setUserData(data))
+  },[]);
+
   
   return (
     <div className="Auth-form-container">
@@ -51,7 +60,9 @@ export default function (props) {
             <a href="/instructor">Are you Instructor?</a>
             </button>
             <button type="submit" className="btn btn-primary">
-              Submit
+              <Link to={`/instructor`}>
+                Submit
+              </Link>
             </button>
             </div>
             <p className="forgot-password text-right mt-2">

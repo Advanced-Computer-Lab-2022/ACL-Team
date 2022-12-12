@@ -3,7 +3,7 @@ import img1 from "../images/createCourse.png"
 import "../css/instructorAddDiscountComponent.css"
 import React , {useState} from 'react'
 import axios from 'axios'
-export default function InstructorAddDiscountComponent() {
+export default function InstructorAddDiscountComponent({courseID,instructorID}) {
   // _id,
   //name,
  // percentage,
@@ -21,7 +21,7 @@ const[end_date,setEnddate] =useState('')
   // console.log("boodaa")
   const res = await axios
     .post("http://localhost:3000/instructor/addDiscount", {
-     _id:_id,name:name,percentage:percentage,start_date:start_date,end_date:end_date,course_id:course_id
+     _id:instructorID,name:name,percentage:percentage,start_date:start_date,end_date:end_date,course_id:courseID
     })
     .catch((err) => console.log(err));
     const data = await res.data;
@@ -50,19 +50,19 @@ const handleSubmitt=(e)=>{
             </div>
 
             <form onSubmit={handleSubmitt}>
-            <div className="discount_name">
+            {/* <div className="discount_name">
             <input 
             onChange={(e) => set_id(e.target.value)}
             value={_id}
             type="textbox" placeholder='instructor id'/>
-            </div>
+            </div> */}
 
-            <div className="discount_name">
+            {/* <div className="discount_name">
             <input 
             onChange={(e) => setCourse_id(e.target.value)}
             value={course_id}
             type="textbox" placeholder='Course _id'/>
-            </div>
+            </div> */}
 
 
 

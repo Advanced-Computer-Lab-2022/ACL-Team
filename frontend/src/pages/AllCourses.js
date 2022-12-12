@@ -23,7 +23,11 @@ export default function AllCourses() {
   },[])
   return (
     <div>
-        <TraineeNavbar/>
+      <div>
+      <TraineeNavbar/>
+
+      </div>
+        
         <p className='all'> AllCourses </p>
 
         {courses && courses.map((course ) =>(

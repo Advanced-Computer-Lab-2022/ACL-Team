@@ -1,12 +1,26 @@
 const express = require('express')
-const { getMaterial } = require('../controller/userController')
+const { 
+    addCourseIssue,
+    getMyIssues,
+    commentIssue,
 
+    } = require('../controller/userController')
 
 
 
 const router = express.Router()
 
 
-router.get('/getCourseMaterial', getMaterial)
+
+router.post('/addCourseIssue', addCourseIssue)
+
+router.post('/commentIssue', commentIssue)
+
+router.get('/myIssues', getMyIssues)
+
+
+
+
+
 
 module.exports = router

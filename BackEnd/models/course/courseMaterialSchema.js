@@ -27,27 +27,32 @@ const CourseMaterialSchema = new Schema({
     },
     totalPoints: {
         type: Number, //TODO
-    },
-    totalHours: {
-        type: Number, //TODO
+        default:0
     },
     maxGrade: {
         type: Number,
+        default:0
     },
     duration: {
-        type: Number, //Mainly for video //TODO //ALWAYS IN HOURS
+        type: Number, //ALWAYS IN HOURS
+        default:0
     },
     questions: [{
         question_id: mongoose.Schema.Types.ObjectId,
         questionTitle:String,
-       
+        question:String,
+        choices: [{
+            choice_1: String,
+            choice_2: String,
+            choice_3: String,
+            choice_4: String,
+        }],
+        answer:String,
     }],
     comments: [{
         commenter_id: mongoose.Schema.Types.ObjectId,
         comment : String,
     }],
-
-
 }, {
     timestamps: true
 })
@@ -88,12 +93,16 @@ CourseMaterialSchema.statics.addQuestion = async function (material_id, question
         question,
         choices,
         answer,
-        maxGrade:grade
+        maxGrade:~~grade
     })
 
     const questionObject = {
-        question_id:question._id,
-        questionTitle:question_name
+        question_id:questions._id,
+        questionTitle:question_name,
+        question,
+        choices,
+        answer,
+
     }
 
     if(material.maxGrade == undefined)
@@ -149,50 +158,18 @@ CourseMaterialSchema.statics.editQuestion = async function (material_id, questio
 }
 
 //Men awel hena mosamam mesh 3aref en el quizes ba2et f table lwahdaha
-CourseMaterialSchema.statics.editQuizChoices = async function (material_id, choice_1, choice_2, choice_3, choice_4) {
-    const choices = [{
-        choice_1: choice_1,
-        choice_2: choice_2,
-        choice_3: choice_3,
-        choice_4: choice_4,
-    }]
-    return await this.findByIdAndUpdate({
-        _id: material_id
-    }, {
-        choices: choices
-    })
+CourseMaterialSchema.statics.editQuestionChoices = async function (material_id, choice_1, choice_2, choice_3, choice_4) {
+    
 
 }
-CourseMaterialSchema.statics.editAssignmentChoices = async function (material_id, question_name, choice_1, choice_2, choice_3, choice_4) {
-    const choices = [{
-        choice_1: choice_1,
-        choice_2: choice_2,
-        choice_3: choice_3,
-        choice_4: choice_4,
-    }]
-    return await this.findByIdAndUpdate({
-        _id: material_id,
-        name: question_name
-    }, {
-        choices: choices
-    })
 
-}
 CourseMaterialSchema.statics.setQuizAnswer = async function (material_id, choice) {
-    return await this.findByIdAndUpdate({
+    return await Question.findByIdAndUpdate({
         _id: material_id
     }, {
         answer: choice
     })
 
 }
-CourseMaterialSchema.statics.setAssignmentAnswer = async function (material_id, question_name, choice) {
-    return await this.findByIdAndUpdate({
-        _id: material_id,
-        name: question_name
-    }, {
-        answer: choice
-    })
 
-}
 module.exports = mongoose.model('course Material', CourseMaterialSchema)

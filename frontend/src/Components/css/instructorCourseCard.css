@@ -182,6 +182,22 @@
     position: relative;
     left: 10px;
 }
+
+.InstructorCourse_rating{
+    position: relative;
+    left: 920px;
+    top: -305px;
+}
+.InstructorCourse_rating > label{
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 25px;
+    color: #253858;
+    position: relative;
+    left: 10px;
+}
 .InstructorCourse_body{
     position: relative;
     left: 723px;

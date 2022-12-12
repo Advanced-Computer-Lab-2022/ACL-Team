@@ -3,22 +3,25 @@ import axios from 'axios'
 
  const AddUser = () => {
     
-    const[isCorporate,setIsCorporate] =useState('')
-    const[username,setUsername] =useState('')
-    const[password,setPass] =useState('')
-    const[email,setEmail] =useState('')
+  const[firstname,setfirstName] =useState('')
+  const[lastname,setlastName] =useState('')
+  const[gender,setGender] =useState('')
+  const[username,setUsername] =useState('')
+  const[password,setPass] =useState('')
+  const[email,setEmail] =useState('')
+  const[role,setRole] = useState('')
 
     const addUsr = async () => {
         console.log("boodaa")
         const res = await axios
           .post("http://localhost:3000/admin/user", {
-            password:password,email:email,username:username,isCorporate:isCorporate
+            email:email,username:username,password:password,firstname:firstname,lastname:lastname , gender:gender , role:role
           })
           .catch((err) => console.log(err));
         const data = await res.data;
         return data;
       };
-      const middleware=(e)=>{
+      const handleSubmitt=(e)=>{
         e.preventDefault()
         console.log("boodaa")
 
@@ -29,27 +32,36 @@ import axios from 'axios'
     <h3>
         Adding User
     </h3>
-    <form onSubmit={middleware}>
-
+    <form onSubmit={handleSubmitt}>
+    <label> FirstName</label>
+    <input type="text" 
+    onChange={(e) => setfirstName(e.target.value)}
+    value={firstname}
     
-    <label>username</label>
+    className="form-control" 
+    
+    aria-describedby="emailHelp" 
+    placeholder="Enter your first name"
+    />
+    
+    <label>LastName</label>
     <input 
+    onChange={(e) => setlastName(e.target.value)}
+    value={lastname}
+    
+    className="form-control" 
+     
+    aria-describedby="emailHelp" 
+    placeholder="Enter your Last Name"
+    />
+    <label >Username</label>
+    <input type="text" 
     onChange={(e) => setUsername(e.target.value)}
     value={username}
     
     className="form-control" 
      
-    aria-describedby="emailHelp" 
-    placeholder="Enter email"
-    />
-    <label >Password</label>
-    <input type="password" 
-    onChange={(e) => setPass(e.target.value)}
-    value={password}
-    
-    className="form-control" 
-     
-    placeholder="Password"
+    placeholder="Username"
     />
     <label>Email address</label>
     <input type="email" 
@@ -61,23 +73,42 @@ import axios from 'axios'
     aria-describedby="emailHelp" 
     placeholder="Enter email"
     />
+    <label>Password</label>
+    <input type="password" 
+    onChange={(e) => setPass(e.target.value)}
+    value={password}
+    
+    className="form-control" 
+     
+    aria-describedby="emailHelp" 
+    placeholder="Enter Your Password"
+    />
 
-<label> isCorporate</label>
+<label> Gender</label>
     <input type="text" 
-    onChange={(e) => setIsCorporate(e.target.value)}
-    value={isCorporate}
+    onChange={(e) => setGender(e.target.value)}
+    value={gender}
     
     className="form-control" 
     
     aria-describedby="emailHelp" 
     placeholder="Enter your gender"
     />
+<label> Role</label>
+  <input type="text" 
+    onChange={(e) => setRole(e.target.value)}
+    value={role}
+    
+    className="form-control" 
+    
+    aria-describedby="emailHelp" 
+    placeholder="Enter your Role"
+    />
 
     <button>
         Add User
     </button>
     </form>
-
 
 
     </div>

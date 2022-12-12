@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const User = require('../../UserSchema')
 const CourseMaterial = require('../courseMaterialSchema')
+const Course = require('../courseSchema')
 const CourseSection = require('../courseSectionSchema')
 const Question = require('../questionSchema')
 
@@ -35,6 +36,25 @@ const CourseSectionProgressSchema = new Schema({
         type: String,
         required: true
     },
+    totalHours: {
+        type: Number,
+        default : 0,
+    },
+    finishedPercentage: {
+        type: Number,
+        default : 0,
+    },
+    materialNumber: {
+        type: Number,
+        default : 0,
+    },
+    totalPoints: {
+        type: Number,
+        default : 0,
+    },
+    finishedQuizzes: [{
+        quiz_id: mongoose.Schema.Types.ObjectId,
+    }],
     solvedQuizzes: [{
         quiz_id: mongoose.Schema.Types.ObjectId,//CourseMaterial_id
         //subtitle_id:mongoose.Schema.Types.ObjectId, //CourseSubtitle_id
@@ -52,11 +72,11 @@ const CourseSectionProgressSchema = new Schema({
         subtitle_id:mongoose.Schema.Types.ObjectId, //CourseSubtitle_id
         questionsAnswers: [{
             question_id: mongoose.Schema.Types.ObjectId,
-            choice: ['choice_1', 'choice_2', 'choice_3', 'choice_4'], //Enum 
+            choice: ['choice_1', 'choice_2', 'choice_3', 'choice_4'],
+            acquiredGrade: Number, //Enum 
         }],
-        finishedPercentage: Number,
-        acquiredGrade: Number,
-        acquiredPoints: Number,//TODO
+        // finishedPercentage: Number,
+        // acquiredPoints: Number,//TODO
     }],
     watchedVideos: [{
         video_id: mongoose.Schema.Types.ObjectId, //CourseMaterial_id
@@ -222,52 +242,69 @@ CourseSectionProgressSchema.statics.getQuizGrade = async function (user_id,cours
     if (!user_id || !course_id || !section_id || !material_id)
          throw error('All fields must be filled')
  
-     const material = await CourseMaterial.findOne({
-         _id:material_id
+    const material = await CourseMaterial.findOne({
+        _id:material_id
      })
-     if (!material)
-         throw Error('This Material Does not Exist')
+    if (!material)
+        throw Error('This Material Does not Exist')
  
-     const user = await User.findOne({
-         _id:user_id
+    const user = await User.findOne({
+        _id:user_id
      })
-     if (!user)
-         throw Error('This User Does not Exist')
+    if (!user)
+        throw Error('This User Does not Exist')
   
-     const section = await CourseSection.findOne({
+    const section = await CourseSection.findOne({
          _id:section_id
      }) 
-     if (!section)
-         throw Error('This Section Does not Exist')
-         
-     const question = await Question.findOne({
-         _id:question_id
-     })  
-     if (!question)
-         throw Error('This Question Does not Exist')
+    if (!section)
+        throw Error('This Section Does not Exist')
+
+    const course = await Course.findOne({
+        _id:course_id
+    }) 
+    if (!course)
+        throw Error('This Course Does not Exist')
  
-     const sectionProgress = await this.findOne({
-         user_id,
-         course_id,
-         section_id,
-     })
-     var returnedGrade = -100000
- 
-     for (let i = 0; i < sectionProgress.solvedQuizzes.length; i++) {
-         
-         if(sectionProgress.solvedQuizzes[i].quiz_id == material_id)
-         {
+    const sectionProgress = await this.findOne({
+        user_id,
+        course_id,
+        section_id,
+    })
+
+    for (let i = 0; i < sectionProgress.finishedQuizzes.length; i++) {
+        if(sectionProgress.finishedQuizzes[i].quiz_id == material_id)
+        {   
+            throw Error('You already answered this quiz')
+        }
+      }
+
+    var returnedGrade = 0
+    var exception = -100000
+    for (let i = 0; i < sectionProgress.solvedQuizzes.length; i++) {
+        
+        if(sectionProgress.solvedQuizzes[i].quiz_id == material_id)
+        {   
+            exception = 0
+            returnedGrade = sectionProgress.solvedQuizzes[i].questionsAnswers[0].acquiredGrade + returnedGrade
+        }
             
-            if(sectionProgress.solvedQuizzes[i].questionsAnswers[0].question_id == question_id)
-            {
-             returnedGrade = sectionProgress.solvedQuizzes[i].questionsAnswers[0].acquiredGrade
-            }
-         }
-             
-       }
-     if(returnedGrade == -100000)
-       throw Error('Question is Not Answered')
- 
+      }
+    if(exception == -100000)
+      throw Error('No Question is Answered In This Material')
+
+    await this.findByIdAndUpdate({
+        _id: sectionProgress._id
+    }, {
+        $push: {
+            finishedQuizzes: {quiz_id:material_id},
+        },
+        materialNumber: ~~sectionProgress.materialNumber + 1,
+        totalHours :~~sectionProgress.totalHours + ~~material.duration,
+        totalPoints :~~sectionProgress.totalPoints + ~~material.totalPoints,
+        finishedPercentage :((( ~~sectionProgress.materialNumber + 1)/(~~course.materialNumber))*100)
+    })
+
      return returnedGrade
  }
 

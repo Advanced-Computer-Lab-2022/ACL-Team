@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Instructor = require('../InstructorSchema')
 const Discount = require('../lib/payment/discountSchema')
+const Fuse = require('fuse.js')
 
 
 const Schema = mongoose.Schema
@@ -16,6 +17,11 @@ const CourseSchema = new Schema({
     title: {
         type: String,
         required: 'title is required',
+
+    },
+    averageRating: {
+        type: Number,
+        default : 0,
 
     },
     allRatings: [{
@@ -37,12 +43,19 @@ const CourseSchema = new Schema({
     },
     maxGrade: {
         type: Number,
+        default : 0,
     },
     totalHours: {
         type: Number,
+        default : 0,
+    },
+    materialNumber: {
+        type: Number,
+        default : 0,
     },
     totalPoints: {
         type: Number,
+        default : 0,
     },
     awards: [{
         award_id: String, //TODO
@@ -56,18 +69,18 @@ const CourseSchema = new Schema({
     },
     isDiscounted: {
         type: Boolean,
+        default : false,
     },
     discount_id: {
         type: mongoose.Schema.Types.ObjectId,
     },
     subscriberNumber: {
         type: Number,
+        default : 0,
     },
     reviewNumber: {
         type: Number,
-    },
-    lectureNumber: {
-        type: Number,
+        default : 0,
     },
     level: {
         type: String,
@@ -82,6 +95,10 @@ const CourseSchema = new Schema({
         user_id: mongoose.Schema.Types.ObjectId,
         username:String, 
     }],
+    unresolvedIssues: [{
+        Issue_id: mongoose.Schema.Types.ObjectId,
+        issue : String, 
+    }],
 
 
 
@@ -92,7 +109,7 @@ const CourseSchema = new Schema({
 CourseSchema.statics.addCourse = async function (title, price, category, instructor_id, summary,coursePreviewUrl) {
 
     if (!title || !price || !category || !instructor_id || !summary || !coursePreviewUrl)
-        throw error('All fields must be filled')
+        throw Error('All fields must be filled')
 
     const instructor = await Instructor.findOne({
         _id: instructor_id
@@ -172,12 +189,37 @@ CourseSchema.statics.getCourseBycategory = async function (searchcategory) {
     const result = fuse.search(searchcategory)
     return result
 }
+CourseSchema.statics.getCoursesByPrice = async function(filteredprice){
+    if(!filteredprice)
+        throw Error('no search written')
+    const courses = await this.find({
+        price:filteredprice
+    })
+    .sort({
+        createdAt: -1
+        })
+    
+    return courses
+}
+CourseSchema.statics.getCoursesByCategory = async function(searchcategory){
+    if(!searchcategory)
+        throw Error('no search written')
+    const courses = await this.find({
+        category:searchcategory
+    })
+    .sort({
+        createdAt: -1
+        })
+    
+    return courses
+}
 CourseSchema.statics.search = async function (search) {
     if (!search)
         throw Error('No KeyWord Written')
     const courses = await this.find().sort({
         createdAt: -1
     })
+    
     const options = {
         includeScore: true,
         keys: ['category', 'title']
@@ -204,15 +246,30 @@ CourseSchema.statics.rateCourse = async function (user_id,course_id, rating) {
         user_id:user_id
     }
 
-    const course = await this.findByIdAndUpdate({
+    var course = await this.findByIdAndUpdate({
             _id: course_id
         }, {
             $push: {
                 allRatings: ratingObject
             },
         }
-
     )
+    course =  await this.findOne({
+        _id : course_id
+    })
+    var ratingNumber = 0
+    var ratingSum = 0;
+    for (let i = 0; i < course.allRatings.length; i++) {
+        ratingSum = course.allRatings[i].rating + ratingSum
+        ratingNumber++
+      }
+
+    course = await this.findByIdAndUpdate({
+        _id: course_id
+    }, {
+        averageRating : ratingSum / ratingNumber
+    })
+    
     return course;
 }
 CourseSchema.statics.deleteCourse = async function (course_id) {

@@ -51,11 +51,22 @@ import InstructorEditPassword from './pages/instructorEditPassword';
 import UserPage from './pages/UserPage';
 import InstructorCardBig from './Components/Instructor/instructorCardBig';
 
+import SectionPage from './pages/sectionPage';
 import TermsInstructor from './pages/TermsInstructor';
 import TermsTrainee from './pages/TermsTrainee';
 import AllCourses from './pages/AllCourses';
 import Temp from './pages/Temp';
 
+
+
+import SubtitlePage from './pages/subtitlePage';
+import MaterialPage from './pages/materialPage';
+import Drawer from './Components/drawer';
+import Search from './pages/search';
+import QuestionsComponents from './Components/Instructor/questionsComponents';
+import QuestionCard from './Components/Cards/questionCard';
+import QuestionCard2 from './Components/Cards/questionCard2';
+import QuizResultsPage from './pages/quizResultsPage';
 
 
 
@@ -70,11 +81,11 @@ function App() {
       <Route path='/signin' exact element={<Signin />} />
       <Route path='/signup/instructor' exact element={<SignUpInstructor/>} />
       <Route path='/signup/' exact element={<SignUpTrainee/>} />
-      {/* <Route path='/admin' exact element={<AdminSignup/>} /> */}
+      <Route path='/admin' exact element={<AdminSignup/>} />
       <Route path='/' exact element={<GuestPage/>} />
       <Route path='/trainee' exact element={<TraineePage/>} />
       <Route path='/user' exact element={<HomePage/>} />
-      <Route path='/instructor' exact element={<InstructorHomePage/>} />
+      <Route path='/instructor/:id' exact element={<InstructorHomePage/>} />
       <Route path='/course' exact element={<CourseDashboard/>} />
       <Route path='/course/coursePage/:id' exact element={<CoursePage/>} />
       <Route path='/instructor/addCourse' exact element={<InstructorAddCourse/>} />
@@ -82,34 +93,44 @@ function App() {
       <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />
       <Route path='/TraineeEditProfile' exact element={<TraineeEditProfile/>} />
       <Route path='/sidebar' exact element={<SidebarPage/>} />
-      <Route path='/instructor/addDiscount' exact element={<InstructorAddDiscountPage/>} />
-      <Route path='/instructor/addquiz' exact element={<InstructorAddQuizPage/>} />
-      <Route path='/quizPage' exact element={<QuizPage/>} />
+      <Route path='/instructor/addDiscount/:courseID&:instructorID' exact element={<InstructorAddDiscountPage/>} />
+      <Route path='/instructor/addquiz/:courseID' exact element={<InstructorAddQuizPage/>} />
+      <Route path='/quizPage' exact element={<QuizPage/>} /> 
       <Route path='/VideoPage' exact element={<VideoPage/>} />
       <Route path='/login' exact element={<Login/>} />
       <Route path='/termsAndCond' exact element={<Terms/>} />
-      <Route path='/instructor/addSection' exact element={<InstructorAddSectionPage/>} />
+      <Route path='/instructor/addSection/:courseID' exact element={<InstructorAddSectionPage/>} />
 
       <Route path='/instructor/coursepage' exact element={<InstructorCoursePage/>} />
       <Route path='/instructor/editBio' exact element={<InstructorEditBio/>} />
       <Route path='/instructor/editMail' exact element={<InstructorEditEmail/>} />
       <Route path='/instructor/editPassword' exact element={<InstructorEditPassword/>} />
-      <Route path='signUp/instructor/termsinstructor' exact element={<TermsInstructor/>} />
-      <Route path='/TermsTrainee' exact element={<TermsTrainee/>} />
+      <Route path='/trainee/sectionPage/:courseid' exact element={<SectionPage/>} /> 
+      <Route path='/trainee/SubtitlePage/:courseid&:sectionid' exact element={<SubtitlePage/>} />
+      <Route path='/trainee/MaterialPage/:courseid&:sectionid' exact element={<MaterialPage/>} />
+      <Route path='/quizPage/:materialID' exact element={<QuizPage/>} />
+      <Route path='/quizResult/:materialID' exact element={<QuizResultsPage/>} />    
+      <Route path='signUp/instructor/termsInstructor' exact element={<TermsInstructor/>} />
+      <Route path='signUp/trainee/termsTrainee' exact element={<TermsTrainee/>} />
+
 
 
 
       <Route path='/test2' exact element={<TemplatePage/>} />
+      <Route path='/trainee/filterCourses' exact element={<Drawer/>} />      
+      <Route path='/test10' exact element={<QuestionCard2/>} />
 
 
       <Route path='/test' exact element={<Temp/>}/>
-      <Route path='/test2' exact element={<Dropdown2/>} />
+      <Route path='/test5' exact element={<QuestionsComponents/>} />
 
       {/* <Route path='/test3' exact element={<RateInstructor/>} /> */}
       <Route path='/rateInstructor' exact element={<RateInstructor/>} />
       <Route path='/rateCourse' exact element={<RateCourse/>} />
       <Route path='/userpage' exact element={<UserPage/>}/>
       <Route path='trainee/allCourses' exact element={<AllCourses/>}/>
+      <Route path='trainee/search' exact element={<Search/>}/>
+
       
 
 

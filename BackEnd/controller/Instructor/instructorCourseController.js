@@ -3,6 +3,7 @@ const Course = require('../../models/course/courseSchema')
 const Discount = require('../../models/lib/payment/discountSchema')
 const courseSectionSchema = require('../../models/course/courseSectionSchema')
 const CourseMaterial = require('../../models/course/courseMaterialSchema')
+const CourseSubtitle = require('../../models/course/courseSubtitleSchema')
 
 
 
@@ -148,25 +149,22 @@ const addCourseSection = async (req, res) => {
     }
 
 }
-const addVideo = async (req, res) => {
+const addCourseSubtitle = async (req, res) => {
 
     const {
-        name,
-        videoUrl,
-        description,
-        duration,
+        course_id,
+        section_id,
+        title,
+        subtitlePreviewVideoUrl,
+        type
     } = req.body
 
     try {
-        const video = await CourseMaterial.create({
-            type:"video",
-            name,
-            material_doc:videoUrl,
-            description,
-            duration,
-        })
+
+
+        const subtitle = await CourseSubtitle.createSubtitle(course_id, section_id, title,subtitlePreviewVideoUrl,type)
         res.status(200).json({
-            video
+            subtitle
         })
     } catch (error) {
 
@@ -187,5 +185,5 @@ module.exports = {
     applyDiscount,
     setCoursePreview,
     addCourseSection,
-    addVideo,
+    addCourseSubtitle
 }
