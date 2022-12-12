@@ -67,6 +67,7 @@ import QuestionsComponents from './Components/Instructor/questionsComponents';
 import QuestionCard from './Components/Cards/questionCard';
 import QuestionCard2 from './Components/Cards/questionCard2';
 import QuizResultsPage from './pages/quizResultsPage';
+import ViewInstructorReviews from './pages/ViewInstructorReviews';
 
 
 
@@ -112,6 +113,8 @@ function App() {
       <Route path='/quizResult/:materialID' exact element={<QuizResultsPage/>} />    
       <Route path='signUp/instructor/termsInstructor' exact element={<TermsInstructor/>} />
       <Route path='signUp/trainee/termsTrainee' exact element={<TermsTrainee/>} />
+      
+      <Route path='/instructor/ViewReviews/:instructorID' exact element={<ViewInstructorReviews/>} />
 
 
 
