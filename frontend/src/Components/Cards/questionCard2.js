@@ -1,35 +1,101 @@
-import React, { useState , useEffect} from 'react'
-import axios from 'axios';
+import React, { useState } from "react";
+import img1 from "../images/Blogging-bro 1.png"
 
 
+export default function QuestionCard2({question}) {
 
-export default function QuestionCard2({question_id}) {
+  const [answer,setAnswer] = useState();
+  const [questionGrade,setQuestionGrade] = useState(0);
+  const [submitted , setSubmit] = useState('');
+  
+  const handleSubmit =(e)=>{
+    e.preventDefault()
 
-  const [question,setQuestion] = useState([]);
+    if(answer == question.answer){
+      questionGrade += 1;
+      console.log(questionGrade)
+    }
+    else{
+      console.log(question.answer)
 
-  const getQuestionByID = async () => {
-    const res = await axios.get(`http://localhost:3000/lib/Question?_id=${question_id}`)
-    .catch((err) => console.log(err));
-    const data = await res.data;
-    return data;
 
-  };
+    }
 
-  useEffect(() =>{
-    getQuestionByID().then((data) => setQuestion(data))
-  },[])
+    // setSubmit(true);
+  }
 
-  // console.log(question.choices[0].choice_1);
 
 
   return (
-    <div>
-        <h2>{question.questionTitle}</h2>
-        <h2>Q: {question.question}</h2>
-        {/* <h2>a: {question.choices[0].choice_1}</h2>
-        <h2>b: {question.choices[0].choice_2}</h2> 
-        <h2>c: {question.choices[0].choice_3}</h2>
-        <h2>d: {question.choices[0].choice_4}</h2> <hr/> */}
+    <div className='border'> 
+      <div className='course-details'>
+      <div className="course-img">
+    
+      <img src={img1} alt="Course Img" />
     </div>
-  )
+
+    <form onSubmit={handleSubmit}>
+    <div className="course-text">
+      <h3>{question.question}</h3>
+
+      {/* {Object.keys(question.choices[0]).map((choice, index) => {
+        return (
+          <div>
+            <h6>
+              <input
+                type="radio"
+                name="answer"
+                onChange={(e) => setAnswer(e.target.value)}
+                value={"choice" + "_" + (index + 1)}
+              />{choice}
+            </h6>
+            {submitted && ("choice" + "_" + (index + 1) == question.answer) && <p>Correct</p>}
+            {submitted && (choice == answer && "choice" + "_" + (index + 1) !== question.answer) && <p>Incorrect</p>}
+          </div>
+        )
+      })} */}
+
+      <h6><input 
+      type="radio"
+      name="answer"
+      onChange={(e) => setAnswer(e.target.value)}
+      value="choice_1"
+      />{question.choices[0].choice_1}</h6>
+
+      <h6><input 
+      type="radio"
+      name="answer"
+      onChange={(e) => setAnswer(e.target.value)}
+      value="choice_2" 
+      />{question.choices[0].choice_2}</h6>
+
+      <h6><input 
+      type="radio"
+      name="answer"
+      onChange={(e) => setAnswer(e.target.value)}
+      value="choice_3" 
+      />{question.choices[0].choice_3}</h6>
+
+      <h6><input 
+      type="radio"
+      name="answer"
+      onChange={(e) => setAnswer(e.target.value)}
+      value="choice_4" 
+      />{question.choices[0].choice_4}
+      </h6>
+
+
+    </div>
+
+    <button>Submit</button>
+
+
+    </form>
+
+
+    
+      </div>
+
+    </div>
+  );
 }

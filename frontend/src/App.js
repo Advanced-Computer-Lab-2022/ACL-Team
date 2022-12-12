@@ -65,6 +65,8 @@ import Drawer from './Components/drawer';
 import Search from './pages/search';
 import QuestionsComponents from './Components/Instructor/questionsComponents';
 import QuestionCard from './Components/Cards/questionCard';
+import QuestionCard2 from './Components/Cards/questionCard2';
+import QuizResultsPage from './pages/quizResultsPage';
 
 
 
@@ -106,7 +108,8 @@ function App() {
       <Route path='/trainee/sectionPage/:courseid' exact element={<SectionPage/>} /> 
       <Route path='/trainee/SubtitlePage/:courseid&:sectionid' exact element={<SubtitlePage/>} />
       <Route path='/trainee/MaterialPage/:courseid&:sectionid' exact element={<MaterialPage/>} />
-      <Route path='/quizPage/:materialID' exact element={<QuizPage/>} />    
+      <Route path='/quizPage/:materialID' exact element={<QuizPage/>} />
+      <Route path='/quizResult/:materialID' exact element={<QuizResultsPage/>} />    
       <Route path='signUp/instructor/termsInstructor' exact element={<TermsInstructor/>} />
       <Route path='signUp/trainee/termsTrainee' exact element={<TermsTrainee/>} />
 
@@ -115,7 +118,7 @@ function App() {
 
       <Route path='/test2' exact element={<TemplatePage/>} />
       <Route path='/trainee/filterCourses' exact element={<Drawer/>} />      
-      <Route path='/test10' exact element={<QuestionCard/>} />
+      <Route path='/test10' exact element={<QuestionCard2/>} />
 
 
       <Route path='/test' exact element={<Temp/>}/>

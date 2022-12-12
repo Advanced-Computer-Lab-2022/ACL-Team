@@ -6,7 +6,9 @@ import Navbar from '../Components/General/Navbar/navbar'
 import QuestionsComponents from '../Components/Instructor/questionsComponents'
 import "../Components/css/quizPage.css"
 import { useParams } from 'react-router-dom'
+import QuestionCard from '../Components/Cards/questionCard'
 import QuestionCard2 from '../Components/Cards/questionCard2'
+import { Link } from 'react-router-dom'
 
 export default function QuizPage() {
 
@@ -25,24 +27,23 @@ export default function QuizPage() {
     getMaterialByID().then((data) => setQuestion(data.material.questions))
   },[])
 
+  // console.log(questions)
+
+  console.log()
+
 
   return (
     <div>
       <Navbar/>
-      {/* <div classname="title_comp">
-        <QuizTitle title={material.title}/>
-        <p>Hello</p>
-      </div> */}
 
       {questions && questions.map((question) =>(
-          <QuestionCard2 question_id={question.question_id}/>
-          // <p>{question.question_id}</p>
-        ))}
-      
-      {/* <div className="question_comp">
-        <QuestionsComponents/>
+          <QuestionCard2 question={question}/>
+      ))}
 
-      </div> */}
+      <Link to={`/quizResult/${materialID}`}>
+        <button>Submit Quiz</button>
+      </Link>
+
     </div>
   )
 }
