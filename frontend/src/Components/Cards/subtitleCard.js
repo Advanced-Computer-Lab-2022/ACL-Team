@@ -1,8 +1,12 @@
 import React from 'react'
 import img1 from "../images/Course Image.png"
 import { Link } from 'react-router-dom'
+import VideoPage from '../Video Page/videoPage'
 
 export default function SubtitleCard({subtitle}) {
+
+  const Video = subtitle.subtitlePreviewVideoUrl;
+
   return (
     <div>
         <div>
@@ -22,7 +26,11 @@ export default function SubtitleCard({subtitle}) {
                     <button>View Material</button>
                   </Link>   
                 </p>
-                <p></p>
+                <p>
+                  <Link to={`/Videopage`} state={`${Video}`}> 
+                    <button>View Video</button>
+                  </Link>   
+                </p>
                 {/* <p>
                   {subtitle.quizes.object._id}
                 </p> */}
