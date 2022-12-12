@@ -8,6 +8,7 @@ import "../Components/css/quizPage.css"
 import { useParams } from 'react-router-dom'
 import QuestionCard from '../Components/Cards/questionCard'
 import QuestionCard2 from '../Components/Cards/questionCard2'
+import { Link } from 'react-router-dom'
 
 export default function QuizPage() {
 
@@ -38,6 +39,10 @@ export default function QuizPage() {
       {questions && questions.map((question) =>(
           <QuestionCard2 question={question}/>
       ))}
+
+      <Link to={`/quizResult/${materialID}`}>
+        <button>Submit Quiz</button>
+      </Link>
 
     </div>
   )
