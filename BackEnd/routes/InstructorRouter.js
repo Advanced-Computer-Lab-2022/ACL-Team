@@ -5,6 +5,7 @@ const {
     changeBiography,
     changeEmail,
     getInstructorbyId,
+    getReviewsByInstructorId,
 } = require('../controller/Instructor/instructorController')
 const {
     viewOfferedCourses,
@@ -36,6 +37,10 @@ router.get('/', () => {
 router.post('/changeEmail', changeEmail)
 router.post('/changeBiography', changeBiography)
 router.get('/courseShow', viewOfferedCourses)
+
+
+router.get('/viewRating', getReviewsByInstructorId)
+
 router.post('/addDiscount', addDiscount)
 router.post('/applyDiscount', applyDiscount)
 router.post('/setCoursePreview', setCoursePreview)

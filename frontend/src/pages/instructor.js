@@ -3,7 +3,7 @@ import axios from 'axios'
 import InstructorAddSubtitle from '../Components/Instructor/instructorAddSubtitle'
 import InstructorCourseCard from '../Components/Instructor/instructorCourseCard'
 import InstNavbar from '../Components/General/Navbar/instructorNavbar'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 export default function InstructorHomePage() {
 
   const [instCourses, setInstCourses] = useState([]);
@@ -57,6 +57,7 @@ export default function InstructorHomePage() {
           <InstructorAddSubtitle/>
         </div>
          */}
+         <Link to ={`/instructor/ViewReviews/${instructor._id}`}>My Reviews</Link>
     </div>
   )
 }

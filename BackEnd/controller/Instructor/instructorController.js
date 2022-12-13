@@ -1,7 +1,7 @@
 const Instructor = require('../../models/InstructorSchema')
 const Course = require('../../models/course/courseSchema')
 const User = require('../../models/UserSchema')
-
+const Reviews = require('../../models/lib/reviewSchema')
 //get instructor
 const getInstructorbyId = async (req, res) => {
     const _id = req.query
@@ -32,6 +32,20 @@ const changeBiography = async (req, res) => {
     }
 
 }
+const getReviewsByInstructorId =async(req,res) =>{
+    const {
+     reviewed_id
+    } = req.body
+    try {
+        const reviews = await Reviews.find({reviewed_id})
+
+        res.status(200).json(reviews)
+    } catch (error) {
+        res.status(404).json({
+            error: error.message
+        })
+    }
+}
 const changeEmail = async (req, res) => {
     
     const {
@@ -55,7 +69,7 @@ const changeEmail = async (req, res) => {
 
 
 module.exports = {
-
+    getReviewsByInstructorId,
     changeBiography,
     changeEmail,
     getInstructorbyId,
