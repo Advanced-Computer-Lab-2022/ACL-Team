@@ -67,6 +67,8 @@ import QuestionsComponents from './Components/Instructor/questionsComponents';
 import QuestionCard from './Components/Cards/questionCard';
 import QuestionCard2 from './Components/Cards/questionCard2';
 import QuizResultsPage from './pages/quizResultsPage';
+import ViewInstructorReviews from './pages/ViewInstructorReviews';
+import AdminReportsPage from './pages/adminReportsPage';
 
 
 
@@ -81,7 +83,8 @@ function App() {
       <Route path='/signin' exact element={<Signin />} />
       <Route path='/signup/instructor' exact element={<SignUpInstructor/>} />
       <Route path='/signup/' exact element={<SignUpTrainee/>} />
-      {/* <Route path='/admin' exact element={<AdminSignup/>} /> */}
+      <Route path='/admin' exact element={<AdminSignup/>} />
+      <Route path='/admin/Reports' exact element={<AdminReportsPage/>} />
       <Route path='/' exact element={<GuestPage/>} />
       <Route path='/trainee' exact element={<TraineePage/>} />
       <Route path='/user' exact element={<HomePage/>} />
@@ -112,6 +115,8 @@ function App() {
       <Route path='/quizResult/:materialID' exact element={<QuizResultsPage/>} />    
       <Route path='signUp/instructor/termsInstructor' exact element={<TermsInstructor/>} />
       <Route path='signUp/trainee/termsTrainee' exact element={<TermsTrainee/>} />
+      
+      <Route path='/instructor/ViewReviews/:instructorID' exact element={<ViewInstructorReviews/>} />
 
 
 
