@@ -12,6 +12,7 @@ export default function ViewInstructorReviews() {
 
     const [reviews, setReviews] = useState([]);
     const [reviewer_id, setReviewer_id] = useState([]);
+    const [instructor,setInstructor] = useState([])
 
 
     const getInstructor= async () => {
@@ -24,17 +25,32 @@ export default function ViewInstructorReviews() {
       };
 
       useEffect(() =>{
+        getInstructor().then((data) => setInstructor(data))
+
         getInstructor().then((data) => setReviews(data.reviews))
     
       },[])
 
-  
+      console.log(instructor)
+
+      console.log(reviews)
+
+      
+  let total =0;
 
   return (
     <div>
-      {reviews && reviews.map((review) =>(
-            <Rating review={review}  />
-          ))}
+      
+       {reviews && reviews.map((review  ) =>(
+            
+            <Rating review={review} />
+            
+            )
+
+         
+          )} 
+
+         
     </div>
   )
 }

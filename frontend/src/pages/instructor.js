@@ -39,6 +39,7 @@ export default function InstructorHomePage() {
 
   },[])
 
+  let totalCourses=0;
 
 
   return (
@@ -49,6 +50,7 @@ export default function InstructorHomePage() {
         <div className="coursepage_component1">
           
           {instCourses && instCourses.map((Course) =>(
+            totalCourses+=1,
             <InstructorCourseCard course={Course} instructor={instructor}/>
           ))}
         </div>
