@@ -3,7 +3,7 @@ import axios from 'axios'
 import InstructorAddSubtitle from '../Components/Instructor/instructorAddSubtitle'
 import InstructorCourseCard from '../Components/Instructor/instructorCourseCard'
 import InstNavbar from '../Components/General/Navbar/instructorNavbar'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 export default function InstructorHomePage() {
 
   const [instCourses, setInstCourses] = useState([]);
@@ -39,6 +39,7 @@ export default function InstructorHomePage() {
 
   },[])
 
+  let totalCourses=0;
 
 
   return (
@@ -49,6 +50,7 @@ export default function InstructorHomePage() {
         <div className="coursepage_component1">
           
           {instCourses && instCourses.map((Course) =>(
+            totalCourses+=1,
             <InstructorCourseCard course={Course} instructor={instructor}/>
           ))}
         </div>
@@ -57,6 +59,7 @@ export default function InstructorHomePage() {
           <InstructorAddSubtitle/>
         </div>
          */}
+         <Link to ={`/instructor/ViewReviews/${instructor._id}`}>My Reviews</Link>
     </div>
   )
 }

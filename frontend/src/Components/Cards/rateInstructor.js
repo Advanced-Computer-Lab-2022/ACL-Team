@@ -5,7 +5,7 @@ import React , {useState} from 'react'
 import axios from 'axios'
 
 
-export default function ReviewInstructor() {
+export default function ReviewInstructor({instructor}) {
 const[_id,set_id] =useState('')
 const[instructor_id,setInstructor_id] =useState('')
 const[type,setType] =useState('')
