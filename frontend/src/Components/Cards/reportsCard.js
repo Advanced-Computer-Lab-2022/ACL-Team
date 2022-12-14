@@ -3,12 +3,27 @@ import { useState , useEffect} from 'react';
 import axios from 'axios';
 import "../css/courseCard.css"
 import img1 from "../images/Course Image.png"
-import img2 from "../images/Clock Icon.png"
-import img3 from "../images/Lesson Icon.png"
-import img4 from "../images/Level Icon.png"
-import { Link } from 'react-router-dom';
 
 export default function ReposrtsCard({issue}) {
+
+    // const setIssueToPending = async () => {
+    //     const res = await axios.get("http://localhost:3000/admin/resolvedIssues")
+    //     .catch((err) => console.log(err));
+    //     const data = await res.data;
+        
+    //     return data;
+        
+    //   };
+
+    //   useEffect(() =>{
+    //     getresolvedissues().then((data) => setResolvedIssues(data.issues))
+    //   },[])
+
+    // const handleSetPending=(e)=>{
+    //     e.preventDefault()
+     
+    // }
+
   return (
     <div className='border'> 
       <div className='course-details'>
@@ -25,6 +40,8 @@ export default function ReposrtsCard({issue}) {
     <p>
       {issue.resolverComment}
     </p>
+
+    {/* <button onClick={handleSetPending}>Mark as Pending</button> */}
  </div>
 
       </div>
