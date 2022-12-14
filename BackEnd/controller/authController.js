@@ -174,12 +174,40 @@ const signupAdmin = async (req, res) => {
         })
     }
 }
+
+const forgetPassword = async (req,res) => {
+    const {email} = req.body
+    
+    try {
+        const user = await User.findOne({email})
+        
+        if(!user){
+            return res.json({status:"User does not exist"})
+        }
+        const secret = process.env.secret || "secret" + user.password
+        const token = jwt.sign({email: user.email , id: user._id } , secret , {expiresIn: "5m"})
+        const link = `http://localhost:3000/resetPassword/${user._id}/${token}`
+        console.log(link)
+
+    } catch (error) {
+        
+    }
+}
+
+const resetPassword = async (req,res) => {
+    const {id , token} = req.params
+
+    console.log(req.params)
+    res.send("done")
+}
 module.exports = {
     loginUser,
     signupTrainee,
     signupInstructor,
     signupAdmin,
     createToken,
-    validateToken
+    validateToken,
+    forgetPassword,
+    resetPassword
 
 }
