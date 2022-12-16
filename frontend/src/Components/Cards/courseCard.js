@@ -8,7 +8,7 @@ import img3 from "../images/Lesson Icon.png"
 import img4 from "../images/Level Icon.png"
 import { Link } from 'react-router-dom';
 
-export default function CourseCard({course}) {
+export default function CourseCard({course, traineeID}) {
   const [instructorName,setInstructorName] = useState('');
 
   const getInstructor = async () => {
@@ -25,6 +25,7 @@ export default function CourseCard({course}) {
     getInstructor().then((data) => setInstructorName(data.name))
 
   },[]);
+
   return (
     <div className='border'> 
       <div className='course-details'>
@@ -34,7 +35,7 @@ export default function CourseCard({course}) {
  </div>
 
  <div className="course-text">
-    <Link to={`/trainee/sectionPage/${course._id}`}>
+    <Link to={`/course/coursePage/${course._id}&${traineeID}`}>
       <h3>{course.title}</h3>
     </Link>
 

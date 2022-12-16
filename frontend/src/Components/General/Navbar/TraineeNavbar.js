@@ -91,7 +91,7 @@ export default function TraineeNavbar() {
         </div>
     </div>
 
-      
+       
 
 </div>
 

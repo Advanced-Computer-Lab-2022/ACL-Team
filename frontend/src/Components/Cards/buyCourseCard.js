@@ -13,7 +13,47 @@ import img9 from "../images/students.png"
 
 import "../css/buyCourseCard.css"
 import { Link } from 'react-router-dom'
-export default function BuyCourseCard({course}) {
+export default function BuyCourseCard({course,traineeID}) {
+    
+    const [isCorprate,setIsCorprate] = useState(false);
+    const [trainee,setTrainee] = useState('');
+
+    const getTraineeById = async () => {
+        const res = await axios.get(`http://localhost:3000/trainee/getTrainee?_id=${traineeID}`)
+        .catch((err) => console.log(err));
+        const data = await res.data;
+       
+        return data;
+        
+      };
+    
+      useEffect(() =>{
+        getTraineeById().then((data) => setTrainee(data))
+        getTraineeById().then((data) => setIsCorprate(data.isCorporate))
+      },[])
+
+    const sendCourseRequest = async () => {
+        const res = await axios.post("http://localhost:3000/trainee/requestCourse",{_id:traineeID,course_id:course._id})
+        .catch((err) => console.log(err));
+        const data = await res.data;
+        
+        return data;
+        
+      };
+
+      console.log(traineeID)
+      console.log(course._id)
+
+      console.log(isCorprate)
+    
+    const handleCourseRequest=(e)=>{
+        e.preventDefault()
+
+        if(isCorprate == true){
+            sendCourseRequest();
+        }
+    }
+
   return (
     <div>
         <div className="card_frame">
@@ -97,10 +137,8 @@ export default function BuyCourseCard({course}) {
 
             </div>
 
-            <div className="link-to-section">
-                <Link to={`/trainee/sectionPage/${course._id}`}>
-                    <a>View Sections</a>
-                </Link>
+            <div className="request-access-button">
+                <button onClick={handleCourseRequest}>Request access</button>
             </div>
             
             
