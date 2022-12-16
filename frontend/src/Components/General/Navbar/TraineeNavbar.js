@@ -93,9 +93,9 @@ export default function TraineeNavbar() {
         </div>
     </div>
 
-        {courses && courses.map((course) =>(
+        {/* {courses && courses.map((course) =>(
             <CourseCard  key={course._id}  course={course}/>
-        ))} 
+        ))}  */}
 
 </div>
 

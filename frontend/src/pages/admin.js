@@ -8,6 +8,11 @@ export default function AdminSignup(){
       <Link to={`/admin/Reports`}> 
         <button>View Reports</button>
       </Link>
+      
+      <Link to={`/admin/courseRequests`}> 
+        <button>Course Requests</button>
+      </Link>
+
        <AdminComp/>
     </div>
   )

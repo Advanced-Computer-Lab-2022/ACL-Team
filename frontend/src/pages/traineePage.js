@@ -136,7 +136,7 @@ export const TraineePage = () => {
       
       {courses && courses.map((course , i) =>(
         i<3 &&
-        <CourseCard course={course}/>
+        <CourseCard course={course} traineeID={traineeID}/>
         
       ))}
       <a href='/trainee/filterCourses'>

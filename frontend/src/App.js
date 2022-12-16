@@ -71,6 +71,7 @@ import ViewInstructorReviews from './pages/ViewInstructorReviews';
 import AdminReportsPage from './pages/adminReportsPage';
 import TraineeOwnedCourses from './pages/traineeOwnedCourses';
 import FaqPage from './pages/faqPage';
+import AdminCourseRequests from './pages/adminCourseRequests';
 
 
 
@@ -87,13 +88,14 @@ function App() {
       <Route path='/signup/' exact element={<SignUpTrainee/>} />
       <Route path='/admin' exact element={<AdminSignup/>} />
       <Route path='/admin/Reports' exact element={<AdminReportsPage/>} />
+      <Route path='/admin/courseRequests' exact element={<AdminCourseRequests/>}/>
       <Route path='/' exact element={<GuestPage/>} />
       <Route path='/trainee/:traineeID' exact element={<TraineePage/>} />
       <Route path='/trainee/myCourses/:traineeID' exact element={<TraineeOwnedCourses/>} />
       <Route path='/user' exact element={<HomePage/>} />
       <Route path='/instructor/:id' exact element={<InstructorHomePage/>} />
       <Route path='/course' exact element={<CourseDashboard/>} />
-      <Route path='/course/coursePage/:id' exact element={<CoursePage/>} />
+      <Route path='/course/coursePage/:id&:traineeID' exact element={<CoursePage/>} />
       <Route path='/instructor/addCourse' exact element={<InstructorAddCourse/>} />
       <Route path='/course/courseShow' exact element={<SearchCoursePage/>} />
       <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />

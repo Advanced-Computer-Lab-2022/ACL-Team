@@ -8,13 +8,15 @@ import RatingsCard from '../Components/Course/ratingsCard'
 import Navbar from '../Components/General/Navbar/navbar'
 import "../Components/css/coursePage.css"
 import InstructorCardBig from '../Components/Instructor/instructorCardBig'
+import TraineeNavbar from '../Components/General/Navbar/TraineeNavbar'
 
 export const CoursePage = () => {
 
   const { id } = useParams();
+  const { traineeID } = useParams();
 
   const [course,setCourse] = useState([]);
-  // const [instructor,setInstructor] = useState([]);
+  const [instructor,setInstructor] = useState([]);
 
     const getCourseById = async () => {
         const res = await axios.get(`http://localhost:3000/course/?_id=${id}`)
@@ -43,20 +45,18 @@ export const CoursePage = () => {
         getCourseById().then((data) => setCourse(data))
       },[])
 
+      console.log(course)
+
   return (
     <div>
-      <Navbar/>
-      <h2>Course id - {id}</h2>
+      <TraineeNavbar/>
      
-      <div>
-        <RatingsCard/>
+      <div className="buy-course-card-pos">
+        <BuyCourseCard course={course} traineeID={traineeID}/>  
       </div>
-      <div>
-        <BuyCourseCard course={course}/>
-      </div>
-      <div className="inst_card">
+      {/* <div className="inst_card">
         <InstructorCardBig/>
-      </div>
+      </div> */}
       <div>
         
       </div>
