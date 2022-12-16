@@ -206,7 +206,7 @@
     height: 97.8px;
     border-radius: 10px;
     position: relative;
-    top: -330px;
+    top: -345px;
     left: 28px;
     
 }
@@ -226,4 +226,14 @@
 .link-to-section{
     position: relative;
     bottom: 200px;
+}
+
+.request-access-button{
+    position: relative;
+    bottom: 350px;
+    left: 30px;
+}
+
+.request-access-button > button{
+    border-radius: 10px;
 }

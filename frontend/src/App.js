@@ -68,7 +68,12 @@ import QuestionCard from './Components/Cards/questionCard';
 import QuestionCard2 from './Components/Cards/questionCard2';
 import QuizResultsPage from './pages/quizResultsPage';
 import ViewInstructorReviews from './pages/ViewInstructorReviews';
-import CountrySelector from './pages/CountrySelector';
+import ForgetPassword from './Components/Authentication/forgetPassword';
+
+import AdminReportsPage from './pages/adminReportsPage';
+import TraineeOwnedCourses from './pages/traineeOwnedCourses';
+import FaqPage from './pages/faqPage';
+import AdminCourseRequests from './pages/adminCourseRequests';
 
 
 
@@ -84,12 +89,15 @@ function App() {
       <Route path='/signup/instructor' exact element={<SignUpInstructor/>} />
       <Route path='/signup/' exact element={<SignUpTrainee/>} />
       <Route path='/admin' exact element={<AdminSignup/>} />
+      <Route path='/admin/Reports' exact element={<AdminReportsPage/>} />
+      <Route path='/admin/courseRequests' exact element={<AdminCourseRequests/>}/>
       <Route path='/' exact element={<GuestPage/>} />
-      <Route path='/trainee' exact element={<TraineePage/>} />
+      <Route path='/trainee/:traineeID' exact element={<TraineePage/>} />
+      <Route path='/trainee/myCourses/:traineeID' exact element={<TraineeOwnedCourses/>} />
       <Route path='/user' exact element={<HomePage/>} />
       <Route path='/instructor/:id' exact element={<InstructorHomePage/>} />
       <Route path='/course' exact element={<CourseDashboard/>} />
-      <Route path='/course/coursePage/:id' exact element={<CoursePage/>} />
+      <Route path='/course/coursePage/:id&:traineeID' exact element={<CoursePage/>} />
       <Route path='/instructor/addCourse' exact element={<InstructorAddCourse/>} />
       <Route path='/course/courseShow' exact element={<SearchCoursePage/>} />
       <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />
@@ -114,6 +122,7 @@ function App() {
       <Route path='/quizResult/:materialID' exact element={<QuizResultsPage/>} />    
       <Route path='signUp/instructor/termsInstructor' exact element={<TermsInstructor/>} />
       <Route path='signUp/trainee/termsTrainee' exact element={<TermsTrainee/>} />
+      <Route path='/FAQ' exact element={<FaqPage/>} />
       
       <Route path='/instructor/ViewReviews/:instructorID' exact element={<ViewInstructorReviews/>} />
 
@@ -134,9 +143,11 @@ function App() {
       <Route path='/userpage' exact element={<UserPage/>}/>
       <Route path='trainee/allCourses' exact element={<AllCourses/>}/>
       <Route path='trainee/search' exact element={<Search/>}/>
-      <Route path='testCountry' exact element={<CountrySelector/>}/>
 
+      <Route path='/forgetPassword' exact element={<ForgetPassword/>}/>
+      <Route path='/search' exact element={<Search/>}/>
       
+
 
 
 

@@ -1,0 +1,13 @@
+.search-wrapper{
+    width: 500px;
+    
+    position: relative;
+    left: 600px;
+    top: -20px;
+}
+.search-btn{
+    position: relative;
+    left: 500px;
+    top: 40px;
+    border-radius: 10px;
+}

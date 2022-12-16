@@ -10,6 +10,9 @@ export default function LoginComponent() {
   const[password,setPass] =useState('')
   const[email,setEmail] =useState('')
   const[userID,setUserID] = useState([])
+  const[userRole,setUserRole] = useState('');
+
+  const[userIsInstructor,setUserIsInstructor] = useState(false);
 
   const loginUser = async () => {
     // console.log("boodaa")
@@ -20,6 +23,7 @@ export default function LoginComponent() {
       .catch((err) => console.log(err));
     const data = await res.data;
     console.log(userID)
+    console.log(userRole)
     return data;
   };
   const handleSubmitt=(e)=>{
@@ -32,7 +36,21 @@ export default function LoginComponent() {
 
   useEffect(() =>{ 
     loginUser().then((data) => setUserID(data.user._id))
+    loginUser().then((data) => setUserRole(data.role))
   });
+
+  const handleSignIn=(e)=>{
+    e.preventDefault()
+
+    if(userRole == 'instructor'){
+      setUserIsInstructor(true)
+    }
+    else{
+      setUserIsInstructor(false)
+    }
+
+
+  }
 
   return (
     <div>
@@ -62,10 +80,18 @@ export default function LoginComponent() {
     </div>
     <div>
  
-        <button  className='buttonborder'>
-          <Link to={`/instructor/${userID}`}>
-            Login
-          </Link>
+        <button  onClick={handleSignIn} className='buttonborder'>
+          {userIsInstructor && 
+            <Link to={`/instructor/${userID}`}>
+             ✔️
+            </Link>
+          }
+          {!userIsInstructor && 
+            <Link to={`/trainee/${userID}`}>
+              ✔️
+            </Link>
+          }
+          Login
         </button>
     </div>
 

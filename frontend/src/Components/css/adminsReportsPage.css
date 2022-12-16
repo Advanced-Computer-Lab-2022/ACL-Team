@@ -1,0 +1,17 @@
+.view-issues-button-list{
+    list-style: none;
+    display: flex;
+}
+
+ul > li > button{
+    background-color: transparent;
+}
+
+ul > li > button:hover{
+    border-bottom: solid 3px;
+}
+
+
+ul > li > button:focus{
+    border-bottom: solid 3px;
+}
