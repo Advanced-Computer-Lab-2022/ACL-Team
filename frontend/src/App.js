@@ -135,7 +135,7 @@ function App() {
       <Route path='trainee/allCourses' exact element={<AllCourses/>}/>
       <Route path='trainee/search' exact element={<Search/>}/>
       <Route path='/forgetPassword' exact element={<ForgetPassword/>}/>
-
+      <Route path='/search' exact element={<Search/>}/>
       
 
 

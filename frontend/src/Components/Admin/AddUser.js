@@ -30,7 +30,7 @@ import axios from 'axios'
   return (
     <div>
     <h3>
-        Adding User
+        Adding Trainee
     </h3>
     <form onSubmit={handleSubmitt}>
     <label> FirstName</label>

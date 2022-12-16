@@ -3,6 +3,7 @@ const Trainee = require('../models/traineeSchema')
 const Instructor = require('../models/InstructorSchema')
 const Admin = require('../models/adminSchema')
 const jwt = require('jsonwebtoken')
+const nodemailer = require("nodemailer");
 
 // ONE LOGIN FOR ALL USERS BUT THREE SIGNUPS
 const loginUser = async (req, res) => {
@@ -186,7 +187,31 @@ const forgetPassword = async (req,res) => {
         }
         const secret = process.env.secret || "secret" + user.password
         const token = jwt.sign({email: user.email , id: user._id } , secret , {expiresIn: "5m"})
-        const link = `http://localhost:3000/resetPassword/${user._id}/${token}`
+        const link = `http://localhost:3000/login/resetPassword/${user._id}/${token}`
+        let testAccount = await nodemailer.createTestAccount();
+        var transporter = nodemailer.createTransport({
+            service: "gmail",
+            auth: {
+              user:  "marwan.ashrafshaaban123@gmail.com",
+              pass: "ajawyergyiihuswq", 
+            },
+          });
+      
+          var mailOptions = {
+            from: '"ACL " marwan.ashrafshaaban123@gmail.com',
+            to: user.email,
+            subject: "Password Reset",
+            text: link,
+          };
+      
+          transporter.sendMail(mailOptions, function (error, info) {
+            if (error) {
+              console.log(error);
+            } else {
+              console.log("Email sent: " + info.response);
+            }
+            
+          });
         console.log(link)
 
     } catch (error) {
@@ -198,8 +223,21 @@ const resetPassword = async (req,res) => {
     const {id , token} = req.params
 
     console.log(req.params)
-    res.send("done")
+    const user = await User.findOne({_id:id})
+    if(!user){
+        return res.json({status:"User does not exist"})
+    }
+    const secret = process.env.secret || "secret" + user.password
+    try {
+       const verify = jwt.verify(token,secret)
+       res.send("Verified") 
+    } catch (error) {
+        res.send("Not Verified")
+    }
+    
 }
+
+// pay for a product ?
 module.exports = {
     loginUser,
     signupTrainee,

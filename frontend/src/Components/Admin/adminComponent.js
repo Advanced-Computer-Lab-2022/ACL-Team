@@ -24,7 +24,7 @@ export default function AdminComp(){
              <button onClick={()=>{
                 setChoose("AddUser")
             }} >
-                user
+                Trainee
              </button> 
               
              {

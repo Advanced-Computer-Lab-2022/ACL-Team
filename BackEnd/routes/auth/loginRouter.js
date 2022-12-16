@@ -19,7 +19,7 @@ router.post('/', loginUser)
 
 router.post('/createToken', createToken)
 router.post('/forgetPassword', forgetPassword)
-router.get('resetPassword/:id/:token' , resetPassword)
+router.get('/resetPassword/:id/:token' , resetPassword)
 
 router.get('/validateToken', validateToken)
 
