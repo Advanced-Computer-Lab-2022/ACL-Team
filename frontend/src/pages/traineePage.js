@@ -31,6 +31,7 @@ import image8 from "../Components/images/star.svg"
 export const TraineePage = () => {
 
   const [courses,setCourses] = useState([]);
+  const {traineeID} = useParams();
 
   const getCourses = async () => {
     const res = await axios.get("http://localhost:3000/course/getAllCourses")
@@ -56,6 +57,12 @@ export const TraineePage = () => {
       <div className='nav2'>
       <TraineeNavbar/>
       </div>
+
+      <button>
+        <Link to={`/trainee/myCourses/${traineeID}`}>
+          My Courses
+        </Link>
+      </button>
      
 
      
