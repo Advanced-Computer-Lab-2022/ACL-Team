@@ -1,4 +1,4 @@
-import React from 'react'
+import React ,{useState} from 'react'
 import Navbar from '../General/Navbar/navbar'
 import "../css/videoPage.css"
 import ReactPlayer from 'react-player/youtube'
@@ -15,6 +15,20 @@ export default function VideoPage() {
   const p = "In this video, we will see how we loop through arrays and fetch data from it using indexes";
   const i = "El ragel dah 3shara 3la 3shara!"
 
+  // we need to send back the notes to the arrays of notes and make handle submitt+on click(downloadTXT)
+ const downloadTxt = () => {
+  const element = document.createElement("a");
+  const file = new Blob([document.getElementById('input').value],
+  {
+    type:"text/plain;charset=utf-8"
+  }
+  );
+
+  element.href=URL.createObjectURL(file);
+  element.download="YOUR NOTES.txt"
+  document.body.appendChild(element);
+  element.click();
+ };
   return (
     <div className="video-page">
       <Navbar/>
@@ -56,8 +70,14 @@ export default function VideoPage() {
       <div className="notes_container">  
         <div className="notes_text_box">
           <label>View Notes( {number_of_notes} )</label><br/>
-          <input type="text" placeholder="Add a note" className="note_textBox"></input>
-          <button>Submit</button>
+
+          
+          <div>
+          <input id="input"/>
+            {/* <input type="text" placeholder="Add a note" className="note_textBox"></input> */}
+          <button primary="true" onClick={downloadTxt} className="button2" >download</button>
+          </div>
+          
         </div>   
       </div>
     </div>

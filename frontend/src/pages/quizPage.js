@@ -35,9 +35,11 @@ export default function QuizPage() {
   return (
     <div>
       <Navbar/>
-
+      
       {questions && questions.map((question) =>(
-          <QuestionCard2 question={question}/>
+      
+          <QuestionCard2 question={question} />
+          
       ))}
 
       <Link to={`/quizResult/${materialID}`}>
