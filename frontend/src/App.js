@@ -68,6 +68,7 @@ import QuestionCard from './Components/Cards/questionCard';
 import QuestionCard2 from './Components/Cards/questionCard2';
 import QuizResultsPage from './pages/quizResultsPage';
 import ViewInstructorReviews from './pages/ViewInstructorReviews';
+import CountrySelector from './pages/CountrySelector';
 import AdminReportsPage from './pages/adminReportsPage';
 import TraineeOwnedCourses from './pages/traineeOwnedCourses';
 import FaqPage from './pages/faqPage';
@@ -139,6 +140,7 @@ function App() {
       <Route path='/userpage' exact element={<UserPage/>}/>
       <Route path='trainee/allCourses' exact element={<AllCourses/>}/>
       <Route path='trainee/search' exact element={<Search/>}/>
+      <Route path='testCountry' exact element={<CountrySelector/>}/>
 
       
 
