@@ -69,6 +69,7 @@ import QuestionCard2 from './Components/Cards/questionCard2';
 import QuizResultsPage from './pages/quizResultsPage';
 import ViewInstructorReviews from './pages/ViewInstructorReviews';
 import AdminReportsPage from './pages/adminReportsPage';
+import TraineeOwnedCourses from './pages/traineeOwnedCourses';
 
 
 
@@ -86,7 +87,8 @@ function App() {
       <Route path='/admin' exact element={<AdminSignup/>} />
       <Route path='/admin/Reports' exact element={<AdminReportsPage/>} />
       <Route path='/' exact element={<GuestPage/>} />
-      <Route path='/trainee' exact element={<TraineePage/>} />
+      <Route path='/trainee/:traineeID' exact element={<TraineePage/>} />
+      <Route path='/trainee/myCourses/:traineeID' exact element={<TraineeOwnedCourses/>} />
       <Route path='/user' exact element={<HomePage/>} />
       <Route path='/instructor/:id' exact element={<InstructorHomePage/>} />
       <Route path='/course' exact element={<CourseDashboard/>} />
