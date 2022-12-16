@@ -70,6 +70,7 @@ import QuizResultsPage from './pages/quizResultsPage';
 import ViewInstructorReviews from './pages/ViewInstructorReviews';
 import AdminReportsPage from './pages/adminReportsPage';
 import TraineeOwnedCourses from './pages/traineeOwnedCourses';
+import FaqPage from './pages/faqPage';
 
 
 
@@ -117,6 +118,7 @@ function App() {
       <Route path='/quizResult/:materialID' exact element={<QuizResultsPage/>} />    
       <Route path='signUp/instructor/termsInstructor' exact element={<TermsInstructor/>} />
       <Route path='signUp/trainee/termsTrainee' exact element={<TermsTrainee/>} />
+      <Route path='/FAQ' exact element={<FaqPage/>} />
       
       <Route path='/instructor/ViewReviews/:instructorID' exact element={<ViewInstructorReviews/>} />
 

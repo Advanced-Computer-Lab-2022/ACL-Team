@@ -1,28 +1,43 @@
 import React from 'react';
 import { useState , useEffect} from 'react';
 import axios from 'axios';
-import "../css/courseCard.css"
+import "../css/reportsCard.css"
 import img1 from "../images/Course Image.png"
 
 export default function ReposrtsCard({issue}) {
 
-    // const setIssueToPending = async () => {
-    //     const res = await axios.get("http://localhost:3000/admin/resolvedIssues")
-    //     .catch((err) => console.log(err));
-    //     const data = await res.data;
+    const setIssueToPending = async () => {
+        const res = await axios.post("http://localhost:3000/admin/markIssueAsPending",{_id:issue._id,issue_id:issue._id,
+        comment:issue.comment})
+        .catch((err) => console.log(err));
+        const data = await res.data;
         
-    //     return data;
+        return data;
         
-    //   };
+      };
 
-    //   useEffect(() =>{
-    //     getresolvedissues().then((data) => setResolvedIssues(data.issues))
-    //   },[])
+      const setIssueToResolved = async () => {
+        const res = await axios.post("http://localhost:3000/admin/markIssueAsResolved",{_id:issue._id})
+        .catch((err) => console.log(err));
+        const data = await res.data;
+        
+        return data;
+        
+      };
 
-    // const handleSetPending=(e)=>{
-    //     e.preventDefault()
+    const handleSetResolved=(e)=>{
+        e.preventDefault()
+
+        setIssueToResolved();
      
-    // }
+    }
+
+    const handleSetPending=(e)=>{
+        e.preventDefault()
+
+        setIssueToPending();
+     
+    }
 
   return (
     <div className='border'> 
@@ -41,7 +56,13 @@ export default function ReposrtsCard({issue}) {
       {issue.resolverComment}
     </p>
 
-    {/* <button onClick={handleSetPending}>Mark as Pending</button> */}
+    <ul className="buttons-resolved-pending">
+      <li><button onClick={handleSetPending}>Mark as Pending</button></li>
+      <li><button onClick={handleSetResolved}>Mark as Resolved</button></li>
+    </ul>
+
+    
+    
  </div>
 
       </div>

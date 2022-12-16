@@ -83,12 +83,12 @@ export default function LoginComponent() {
         <button  onClick={handleSignIn} className='buttonborder'>
           {userIsInstructor && 
             <Link to={`/instructor/${userID}`}>
-              ->
+             ✔️
             </Link>
           }
           {!userIsInstructor && 
             <Link to={`/trainee/${userID}`}>
-              ->
+              ✔️
             </Link>
           }
           Login
