@@ -2,6 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { useState, useEffect } from 'react'
 import CourseCard from './Cards/courseCard'
+import TraineeNavbar from './General/Navbar/TraineeNavbar'
 
 export default function Drawer() {
   const [courses,setCourses] = useState(null)
@@ -68,6 +69,7 @@ export default function Drawer() {
 
   return (
     <div>
+      <TraineeNavbar/>
       <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">

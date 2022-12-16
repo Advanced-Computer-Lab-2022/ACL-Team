@@ -5,7 +5,9 @@ const express = require('express')
 const {
     createToken,
     validateToken,
-    loginUser
+    loginUser,
+    forgetPassword,
+    resetPassword
 
 } = require('../../controller/authController')
 
@@ -16,6 +18,8 @@ const router = express.Router()
 router.post('/', loginUser)
 
 router.post('/createToken', createToken)
+router.post('/forgetPassword', forgetPassword)
+router.get('/resetPassword/:id/:token' , resetPassword)
 
 router.get('/validateToken', validateToken)
 
