@@ -13,6 +13,9 @@ export default function LoginComponent() {
   const[userRole,setUserRole] = useState('');
 
   const[userIsInstructor,setUserIsInstructor] = useState(false);
+  const[userIsAdmin,setUserIsAdmin] = useState(false);
+  const[userIsTrainee,setUserIsTrainee] = useState(false);
+
 
   const loginUser = async () => {
     // console.log("boodaa")
@@ -45,8 +48,12 @@ export default function LoginComponent() {
     if(userRole == 'instructor'){
       setUserIsInstructor(true)
     }
+    else if(userRole == 'admin'){
+      setUserIsAdmin(true)
+
+    }
     else{
-      setUserIsInstructor(false)
+      setUserIsTrainee(true)
     }
 
 
@@ -86,8 +93,14 @@ export default function LoginComponent() {
              ✔️
             </Link>
           }
-          {!userIsInstructor && 
+          {userIsTrainee && 
             <Link to={`/trainee/${userID}`}>
+              ✔️
+            </Link>
+          }
+
+          {userIsAdmin && 
+            <Link to={`/admin/${userID}`}>
               ✔️
             </Link>
           }

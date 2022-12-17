@@ -71,3 +71,13 @@
 #Deny-red{
     background-color: red;
 }
+
+.no-pending-courses-message{
+    margin: auto;
+    text-align: center;
+    margin-top: 200px;
+}
+.no-pending-courses-message > img{
+  width: 100px;
+  height: 100px;;
+}

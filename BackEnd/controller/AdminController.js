@@ -3,6 +3,7 @@ const Instructor = require('../models/InstructorSchema')
 const User = require('../models/userSchema')
 const jwt = require('jsonwebtoken')
 const Issue = require('../models/lib/issueSchema')
+const Course = require('../models/course/courseSchema')
 const CourseRequest = require('../models/course/courseRequest')
 const Trainee = require('../models/traineeSchema')
 
@@ -250,6 +251,35 @@ const grantCourse = async (req, res) => {
         })
     }
 }
+const adminAddDiscount = async (req, res) => {
+    const {
+        _id,
+        name,
+        percentage,
+        start_date,
+        end_date,
+        course_id
+    } = req.body
+    console.log(req.body)
+
+    try {
+        const discount = await Admin.adminAddDiscount(_id, name, percentage, start_date, end_date)
+
+        const course = await Course.applyDiscount(course_id, discount._id)
+
+        res.status(200).json({
+            discount,
+            course
+        })
+    } catch (error) {
+
+        res.status(400).json({
+            error: error.message
+        })
+
+    }
+
+}
 // add admin
 //add user
 // add instructor +++++ search bta3hom
@@ -267,4 +297,5 @@ module.exports = {
     markIssueAsResolved,
     getPendingCourseRequests,
     grantCourse,
+    adminAddDiscount
 }

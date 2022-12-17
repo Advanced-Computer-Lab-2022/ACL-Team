@@ -9,23 +9,13 @@ export default function AdminComp(){
     
         return(
         <div>
-            <h1>Admin Page</h1>   
-            <button onClick={()=>{
-                setChoose("AddAdmin")
-            }}>
-                
-                Admin
-             </button> 
-             <button onClick={()=>{
-                setChoose("AddInstructor")
-            }}>
-                Instructor
-             </button>   
-             <button onClick={()=>{
-                setChoose("AddUser")
-            }} >
-                Trainee
-             </button> 
+
+        <ul className="view-issues-button-list">
+            <li><button onClick={() => {setChoose("AddAdmin")}}> Add Admin </button></li>
+            <li><button onClick={() => {setChoose("AddInstructor")}}> Add Instructor </button></li>
+            <li><button onClick={() => {setChoose("AddUser")}}> Add Trainee </button></li>
+        </ul>
+            {/* <h1>Admin Page</h1>    */}
               
              {
                choose==="AddInstructor"&&<AddInstructor/>

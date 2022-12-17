@@ -74,6 +74,8 @@ import AdminReportsPage from './pages/adminReportsPage';
 import TraineeOwnedCourses from './pages/traineeOwnedCourses';
 import FaqPage from './pages/faqPage';
 import AdminCourseRequests from './pages/adminCourseRequests';
+import AddDiscount from './Components/Admin/addDiscount';
+import AdminViewCourses from './pages/adminViewCourses';
 
 
 
@@ -88,7 +90,8 @@ function App() {
       <Route path='/signin' exact element={<Signin />} />
       <Route path='/signup/instructor' exact element={<SignUpInstructor/>} />
       <Route path='/signup/' exact element={<SignUpTrainee/>} />
-      <Route path='/admin' exact element={<AdminSignup/>} />
+      <Route path='/admin/:adminID' exact element={<AdminSignup/>} />
+      <Route path='/admin/AllCourses/:adminID' exact element={<AdminViewCourses/>} />
       <Route path='/admin/Reports' exact element={<AdminReportsPage/>} />
       <Route path='/admin/courseRequests' exact element={<AdminCourseRequests/>}/>
       <Route path='/' exact element={<GuestPage/>} />
@@ -131,7 +134,7 @@ function App() {
 
       <Route path='/test2' exact element={<TemplatePage/>} />
       <Route path='/trainee/filterCourses' exact element={<Drawer/>} />      
-      <Route path='/test10' exact element={<QuestionCard2/>} />
+      <Route path='/test10' exact element={<AddDiscount/>} />
 
 
       <Route path='/test' exact element={<Temp/>}/>

@@ -10,7 +10,8 @@ const {
     getPendingIssues,
     getResolvedIssues,
     getPendingCourseRequests,
-    grantCourse
+    grantCourse,
+    adminAddDiscount
 } = require('../controller/adminController')
 
 const router = express.Router()
@@ -35,6 +36,8 @@ router.post('/markIssueAsPending', markIssueAsPending)
 router.post('/markIssueAsResolved', markIssueAsResolved)
 
 router.post('/grantCourse', grantCourse)
+
+router.post('/adminAddDiscount', adminAddDiscount)
 
 
 
