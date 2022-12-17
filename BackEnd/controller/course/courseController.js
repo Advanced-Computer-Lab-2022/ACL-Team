@@ -117,7 +117,7 @@ const search = async (req, res) => {
     const {
         searchedword
     } = req.body
-    console.log(req.body)
+   
     
     try {
         const courses = await Course.search(searchedword)
@@ -127,6 +127,8 @@ const search = async (req, res) => {
         res.status(400).json({
             error: error.message
         })
+        
+        
     }
 }
 const getCoursesByPriceFromHighToLow = async (req, res) => {

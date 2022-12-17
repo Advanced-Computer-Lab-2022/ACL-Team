@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "react-native-star-rating": "^1.1.0",
-    "react-simple-star-rating": "^5.1.7"
+    "react-select": "^5.7.0",
+    "react-select-country-list": "^2.2.3",
+    "react-simple-star-rating": "^5.1.7",
+    "semantic-ui-react": "^2.1.4"
   }
 }

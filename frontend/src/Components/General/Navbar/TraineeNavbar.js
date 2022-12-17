@@ -62,9 +62,7 @@ export default function TraineeNavbar() {
         </div> 
        
         <div  className="Nav-search" onSubmit={courseSearch()}>
-            <input onChange={(e) => setSearchedword(e.target.value)}
-            value={searchedword}
-            type="textbox" placeholder="  Search ..."/>
+            <button className="Navy-Button" ><a href='/search'>Search</a></button>
         </div> 
 
         <div className="Nav-actions">
@@ -93,9 +91,7 @@ export default function TraineeNavbar() {
         </div>
     </div>
 
-        {/* {courses && courses.map((course) =>(
-            <CourseCard  key={course._id}  course={course}/>
-        ))}  */}
+       
 
 </div>
 

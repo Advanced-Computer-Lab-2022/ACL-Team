@@ -59,7 +59,11 @@ export default function InstructorHomePage() {
           <InstructorAddSubtitle/>
         </div>
          */}
-         <Link to ={`/instructor/ViewReviews/${instructor._id}`}>My Reviews</Link>
+         
+          <Link to ={`/instructor/ViewReviews/${instructor._id}`}>My Reviews</Link>
+
+          
+        
     </div>
   )
 }

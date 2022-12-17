@@ -4,23 +4,36 @@ import img1 from "../images/Blogging-bro 1.png"
 
 export default function QuestionCard2({question}) {
 
-  const [answer,setAnswer] = useState();
+  const [youranswer,setYourAnswer] = useState();
   const [questionGrade,setQuestionGrade] = useState(0);
   const [submitted , setSubmit] = useState('');
-  
+  const [counter,setCounter]=useState(0)
+  const [grade ,setGrade]=useState(0);
+  const [temp,setTemp]=useState(0);
   const handleSubmit =(e)=>{
     e.preventDefault()
-
-    if(answer == question.answer){
-      questionGrade += 1;
-      console.log(questionGrade)
+    
+          if(youranswer == question.answer){
+     setCounter(counter+1)
+      setGrade(grade+1)
+      setTemp(grade+1)
+     //setGrade(counter => (counter + 1));
+    //  setGrade(newCounter);
+      // console.log(questionGrade)
+      console.log("✓"+youranswer);
+       console.log(temp+temp+1);
     }
     else{
-      console.log(question.answer)
-
+     
+     console.log("x"+question.answer)
+     
 
     }
+    
 
+
+   
+    //console.log()
     // setSubmit(true);
   }
 
@@ -58,28 +71,28 @@ export default function QuestionCard2({question}) {
       <h6><input 
       type="radio"
       name="answer"
-      onChange={(e) => setAnswer(e.target.value)}
+      onChange={(e) => setYourAnswer(e.target.value)}
       value="choice_1"
       />{question.choices[0].choice_1}</h6>
 
       <h6><input 
       type="radio"
       name="answer"
-      onChange={(e) => setAnswer(e.target.value)}
+      onChange={(e) => setYourAnswer(e.target.value)}
       value="choice_2" 
       />{question.choices[0].choice_2}</h6>
 
       <h6><input 
       type="radio"
       name="answer"
-      onChange={(e) => setAnswer(e.target.value)}
+      onChange={(e) => setYourAnswer(e.target.value)}
       value="choice_3" 
       />{question.choices[0].choice_3}</h6>
 
       <h6><input 
       type="radio"
       name="answer"
-      onChange={(e) => setAnswer(e.target.value)}
+      onChange={(e) => setYourAnswer(e.target.value)}
       value="choice_4" 
       />{question.choices[0].choice_4}
       </h6>
@@ -91,11 +104,12 @@ export default function QuestionCard2({question}) {
 
 
     </form>
-
+      <h2>{counter}</h2>
+      
 
     
       </div>
-
+      
     </div>
   );
 }

@@ -68,6 +68,8 @@ import QuestionCard from './Components/Cards/questionCard';
 import QuestionCard2 from './Components/Cards/questionCard2';
 import QuizResultsPage from './pages/quizResultsPage';
 import ViewInstructorReviews from './pages/ViewInstructorReviews';
+import ForgetPassword from './Components/Authentication/forgetPassword';
+
 import AdminReportsPage from './pages/adminReportsPage';
 import TraineeOwnedCourses from './pages/traineeOwnedCourses';
 import FaqPage from './pages/faqPage';
@@ -142,7 +144,10 @@ function App() {
       <Route path='trainee/allCourses' exact element={<AllCourses/>}/>
       <Route path='trainee/search' exact element={<Search/>}/>
 
+      <Route path='/forgetPassword' exact element={<ForgetPassword/>}/>
+      <Route path='/search' exact element={<Search/>}/>
       
+
 
 
 
