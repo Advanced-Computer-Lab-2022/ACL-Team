@@ -42,6 +42,10 @@ export default function InstNavbar() {
                     <a href="/instructor/editProfile">Edit Profile</a>
                 </li>
 
+                <li>
+                    <a href="/FAQ">Reports</a>
+                </li>
+
             </ul>
 
         </div>

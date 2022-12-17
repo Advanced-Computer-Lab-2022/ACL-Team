@@ -73,6 +73,10 @@ export default function TraineeNavbar() {
                     <a href="/TraineeEditProfile">Edit Profile</a>
                 </li>
 
+                <li>
+                    <a href="/FAQ">Reports</a>
+                </li>
+
             </ul>
 
         </div>
@@ -87,7 +91,7 @@ export default function TraineeNavbar() {
         </div>
     </div>
 
-      
+       
 
 </div>
 

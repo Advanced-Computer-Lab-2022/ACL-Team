@@ -1,5 +1,11 @@
 .inst_card{
     position: relative;
-    top: -1440px;
+    top: -1000px;
     left: 72px;
+}
+
+.buy-course-card-pos{
+    position: relative;
+    top: 700px;
+    right: 200px;
 }

@@ -3,10 +3,11 @@ const { requestCourse } = require('../controller/trainee/corporateController')
 const {
     rateCourse,
     reviewInstructor,
+    getTraineebyId,
     joinCourse
 } = require('../controller/trainee/traineeController')
 const {
-    answerQuestion,
+    answerQuestion,  
     getQuestionGrade,
     getQuizGrade,
     getJoinedCourses
@@ -22,6 +23,8 @@ router.post('/rateCourse', rateCourse)
 router.post('/reviewInstructor', reviewInstructor)
 
 router.post('/answerQuestion', answerQuestion)
+
+router.get('/getTrainee',getTraineebyId)
 
 router.get('/questionGrade', getQuestionGrade)
 

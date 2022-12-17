@@ -60,9 +60,9 @@ export default function (props) {
             <a href="/instructor">Are you Instructor?</a>
             </button>
             <button type="submit" className="btn btn-primary">
-              <Link to={`/instructor`}>
+              {/* <Link to={`/instructor`}> */}
                 Submit
-              </Link>
+              {/* </Link> */}
             </button>
             </div>
             <p className="forgot-password text-right mt-2">

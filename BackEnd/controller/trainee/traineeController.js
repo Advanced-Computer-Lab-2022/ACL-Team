@@ -2,6 +2,20 @@ const Instructor = require('../../models/InstructorSchema')
 const Course = require('../../models/course/courseSchema')
 const Trainee = require('../../models/traineeSchema')
 
+const getTraineebyId = async (req, res) => {
+    const _id = req.query
+
+    const trainee = await Trainee.findById(_id)
+
+    if (!trainee) {
+        return res.status(404).json({
+            error: 'user not found'
+        })
+    }
+
+    return res.status(200).json(trainee)
+}
+
 const joinCourse = async (req, res) => {
     const {
         _id,
@@ -65,6 +79,7 @@ const reviewInstructor = async (req, res) => {
 module.exports = {
     joinCourse,
     rateCourse,
-    reviewInstructor
+    reviewInstructor,
+    getTraineebyId
 
 }
