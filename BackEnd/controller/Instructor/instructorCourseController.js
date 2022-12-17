@@ -109,9 +109,8 @@ const applyDiscount = async (req, res) => {
 }
 const setCoursePreview = async (req, res) => {
     const {
-        _id,
         course_id,
-        previewUrl,
+        previewUrl
     } = req.body
 
     try {
