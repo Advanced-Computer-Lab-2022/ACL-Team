@@ -4,7 +4,7 @@ import axios from 'axios';
 import "../css/reportsCard.css"
 import img1 from "../images/Course Image.png"
 
-export default function CoureRequest({request}) {
+export default function CourseRequest({request}) {
 
     const [course,setCourse] = useState([]);
     const [trainee,setTrainee] = useState([]);
@@ -35,8 +35,19 @@ export default function CoureRequest({request}) {
         getTraineeById().then((data) => setTrainee(data))
       },[])
 
+      const grantCourseAccess = async () => {
+        const res = await axios.post("http://localhost:3000/admin/grantCourse", {courseRequest_id: request._id})
+        .catch((err) => console.log(err));
+        const data = await res.data;
+       
+        return data;
+        
+      };
+
       const handleAccept=(e)=>{
         e.preventDefault()
+
+        grantCourseAccess()
 
 
      

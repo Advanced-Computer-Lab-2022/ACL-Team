@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const bcrypt = require('bcrypt')
 const Schema = mongoose.Schema
 const User = require('./UserSchema')
+const Discount = require('./lib/payment/discountSchema')
 
 const AdminSchema = new Schema({
     // user_id: {
@@ -28,6 +29,42 @@ AdminSchema.statics.signup = async function (email, username, password, firstnam
     })
 
     return admin
+
+}
+
+AdminSchema.statics.adminAddDiscount = async function (admin_id, name, percentage, start_date, end_date) {
+
+    const instructor = await this.findOne({
+        _id: admin_id
+    })
+
+    if (!instructor)
+        throw Error('Instructor does not Exist')
+
+    var discount = await Discount.create({
+        name,
+        percentage,
+        start_date,
+        end_date
+    })
+    if(!discount)
+        throw Error('Discount not created')
+
+    var discountObj = {
+        discount_id : discount._id,
+        discountName:name
+    }
+
+    await this.findByIdAndUpdate({
+            _id: admin_id
+        }, {
+            $push: {
+                defined_discounts: discountObj
+            },
+        }
+    )
+
+    return discount
 
 }
 

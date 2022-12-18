@@ -4,7 +4,8 @@ const {
     rateCourse,
     reviewInstructor,
     getTraineebyId,
-    joinCourse
+    joinCourse,
+    getPreview
 } = require('../controller/trainee/traineeController')
 const {
     answerQuestion,  
@@ -23,6 +24,8 @@ router.post('/rateCourse', rateCourse)
 router.post('/reviewInstructor', reviewInstructor)
 
 router.post('/answerQuestion', answerQuestion)
+
+router.post('/getPreview', getPreview)
 
 router.get('/getTrainee',getTraineebyId)
 

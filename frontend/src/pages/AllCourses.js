@@ -6,7 +6,7 @@ import axios from 'axios';
 import '../Components/css/allCourses.css'
 
 export default function AllCourses() {
-    const [courses,setCourses] = useState([]);
+  const [courses,setCourses] = useState([]);
 
   const getCourses = async () => {
     const res = await axios.get("http://localhost:3000/course/getAllCourses")

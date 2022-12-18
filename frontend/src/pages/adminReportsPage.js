@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios';
 import ReposrtsCard from '../Components/Cards/reportsCard';
 import "../Components/css/adminsReportsPage.css"
+import AdminNavbar from '../Components/General/Navbar/adminNavbar';
 
 export default function AdminReportsPage() {
 
@@ -93,6 +94,8 @@ export default function AdminReportsPage() {
 
   return (
     <div>
+        <AdminNavbar/>
+        
         <ul className="view-issues-button-list">
             <li><button onClick={handleunseen}> View Unseen Issues </button></li>
             <li><button onClick={handlePending}> View Pending Issues </button></li>

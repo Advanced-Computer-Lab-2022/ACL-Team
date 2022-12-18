@@ -40,3 +40,11 @@
     padding: 20px;
     width: 1040px;
 }
+
+.Add-admin-discount{
+    background-color: #253858;
+    margin-left: 20px;
+    border-radius: 10px;
+    position: relative;
+    right: 20px;
+}
