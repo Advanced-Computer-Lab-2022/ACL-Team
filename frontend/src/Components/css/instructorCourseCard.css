@@ -96,13 +96,26 @@
 .InstructorCourse_button3{
     position: relative;
     top: -100px;
-    left: 150px;
+    left: 130px;
 }
 .InstructorCourse_button3 > button{
     width: 129.99px;
     height: 49.53px;
 }
 .InstructorCourse_button3
+.Navy_Button > a{
+    color: aliceblue;
+}
+.InstructorCourse_button4{
+    position: relative;
+    top: -170px;
+    left: -160px;
+}
+.InstructorCourse_button4 > button{
+    width: 129.99px;
+    height: 49.53px;
+}
+.InstructorCourse_button4
 .Navy_Button > a{
     color: aliceblue;
 }

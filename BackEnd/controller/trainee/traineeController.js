@@ -75,11 +75,25 @@ const reviewInstructor = async (req, res) => {
         })
     }
 }
+const getPreview = async (req,res) => {
+    const {course_id} = req.body
+    try{
+        const previewURl = await Course.find({_id:course_id}).select('coursePreviewUrl')
+        res.status(200).json({
+            previewURl
+        })
+    }catch(error){
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
 
 module.exports = {
     joinCourse,
     rateCourse,
     reviewInstructor,
-    getTraineebyId
+    getTraineebyId,
+    getPreview
 
 }

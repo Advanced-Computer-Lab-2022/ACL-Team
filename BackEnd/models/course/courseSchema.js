@@ -293,6 +293,7 @@ CourseSchema.statics.setCoursePreview = async function (course_id, previewUrl) {
         }
 
     )
+    return course
 }
 CourseSchema.statics.applyDiscount = async function (course_id, discount_id) {
 

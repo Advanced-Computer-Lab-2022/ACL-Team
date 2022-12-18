@@ -51,6 +51,13 @@ export default function InstructorCourseCard({course , instructor}) {
                             </Link>  
                         </button>
                     </div>
+                    <div className="InstructorCourse_button4">
+                        <button className="Navy_Button">
+                            <Link to={`/instructor/addCoursePreview/${course._id}`}>
+                                Add Course Preview Video
+                            </Link>  
+                        </button>
+                    </div>
                 </div>
                 <div className="InstructorCourse_footer">
                     <div className="InstructorCourse_level">
