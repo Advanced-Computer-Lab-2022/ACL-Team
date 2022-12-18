@@ -1,6 +1,7 @@
 import React, { useState , useEffect } from 'react'
 import axios from 'axios';
-import CoureRequest from '../Components/Cards/courseRequestCard';
+import CourseRequest from '../Components/Cards/courseRequestCard';
+import img1 from '../Components/images/Alert.svg'
 
 export default function AdminCourseRequests() {
 
@@ -27,8 +28,15 @@ export default function AdminCourseRequests() {
     <div>
         
         {courseRequests && courseRequests.map((request) => (
-            <CoureRequest request={request}/>
+            <CourseRequest request={request}/>
         ))}
+
+        <div className="no-pending-courses-message">
+          {courseRequests.length == 0 && <img src={img1}/>}
+          {courseRequests.length == 0 && <h1>No Pending Requests</h1>}
+        </div>
+
+        
 
     </div>
   )
