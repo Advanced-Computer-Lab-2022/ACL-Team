@@ -44,6 +44,12 @@ export default function CourseCard({course, traineeID}) {
       {course.summary}
     </p>
  </div>
+ <div className="preview-button">
+  <Link to={`/course/preview/${course._id}`}>
+    <button className="Navy_Button">View Preview Video</button>
+  </Link>
+ </div>
+ 
 
  <div className="course-info">
   <label><img src={img2} alt=""/>&nbsp;&nbsp;<span id="bold">{course.totalHours}</span>&nbsp;hours</label>

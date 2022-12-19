@@ -78,6 +78,7 @@ import InstructorAddPreviewURL from './Components/Instructor/instructorAddPrevie
 import InstructorAddPreviewPage from './pages/instructorAddPreviewPage';
 import AddDiscount from './Components/Admin/addDiscount';
 import AdminViewCourses from './pages/adminViewCourses';
+import PreviewPage from './pages/previewPage';
 
 
 
@@ -152,8 +153,7 @@ function App() {
       <Route path='/forgetPassword' exact element={<ForgetPassword/>}/>
       <Route path='/search' exact element={<Search/>}/>
       <Route path='/instructor/addCoursePreview/:courseID' exact element={<InstructorAddPreviewPage/>}/>
-
-
+      <Route path='/course/preview/:courseID' exact element={<PreviewPage/>}/>
 
 
 
