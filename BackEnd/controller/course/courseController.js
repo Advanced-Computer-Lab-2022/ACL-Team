@@ -4,6 +4,7 @@ const Fuse = require('fuse.js')
 const CourseSection = require('../../models/course/courseSectionSchema')
 const CourseSubtitle = require('../../models/course/courseSubtitleSchema')
 const Question = require('../../models/course/questionSchema')
+const CourseSectionProgress = require('../../models/course/courseProgress/courseSectionProgress')
 
 //get all courses available
 const getAllCourses = async (req, res) => {
@@ -269,6 +270,29 @@ const getQuestion = async (req, res) => {
         })
     }
 }
+const getSectionProgress = async (req, res) => {
+
+    const {
+        _id
+    } = req.query
+
+    try {
+        if (!_id)
+        throw Error('All fields must be filled')
+
+        const sectionProgress = await CourseSectionProgress.findById({
+            _id
+        })
+        if (!sectionProgress)
+            throw Error('Sectoion Progress Does not Exist')
+
+        res.status(200).json(sectionProgress)
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
 
 
 
@@ -285,6 +309,6 @@ module.exports = {
     getCourseSections,
     getCourseSubtitles,
     getQuestion,
-    search
-
+    search,
+    getSectionProgress,
 }
