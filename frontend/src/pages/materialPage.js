@@ -4,11 +4,13 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom'
 import SubtitleCard from '../Components/Cards/subtitleCard';
 import MaterialCard from '../Components/Cards/materialCard';
+import TraineeNavbar from '../Components/General/Navbar/TraineeNavbar';
 
 export default function MaterialPage() {
 
 const {courseid} = useParams();
 const {sectionid} = useParams();
+const {traineeID} = useParams();
 const [quizes,setQuizes] = useState([]);
 
  const getSubtitleBySectionId = async () => {
@@ -31,14 +33,16 @@ const [quizes,setQuizes] = useState([]);
   
     return (
     <div>
-        <h2>Course - {courseid}</h2>
-        <h2>Section - {sectionid}</h2>
+      <TraineeNavbar/>
+      <h1>CourseID: {courseid} </h1>
+      <h1>SectionID: {sectionid} </h1>
+      {/* <h1>MaterialID: {courseid} </h1> */}
         
 
         {quizes && quizes.map((quiz) =>(
-          <MaterialCard materialID={quiz._id}/>
-          // <p>{quiz._id}</p>
-        ))}
+          <MaterialCard courseID={courseid} sectionID={sectionid} materialID={quiz._id} traineeID={traineeID} />
+          //<p>{quiz._id}</p>
+        ))}
 
     </div>
   )

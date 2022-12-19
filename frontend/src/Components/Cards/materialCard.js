@@ -5,7 +5,7 @@ import img1 from "../images/Course Image.png"
 import "../css/sectionCard.css"
 import { json, Link } from 'react-router-dom'
 
-export default function MaterialCard({materialID}) {
+export default function MaterialCard({courseID, sectionID ,materialID, traineeID}) {
 
     const [material,setMaterial] = useState([]);
   
@@ -40,7 +40,7 @@ export default function MaterialCard({materialID}) {
 
                 
                 <p>
-                  <Link to={`/quizPage/${material._id}`}>
+                  <Link to={`/quizPage/${courseID}&${sectionID}&${material._id}&${traineeID}`}>
                     <button>View Quiz</button>
                   </Link>   
                 </p>

@@ -1,42 +1,55 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
+import axios from "axios";
 import img1 from "../images/Blogging-bro 1.png"
 
 
-export default function QuestionCard2({question}) {
+export default function QuestionCard2({courseID,sectionID,materialID,question, traineeID}) {
 
   const [youranswer,setYourAnswer] = useState();
-  const [questionGrade,setQuestionGrade] = useState(0);
+
+  const [questionGrade,setQuestionGrade] = useState(0); //ana hagarab fl variable dah
+
   const [submitted , setSubmit] = useState('');
   const [counter,setCounter]=useState(0)
   const [grade ,setGrade]=useState(0);
   const [temp,setTemp]=useState(0);
+
+  const answerQuestion = async () => {
+    const res = await axios.post("http://localhost:3000/trainee/answerQuestion" ,{
+      user_id: traineeID, course_id: courseID, section_id: sectionID, material_id: materialID ,
+      question_id: question.question_id , choice: youranswer
+    }) 
+    .catch((err) => console.log(err));
+    const data = await res.data;
+    return data;
+
+  };
+  console.log(traineeID)
+  console.log(courseID)
+  console.log(sectionID)
+  console.log(materialID)
+  console.log(question.question_id)
+  console.log(youranswer)
+
+  // useEffect(() =>{
+  //   getMaterialByID().then((data) => setQuestion(data.material.questions))
+  // },[])
+
   const handleSubmit =(e)=>{
     e.preventDefault()
     
-          if(youranswer == question.answer){
-     setCounter(counter+1)
-      setGrade(grade+1)
-      setTemp(grade+1)
-     //setGrade(counter => (counter + 1));
-    //  setGrade(newCounter);
-      // console.log(questionGrade)
-      console.log("✓"+youranswer);
-       console.log(temp+temp+1);
-    }
-    else{
-     
-     console.log("x"+question.answer)
-     
-
-    }
+    answerQuestion();
+   
+    
+    console.log(answerQuestion)
     
 
 
-   
-    //console.log()
+  
     // setSubmit(true);
   }
 
+  console.log(question)
 
 
   return (

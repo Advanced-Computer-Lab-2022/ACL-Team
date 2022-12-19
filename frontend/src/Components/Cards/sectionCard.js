@@ -8,7 +8,7 @@ import img4 from "../images/Level Icon.png"
 import "../css/sectionCard.css"
 import { Link } from 'react-router-dom'
 
-export default function SectionCard({section}) {
+export default function SectionCard({section, traineeID}) {
 
   return (
     <div>
@@ -23,7 +23,7 @@ export default function SectionCard({section}) {
 
                 
                 <p>
-                  <Link to={`/trainee/SubtitlePage/${section.course_id}&${section._id}`}>
+                  <Link to={`/trainee/SubtitlePage/${section.course_id}&${section._id}&${traineeID}`}>
                     <button>View Subtitles</button>
                   </Link>   
                 </p>
