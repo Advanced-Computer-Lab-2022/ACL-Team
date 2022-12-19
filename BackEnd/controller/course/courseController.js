@@ -273,15 +273,17 @@ const getQuestion = async (req, res) => {
 const getSectionProgress = async (req, res) => {
 
     const {
-        _id
+        user_id,
+        course_id,
     } = req.query
 
     try {
-        if (!_id)
+        if (!user_id || !course_id)
         throw Error('All fields must be filled')
 
-        const sectionProgress = await CourseSectionProgress.findById({
-            _id
+        const sectionProgress = await CourseSectionProgress.findOne({
+            user_id:user_id,
+            course_id:course_id,
         })
         if (!sectionProgress)
             throw Error('Sectoion Progress Does not Exist')

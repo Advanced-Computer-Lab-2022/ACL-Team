@@ -22,7 +22,6 @@ const CourseSectionProgressSchema = new Schema({
     section_id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Section',
-        required: true
     },
     username: {
         type: String,
@@ -122,6 +121,11 @@ CourseSectionProgressSchema.statics.answerQuestion = async function (user_id,cou
     })
     if (!user)
         throw Error('This User Does not Exist')
+    var course = await Course.findOne({
+         _id:course_id
+    })
+    if (!course)
+        throw Error('This User Does not Exist')
  
     const section = await CourseSection.findOne({
         _id:section_id
@@ -135,10 +139,9 @@ CourseSectionProgressSchema.statics.answerQuestion = async function (user_id,cou
     if (!question)
         throw Error('This Question Does not Exist')
 
-    const sectionProgress = await this.findOne({
+    var sectionProgress = await this.findOne({
         user_id,
         course_id,
-        section_id,
     })
 
     if(!sectionProgress)
@@ -269,7 +272,7 @@ CourseSectionProgressSchema.statics.getQuizGrade = async function (user_id,cours
     const sectionProgress = await this.findOne({
         user_id,
         course_id,
-        section_id,
+        
     })
 
     for (let i = 0; i < sectionProgress.finishedQuizzes.length; i++) {
@@ -282,7 +285,6 @@ CourseSectionProgressSchema.statics.getQuizGrade = async function (user_id,cours
     var returnedGrade = 0
     var exception = -100000
     for (let i = 0; i < sectionProgress.solvedQuizzes.length; i++) {
-        
         if(sectionProgress.solvedQuizzes[i].quiz_id == material_id)
         {   
             exception = 0
