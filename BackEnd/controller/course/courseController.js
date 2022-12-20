@@ -6,6 +6,12 @@ const CourseSubtitle = require('../../models/course/courseSubtitleSchema')
 const Question = require('../../models/course/questionSchema')
 const CourseSectionProgress = require('../../models/course/courseProgress/courseSectionProgress')
 
+const stripe = require("stripe")(
+    process.env.STRIPE_KEY ||
+      "sk_test_51MFdfGDZGE0sbGNF5ijUysPTPes2023txzn262u9e3xrA8hgD3Sou1KumZqfRU88MG0xz6DLZNRAQWdWM8N8G0Ra00Em82CNAr"
+  );
+  
+
 //get all courses available
 const getAllCourses = async (req, res) => {
     const courses = await Course.find().sort({
@@ -295,6 +301,67 @@ const getSectionProgress = async (req, res) => {
         })
     }
 }
+const payForCourse = async (req, res) => {
+    const { course_id, user_id } = req.body;
+  
+    try {
+      //find course by id
+  
+      const course = await Course.findById({
+        _id: course_id,
+      });
+      if (!course) throw Error("Course Does not Exist");
+      const title = course.title;
+      const description = course.description;
+      const price = course.price;
+      console.log(course);
+      const checkoutSession = await stripe.checkout.sessions.create({
+        success_url: `http://localhost:3001/success/?course_id=${course_id}&session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: "http://localhost:3000/",
+        client_reference_id: user_id,
+        line_items: [
+          {
+            quantity: 1,
+            price_data: {
+              currency: "usd",
+              unit_amount: price,
+              product_data: {
+                name: title,
+                description: description,
+              },
+            },
+          },
+        ],
+        mode: "payment",
+      });
+  
+      res.status(200).json(checkoutSession.url);
+    } catch (error) {
+      res.status(400).json({
+        error: error.message,
+      });
+    }
+  };
+  
+  const saveCheckout = async (req, res) => {
+    const { session_id, course_id } = req.query;
+    try {
+      const session = await stripe.checkout.sessions.retrieve(session_id);
+      const payment = new Payment({
+        user_id: session.client_reference_id,
+        course_id: course_id,
+        session_id: session_id,
+        amount: session.price,
+        currency: session.currency,
+        type: session.payment_method_types[0],
+      });
+      res.status(200).json(payment);
+    } catch (error) {
+      res.status(400).json({
+        error: error.message,
+      });
+    }
+  };
 
 
 
@@ -314,4 +381,6 @@ module.exports = {
     getQuestion,
     search,
     getSectionProgress,
+    payForCourse,
+    saveCheckout,
 }

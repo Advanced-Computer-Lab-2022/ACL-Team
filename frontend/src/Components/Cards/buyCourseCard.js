@@ -13,10 +13,12 @@ import img9 from "../images/students.png"
 
 import "../css/buyCourseCard.css"
 import { Link } from 'react-router-dom'
-export default function BuyCourseCard({course,traineeID}) {
+export default function BuyCourseCard({course,traineeID,payPage}) {
     
     const [isCorprate,setIsCorprate] = useState(false);
     const [trainee,setTrainee] = useState('');
+    const [payPageLink,setPayPageLink] = useState('')
+
 
     const getTraineeById = async () => {
         const res = await axios.get(`http://localhost:3000/trainee/getTrainee?_id=${traineeID}`)
@@ -41,10 +43,10 @@ export default function BuyCourseCard({course,traineeID}) {
         
       };
 
-      console.log(traineeID)
-      console.log(course._id)
+    //   console.log(traineeID)
+    //   console.log(course._id)
 
-      console.log(isCorprate)
+    //   console.log(isCorprate)
     
     const handleCourseRequest=(e)=>{
         e.preventDefault()
@@ -53,6 +55,18 @@ export default function BuyCourseCard({course,traineeID}) {
             sendCourseRequest();
         }
     }
+
+    
+
+    // const handlePayCourse=(e)=>{
+    //     e.preventDefault()
+
+    //     payCourse();
+    // }
+
+    //  console.log(payPageLink)
+
+
 
   return (
     <div>
@@ -143,7 +157,14 @@ export default function BuyCourseCard({course,traineeID}) {
             
             
             <div className="buy_button">
-                <button className="buy_Course"><label>Buy Course</label>  </button>
+                {/* <Link to={`https://${payPage}`}>  */}
+              <a href={`${payPage}`}>
+              <button  className="buy_Course"><label >Buy Course</label>  </button>
+              </a>
+             
+              
+                   
+                {/* // </Link>   */}
             </div>
         </div>
 

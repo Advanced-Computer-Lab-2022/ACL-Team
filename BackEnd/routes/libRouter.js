@@ -4,7 +4,9 @@ const {
     getCourseSections,
     getCourseSubtitles,
     getQuestion, 
-    getSectionProgress
+    getSectionProgress,
+    saveCheckout,
+    payForCourse
 } = require('../controller/course/courseController')
 const { getMaterial } = require('../controller/trainee/traineeCourseController')
 const { getIssue } = require('../controller/userController')
@@ -20,6 +22,10 @@ router.get('/Question', getQuestion)
 router.get('/Issue', getIssue)
 
 router.get('/CourseSectionProgress', getSectionProgress)
+
+router.post('/payCourse', payForCourse)
+
+router.get('/saveCheckout', saveCheckout)
 
 
 module.exports = router
