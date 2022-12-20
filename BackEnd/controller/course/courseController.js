@@ -298,6 +298,7 @@ const getSectionProgress = async (req, res) => {
 
 
 
+
 module.exports = {
     getAllCourses,
     getCourseById,
