@@ -314,7 +314,6 @@ const payForCourse = async (req, res) => {
       const title = course.title;
       const description = course.description;
       const price = course.price;
-      console.log(course);
       const checkoutSession = await stripe.checkout.sessions.create({
         success_url: `http://localhost:3001/success/?course_id=${course_id}&session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: "http://localhost:3000/",
