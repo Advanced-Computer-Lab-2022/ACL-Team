@@ -15,24 +15,63 @@ import "../css/buyCourseCard.css"
 import { Link } from 'react-router-dom'
 export default function BuyCourseCard({course,traineeID,payPage}) {
     
-    const [isCorprate,setIsCorprate] = useState(false);
-    const [trainee,setTrainee] = useState('');
+    
+    const [trainee,setTrainee] = useState(false);
+   // const [trainee,setTrainee] = useState('');
     const [payPageLink,setPayPageLink] = useState('')
-
+    const [isCorporate, setIsCorprate] = useState(false)
+    var [isOwenedCourse, setIsOwnedCourse] = useState(false)
+    var isCorprate = false  
+    //var isOwnCourse = false
 
     const getTraineeById = async () => {
+        
         const res = await axios.get(`http://localhost:3000/trainee/getTrainee?_id=${traineeID}`)
         .catch((err) => console.log(err));
         const data = await res.data;
-       
+        console.log(res.data)
+        //isCorprate = res.data.isCorporate
+        setIsCorprate(res.data.isCorporate)
+        console.log("mazen is " + res.data.isCorporate)
+        //console.log(" isCorporate "+isCorprate)
+        var ownedCourses = trainee.ownedCourses
+        
+        for (let i = 0; i < res.data.ownedCourses.length; i++) {
+                
+                if(res.data.ownedCourses[i].course_id == course._id)
+                {
+                    console.log("ana da5alt")
+                    setIsOwnedCourse(true)
+                    //isOwnCourse = true
+                    
+                }
+          }
+          console.log(" isOwnCourse "+isOwenedCourse)
         return data;
         
       };
+    //   const isTraineeOwnCourse = async () => {
+    //     const trainee = data.getTraineeById;
+    //       console.log(trainee);
+    //   };
+    
     
       useEffect(() =>{
         getTraineeById().then((data) => setTrainee(data))
-        getTraineeById().then((data) => setIsCorprate(data.isCorporate))
+
+        if(isCorporate && isOwenedCourse){
+            console.log("hide the button")
+        }
+        
+
+
       },[])
+      //console.log(isCorprate)
+      //console.log(course._id)
+
+    //   if(isCorprate){
+    //     console.log("hide the buttons")
+    //   }
 
     const sendCourseRequest = async () => {
         const res = await axios.post("http://localhost:3000/trainee/requestCourse",{_id:traineeID,course_id:course._id})
