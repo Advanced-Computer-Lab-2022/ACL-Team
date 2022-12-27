@@ -1,29 +1,30 @@
 # ACL-Team
 
-#Project description:
+# Project description:
 
 A user friendly website for airline called “SAMYH” to make reservations for flights on the system for users and guests by searching for flights, reserve it and they have more functionalities as edit their reservations and cancelling it. also allowing the administers to edit on it the flights system between adding, deleting and editing flights details
 
-#Motivation:
+# Motivation:
 
 Our vision was to create user-friendly website using MERN stack
 
-#Technologies:
+# Technologies:
 
 *Node Js *React *Express *Mongo DB *REST API
 
-#Installation 
+# Installation 
 
 Locally:
 
 * Clone the link of repository from github.
 * Open new terminal.
-* Cd src
-* node app “wait until MongoDB connected”.
+* Cd backend
+* Npm run dev “wait until MongoDB connected”.
 * Open new terminal.
-* npm start “wait until your browser open automatically”.
+* Cd frontend
+* Npm start “wait until your browser open automatically”.
 
-#Contributions
+# Contributions
 
 The project is created with the contribution of 4 members.
 
@@ -35,7 +36,7 @@ The project is created with the contribution of 4 members.
 
 4- https://github.com/marwanashraf56
 
-#Credits
+# Credits
 
  https://mui.com
  
