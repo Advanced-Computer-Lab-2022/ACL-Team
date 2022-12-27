@@ -62,6 +62,9 @@ export default function Drawer() {
   useEffect(() => {
     getCourseByPrice().then((data) => setCourses(data))
   },[price])
+  useEffect(() => {
+    getCourseByRating().then((data) => setCourses(data))
+  },[rating])
 
   
 

@@ -31,7 +31,7 @@ export default function InstNavbar() {
         <div className="Nav-actions">
             <ul>
                 <li>
-                    <a href="/instructor/coursepage">My Reviews</a>
+                    <a href="/instructor/filterCourses">My Courses</a>
                 </li>
 
                 <li>
