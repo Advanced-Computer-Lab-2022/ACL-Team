@@ -17,6 +17,7 @@ export const CoursePage = () => {
 
   const [course,setCourse] = useState([]);
   const [instructor,setInstructor] = useState([]);
+  const [payPageLink,setPayPageLink] = useState('')
 
     const getCourseById = async () => {
         const res = await axios.get(`http://localhost:3000/course/?_id=${id}`)
@@ -27,6 +28,24 @@ export const CoursePage = () => {
         
       };
 
+      const payCourse = async () => {
+        const res = await axios.post("http://localhost:3000/lib/payCourse",{
+            course_id: id , user_id: traineeID
+        })
+        .catch((err) => console.log(err));
+        const data = await res.data;
+       
+        return data;
+       
+      };
+
+
+      useEffect(() =>{
+        payCourse().then((data) => setPayPageLink(data))
+      },[])
+
+      console.log(payPageLink)
+      const x= payPageLink.data;
       // const getInstructor = async () => {
       //   const res = await axios.get(`http://localhost:3000/instructor/getInstructor?_id=${course.instructorid}`)
       //   .catch((err) => console.log(err));
@@ -52,7 +71,7 @@ export const CoursePage = () => {
       <TraineeNavbar/>
      
       <div className="buy-course-card-pos">
-        <BuyCourseCard course={course} traineeID={traineeID}/>  
+        <BuyCourseCard course={course} traineeID={traineeID} payPage={payPageLink}/>  
       </div>
       {/* <div className="inst_card">
         <InstructorCardBig/>

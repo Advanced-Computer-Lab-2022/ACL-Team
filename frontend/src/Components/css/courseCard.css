@@ -20,6 +20,10 @@
     width: 600px;
     margin-left: 35px;
 }
+.preview-button{
+    position: relative;
+    left: -100px;
+}
 
 .course-info{
     width: 190px;
