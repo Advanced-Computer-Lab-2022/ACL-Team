@@ -11,51 +11,46 @@ import img7 from "../images/Level.png";
 import img8 from "../images/Clock.png";
 import img9 from "../images/students.png";
 import "../css/buyCourseCard.css";
-import { Link } from "react-router-dom";
-export default function BuyCourseCard({ course, traineeID, payFunction }) {
+import { useParams } from "react-router-dom";
+export default function BuyCourseCard({ course, payFunction }) {
   const [trainee, setTrainee] = useState(false);
-  // const [trainee,setTrainee] = useState('');
-  const [payPageLink, setPayPageLink] = useState("");
+  const { id } = useParams();
   const [isCorporate, setIsCorprate] = useState(false);
   var [isOwenedCourse, setIsOwnedCourse] = useState(false);
   var isCorprate = false;
-  //var isOwnCourse = false
+
   const getTraineeById = async () => {
-    const res = await axios
-      .get(`http://localhost:3000/trainee/getTrainee?_id=${traineeID}`)
-      .catch((err) => console.log(err));
-    const data = await res.data;
-    console.log(res.data);
-    //isCorprate = res.data.isCorporate
-    setIsCorprate(res.data.isCorporate);
-    console.log("mazen is " + res.data.isCorporate);
-    //console.log(" isCorporate "+isCorprate)
-    var ownedCourses = trainee.ownedCourses;
+    const traineeID = window.localStorage.getItem("trainee_id");
+    if (traineeID) {
+      const res = await axios
+        .get(`http://localhost:3000/trainee/getTrainee?_id=${traineeID}`)
+        .catch((err) => console.log(err));
+      const data = await res.data;
+      setIsCorprate(res.data.isCorporate);
 
-    for (let i = 0; i < res.data.ownedCourses.length; i++) {
-      if (res.data.ownedCourses[i].course_id == course._id) {
-        console.log("ana da5alt");
-        setIsOwnedCourse(true);
+      for (let i = 0; i < res.data.ownedCourses.length; i++) {
+        if (res.data.ownedCourses[i].course_id == id) {
+          setIsOwnedCourse(true);
+        }
       }
+      return data;
     }
-    console.log(" isOwnCourse " + isOwenedCourse);
-    return data;
-  };
-  //   const isTraineeOwnCourse = async () => {
-  //     const trainee = data.getTraineeById;
-  //       console.log(trainee);
-  //   };
-  const payCourse = async () => {
-    const res = await axios
-      .post("http://localhost:3000/lib/payCourse", {
-        course_id: course._id,
-        user_id: traineeID,
-      })
-      .catch((err) => console.log(err));
-    window.location = res.data;
   };
 
-  //function to check if url has query param success
+  const payCourse = async () => {
+    if (window.localStorage.getItem("trainee_id") == null) {
+      window.location = "/login";
+    } else {
+      const res = await axios
+        .post("http://localhost:3000/lib/payCourse", {
+          course_id: id,
+          user_id: window.localStorage.getItem("trainee_id"),
+        })
+        .catch((err) => console.log(err));
+      window.location = res.data;
+    }
+  };
+
   const checkUrl = () => {
     let search = window.location.search;
     let params = new URLSearchParams(search);
@@ -64,10 +59,15 @@ export default function BuyCourseCard({ course, traineeID, payFunction }) {
       axios
         .post("http://localhost:3000/lib/saveCheckout", {
           session_id: session_id,
-          course_id: "63a0b36c2f1dd3195f076039",
+          course_id: id,
         })
         .then((res) => {
           setIsOwnedCourse(true);
+          window.history.replaceState(
+            {},
+            document.title,
+            "/course/coursePage/" + id
+          );
         });
     }
   };
@@ -80,17 +80,11 @@ export default function BuyCourseCard({ course, traineeID, payFunction }) {
       console.log("hide the button");
     }
   }, []);
-  //console.log(isCorprate)
-  //console.log(course._id)
-
-  //   if(isCorprate){
-  //     console.log("hide the buttons")
-  //   }
 
   const sendCourseRequest = async () => {
     const res = await axios
       .post("http://localhost:3000/trainee/requestCourse", {
-        _id: traineeID,
+        _id: window.localStorage.getItem("trainee_id"),
         course_id: course._id,
       })
       .catch((err) => console.log(err));
@@ -98,11 +92,6 @@ export default function BuyCourseCard({ course, traineeID, payFunction }) {
 
     return data;
   };
-
-  //   console.log(traineeID)
-  //   console.log(course._id)
-
-  //   console.log(isCorprate)
 
   const handleCourseRequest = (e) => {
     e.preventDefault();

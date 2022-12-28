@@ -12,8 +12,6 @@ import TraineeNavbar from "../Components/General/Navbar/TraineeNavbar";
 
 export const CoursePage = () => {
   const { id } = useParams();
-  const { traineeID } = useParams();
-
   const [course, setCourse] = useState([]);
 
   const getCourseById = async () => {
@@ -21,6 +19,7 @@ export const CoursePage = () => {
       .get(`http://localhost:3000/course/?_id=${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
+
     console.log("here course", data);
     return data;
   };
@@ -46,9 +45,8 @@ export const CoursePage = () => {
   return (
     <div>
       <TraineeNavbar />
-
       <div className="buy-course-card-pos">
-        <BuyCourseCard course={course} traineeID={traineeID} />
+        <BuyCourseCard course={course} />
       </div>
       {/* <div className="inst_card">
         <InstructorCardBig/>
