@@ -19,16 +19,22 @@ const PaymentSchema = new Schema(
       required: true,
       unique: true,
     },
+    payment_title: {
+      type: String,
+      required: true,
+    },
     price: {
       type: Number,
       required: true,
     },
     status: {
-      type: Boolean,
+      type: String,
+      enum: ["pending", "paid", "failed", "refunded"],
+      required: true,
     },
     type: {
       type: String,
-      enum: ["masterCard", "visa", "quiz", "grade"], //todo
+      enum: ["card", "quiz", "grade"], //todo
       required: true,
     },
     currency: {

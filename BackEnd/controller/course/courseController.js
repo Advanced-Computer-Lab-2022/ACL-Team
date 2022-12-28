@@ -313,20 +313,22 @@ const saveCheckout = async (req, res) => {
   try {
     const session = await stripe.checkout.sessions.retrieve(session_id);
     const user_id = session.client_reference_id;
-
-    //check in payment schema if there exists a payment with the same session_id
+    const course = await Course.findById({
+      _id: course_id,
+    });
     const paymentSearch = await Payment.findOne({
       session_id: session_id,
     });
     if (paymentSearch) throw Error("Payment Already Exists");
-
-    const payment = new Payment({
+    const payment = await Payment.create({
+      payment_title: course.title,
       user_id: session.client_reference_id,
       course_id: course_id,
       session_id: session_id,
-      amount: session.price,
+      price: session.amount_total,
       currency: session.currency,
       type: session.payment_method_types[0],
+      status: "paid",
     });
     const trainee = await Trainee.joinCourse(user_id, course_id);
 
