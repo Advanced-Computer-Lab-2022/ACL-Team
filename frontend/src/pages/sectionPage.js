@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom'
 import SectionCard from '../Components/Cards/sectionCard'
 import axios from 'axios'
 import TraineeNavbar from '../Components/General/Navbar/TraineeNavbar'
+import Progress_bar from '../Components/General/ProgressBar'
 export default function SectionPage() {
     const{courseid} = useParams();
     const {traineeID} = useParams();
@@ -30,6 +31,9 @@ export default function SectionPage() {
   return (
     <div>
         <TraineeNavbar/>
+
+        <h2>{courseid}</h2>
+        <Progress_bar bgcolor="#99ff66" progress='80'  height={30} />
         <div className="sectionPage_comp">
 
         {sections && sections.map((section) =>(
