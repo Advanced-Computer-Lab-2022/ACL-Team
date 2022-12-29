@@ -43,7 +43,7 @@ export default function QuizResultsPage() {
       },[])
 
       useEffect(() =>{
-        getQuizResult().then((data) => setQuizGrade(data.grade))
+        getQuizResult().then((data) => setQuizGrade(data))
       },[])
 
 

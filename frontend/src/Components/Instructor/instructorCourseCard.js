@@ -51,6 +51,13 @@ export default function InstructorCourseCard({course , instructor}) {
                             </Link>  
                         </button>
                     </div>
+                    <div className="InstructorCourse_button4">
+                        <button className="Navy_Button">
+                            <Link to={`/instructor/addCoursePreview/${course._id}`}>
+                                Add Course Preview Video
+                            </Link>  
+                        </button>
+                    </div>
                 </div>
                 <div className="InstructorCourse_footer">
                     <div className="InstructorCourse_level">
@@ -67,7 +74,7 @@ export default function InstructorCourseCard({course , instructor}) {
                     </div>
                     <div className="InstructorCourse_students">
                         <img src = {img5} alt="level"/>
-                        <label>25,599 Students</label>
+                        <label> {course.subscriberNumber} Students</label>
                     </div>
                     <div className="InstructorCourse_price">
                         <img src = {img4} alt="level"/>

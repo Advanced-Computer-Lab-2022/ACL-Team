@@ -1,0 +1,33 @@
+.URL_Frame{
+    background-color: aliceblue;
+    width: 500px;
+    height: 200px;
+    border-radius: 30px;
+}
+.URL_Title > h1{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 1000;
+    font-size: 30px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #253858;
+    position: relative;
+    left: 30px;
+    top: 10px;
+}
+.URL_previewURl > input{
+    position: relative;
+    top:40px;
+    left: 50px;
+    border-radius: 20px;
+}
+.URL_button > button{
+    position: relative;
+    top: 40px;
+    left: 350px;
+}
+.URL_button > button > a{
+   position: relative;
+   left: 30px;
+}

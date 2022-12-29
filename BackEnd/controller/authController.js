@@ -4,6 +4,8 @@ const Instructor = require('../models/InstructorSchema')
 const Admin = require('../models/adminSchema')
 const jwt = require('jsonwebtoken')
 const nodemailer = require("nodemailer");
+const bcrypt = require('bcrypt')
+const jwt_decode = require('jwt-decode');
 
 // ONE LOGIN FOR ALL USERS BUT THREE SIGNUPS
 const loginUser = async (req, res) => {
@@ -187,7 +189,7 @@ const forgetPassword = async (req,res) => {
         }
         const secret = process.env.secret || "secret" + user.password
         const token = jwt.sign({email: user.email , id: user._id } , secret , {expiresIn: "5m"})
-        const link = `http://localhost:3000/login/resetPassword/${user._id}/${token}`
+        const link = `http://localhost:3001/login/resetPassword/${user._id}/${token}`
         let testAccount = await nodemailer.createTestAccount();
         var transporter = nodemailer.createTransport({
             service: "gmail",
@@ -212,7 +214,7 @@ const forgetPassword = async (req,res) => {
             }
             
           });
-        console.log(link)
+       
 
     } catch (error) {
         
@@ -221,7 +223,8 @@ const forgetPassword = async (req,res) => {
 
 const resetPassword = async (req,res) => {
     const {id , token} = req.params
-
+    
+    
     console.log(req.params)
     const user = await User.findOne({_id:id})
     if(!user){
@@ -230,9 +233,43 @@ const resetPassword = async (req,res) => {
     const secret = process.env.secret || "secret" + user.password
     try {
        const verify = jwt.verify(token,secret)
-       res.send("Verified") 
+       
+       if(!verify){
+        res.send("not Verified")
+       }
+
     } catch (error) {
         res.send("Not Verified")
+    }
+    
+}
+
+const resetPasswordPost = async (req,res) => {
+    const {id , token} = req.params
+    const {password} = req.body
+    console.log(req.params)
+    const user = await User.findOne({_id:id})
+    if(!user){
+        return res.json({status:"User does not exist"})
+    }
+    const secret = process.env.secret || "secret" + user.password
+    try {
+       const verify = jwt.verify(token,secret)
+       const encpassword = await bcrypt.hash(password,10)
+       await User.updateOne(
+        {
+            _id:id
+        },
+        {
+            $set:{
+                password: encpassword
+            }
+        }
+       )
+    res.json({status:"password updated"}) 
+    } catch (error) {
+        console.log(error)
+        res.json({status:"not updated"})
     }
     
 }
@@ -246,6 +283,7 @@ module.exports = {
     createToken,
     validateToken,
     forgetPassword,
-    resetPassword
+    resetPassword,
+    resetPasswordPost
 
 }

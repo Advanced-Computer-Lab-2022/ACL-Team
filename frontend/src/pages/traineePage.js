@@ -33,6 +33,7 @@ export const TraineePage = () => {
   const [courses,setCourses] = useState([]);
   const {traineeID} = useParams();
 
+
   const getCourses = async () => {
     const res = await axios.get("http://localhost:3000/course/getAllCourses")
     .catch((err) => console.log(err));
@@ -41,6 +42,8 @@ export const TraineePage = () => {
     return data;
     
   };
+
+
 
   useEffect(() =>{
     getCourses().then((data) => setCourses(data))

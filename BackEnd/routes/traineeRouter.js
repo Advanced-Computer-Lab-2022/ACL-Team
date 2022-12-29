@@ -4,7 +4,9 @@ const {
     rateCourse,
     reviewInstructor,
     getTraineebyId,
-    joinCourse
+    joinCourse,
+    getPreview,
+    requestRefund
 } = require('../controller/trainee/traineeController')
 const {
     answerQuestion,  
@@ -24,6 +26,8 @@ router.post('/reviewInstructor', reviewInstructor)
 
 router.post('/answerQuestion', answerQuestion)
 
+router.post('/getPreview', getPreview)
+
 router.get('/getTrainee',getTraineebyId)
 
 router.get('/questionGrade', getQuestionGrade)
@@ -31,6 +35,8 @@ router.get('/questionGrade', getQuestionGrade)
 router.get('/quizGrade', getQuizGrade)
 
 router.get('/myCourses', getJoinedCourses)
+
+router.post('/requestRefund', requestRefund)
 
 
 //ALL ROUTES BELOW HERE ARE FOR CORPORATE TRAINEE ONLY

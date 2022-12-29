@@ -52,7 +52,7 @@ export default function VideoPage() {
       height="556"  
       className = "video_component">
       <ReactPlayer url={videoLink}/>
-      </div>
+      </div> 
       <div className="video_description">
         <ul className="label_list">
           <li>

@@ -4,6 +4,13 @@ const Fuse = require('fuse.js')
 const CourseSection = require('../../models/course/courseSectionSchema')
 const CourseSubtitle = require('../../models/course/courseSubtitleSchema')
 const Question = require('../../models/course/questionSchema')
+const CourseSectionProgress = require('../../models/course/courseProgress/courseSectionProgress')
+
+const stripe = require("stripe")(
+    process.env.STRIPE_KEY ||
+      "sk_test_51MFdfGDZGE0sbGNF5ijUysPTPes2023txzn262u9e3xrA8hgD3Sou1KumZqfRU88MG0xz6DLZNRAQWdWM8N8G0Ra00Em82CNAr"
+  );
+  
 
 //get all courses available
 const getAllCourses = async (req, res) => {
@@ -269,6 +276,94 @@ const getQuestion = async (req, res) => {
         })
     }
 }
+const getSectionProgress = async (req, res) => {
+
+    const {
+        user_id,
+        course_id,
+    } = req.query
+
+    try {
+        if (!user_id || !course_id)
+        throw Error('All fields must be filled')
+
+        const sectionProgress = await CourseSectionProgress.findOne({
+            user_id:user_id,
+            course_id:course_id,
+        })
+        if (!sectionProgress)
+            throw Error('Sectoion Progress Does not Exist')
+
+        res.status(200).json(sectionProgress)
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+const payForCourse = async (req, res) => {
+    const { course_id, user_id } = req.body;
+  
+    try {
+      //find course by id
+  
+      const course = await Course.findById({
+        _id: course_id,
+      });
+      if (!course) throw Error("Course Does not Exist");
+      const title = course.title;
+      const description = course.description;
+      const price = course.price;
+      const checkoutSession = await stripe.checkout.sessions.create({
+        session_id: {checkoutSession},  
+        success_url: `http://localhost:3001/course/coursePagePaid/${course_id}&${user_id}&${session_id}`,
+        
+        cancel_url: "http://localhost:3000/",
+        client_reference_id: user_id,
+        line_items: [
+          {
+            quantity: 1,
+            price_data: {
+              currency: "usd",
+              unit_amount: price,
+              product_data: {
+                name: title,
+             description: description,
+              },
+            },
+          },
+        ],
+        mode: "payment",
+      });
+  
+      res.status(200).json(checkoutSession.url);
+    } catch (error) {
+      res.status(400).json({
+        error: error.message,
+      });
+    }
+  };
+  
+  const saveCheckout = async (req, res) => {
+    const { session_id, course_id } = req.query;
+    try {
+      const session = await stripe.checkout.sessions.retrieve(session_id);
+      const payment = new Payment({
+        user_id: session.client_reference_id,
+        course_id: course_id,
+        session_id: session_id,
+        amount: session.price,
+        currency: session.currency,
+        type: session.payment_method_types[0],
+      });
+      res.status(200).json(payment);
+    } catch (error) {
+      res.status(400).json({
+        error: error.message,
+      });
+    }
+  };
+
 
 
 
@@ -285,6 +380,8 @@ module.exports = {
     getCourseSections,
     getCourseSubtitles,
     getQuestion,
-    search
-
+    search,
+    getSectionProgress,
+    payForCourse,
+    saveCheckout,
 }
