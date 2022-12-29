@@ -80,6 +80,7 @@ import AddDiscount from './Components/Admin/addDiscount';
 import AdminViewCourses from './pages/adminViewCourses';
 import PreviewPage from './pages/previewPage';
 import ResetPasswordPage from './pages/resetPasswordPage';
+import InstructorDrawer from './Components/InstructorDrawer';
 
 
 
@@ -137,7 +138,8 @@ function App() {
 
 
       <Route path='/test2' exact element={<TemplatePage/>} />
-      <Route path='/trainee/filterCourses' exact element={<Drawer/>} />      
+      <Route path='/trainee/filterCourses' exact element={<Drawer/>} />  
+      <Route path='/instructor/filterCourses/:instructorID' exact element={<InstructorDrawer/>} />        
       <Route path='/test10' exact element={<AddDiscount/>} />
 
 
