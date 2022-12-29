@@ -15,7 +15,7 @@ export default function QuizResultsPage() {
     const {traineeID} = useParams();
 
     const [questions, setQuestion] = useState([]);
-    const [quizGrade,setQuizGrade] = useState('')
+    const [quizGrade,setQuizGrade] = useState([]);
 
     const getMaterialByID = async () => {
         const res = await axios.get(`http://localhost:3000/lib/CourseMaterial?material_id=${materialID}`)
@@ -25,9 +25,7 @@ export default function QuizResultsPage() {
         
       };
     
-      useEffect(() =>{
-        getMaterialByID().then((data) => setQuestion(data.material.questions))
-      },[])
+      
 
       const getQuizResult = async () => {
         const res = await axios.get("http://localhost:3000/trainee/quizGrade" ,{
@@ -40,8 +38,12 @@ export default function QuizResultsPage() {
       };
 
       useEffect(() =>{
-        getQuizResult().then((data) => setQuizGrade(data))
-        console.log(getQuizResult().then((data) => setQuizGrade(data)))
+        getMaterialByID().then((data) => setQuestion(data.material.questions))
+        
+      },[])
+
+      useEffect(() =>{
+        getQuizResult().then((data) => setQuizGrade(data.grade))
       },[])
 
 
@@ -49,6 +51,8 @@ export default function QuizResultsPage() {
       console.log(traineeID)
       console.log(sectionID)
       console.log(materialID)
+
+      console.log("Your quiz grade: " + quizGrade);
 
   return (
     <div>

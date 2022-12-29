@@ -64,22 +64,6 @@ export default function QuestionCard2({courseID,sectionID,materialID,question, t
     <div className="course-text">
       <h3>{question.question}</h3>
 
-      {/* {Object.keys(question.choices[0]).map((choice, index) => {
-        return (
-          <div>
-            <h6>
-              <input
-                type="radio"
-                name="answer"
-                onChange={(e) => setAnswer(e.target.value)}
-                value={"choice" + "_" + (index + 1)}
-              />{choice}
-            </h6>
-            {submitted && ("choice" + "_" + (index + 1) == question.answer) && <p>Correct</p>}
-            {submitted && (choice == answer && "choice" + "_" + (index + 1) !== question.answer) && <p>Incorrect</p>}
-          </div>
-        )
-      })} */}
 
       <h6><input 
       type="radio"
