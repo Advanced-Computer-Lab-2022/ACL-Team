@@ -1,8 +1,72 @@
 import React from 'react'
 import InstNavbar from './General/Navbar/instructorNavbar'
+import axios from 'axios';
+import { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import InstructorCourseCard from './Instructor/instructorCourseCard';
 
 export default function InstructorDrawer() {
+  const [instCourses, setInstCourses] = useState([]);
+  const [instructor, setInstructor] = useState([]);
+  const [price,setPrice] = useState();
+  const [category,setCategory] = useState();
+  const {instructorID} = useParams();
+
+  const getInstructorCourses = async () => {
+    const res = await axios.get(`http://localhost:3000/instructor/courseShow?_id=${instructorID}`)
+    .catch((err) => console.log(err));
+    const data = await res.data;
     
+    return data;
+    
+  };
+  
+  useEffect(() =>{
+    getInstructorCourses().then((data) => setInstCourses(data))
+
+  },[])
+  
+  const getInstructor= async () => {
+    const res = await axios.get(`http://localhost:3000/instructor/getInstructor?_id=${instructorID}`)
+    .catch((err) => console.log(err));
+    const data = await res.data;
+    
+    return data;
+    
+  };
+
+  useEffect(() =>{
+    getInstructor().then((data) => setInstructor(data))
+
+  },[])
+
+  const getCoursesByPrice = async () => {
+    const res = await axios.post("http://localhost:3000/instructor/filterByPrice" , {
+      instructor_id:instructorID , price:price
+    })
+    .catch((err) => console.log(err));
+    const data = await res.data;
+
+    return data;
+  }
+  useEffect(() => {
+    getCoursesByPrice().then((data) => setInstCourses(data))
+  },[price])
+
+  const getCoursesByCategory = async () => {
+    const res = await axios.post("http://localhost:3000/instructor/filterByCategory" , {
+      instructor_id:instructorID , category:category
+    })
+    .catch((err) => console.log(err));
+    const data = await res.data;
+
+    return data;
+  }
+
+  useEffect(() => {
+    getCoursesByCategory().then((data) => setInstCourses(data))
+  },[category])
   return (
     <div>
       <InstNavbar/>
@@ -17,10 +81,11 @@ export default function InstructorDrawer() {
                     <li class="nav-item">
 
 
-                        <div>
+                        <div onSubmit={getCoursesByPrice()}>
                           <label>Price</label><br/>
                           <input type="number"
-                          
+                          onChange={(e) => setPrice(e.target.value)}
+                          value={price}
 
                           className="form-control"
 
@@ -31,25 +96,11 @@ export default function InstructorDrawer() {
                         </div><hr/>
 
 
-                        <div>
+                        <div onSubmit={getCoursesByCategory()}>
                           <label>Category</label><br></br>
                           <input type="text" 
-                          
-                          className="form-control" 
-     
-                          aria-describedby="emailHelp" 
-                          placeholder="Enter a subject to filter by"
-                        />
-                        <button className="button" >Submit</button>
-                        </div><hr/>
-
-
-
-                        <div>
-                          <label>Ratings</label><br></br>
-                          <input type="number" 
-                          
-    
+                          onChange={(e) => setCategory(e.target.value)}
+                          value={category}
                           className="form-control" 
      
                           aria-describedby="emailHelp" 
@@ -64,11 +115,12 @@ export default function InstructorDrawer() {
             
             </div>
         </div>
-        {/* <div class="col py-3">
-        {courses && courses.map((course) =>(
-        <CourseCard key={course._id} course={course}/>
-      ))} 
-        </div> */}
+        <div class="col py-3">
+          {instCourses && instCourses.map((Course) =>(
+              
+              <InstructorCourseCard course={Course} instructor={instructor}/>
+            ))}
+        </div>
     </div>
 </div>
     </div>

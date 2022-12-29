@@ -139,7 +139,7 @@ function App() {
 
       <Route path='/test2' exact element={<TemplatePage/>} />
       <Route path='/trainee/filterCourses' exact element={<Drawer/>} />  
-      <Route path='/instructor/filterCourses' exact element={<InstructorDrawer/>} />        
+      <Route path='/instructor/filterCourses/:instructorID' exact element={<InstructorDrawer/>} />        
       <Route path='/test10' exact element={<AddDiscount/>} />
 
 
