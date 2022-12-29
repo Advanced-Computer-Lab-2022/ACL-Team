@@ -4,6 +4,8 @@ const Trainee = require('../../models/traineeSchema')
 const CourseProgress = require('../../models/course/courseProgress/courseProgressSchema')
 const CourseSectionProgress = require('../../models/course/courseProgress/courseSectionProgress')
 const CourseMaterial = require('../../models/course/courseMaterialSchema')
+const User = require('../../models/UserSchema')
+const nodemailer = require("nodemailer");
 
 const answerQuestion = async (req, res) => {
     const {
@@ -114,6 +116,52 @@ const getMaterial = async (req, res) => {
     }
 }
 
+const getEmailandSendCertifiate = async (req , res) => {
+    const {
+        trainee_id
+    } = req.body
+    try {
+        const user = await User.findOne({_id : trainee_id})
+        
+        if(!user)
+            throw Error("No User Found")
+            let testAccount = await nodemailer.createTestAccount();
+            var transporter = nodemailer.createTransport({
+                service: "gmail",
+                auth: {
+                  user:  "marwan.ashrafshaaban123@gmail.com",
+                  pass: "ajawyergyiihuswq", 
+                },
+              });
+          
+              var mailOptions = {
+                from: '"ACL " marwan.ashrafshaaban123@gmail.com',
+                to: user.email,
+                subject: "Certificate",
+                text: "here is you certificate",
+                attachments: [{
+                    filename: 'file.pdf',
+                    path: '/Users/abdullahibrahim/sprint2/ACL-Team/frontend/public/Certificate.pdf',
+                    contentType: 'application/pdf'
+                  }]
+              };
+          
+              transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log("Email sent: " + info.response);
+                  res.status(200).json(user)
+                }
+                
+              });
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+
 
 
 
@@ -124,5 +172,6 @@ module.exports = {
     getQuestionGrade,
     getQuizGrade,
     getJoinedCourses,
-    getMaterial
+    getMaterial,
+    getEmailandSendCertifiate
 }

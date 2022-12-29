@@ -31,10 +31,7 @@ const [quizes,setQuizes] = useState([]);
   
     return (
     <div>
-        <h2>Course - {courseid}</h2>
-        <h2>Section - {sectionid}</h2>
-        
-
+  
         {quizes && quizes.map((quiz) =>(
           <MaterialCard materialID={quiz._id}/>
           // <p>{quiz._id}</p>

@@ -29,10 +29,7 @@ const [videoLink, setVideoLink] = useState('');
   
     return (
     <div>
-        <h2>Course - {courseid}</h2>
-        <h2>Section - {sectionid}</h2>
-        
-
+      
         {subtitles && subtitles.map((subtitle) =>(
           <SubtitleCard subtitle={subtitle}/>
         ))}
