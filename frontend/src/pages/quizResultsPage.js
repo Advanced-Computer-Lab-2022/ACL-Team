@@ -28,7 +28,7 @@ export default function QuizResultsPage() {
       
 
       const getQuizResult = async () => {
-        const res = await axios.get("http://localhost:3000/trainee/quizGrade" ,{
+        const res = await axios.post("http://localhost:3000/trainee/quizGrade" ,{
           user_id: traineeID, course_id: courseID, section_id: sectionID,material_id: materialID
         }) 
         .catch((err) => console.log(err));

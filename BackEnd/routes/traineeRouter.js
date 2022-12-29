@@ -28,7 +28,7 @@ router.get('/getTrainee',getTraineebyId)
 
 router.get('/questionGrade', getQuestionGrade)
 
-router.get('/quizGrade', getQuizGrade)
+router.post('/quizGrade', getQuizGrade)
 
 router.get('/myCourses', getJoinedCourses)
 
