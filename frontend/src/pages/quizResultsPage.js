@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios';
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { useParams } from 'react-router-dom';
 import QuizResultCard from '../Components/Cards/quizResultCard';
 import TraineeNavbar from '../Components/General/Navbar/TraineeNavbar';
@@ -21,8 +21,7 @@ export default function QuizResultsPage() {
         const res = await axios.get(`http://localhost:3000/lib/CourseMaterial?material_id=${materialID}`)
         .catch((err) => console.log(err));
         const data = await res.data;
-        return data;
-        
+        return data; 
       };
     
       
@@ -43,7 +42,7 @@ export default function QuizResultsPage() {
       },[])
 
       useEffect(() =>{
-        getQuizResult().then((data) => setQuizGrade(data))
+        getQuizResult().then((data) => setQuizGrade(data.grade))
       },[])
 
 
@@ -57,8 +56,8 @@ export default function QuizResultsPage() {
   return (
     <div>
         <TraineeNavbar/>
-        <h1>{quizGrade}</h1>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h1>&nbsp;&nbsp;Quiz Model Answer</h1>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h1>&nbsp;&nbsp;Quiz Grade: {quizGrade}</h1>
         {questions && questions.map((question) =>(
           <QuizResultCard question={question}/>
         ))}
