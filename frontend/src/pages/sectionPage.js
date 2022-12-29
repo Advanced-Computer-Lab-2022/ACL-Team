@@ -30,7 +30,7 @@ export default function SectionPage() {
 
   return (
     <div>
-        <Navbar/>
+        <TraineeNavbar/>
 
         <h2>{courseid}</h2>
         <Progress_bar bgcolor="#99ff66" progress='80'  height={30} />
