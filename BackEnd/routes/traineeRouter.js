@@ -16,7 +16,8 @@ const {
     getEmailandSendCertifiate,
     getMyReviews,
     editInstructorReview,
-    deleteInstructorReview
+    deleteInstructorReview,
+    getReview
 } = require('../controller/trainee/traineeCourseController')
 const User = require('../models/userSchema')
 
@@ -43,6 +44,8 @@ router.post('/quizGrade', getQuizGrade)
 router.get('/myCourses', getJoinedCourses)
 
 router.post('/requestRefund', requestRefund)
+
+router.get('/getReview', getReview)
 
 router.get('/myInstructorReviews', getMyReviews)
 
