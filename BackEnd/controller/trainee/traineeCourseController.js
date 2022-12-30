@@ -6,6 +6,7 @@ const CourseSectionProgress = require('../../models/course/courseProgress/course
 const CourseMaterial = require('../../models/course/courseMaterialSchema')
 const User = require('../../models/UserSchema')
 const nodemailer = require("nodemailer");
+const reviewSchema = require('../../models/lib/reviewSchema')
 
 const answerQuestion = async (req, res) => {
     const {
@@ -162,6 +163,71 @@ const getEmailandSendCertifiate = async (req , res) => {
     }
 }
 
+const getMyReviews = async (req, res) => {
+    const {
+        _id,
+    } = req.query
+    try {
+
+        const reviews = await reviewSchema.find({
+            reviewer_id: _id
+        })
+
+        res.status(200).json({
+            reviews
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+const editInstructorReview = async (req, res) => {
+    const {
+        review_id,
+        type,
+        review
+    } = req.body
+
+    try {
+        const reviewObject = await reviewSchema.findByIdAndUpdate({
+            _id : review_id
+        },{
+            type,
+            review
+        })
+
+        res.status(200).json({
+            reviewObject,
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+
+const deleteInstructorReview = async (req, res) => {
+    const {
+        review_id,
+
+    } = req.body
+
+    try {
+        const review = await reviewSchema.deleteOne({
+            _id : review_id
+        })
+
+        res.status(200).json({
+            review,
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+
 
 
 
@@ -173,5 +239,8 @@ module.exports = {
     getQuizGrade,
     getJoinedCourses,
     getMaterial,
-    getEmailandSendCertifiate
+    getEmailandSendCertifiate,
+    getMyReviews,
+    editInstructorReview,
+    deleteInstructorReview,
 }

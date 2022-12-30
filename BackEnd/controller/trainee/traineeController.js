@@ -63,7 +63,7 @@ const reviewInstructor = async (req, res) => {
         type,
         reviewString
     } = req.body
-    console.log(req.body)
+
     try {
         const review = await Trainee.reviewInstructor(_id,instructor_id, type, reviewString)
 
