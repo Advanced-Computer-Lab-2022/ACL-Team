@@ -13,11 +13,19 @@ import NavyButton from '../Buttons/navyButton'
 import { Link } from 'react-router-dom'
 
 export default function InstNavbar({props}) {
+
+    const handleGoBack=(e)=>{
+        e.preventDefault()
+        
+        window.history.back();
+      
+      }
+
   return (
     <div className="Nav-signedIn">
 
         <div>
-            <button className="sidemenu_button"><img className="setting_icon" src={img6} alt="back-page-icon" /></button>
+            <button className="sidemenu_button" onClick={handleGoBack} ><img className="setting_icon" src={img6} alt="back-page-icon" /></button>
         </div>
 
         <div className="Nav-title">

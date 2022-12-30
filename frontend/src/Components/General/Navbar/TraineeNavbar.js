@@ -46,6 +46,13 @@ export default function TraineeNavbar() {
         courseSearch().then((data) => setCourses(data))
     
       },[])  
+
+      const handleGoBack=(e)=>{
+        e.preventDefault()
+        
+        window.history.back();
+      
+      }
       
 
 
@@ -54,7 +61,7 @@ export default function TraineeNavbar() {
     <div className="Nav-signedIn2">
 
         <div>
-            <button className="sidemenu_button"><img className="setting_icon" src={img6} alt="back-page-icon" /></button>
+            <button className="sidemenu_button" onClick={handleGoBack} ><img className="setting_icon" src={img6} alt="back-page-icon" /></button>
         </div>
 
         <div className="Nav-title">
