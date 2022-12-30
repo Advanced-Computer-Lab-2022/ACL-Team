@@ -44,11 +44,16 @@ export default function InstNavbar({props}) {
                 </li>
 
                 <li>
-                    <a href="/instructor/addCourse">Add a course</a>
+                    
+                    <Link to={`/instructor/addCourse/${props}`} >
+                        Add Course
+                    </Link>
                 </li>
 
                 <li>
-                    <a href="/instructor/editProfile">Edit Profile</a>
+                    <Link to={`/instructor/editProfile/${props}`} >
+                        Edit Profile
+                    </Link>
                 </li>
 
                 <li>

@@ -4,15 +4,14 @@ import React , {useState} from 'react'
 import axios from 'axios'
 
 
-export default function EditBio() {
-const[_id,set_id] =useState('')
+export default function EditBio({instructorID}) {
 const[newBiography,setNewBio] =useState('')
 
 const changeBio = async () => {
   // console.log("boodaa")
   const res = await axios
     .post("http://localhost:3000/instructor/changeBiography", {
-     _id:_id,newBiography:newBiography
+     _id:instructorID,newBiography:newBiography
     })
     .catch((err) => console.log(err));
     const data = await res.data;
@@ -44,18 +43,12 @@ const handleSubmitt=(e)=>{
           </div>
           <form onSubmit={handleSubmitt}>
           <div className="rateCourse_inputs">
-          <div className="rateCourse_instructorName">
-              <input
-              onChange={(e) => set_id(e.target.value)}
-              value={_id}
-               type = "textbox" placeholder="your_id"/>
-            </div><hr/>
             <div className="rateCourse_instructorName">
               <input 
               onChange={(e) => setNewBio(e.target.value)}
               value={newBiography}
               type = "textbox" placeholder="Edit Biography"/>
-            </div><hr/>
+            </div>
             {/* <div className="rateCourse_courseTitle">
               <input type = "textbox" placeholder="Course Title"/>
             </div> */}

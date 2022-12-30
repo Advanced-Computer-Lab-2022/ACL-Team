@@ -58,6 +58,15 @@
     left: 206px;
     border-radius: 10px;
 }
+.instructor_category{
+    position: relative;
+    left: 206px;
+    top: 180px;
+}
+.instructor_category > input{
+   
+    border-radius: 10px;
+}
 .line2 > hr{
     width: 340px;
     text-align: center;
@@ -92,7 +101,7 @@
     padding: 10px 0px;
     font-size: 12px;
     position: relative;
-    top: 230px;
+    top: 180px;
     left: 800px;
 }
 .instructor_Category{

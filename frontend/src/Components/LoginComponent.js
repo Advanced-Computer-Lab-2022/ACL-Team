@@ -83,7 +83,9 @@ export default function LoginComponent() {
        
        
       </div>
-
+      <div className="Forget-Password">
+        <a href='/forgetPassword'>Forget Password ?</a>
+      </div>
     </div>
     <div>
  

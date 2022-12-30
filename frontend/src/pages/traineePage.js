@@ -61,11 +61,11 @@ export const TraineePage = () => {
       <TraineeNavbar/>
       </div>
 
-      <button>
+      
         <Link to={`/trainee/myCourses/${traineeID}`}>
-          My Courses
+          <button className="Navy_Button">My Courses</button> 
         </Link>
-      </button>
+      
      
 
      
@@ -143,7 +143,7 @@ export const TraineePage = () => {
         
       ))}
       <a href='/trainee/filterCourses'>
-      <button >
+      <button className="Navy_Button" >
         Show More
       </button>
       
