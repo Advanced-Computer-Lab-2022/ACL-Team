@@ -161,6 +161,14 @@ CourseSchema.statics.getCourseByTitle = async function (searchTitle) {
     const result = fuse.search(searchTitle)
     return result
 }
+CourseSchema.statics.getCourseByRating = async function(searchRating){
+    if(!searchRating)
+        throw Error('No Search Written')
+    const courses = await this.find({averageRating: searchRating}).sort({
+        createdAt: -1
+    })
+    return courses
+}
 CourseSchema.statics.getCourseByInstructor = async function (searchInstructor) {
     if (!searchInstructor)
         throw Error('No Search Written')

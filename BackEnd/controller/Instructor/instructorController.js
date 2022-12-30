@@ -16,6 +16,17 @@ const getInstructorbyId = async (req, res) => {
 
     return res.status(200).json(instructor)
 }
+const getCoursesByInstructor_id = async (req,res) => {
+    const {instructor_id} = req.body
+
+    try {
+        const courses = await Course.find({instructor_id : instructor_id})
+        res.status(200).json(courses)
+    } catch (error) {
+        error: error.message
+    }
+    
+}
 
 const changeBiography = async (req, res) => {
     const {
@@ -73,4 +84,5 @@ module.exports = {
     changeBiography,
     changeEmail,
     getInstructorbyId,
+    getCoursesByInstructor_id,
 }

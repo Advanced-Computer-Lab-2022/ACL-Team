@@ -53,7 +53,7 @@ export default function CourseCard({course, traineeID}) {
 
  <div className="course-info">
   <label><img src={img2} alt=""/>&nbsp;&nbsp;<span id="bold">{course.totalHours}</span>&nbsp;hours</label>
-  <label><img src={img3} alt=""/>&nbsp;&nbsp;<span id="bold">31</span>&nbsp;lessons</label>
+  <label><img src={img3} alt=""/>&nbsp;&nbsp;<span id="bold">{course.averageRating}</span>&nbsp;Rating</label>
   <label><img src={img4} alt=""/>&nbsp;&nbsp;<span id="bold">{course.level}</span>&nbsp;Level</label>
   <label><img src={img3} alt=""/>&nbsp;&nbsp;<span id="bold">{course.price}</span>&nbsp;EGP</label>
   

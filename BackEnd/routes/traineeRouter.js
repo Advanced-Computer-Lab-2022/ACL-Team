@@ -12,7 +12,8 @@ const {
     answerQuestion,  
     getQuestionGrade,
     getQuizGrade,
-    getJoinedCourses
+    getJoinedCourses,
+    getEmailandSendCertifiate
 } = require('../controller/trainee/traineeCourseController')
 const User = require('../models/userSchema')
 
@@ -25,6 +26,8 @@ router.post('/rateCourse', rateCourse)
 router.post('/reviewInstructor', reviewInstructor)
 
 router.post('/answerQuestion', answerQuestion)
+
+router.post('/getCertificate' , getEmailandSendCertifiate)
 
 router.post('/getPreview', getPreview)
 

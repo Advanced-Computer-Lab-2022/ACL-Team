@@ -177,6 +177,36 @@ const addCourseSubtitle = async (req, res) => {
 
 
 
+const filterCoursesByPrice = async (req,res) => {
+    const {
+        instructor_id,
+        price,
+    } = req.body
+    try {
+        const courses = await Course.find({instructor_id: instructor_id , price: price})
+        res.status(200).json(courses)
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+
+const filterCoursesByCategory = async (req,res) => {
+    const {
+        instructor_id,
+        category,
+    } = req.body
+    try {
+        const courses = await Course.find({instructor_id: instructor_id , category: category})
+        res.status(200).json(courses)
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+
 module.exports = {
     addCourse,
     viewOfferedCourses,
@@ -184,5 +214,7 @@ module.exports = {
     applyDiscount,
     setCoursePreview,
     addCourseSection,
-    addCourseSubtitle
+    addCourseSubtitle,
+    filterCoursesByPrice,
+    filterCoursesByCategory
 }

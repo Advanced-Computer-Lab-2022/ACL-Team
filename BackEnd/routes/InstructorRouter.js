@@ -6,6 +6,7 @@ const {
     changeEmail,
     getInstructorbyId,
     getReviewsByInstructorId,
+    getCoursesByInstructor_id
 } = require('../controller/Instructor/instructorController')
 const {
     viewOfferedCourses,
@@ -15,6 +16,8 @@ const {
     setCoursePreview,
     addCourseSection,
     addCourseSubtitle,
+    filterCoursesByPrice,
+    filterCoursesByCategory
 
 } = require('../controller/Instructor/instructorCourseController')
 const {
@@ -35,9 +38,11 @@ router.get('/', () => {
 })
 
 router.post('/changeEmail', changeEmail)
+router.post('/filterByPrice', filterCoursesByPrice)
+router.post('/filterByCategory', filterCoursesByCategory)
 router.post('/changeBiography', changeBiography)
 router.get('/courseShow', viewOfferedCourses)
-
+router.post('/getInstructorCourses' , getCoursesByInstructor_id)
 
 router.get('/viewRating', getReviewsByInstructorId)
 

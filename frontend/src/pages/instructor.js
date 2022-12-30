@@ -46,6 +46,7 @@ export default function InstructorHomePage() {
     
     <div>
         <InstNavbar props={id}/>
+        
         {/* <h2> {id} </h2>  */}
         <div className="coursepage_component1">
           
