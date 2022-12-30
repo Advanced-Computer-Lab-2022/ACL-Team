@@ -20,10 +20,10 @@ export default function BuyCourseCard({ course, payFunction }) {
   var isCorprate = false;
 
   const getTraineeById = async () => {
-    const traineeID = window.localStorage.getItem("trainee_id");
-    if (traineeID) {
+    const user_id = window.localStorage.getItem("user_id");
+    if (user_id) {
       const res = await axios
-        .get(`http://localhost:3000/trainee/getTrainee?_id=${traineeID}`)
+        .get(`http://localhost:3000/trainee/getTrainee?_id=${user_id}`)
         .catch((err) => console.log(err));
       const data = await res.data;
       setIsCorprate(res.data.isCorporate);
@@ -38,13 +38,13 @@ export default function BuyCourseCard({ course, payFunction }) {
   };
 
   const payCourse = async () => {
-    if (window.localStorage.getItem("trainee_id") == null) {
+    if (window.localStorage.getItem("user_id") == null) {
       window.location = "/login";
     } else {
       const res = await axios
         .post("http://localhost:3000/lib/payCourse", {
           course_id: id,
-          user_id: window.localStorage.getItem("trainee_id"),
+          user_id: window.localStorage.getItem("user_id"),
         })
         .catch((err) => console.log(err));
       window.location = res.data;
@@ -84,7 +84,7 @@ export default function BuyCourseCard({ course, payFunction }) {
   const sendCourseRequest = async () => {
     const res = await axios
       .post("http://localhost:3000/trainee/requestCourse", {
-        _id: window.localStorage.getItem("trainee_id"),
+        _id: window.localStorage.getItem("user_id"),
         course_id: course._id,
       })
       .catch((err) => console.log(err));
