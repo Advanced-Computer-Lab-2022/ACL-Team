@@ -13,7 +13,10 @@ const {
     getQuestionGrade,
     getQuizGrade,
     getJoinedCourses,
-    getEmailandSendCertifiate
+    getEmailandSendCertifiate,
+    getMyReviews,
+    editInstructorReview,
+    deleteInstructorReview
 } = require('../controller/trainee/traineeCourseController')
 const User = require('../models/userSchema')
 
@@ -40,6 +43,12 @@ router.post('/quizGrade', getQuizGrade)
 router.get('/myCourses', getJoinedCourses)
 
 router.post('/requestRefund', requestRefund)
+
+router.get('/myInstructorReviews', getMyReviews)
+
+router.post('/editInstructorReview', editInstructorReview)
+
+router.post('/deleteInstructorReview', deleteInstructorReview)
 
 
 //ALL ROUTES BELOW HERE ARE FOR CORPORATE TRAINEE ONLY
