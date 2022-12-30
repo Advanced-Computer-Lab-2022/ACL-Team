@@ -23,7 +23,7 @@ export default function SectionPage() {
       };
 
       const downloadCertificateandsendViaEmail = async () => {
-        const res = await axios.post("localhost:3000/trainee/getCertificate",{
+        const res = await axios.post("http://localhost:3000/trainee/getCertificate",{
           trainee_id:traineeID
         })
         .catch((err) => console.log(err));
@@ -43,7 +43,7 @@ export default function SectionPage() {
       e.preventDefault()
 
       downloadCertificateandsendViaEmail().then((data) => console.log(data));
-    
+      
     }
 
 
@@ -60,11 +60,11 @@ export default function SectionPage() {
         ))}
             
         </div>
-    <form onSubmit={handleClick}>
-    <button className='button1'>
+
+    <button className='button1' onClick={handleClick}>
           Recieve Certificate
      </button>
-     </form>
+
 
     <a href="/Certificate.pdf" 
             download ="/Certificate.pdf" >

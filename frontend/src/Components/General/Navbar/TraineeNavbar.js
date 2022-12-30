@@ -62,7 +62,7 @@ export default function TraineeNavbar() {
         </div> 
        
         <div  className="Nav-search" onSubmit={courseSearch()}>
-            <button className="Navy-Button" ><a href='/search'>Search</a></button>
+        <a href='/search'><button className="Navy_Button" >Search</button></a>
         </div> 
 
         <div className="Nav-actions">

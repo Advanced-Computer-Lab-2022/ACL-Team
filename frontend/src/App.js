@@ -106,9 +106,9 @@ function App() {
       <Route path='/instructor/:id' exact element={<InstructorHomePage/>} />
       <Route path='/course' exact element={<CourseDashboard/>} />
       <Route path='/course/coursePage/:id&:traineeID' exact element={<CoursePage/>} />
-      <Route path='/instructor/addCourse' exact element={<InstructorAddCourse/>} />
+      <Route path='/instructor/addCourse/:instructorID' exact element={<InstructorAddCourse/>} />
       <Route path='/course/courseShow' exact element={<SearchCoursePage/>} />
-      <Route path='/instructor/editProfile' exact element={<InstructorEditProfile/>} />
+      <Route path='/instructor/editProfile/:instructorID' exact element={<InstructorEditProfile/>} />
       <Route path='/TraineeEditProfile' exact element={<TraineeEditProfile/>} />
       <Route path='/sidebar' exact element={<SidebarPage/>} />
       <Route path='/instructor/addDiscount/:courseID&:instructorID' exact element={<InstructorAddDiscountPage/>} />
@@ -120,8 +120,8 @@ function App() {
       <Route path='/instructor/addSection/:courseID' exact element={<InstructorAddSectionPage/>} />
 
       <Route path='/instructor/coursepage' exact element={<InstructorCoursePage/>} />
-      <Route path='/instructor/editBio' exact element={<InstructorEditBio/>} />
-      <Route path='/instructor/editMail' exact element={<InstructorEditEmail/>} />
+      <Route path='/instructor/editBio/:instructorID' exact element={<InstructorEditBio/>} />
+      <Route path='/instructor/editMail/:instructorID' exact element={<InstructorEditEmail/>} />
       <Route path='/instructor/editPassword' exact element={<InstructorEditPassword/>} />
       <Route path='/trainee/sectionPage/:courseid&:traineeID' exact element={<SectionPage/>} /> 
       <Route path='/trainee/SubtitlePage/:courseid&:sectionid&:traineeID' exact element={<SubtitlePage/>} />

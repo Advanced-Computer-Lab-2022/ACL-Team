@@ -142,7 +142,7 @@ const getEmailandSendCertifiate = async (req , res) => {
                 text: "here is you certificate",
                 attachments: [{
                     filename: 'file.pdf',
-                    path: '/Users/abdullahibrahim/sprint2/ACL-Team/frontend/public/Certificate.pdf',
+                    path:'Certificate.pdf',
                     contentType: 'application/pdf'
                   }]
               };

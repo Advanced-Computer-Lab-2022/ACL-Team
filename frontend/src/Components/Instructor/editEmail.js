@@ -4,7 +4,7 @@ import React , {useState} from 'react'
 import axios from 'axios'
 
 
-export default function EditEmail() {
+export default function EditEmail({instructorID}) {
 const[_id,set_id] =useState('')
 const[email,setEmail] =useState('')
 const[newEmail,setNewEmail] =useState('')
@@ -13,7 +13,7 @@ const changeEmail = async () => {
   // console.log("boodaa")
   const res = await axios
     .post("http://localhost:3000/instructor/changeEmail", {
-     _id:_id,email:email,newEmail:newEmail
+     _id:instructorID,email:email,newEmail:newEmail
     })
     .catch((err) => console.log(err));
     const data = await res.data;
@@ -46,17 +46,11 @@ const handleSubmitt=(e)=>{
           <form onSubmit={handleSubmitt}>
           <div className="rateCourse_inputs">
             <div className="rateCourse_instructorName">
-              <input
-              onChange={(e) => set_id(e.target.value)}
-              value={_id}
-               type = "textbox" placeholder="instructor_id"/>
-            </div>
-            <div className="rateCourse_instructorName">
               <input 
               onChange={(e) => setEmail(e.target.value)}
               value={email}
               type = "textbox" placeholder="Old Email"/>
-            </div><hr/>
+            </div>
             {/* <div className="rateCourse_courseTitle">
               <input type = "textbox" placeholder="Course Title"/>
             </div> */}
