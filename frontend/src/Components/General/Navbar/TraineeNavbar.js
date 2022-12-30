@@ -13,6 +13,7 @@ import { InstructorEditProfile } from '../../../pages/instructorEditProfile'
 import NavyButton from '../Buttons/navyButton'
 import { useState,useEffect } from 'react'
 import CourseCard from '../../Cards/courseCard'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 export default function TraineeNavbar() {
@@ -74,7 +75,11 @@ export default function TraineeNavbar() {
 
         <div className="Nav-actions">
             <ul>
-               
+            <li>
+                    <Link to={`/`} >
+                        Log Out
+                    </Link>
+                </li>
 
                 <li>
                     <a href="/TraineeEditProfile">Edit Profile</a>

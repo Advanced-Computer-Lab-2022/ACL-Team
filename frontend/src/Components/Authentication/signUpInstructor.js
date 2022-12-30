@@ -117,7 +117,7 @@ export default function SignUp()  {
                 <input type="radio" Value="True" name="Terms"/>&nbsp; True
                 <input type="radio" Value="False" name="Terms"/>&nbsp; False
 
-                <a href='signUp/instructor/termsInstructor'>
+                <a href='/signUp/instructor/termsInstructor'>
                <p className='signTerms'> view terms and conditions</p>
               </a>
             </div>

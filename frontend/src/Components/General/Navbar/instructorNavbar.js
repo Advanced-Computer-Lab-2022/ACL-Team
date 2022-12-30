@@ -65,6 +65,13 @@ export default function InstNavbar({props}) {
                 </li>
 
                 <li>
+                    <Link to={`/`} >
+                        Log Out
+                    </Link>
+                </li>
+
+
+                <li>
                     <a href="/FAQ">Reports</a>
                 </li>
 

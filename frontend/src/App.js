@@ -132,7 +132,7 @@ function App() {
       <Route path='/trainee/MaterialPage/:courseid&:sectionid&:traineeID' exact element={<MaterialPage/>} />
       <Route path='/quizPage/:courseID&:sectionID&:materialID&:traineeID' exact element={<QuizPage/>} />
       <Route path='/quizResult/:courseID&:sectionID&:materialID&:traineeID' exact element={<QuizResultsPage/>} />    
-      <Route path='signUp/instructor/termsInstructor' exact element={<TermsInstructor/>} />
+      <Route path='/signUp/instructor/TermsInstructor' exact element={<TermsInstructor/>} />
       <Route path='signUp/trainee/termsTrainee' exact element={<TermsTrainee/>} />
       <Route path='/FAQ' exact element={<FaqPage/>} />
       
