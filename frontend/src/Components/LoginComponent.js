@@ -24,7 +24,7 @@ export default function LoginComponent() {
         password: password,
       })
       .then((res) => {
-        window.localStorage.setItem("trainee_id", res.data.user._id);
+        window.localStorage.setItem("user_id", res.data.user._id);
       })
       .catch((err) => console.log(err));
     const data = await res.data;

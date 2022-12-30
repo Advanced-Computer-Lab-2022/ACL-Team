@@ -32,6 +32,7 @@ const joinCourse = async (req, res) => {
     });
   }
 };
+
 const rateCourse = async (req, res) => {
   const { user_id, course_id, rating } = req.body;
 
@@ -102,36 +103,47 @@ const requestRefund = async (req, res) => {
     var trainee = await Trainee.findOne({
       _id: payment.user_id,
     });
-    const sectionProgress = await CourseSectionProgress.findOne({
+    const instructor = await Instructor.findById({
+      _id: course.instructor_id,
+    });
+    let sectionProgress = await CourseSectionProgress.findOne({
       user_id: payment.user_id,
       course_id: payment.course_id,
     });
+    if (!sectionProgress)
+      sectionProgress = await CourseSectionProgress.create({
+        user_id: payment.user_id,
+        course_id: payment.course_id,
+        sectionTitle: "Introduction",
+      });
     if (!course) throw Error("Course Does not Exist");
     if (!trainee) throw Error("Trainee Does not Exist");
-    // if (!sectionProgress) throw Error("Section Progress Does not Exist");
-    // const percentage = sectionProgress.finishedPercentage;
 
-    if (false) {
+    const percentage = sectionProgress.finishedPercentage;
+    if (percentage > 50) {
       res.status(200).json({
         message:
           "Sorry you can't refund this course you Exceeded 50% of the materials",
       });
     } else {
       let ownedCourses = trainee.ownedCourses;
-      console.log("before", ownedCourses);
-
-      //go through ownedcourses and remove the course with the course_id
-
       ownedCourses = ownedCourses.filter(
         (course) => course.course_id.toString() != payment.course_id
       );
-      console.log("after", ownedCourses);
+      await Instructor.findByIdAndUpdate(
+        {
+          _id: course.instructor_id,
+        },
+        {
+          credit: instructor.credit - course.price,
+        }
+      );
       trainee = await Trainee.findByIdAndUpdate(
         {
           _id: payment.user_id,
         },
         {
-          credit: trainee.credit + payment.price,
+          credit: trainee.credit + course.price,
           ownedCourses: ownedCourses,
         }
       );
@@ -151,6 +163,7 @@ const requestRefund = async (req, res) => {
       res.status(200).json({
         trainee,
         paymentUpdate,
+        instructor,
       });
     }
   } catch (error) {

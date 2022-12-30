@@ -7,7 +7,7 @@ const Question = require("../../models/course/questionSchema");
 const CourseSectionProgress = require("../../models/course/courseProgress/courseSectionProgress");
 const Payment = require("../../models/lib/payment/paymentSchema");
 const Trainee = require("../../models/traineeSchema");
-
+const Instructor = require("../../models/InstructorSchema");
 const stripe = require("stripe")(
   process.env.STRIPE_KEY ||
     "sk_test_51MFdfGDZGE0sbGNF5ijUysPTPes2023txzn262u9e3xrA8hgD3Sou1KumZqfRU88MG0xz6DLZNRAQWdWM8N8G0Ra00Em82CNAr"
@@ -271,8 +271,6 @@ const payForCourse = async (req, res) => {
   const { course_id, user_id } = req.body;
 
   try {
-    //find course by id
-
     const course = await Course.findById({
       _id: course_id,
     });
@@ -316,16 +314,28 @@ const saveCheckout = async (req, res) => {
     const course = await Course.findById({
       _id: course_id,
     });
+    const instructor = await Instructor.findById({
+      _id: course.instructor_id,
+    });
     const paymentSearch = await Payment.findOne({
       session_id: session_id,
     });
+
+    await Instructor.findByIdAndUpdate(
+      {
+        _id: course.instructor_id,
+      },
+      {
+        credit: instructor.credit + course.price,
+      }
+    );
     if (paymentSearch) throw Error("Payment Already Exists");
     const payment = await Payment.create({
       payment_title: course.title,
       user_id: session.client_reference_id,
       course_id: course_id,
       session_id: session_id,
-      price: session.amount_total,
+      price: course.price,
       currency: session.currency,
       type: session.payment_method_types[0],
       status: "paid",

@@ -51,10 +51,10 @@ export default function TraineeNavbar() {
   };
 
   const getTraineeById = async () => {
-    const traineeID = window.localStorage.getItem("trainee_id");
-    if (traineeID) {
+    const user_id = window.localStorage.getItem("user_id");
+    if (user_id) {
       const res = await axios
-        .get(`http://localhost:3000/trainee/getTrainee?_id=${traineeID}`)
+        .get(`http://localhost:3000/trainee/getTrainee?_id=${user_id}`)
         .then((res) => {
           setTrainee(res.data);
         })
@@ -62,10 +62,10 @@ export default function TraineeNavbar() {
     }
   };
   const getPayments = async () => {
-    const traineeID = window.localStorage.getItem("trainee_id");
-    if (traineeID) {
+    const user_id = window.localStorage.getItem("user_id");
+    if (user_id) {
       const res = await axios
-        .get(`http://localhost:3000/trainee/getPayments?_id=${traineeID}`)
+        .get(`http://localhost:3000/trainee/getPayments?_id=${user_id}`)
         .then((res) => {
           setTransactions(res.data.payments);
         })
