@@ -1,10 +1,14 @@
 import axios from 'axios'
 import React from 'react'
 import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 import CourseCard from './Cards/courseCard'
 import TraineeNavbar from './General/Navbar/TraineeNavbar'
 
 export default function Drawer() {
+
+  const {traineeID} = useParams();
+
   const [courses,setCourses] = useState(null)
   const [category,setCategory] = useState('')
   const [price,setPrice] = useState(null)
@@ -137,7 +141,7 @@ export default function Drawer() {
         </div>
         <div class="col py-3">
         {courses && courses.map((course) =>(
-        <CourseCard key={course._id} course={course}/>
+        <CourseCard key={course._id} course={course} traineeID={traineeID} />
       ))} 
         </div>
     </div>
