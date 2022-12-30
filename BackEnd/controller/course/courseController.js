@@ -279,7 +279,7 @@ const payForCourse = async (req, res) => {
     if (!course) throw Error("Course Does not Exist");
     const title = course.title;
     const description = course.description;
-    const price = course.price;
+    const price = Number(course.price + "00");
     const checkoutSession = await stripe.checkout.sessions.create({
       success_url: `http://localhost:3001/course/coursePage/${course_id}?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `http://localhost:3001/course/coursePage/${course_id}`,
