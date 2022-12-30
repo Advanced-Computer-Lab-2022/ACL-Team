@@ -45,17 +45,7 @@ export default function InstructorHomePage() {
   return (
     
     <div>
-        <InstNavbar/>
-        <div> 
-          <button className='Navy_Button'>
-            <Link to ={`/instructor/ViewReviews/${instructor._id}`}>My Reviews</Link>
-          </button>  
-        </div>
-        <div>
-          <button className='Navy_Button'>
-            <Link to ={`/instructor/filterCourses/${instructor._id}`}>My Courses</Link>
-          </button>
-        </div>
+        <InstNavbar props={id}/>
         
         {/* <h2> {id} </h2>  */}
         <div className="coursepage_component1">
@@ -71,6 +61,7 @@ export default function InstructorHomePage() {
         </div>
          */}
          
+          
 
           
         

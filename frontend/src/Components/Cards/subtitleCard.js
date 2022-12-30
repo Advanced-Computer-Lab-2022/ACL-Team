@@ -3,7 +3,7 @@ import img1 from "../images/Course Image.png"
 import { Link } from 'react-router-dom'
 import VideoPage from '../Video Page/videoPage'
 
-export default function SubtitleCard({subtitle}) {
+export default function SubtitleCard({subtitle, traineeID}) {
 
   const Video = subtitle.subtitlePreviewVideoUrl;
 
@@ -22,7 +22,7 @@ export default function SubtitleCard({subtitle}) {
 
                 
                 <p>
-                  <Link to={`/trainee/MaterialPage/${subtitle.course_id}&${subtitle.section_id}`}>
+                  <Link to={`/trainee/MaterialPage/${subtitle.course_id}&${subtitle.section_id}&${traineeID}`}>
                     <button>View Material</button>
                   </Link>   
                 </p>

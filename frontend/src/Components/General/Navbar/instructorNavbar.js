@@ -7,11 +7,12 @@ import img3 from "../../images/question-circle.png"
 import img4 from "../../images/settings.png"
 import img5 from "../../images/Avatar.png" 
 import img6 from "../../images/arrow.png"
-import Dropdown2 from '../Buttons/CategoryChoices'
+
 import { InstructorEditProfile } from '../../../pages/instructorEditProfile'
 import NavyButton from '../Buttons/navyButton'
+import { Link } from 'react-router-dom'
 
-export default function InstNavbar() {
+export default function InstNavbar({props}) {
   return (
     <div className="Nav-signedIn">
 
@@ -31,7 +32,15 @@ export default function InstNavbar() {
         <div className="Nav-actions">
             <ul>
                 <li>
-                    <a href="/instructor/filterCourses">My Courses</a>
+                    <Link to={`/instructor/ViewReviews/${props}`} >
+                        My Reviews
+                    </Link>
+                </li>
+
+                <li>
+                    <Link to={`/instructor/filterCourses/${props}`} >
+                        My Courses
+                    </Link>
                 </li>
 
                 <li>

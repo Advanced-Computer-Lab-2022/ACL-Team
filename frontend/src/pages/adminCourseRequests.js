@@ -2,6 +2,7 @@ import React, { useState , useEffect } from 'react'
 import axios from 'axios';
 import CourseRequest from '../Components/Cards/courseRequestCard';
 import img1 from '../Components/images/Alert.svg'
+import AdminNavbar from '../Components/General/Navbar/adminNavbar';
 
 export default function AdminCourseRequests() {
 
@@ -26,7 +27,7 @@ export default function AdminCourseRequests() {
 
   return (
     <div>
-        
+        <AdminNavbar/>
         {courseRequests && courseRequests.map((request) => (
             <CourseRequest request={request}/>
         ))}

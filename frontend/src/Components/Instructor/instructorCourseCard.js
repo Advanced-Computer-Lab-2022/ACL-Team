@@ -74,7 +74,7 @@ export default function InstructorCourseCard({course , instructor}) {
                     </div>
                     <div className="InstructorCourse_students">
                         <img src = {img5} alt="level"/>
-                        <label>25,599 Students</label>
+                        <label> {course.subscriberNumber} Students</label>
                     </div>
                     <div className="InstructorCourse_price">
                         <img src = {img4} alt="level"/>

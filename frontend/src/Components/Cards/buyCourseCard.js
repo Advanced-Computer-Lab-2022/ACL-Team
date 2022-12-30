@@ -180,7 +180,7 @@ export default function BuyCourseCard({course,traineeID,payPage}) {
                 <img src={img9} alt="level Icon"/>
             </div>
             <div className="students_label">
-                <label>25,599 Students</label>
+                <label> {course.subscriberNumber} Students</label>
             </div>
             <div className="description_course">
                 <p>
