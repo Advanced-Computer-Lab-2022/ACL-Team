@@ -24,15 +24,14 @@ export default function SectionPage() {
   }, []);
 
   const getCourseSections = async () => {
-    const rest = await axios
+    await axios
       .get(
         `http://localhost:3000/lib//CourseSectionProgress?course_id=${courseid}&user_id=${window.localStorage.getItem(
           "user_id"
         )}`
       )
       .then((res) => {
-        console.log(res.data);
-        setProgress(res.data);
+        setProgress(res.data.finishedPercentage);
       })
       .catch((err) => console.log(err));
   };

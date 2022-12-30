@@ -19,8 +19,6 @@ export const CoursePage = () => {
       .get(`http://localhost:3000/course/?_id=${id}`)
       .catch((err) => console.log(err));
     const data = await res.data;
-
-    console.log("here course", data);
     return data;
   };
 

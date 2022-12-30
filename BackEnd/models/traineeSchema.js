@@ -27,8 +27,14 @@ const TraineeSchema = new Schema(
       {
         course_id: mongoose.Schema.Types.ObjectId,
         courseTitle: String, //TODO
+        sectionProgress: [
+          {
+            section_id: mongoose.Schema.Types.ObjectId,
+          },
+        ],
       },
     ],
+
     followedCourses: [
       {
         course_id: String, //TODO

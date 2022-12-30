@@ -349,6 +349,62 @@ const saveCheckout = async (req, res) => {
     });
   }
 };
+const updateTraineeProgress = async (req, res) => {
+  const { user_id, section_id, course_id } = req.body;
+  try {
+    const course = await Course.findById({
+      _id: course_id,
+    });
+    const courseSectionProgress = await CourseSectionProgress.findOne({
+      user_id: user_id,
+      course_id: course_id,
+    });
+    if (!courseSectionProgress)
+      await CourseSectionProgress.create({
+        user_id: user_id,
+        course_id: course_id,
+        sectionTitle: course.title,
+      });
+
+    const trainee = await Trainee.findById(user_id);
+    if (!trainee) throw Error("Trainee Does not Exist");
+    //add section id under course id in trainee progress
+    let progressLength;
+    const ownedCourses = trainee.ownedCourses.map((course) => {
+      if (course.course_id == course_id) {
+        if (course.sectionProgress?.includes(section_id))
+          throw Error("section already exists");
+        course.sectionProgress.push(section_id);
+        progressLength = course.sectionProgress.length;
+      }
+      return course;
+    });
+
+    await Trainee.findByIdAndUpdate(
+      {
+        _id: user_id,
+      },
+      {
+        ownedCourses: ownedCourses,
+      }
+    );
+    await CourseSectionProgress.findOneAndUpdate(
+      {
+        user_id: user_id,
+        course_id: course_id,
+      },
+      {
+        finishedPercentage: (progressLength / ~~course.materialNumber) * 100,
+      }
+    );
+
+    return res.status(200).json(trainee);
+  } catch (error) {
+    res.status(400).json({
+      error: error.message,
+    });
+  }
+};
 
 module.exports = {
   getAllCourses,
@@ -367,4 +423,5 @@ module.exports = {
   getSectionProgress,
   payForCourse,
   saveCheckout,
+  updateTraineeProgress,
 };
