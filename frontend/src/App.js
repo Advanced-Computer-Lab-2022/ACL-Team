@@ -82,6 +82,7 @@ import PreviewPage from './pages/previewPage';
 import ResetPasswordPage from './pages/resetPasswordPage';
 import InstructorDrawer from './Components/InstructorDrawer';
 import TraineeInstructorReviews from './pages/traineeInstructorReviews';
+import TraineeEditReview from './pages/traineeEditReview';
 
 
 
@@ -104,6 +105,7 @@ function App() {
       <Route path='/trainee/:traineeID' exact element={<TraineePage/>} />
       <Route path='/trainee/myCourses/:traineeID' exact element={<TraineeOwnedCourses/>} />
       <Route path='/trainee/myReviews/:traineeID' exact element={<TraineeInstructorReviews/>} />
+      <Route path='/trainee/editMyReview/:reviewID' exact element={<TraineeEditReview/>} />
       <Route path='/user' exact element={<HomePage/>} />
       <Route path='/instructor/:id' exact element={<InstructorHomePage/>} />
       <Route path='/course' exact element={<CourseDashboard/>} />
