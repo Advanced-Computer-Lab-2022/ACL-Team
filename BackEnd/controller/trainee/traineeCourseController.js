@@ -162,6 +162,25 @@ const getEmailandSendCertifiate = async (req , res) => {
         })
     }
 }
+const getReview = async (req, res) => {
+    const {
+        _id,
+    } = req.query
+    try {
+
+        const reviews = await reviewSchema.findOne({
+             _id
+        })
+
+        res.status(200).json({
+            reviews
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
 
 const getMyReviews = async (req, res) => {
     const {
@@ -243,4 +262,5 @@ module.exports = {
     getMyReviews,
     editInstructorReview,
     deleteInstructorReview,
+    getReview
 }

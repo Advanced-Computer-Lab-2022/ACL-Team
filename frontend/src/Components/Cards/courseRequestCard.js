@@ -30,6 +30,8 @@ export default function CourseRequest({request}) {
         return data;
         
       };
+
+      
     
       useEffect(() =>{
         getTraineeById().then((data) => setTrainee(data))
@@ -43,15 +45,28 @@ export default function CourseRequest({request}) {
         return data;
         
       };
+      console.log(request._id);
+
+      const denyCourseAccess = async () => {
+        const res = await axios.post("http://localhost:3000/admin/denyCourse", {courseRequest_id: request._id})
+        .catch((err) => console.log(err));
+        const data = await res.data;
+       
+        return data;
+        
+      };
 
       const handleAccept=(e)=>{
         e.preventDefault()
 
         grantCourseAccess()
-
-
-     
     }
+
+    const handleDeny=(e)=>{
+      e.preventDefault()
+
+      denyCourseAccess();
+  }
 
 
   return (
@@ -72,7 +87,7 @@ export default function CourseRequest({request}) {
 
     <ul className="buttons-resolved-pending2">
         <li><button onClick={handleAccept}>Accept</button></li>
-        <li><button id="Deny-red">Deny</button></li>
+        <li><button id="Deny-red" onClick={handleDeny}>Deny</button></li>
     </ul>
 
  </div>

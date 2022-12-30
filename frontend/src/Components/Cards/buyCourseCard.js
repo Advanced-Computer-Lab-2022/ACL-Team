@@ -13,15 +13,16 @@ import img9 from "../images/students.png"
 
 import "../css/buyCourseCard.css"
 import { Link } from 'react-router-dom'
+import { TraineeEditProfile } from '../../pages/TraineeEditProfile';
 export default function BuyCourseCard({course,traineeID,payPage}) {
     
     
-    const [trainee,setTrainee] = useState(false);
-   // const [trainee,setTrainee] = useState('');
-    const [payPageLink,setPayPageLink] = useState('')
-    const [isCorporate, setIsCorprate] = useState(false)
-    var [isOwenedCourse, setIsOwnedCourse] = useState(false)
-    var isCorprate = false  
+    //const [trainee,setTrainee] = useState(false);
+    const [trainee,setTrainee] = useState([]);
+    //const [payPageLink,setPayPageLink] = useState('')
+   // const [isCorporate, setIsCorprate] = useState(false)
+    //var [isOwenedCourse, setIsOwnedCourse] = useState(false)
+    //var isCorprate = false  
     //var isOwnCourse = false
 
     const getTraineeById = async () => {
@@ -29,49 +30,13 @@ export default function BuyCourseCard({course,traineeID,payPage}) {
         const res = await axios.get(`http://localhost:3000/trainee/getTrainee?_id=${traineeID}`)
         .catch((err) => console.log(err));
         const data = await res.data;
-        console.log(res.data)
-        //isCorprate = res.data.isCorporate
-        setIsCorprate(res.data.isCorporate)
-        console.log("mazen is " + res.data.isCorporate)
-        //console.log(" isCorporate "+isCorprate)
-        var ownedCourses = trainee.ownedCourses
-        
-        for (let i = 0; i < res.data.ownedCourses.length; i++) {
-                
-                if(res.data.ownedCourses[i].course_id == course._id)
-                {
-                    console.log("ana da5alt")
-                    setIsOwnedCourse(true)
-                    //isOwnCourse = true
-                    
-                }
-          }
-          console.log(" isOwnCourse "+isOwenedCourse)
         return data;
         
       };
-    //   const isTraineeOwnCourse = async () => {
-    //     const trainee = data.getTraineeById;
-    //       console.log(trainee);
-    //   };
-    
-    
+
       useEffect(() =>{
         getTraineeById().then((data) => setTrainee(data))
-
-        if(isCorporate && isOwenedCourse){
-            console.log("hide the button")
-        }
-        
-
-
       },[])
-      //console.log(isCorprate)
-      //console.log(course._id)
-
-    //   if(isCorprate){
-    //     console.log("hide the buttons")
-    //   }
 
     const sendCourseRequest = async () => {
         const res = await axios.post("http://localhost:3000/trainee/requestCourse",{_id:traineeID,course_id:course._id})
@@ -82,29 +47,14 @@ export default function BuyCourseCard({course,traineeID,payPage}) {
         
       };
 
-    //   console.log(traineeID)
-    //   console.log(course._id)
-
-    //   console.log(isCorprate)
     
     const handleCourseRequest=(e)=>{
         e.preventDefault()
 
-        if(isCorprate == true){
+        if(trainee.isCorporate == true){
             sendCourseRequest();
-        }
+        }   
     }
-
-    
-
-    // const handlePayCourse=(e)=>{
-    //     e.preventDefault()
-
-    //     payCourse();
-    // }
-
-    //  console.log(payPageLink)
-
 
 
   return (
@@ -191,7 +141,7 @@ export default function BuyCourseCard({course,traineeID,payPage}) {
             </div>
 
             <div className="request-access-button">
-                <button onClick={handleCourseRequest}>Request access</button>
+                { trainee.isCorporate && <button onClick={handleCourseRequest}>Request access</button>}
             </div>
             
             
