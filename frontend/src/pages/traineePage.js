@@ -150,7 +150,9 @@ export const TraineePage = () => {
         
       </div>
 
-      
+      <div className="Popular-Courses">
+        <label>Most Viewed Courses</label>
+      </div>
       
       {courses && courses.map((course , i) =>(
         i<3 &&

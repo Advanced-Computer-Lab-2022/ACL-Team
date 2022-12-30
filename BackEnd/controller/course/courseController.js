@@ -15,7 +15,7 @@ const stripe = require("stripe")(
 //get all courses available
 const getAllCourses = async (req, res) => {
     const courses = await Course.find().sort({
-        createdAt: -1
+        subscriberNumber: -1
     })
 
     res.status(200).json(courses)

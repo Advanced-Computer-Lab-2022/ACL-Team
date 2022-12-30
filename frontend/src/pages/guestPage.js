@@ -14,13 +14,31 @@ import CourseCard from "../Components/Cards/courseCard"
 import image6 from "../Components/images/hat.svg"
 import image7 from "../Components/images/grad.svg"
 import image8 from "../Components/images/star.svg"
-
+import { useState } from 'react'
+import axios from 'axios'
+import { useEffect } from 'react'
 
 
 
 
 
 export default function GuestPage() {
+  const [courses,setCourses] = useState([]);
+  const getCourses = async () => {
+    const res = await axios.get("http://localhost:3000/course/getAllCourses")
+    .catch((err) => console.log(err));
+    const data = await res.data;
+    
+    return data;
+    
+  };
+
+
+
+  useEffect(() =>{
+    getCourses().then((data) => setCourses(data))
+
+  },[])
   return (
     <div className="PageColor">
       <Navbar/>
@@ -126,11 +144,19 @@ export default function GuestPage() {
 
         </div>
 
+        <div className="Popular-Courses">
+        <label>Most Popular Courses</label>
+      </div>
+      
+      {courses && courses.map((course , i) =>(
+        i<3 &&
+        <CourseCard course={course} />
+        
+      ))}
+
 
               
-       <div className='coursecard'>
-        
-       </div>
+       
 
      
       
