@@ -27,7 +27,7 @@ export default function SubtitleCard({subtitle, traineeID}) {
                   </Link>   
                 </p>
                 <p>
-                  <Link to={`/Videopage`} state={`${Video}`}> 
+                  <Link to={`/Videopage/${subtitle.course_id}`} state={`${Video}`}> 
                     <button>View Video</button>
                   </Link>   
                 </p>

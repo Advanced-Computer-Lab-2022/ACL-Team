@@ -1,19 +1,33 @@
-import React ,{useState} from 'react'
+import React ,{useState,useEffect} from 'react'
+import axios from 'axios'
 import Navbar from '../General/Navbar/navbar'
 import "../css/videoPage.css"
 import ReactPlayer from 'react-player/youtube'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 
 export default function VideoPage() {
 
   const location = useLocation();
   const videoLink = location.state;
+  const {courseID} = useParams();
 
-  const x = 5;
-  const number_of_notes = 15;
-  const c = "El course dah msh a7san 7aga 3matan"
-  const p = "In this video, we will see how we loop through arrays and fetch data from it using indexes";
-  const i = "El ragel dah 3shara 3la 3shara!"
+  const [course,setCourse] = useState([]);
+
+  const getCourseById = async () => {
+    const res = await axios.get(
+      `http://localhost:3000/course/?_id=${courseID}`)
+    .catch((err) => console.log(err));
+    const data = await res.data;
+    // console.log(data);
+    return data;
+    
+    
+  };
+
+  useEffect(() =>{
+    getCourseById().then((data) => setCourse(data))
+
+  },[])
 
   // we need to send back the notes to the arrays of notes and make handle submitt+on click(downloadTXT)
  const downloadTxt = () => {
@@ -36,11 +50,11 @@ export default function VideoPage() {
       <div className="course_description">
         <ul className="label_list">
           <li>
-            <label><span>Course Name:</span></label>
+            <label><span>Course Name:</span> {course.title}</label>
           </li>
 
           <li>
-            <label><span id="sub_videoDescriptions">Course Description:</span><br/><p id='description'>{c}</p></label>
+            <label><span id="sub_videoDescriptions">Course Description:</span><br/><p id='description'> {course.summary} </p></label>
           </li>
         </ul>
         
@@ -53,23 +67,23 @@ export default function VideoPage() {
       className = "video_component">
       <ReactPlayer url={videoLink}/>
       </div> 
-      <div className="video_description">
+      {/* <div className="video_description">
         <ul className="label_list">
           <li>
-          <label><span>Lecture {x}</span></label>      
+          <label><span>Lecture</span></label>      
           </li>
           <li>
-            <label><span id="sub_videoDescriptions">Video Description:</span><br/><p id='description'>{p}</p></label>
+            <label><span id="sub_videoDescriptions">Video Description:</span><br/><p id='description'></p></label>
           </li>
           <li>
-            <label><span id="sub_videoDescriptions">Instructor Info:</span><br/><p id="description"> {i} </p></label>
+            <label><span id="sub_videoDescriptions">Instructor Info:</span><br/><p id="description">  </p></label>
           </li> 
         </ul>  
-      </div>
+      </div> */}
 
       <div className="notes_container">  
         <div className="notes_text_box">
-          <label>View Notes( {number_of_notes} )</label><br/>
+          <label>View Notes</label><br/>
 
           
           <div>

@@ -34,6 +34,7 @@ span{
 .video_component{
     margin: 50px auto;
     text-align: center;
+    margin-left: 450px;
 }
 
 .video_component > iframe{

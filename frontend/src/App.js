@@ -160,7 +160,7 @@ function App() {
             element={<InstructorAddQuizPage />}
           />
           <Route path="/quizPage" exact element={<QuizPage />} />
-          <Route path="/VideoPage" exact element={<VideoPage />} />
+          <Route path="/VideoPage/:courseID" exact element={<VideoPage />} />
           <Route path="/login" exact element={<Login />} />
           <Route path="/termsAndCond" exact element={<Terms />} />
           <Route

@@ -56,7 +56,6 @@ export default function SectionPage() {
     <div>
       <Navbar />
 
-      <h2>{courseid}</h2>
       <Progress_bar bgcolor="#99ff66" progress={progress} height={30} />
       <div className="sectionPage_comp">
         {sections &&
