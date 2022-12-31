@@ -1,78 +1,75 @@
-//import React from 'react'
-import {useState, useEffect , React} from 'react'
-import { Form, useParams } from 'react-router-dom'
-import SectionCard from '../Components/Cards/sectionCard'
-import axios from 'axios'
-import TraineeNavbar from '../Components/General/Navbar/TraineeNavbar'
-import Progress_bar from '../Components/General/ProgressBar'
-
-
+import React from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import SectionCard from "../Components/Cards/sectionCard";
+import Navbar from "../Components/General/Navbar/navbar";
+import axios from "axios";
+import Progress_bar from "../Components/General/ProgressBar";
 export default function SectionPage() {
-    //const{pdf}="completion.pdf";
-    const{courseid} = useParams();
-    const {traineeID} = useParams();
-    const [sections,setSections] = useState([]);
+  const { courseid, traineeID } = useParams();
+  const [sections, setSections] = useState([]);
+  const [progress, setProgress] = useState(0);
+  const getsectionsbyCourse_id = async () => {
+    const res = await axios
+      .get(`http://localhost:3000/lib/CourseSections?_id=${courseid}`)
+      .catch((err) => console.log(err));
+    const data = await res.data;
 
+    return data;
+  };
 
-    const getsectionsbyCourse_id = async () => {
-        const res = await axios.get(`http://localhost:3000/lib/CourseSections?_id=${courseid}`)
-        .catch((err) => console.log(err));
-        const data = await res.data;
-        return data;
-        
-      };
+  useEffect(() => {
+    getsectionsbyCourse_id().then((data) => setSections(data));
+    getCourseSections();
+  }, []);
 
-      const downloadCertificateandsendViaEmail = async () => {
-        const res = await axios.post("http://localhost:3000/trainee/getCertificate",{
-          trainee_id:traineeID
-        })
-        .catch((err) => console.log(err));
-        const data = await res.data;
-        console.log(data)
+  const getCourseSections = async () => {
+    await axios
+      .get(
+        `http://localhost:3000/lib//CourseSectionProgress?course_id=${courseid}&user_id=${window.localStorage.getItem(
+          "user_id"
+        )}`
+      )
+      .then((res) => {
+        setProgress(res.data.finishedPercentage);
+      })
+      .catch((err) => console.log(err));
+  };
 
-        return data;
-        
-      };  
+  const downloadCertificateandsendViaEmail = async () => {
+    const res = await axios
+      .post("http://localhost:3000/trainee/getCertificate", {
+        trainee_id: window.localStorage.getItem("user_id"),
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    console.log(data);
 
-      useEffect(() =>{
-        getsectionsbyCourse_id().then((data) => setSections(data))
-    
-      },[]);
+    return data;
+  };
 
-    const handleClick=(e)=>{
-      e.preventDefault()
+  const handleClick = (e) => {
+    e.preventDefault();
 
-      downloadCertificateandsendViaEmail().then((data) => console.log(data));
-      
-    }
-
-
-
+    downloadCertificateandsendViaEmail().then((data) => console.log(data));
+  };
   return (
     <div>
-        <TraineeNavbar/>
+      <Navbar />
 
-        <Progress_bar bgcolor="#99ff66" progress='80'  height={30} />
-        <div className="sectionPage_comp">
+      <h2>{courseid}</h2>
+      <Progress_bar bgcolor="#99ff66" progress={progress} height={30} />
+      <div className="sectionPage_comp">
+        {sections &&
+          sections.map((section) => <SectionCard section={section} />)}
+      </div>
+      <button className="button1" onClick={handleClick}>
+        Recieve Certificate
+      </button>
 
-        {sections && sections.map((section) =>(
-          <SectionCard section={section} traineeID={traineeID}/>
-        ))}
-            
-        </div>
-
-    <button className='button1' onClick={handleClick}>
-          Recieve Certificate
-     </button>
-
-
-    <a href="/Certificate.pdf" 
-            download ="/Certificate.pdf" >
-            <button className="button1"  > Download certificate</button>
-          </a>
-    
-
-
-    </div>  
-  )
+      <a href="/Certificate.pdf" download="/Certificate.pdf">
+        <button className="button1"> Download certificate</button>
+      </a>
+    </div>
+  );
 }

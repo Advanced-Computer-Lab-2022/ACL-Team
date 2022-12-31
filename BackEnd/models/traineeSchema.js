@@ -1,164 +1,190 @@
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema
-const User = require('../models/UserSchema')
-const Instructor = require('../models/InstructorSchema')
-const Course = require('../models/course/courseSchema')
-const Review = require('../models/lib/reviewSchema')
-const CourseProgress = require('./course/courseProgress/courseProgressSchema')
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
+const User = require("../models/UserSchema");
+const Instructor = require("../models/InstructorSchema");
+const Course = require("../models/course/courseSchema");
+const Review = require("../models/lib/reviewSchema");
+const CourseProgress = require("./course/courseProgress/courseProgressSchema");
 
-const TraineeSchema = new Schema({
-
+const TraineeSchema = new Schema(
+  {
     _id: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User',
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
     },
     name: {
-        type: String,
+      type: String,
     },
     isCorporate: {
-        type: Boolean,
-        required: true
+      type: Boolean,
+      required: true,
     },
     credticard_details: {
-        type: String,
-
+      type: String,
     },
-    ownedCourses: [{
+    ownedCourses: [
+      {
         course_id: mongoose.Schema.Types.ObjectId,
-        courseTitle:String, //TODO
-    }],
-    followedCourses: [{
-        course_id: String, //TODO
-    }],
-    totalPoints: {
-        type: Number,
+        courseTitle: String, //TODO
+        sectionProgress: [
+          {
+            section_id: mongoose.Schema.Types.ObjectId,
+          },
+        ],
+      },
+    ],
 
+    followedCourses: [
+      {
+        course_id: String, //TODO
+      },
+    ],
+    totalPoints: {
+      type: Number,
     },
-    info: [{
+    info: [
+      {
         degree: String,
         currentJobTitle: String,
         universityName: String,
         universityFaculty: String,
         yearsExperience: String,
-        company: String
-
-    }],
-    //lesa fee ba2y
-}, {
+        company: String,
+      },
+    ],
+    credit: {
+      type: Number,
+      default: 0,
+    },
+  },
+  {
     timestamps: true,
-})
-TraineeSchema.statics.signup = async function (email, username, password, firstname, lastname, gender) {
-    
-    const role = 'trainee'
-    const user = await User.signup(email, username, password, firstname, lastname, gender,role)
+  }
+);
+TraineeSchema.statics.signup = async function (
+  email,
+  username,
+  password,
+  firstname,
+  lastname,
+  gender
+) {
+  const role = "trainee";
+  const user = await User.signup(
+    email,
+    username,
+    password,
+    firstname,
+    lastname,
+    gender,
+    role
+  );
 
-    const _id = user._id;
+  const _id = user._id;
 
-    
+  const trainee = await this.create({
+    _id,
+    isCorporate: false,
+    name: firstname + lastname,
+  });
 
-    const trainee = await this.create({
-        _id,
-        isCorporate: false,
-        name:firstname + lastname,
-    })
+  return trainee;
+};
+TraineeSchema.statics.reviewInstructor = async function (
+  _id,
+  instructor_id,
+  type,
+  reviewString
+) {
+  if (!_id || !instructor_id || !type || !reviewString)
+    throw Error("All fields must be filled");
 
+  var instructor = await Instructor.findOne({
+    instructor_id,
+  });
+  if (!instructor) throw Error("Instructor Does not Exist");
 
-    return trainee
+  const review = await Review.create({
+    reviewer_id: _id,
+    reviewed_id: instructor_id,
+    type: type,
+    review: reviewString,
+  });
 
-}
-TraineeSchema.statics.reviewInstructor = async function (_id, instructor_id, type, reviewString) {
+  const instructorReview = {
+    reviewer_id: _id,
+    review_id: review._id.toString(),
+    reviewString: reviewString,
+  };
 
-    if (!_id || !instructor_id || !type || !reviewString)
-        throw Error('All fields must be filled')
-
-    var instructor = await Instructor.findOne({
-        instructor_id
-    })
-    if (!instructor)
-        throw Error('Instructor Does not Exist')
-
-    const review = await Review.create({
-        reviewer_id: _id,
-        reviewed_id:instructor_id,
-        type : type,
-        review : reviewString,
-    })
-
-    const instructorReview = {
-        reviewer_id:_id,
-        review_id: review._id.toString(),
-        reviewString:reviewString,
-        
+  instructor = await Instructor.findByIdAndUpdate(
+    {
+      _id: instructor_id,
+    },
+    {
+      $push: {
+        reviews: instructorReview,
+      },
     }
+  );
 
-    instructor = await Instructor.findByIdAndUpdate({
-            _id: instructor_id
-        }, {
-            $push: {
-                reviews: instructorReview
-            },
-        }
-
-    )
-
-    return review;
-}
+  return review;
+};
 //Should only be called after payment is confirmed
 TraineeSchema.statics.joinCourse = async function (_id, course_id) {
+  if (!_id || !course_id) throw Error("All fields must be filled");
 
-    if (!_id || !course_id)
-        throw Error('All fields must be filled')
+  const user = await User.findOne({
+    _id,
+  });
+  if (!user) throw Error("User Does not Exist");
 
-    const user = await User.findOne({
-        _id
-    })
-    if (!user)
-        throw Error('User Does not Exist')
+  const course = await Course.findOne({
+    course_id,
+  });
+  if (!course) throw Error("Course Does not Exist");
 
-    const course = await Course.findOne({
-        course_id
-    })
-    if (!course)
-        throw Error('Course Does not Exist')
+  const courseProgress = await CourseProgress.create({
+    course_id,
+    user_id: _id,
+    courseTitle: course.title,
+    username: user.username,
+  });
 
-    const courseProgress = await CourseProgress.create({
-        course_id,
-        user_id:_id,
-        courseTitle:course.title,
-        username:user.username,
-    })
-
-    const courseObj = {
-        course_id:course_id,
-        courseTitle:course.title
+  const courseObj = {
+    course_id: course_id,
+    courseTitle: course.title,
+  };
+  const trainee = await this.findByIdAndUpdate(
+    {
+      _id,
+    },
+    {
+      $push: {
+        ownedCourses: courseObj,
+      },
     }
-    const trainee = await this.findByIdAndUpdate({
-            _id
-        }, {
-            $push: {
-                ownedCourses: courseObj
-            },
-        }
+  );
 
-    )
+  const enrolledStudent = {
+    user_id: user._id,
+    username: user.username,
+  };
 
-    const enrolledStudent = {
-        user_id: user._id,
-        username:user.username, 
+  await Course.findByIdAndUpdate(
+    {
+      _id: course_id,
+    },
+    {
+      $push: {
+        enrolledStudents: enrolledStudent,
+      },
+      subscriberNumber: ~~course.subscriberNumber + 1,
     }
-    
-    await Course.findByIdAndUpdate({
-        _id:course_id
-    },{
-        $push: {
-            enrolledStudents: enrolledStudent,
-        },
-        subscriberNumber : ~~course.subscriberNumber + 1
-    })
+  );
 
-    return trainee;
-}
+  return trainee;
+};
 
-
-module.exports = mongoose.model('trainee', TraineeSchema)
+module.exports = mongoose.model("trainee", TraineeSchema);
