@@ -19,6 +19,7 @@ export default function ReportsCard2({issue}) {
     <h5>Issue: <label id="light-font">{issue.issue}</label></h5>
 
     <h6>Type: <label id="light-font">{issue.type}</label></h6>
+    <h6>Status: <label id="light-font">{issue.status}</label></h6>
     <p>
       {issue.resolverComment}
     </p>    
