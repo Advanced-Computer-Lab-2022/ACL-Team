@@ -65,7 +65,6 @@ export default function SectionCard({ section }) {
 
         <div className="section-text">
           <h1>{section.sectionTitle}</h1>
-
           <p>
             <Link
               to={`/trainee/SubtitlePage/${section.course_id}&${section._id}`}

@@ -75,3 +75,11 @@ a{
   display: none;
 }
 
+.Trainee-page-buttons{
+  background-color: #253858;
+  border-radius: 10px;
+  text-decoration: none;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+

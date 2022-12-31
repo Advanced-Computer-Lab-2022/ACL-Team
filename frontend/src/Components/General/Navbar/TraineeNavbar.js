@@ -17,6 +17,8 @@ import CourseCard from "../../Cards/courseCard";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
+import "../../css/traineeNavbar.css";
+import { Link } from "react-router-dom";
 
 export default function TraineeNavbar() {
   const [searchedword, setSearchedword] = useState("");
@@ -73,6 +75,19 @@ export default function TraineeNavbar() {
     }
   };
 
+  useEffect(() => {
+    getCourses().then((data) => setCourses(data));
+  }, []);
+  useEffect(() => {
+    courseSearch().then((data) => setCourses(data));
+  }, []);
+
+  const handleGoBack = (e) => {
+    e.preventDefault();
+
+    window.history.back();
+  };
+
   const refundPayment = async (payment_id) => {
     axios
       .post(`http://localhost:3000/trainee/requestRefund`, {
@@ -97,7 +112,7 @@ export default function TraineeNavbar() {
     <div>
       <div className="Nav-signedIn2">
         <div>
-          <button className="sidemenu_button">
+          <button className="sidemenu_button" onClick={handleGoBack}>
             <img className="setting_icon" src={img6} alt="back-page-icon" />
           </button>
         </div>
@@ -107,17 +122,20 @@ export default function TraineeNavbar() {
         </div>
 
         <div className="Nav-search" onSubmit={courseSearch()}>
-          <button className="Navy-Button">
-            <a href="/search">Search</a>
-          </button>
+          <a href="/search">
+            <button className="Navy_Button">Search</button>
+          </a>
         </div>
 
         <div className="Nav-actions">
           <ul>
             <li>
-              <a href="/TraineeEditProfile">Edit Profile</a>
+              <Link to={`/`}>Log Out</Link>
             </li>
 
+            <li>
+              <a href="/TraineeEditProfile">Edit Profile</a>
+            </li>
             <li>
               <a href="/FAQ">Reports</a>
             </li>

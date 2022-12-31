@@ -15,9 +15,7 @@ import { useParams } from "react-router-dom";
 export default function BuyCourseCard({ course, payFunction }) {
   const [trainee, setTrainee] = useState(false);
   const { id } = useParams();
-  const [isCorporate, setIsCorprate] = useState(false);
   var [isOwenedCourse, setIsOwnedCourse] = useState(false);
-  var isCorprate = false;
 
   const getTraineeById = async () => {
     const user_id = window.localStorage.getItem("user_id");
@@ -26,7 +24,6 @@ export default function BuyCourseCard({ course, payFunction }) {
         .get(`http://localhost:3000/trainee/getTrainee?_id=${user_id}`)
         .catch((err) => console.log(err));
       const data = await res.data;
-      setIsCorprate(res.data.isCorporate);
 
       for (let i = 0; i < res.data.ownedCourses.length; i++) {
         if (res.data.ownedCourses[i].course_id == id) {
@@ -75,17 +72,13 @@ export default function BuyCourseCard({ course, payFunction }) {
   useEffect(() => {
     checkUrl();
     getTraineeById().then((data) => setTrainee(data));
-
-    if (isCorporate && isOwenedCourse) {
-      console.log("hide the button");
-    }
   }, []);
 
   const sendCourseRequest = async () => {
     const res = await axios
       .post("http://localhost:3000/trainee/requestCourse", {
         _id: window.localStorage.getItem("user_id"),
-        course_id: course._id,
+        course_id: id,
       })
       .catch((err) => console.log(err));
     const data = await res.data;
@@ -96,7 +89,7 @@ export default function BuyCourseCard({ course, payFunction }) {
   const handleCourseRequest = (e) => {
     e.preventDefault();
 
-    if (isCorprate == true) {
+    if (trainee.isCorporate == true) {
       sendCourseRequest();
     }
   };
@@ -173,14 +166,16 @@ export default function BuyCourseCard({ course, payFunction }) {
           <img src={img9} alt="level Icon" />
         </div>
         <div className="students_label">
-          <label>25,599 Students</label>
+          <label> {course.subscriberNumber} Students</label>
         </div>
         <div className="description_course">
           <p>{course.summary}</p>
         </div>
 
         <div className="request-access-button">
-          <button onClick={handleCourseRequest}>Request access</button>
+          {trainee.isCorporate && (
+            <button onClick={handleCourseRequest}>Request access</button>
+          )}
         </div>
 
         {!isOwenedCourse && (

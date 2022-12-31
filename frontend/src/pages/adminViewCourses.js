@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react'
 import axios from 'axios';
 import AdminCourseCard from '../Components/Admin/adminCourseCard';
 import { useParams } from 'react-router-dom';
+import AdminNavbar from '../Components/General/Navbar/adminNavbar';
 
 
 export default function AdminViewCourses() {
@@ -27,6 +28,7 @@ const getCourses = async () => {
   
   return (
     <div>
+      <AdminNavbar/>
 
     {courses && courses.map((course ) =>( 
         <AdminCourseCard course={course} adminID={adminID} />    

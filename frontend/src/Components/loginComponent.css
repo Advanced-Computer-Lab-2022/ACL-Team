@@ -66,6 +66,19 @@
     bottom: -350px;
     left: 800px;
   }
+  .Forget-Password{
+    position: relative;
+    left: 1200px;
+    top: 400px;
+  }
+  .Forget-Password > a{
+    text-align: center;
+    vertical-align: top;
+    font-size: 20px;
+    font-family: Montserrat;
+    line-height: 20px;
+    color: #ffffff;
+  }
   .img-4 {
     height: 30px;
     width: 38px;

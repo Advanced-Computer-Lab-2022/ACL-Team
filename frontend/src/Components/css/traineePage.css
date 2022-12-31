@@ -5,4 +5,16 @@
     padding: 10px 0px;
     height: 80px;
 }
+.Popular-Courses > label{
+    font-family: 'DM Serif Display';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 25px;
+    letter-spacing: 0.01em;
+    color: #253858;
+    position: relative;
+    top: -15px;
+    left: 50px;
+}
 

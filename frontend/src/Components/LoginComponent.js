@@ -25,6 +25,7 @@ export default function LoginComponent() {
       })
       .then((res) => {
         window.localStorage.setItem("user_id", res.data.user._id);
+        setUserID(res.data.user._id);
       })
       .catch((err) => console.log(err));
     const data = await res.data;
@@ -79,6 +80,9 @@ export default function LoginComponent() {
                 type="password"
                 placeholder=" Password"
               />
+            </div>
+            <div className="Forget-Password">
+              <a href="/forgetPassword">Forget Password ?</a>
             </div>
           </div>
           <div>

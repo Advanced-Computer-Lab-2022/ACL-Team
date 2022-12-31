@@ -110,13 +110,13 @@ CourseSectionProgressSchema.statics.answerQuestion = async function (user_id,cou
     if (!user_id || !course_id || !section_id || !material_id|| !question_id|| !choice)
         throw error('All fields must be filled')
 
-    const material = await CourseMaterial.findOne({
+    var material = await CourseMaterial.findOne({
         _id:material_id
     })
     if (!material)
         throw Error('This Material Does not Exist')
 
-    const user = await User.findOne({
+    var user = await User.findOne({
         _id:user_id
     })
     if (!user)
@@ -126,14 +126,20 @@ CourseSectionProgressSchema.statics.answerQuestion = async function (user_id,cou
     })
     if (!course)
         throw Error('This User Does not Exist')
+
+    var course = await Course.findOne({
+        _id:course_id
+    })
+    if (!course)
+        throw Error('This Course Does not Exist')
  
-    const section = await CourseSection.findOne({
+    var section = await CourseSection.findOne({
         _id:section_id
     }) 
     if (!section)
         throw Error('This Section Does not Exist')
 
-    const question = await Question.findOne({
+    var question = await Question.findOne({
         _id:question_id
     })  
     if (!question)
@@ -171,7 +177,7 @@ CourseSectionProgressSchema.statics.answerQuestion = async function (user_id,cou
     if(question.answer == choice)
         grade = question.maxGrade
 
-    const questionAnswer = {
+    var questionAnswer = {
             question_id:question_id,
             choice:choice,
             acquiredGrade: grade,
@@ -295,17 +301,17 @@ CourseSectionProgressSchema.statics.getQuizGrade = async function (user_id,cours
     if(exception == -100000)
       throw Error('No Question is Answered In This Material')
 
-    await this.findByIdAndUpdate({
-        _id: sectionProgress._id
-    }, {
-        $push: {
-            finishedQuizzes: {quiz_id:material_id},
-        },
-        materialNumber: ~~sectionProgress.materialNumber + 1,
-        totalHours :~~sectionProgress.totalHours + ~~material.duration,
-        totalPoints :~~sectionProgress.totalPoints + ~~material.totalPoints,
-        finishedPercentage :((( ~~sectionProgress.materialNumber + 1)/(~~course.materialNumber))*100)
-    })
+    // await this.findByIdAndUpdate({
+    //     _id: sectionProgress._id
+    // }, {
+    //     $push: {
+    //         finishedQuizzes: {quiz_id:material_id},
+    //     },
+    //     materialNumber: ~~sectionProgress.materialNumber + 1,
+    //     totalHours :~~sectionProgress.totalHours + ~~material.duration,
+    //     totalPoints :~~sectionProgress.totalPoints + ~~material.totalPoints,
+    //     finishedPercentage :((( ~~sectionProgress.materialNumber + 1)/(~~course.materialNumber))*100)
+    // })
 
      return returnedGrade
  }

@@ -3,11 +3,13 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link, useParams } from 'react-router-dom'
 import SubtitleCard from '../Components/Cards/subtitleCard';
+import TraineeNavbar from '../Components/General/Navbar/TraineeNavbar';
 
 export default function SubtitlePage() {
 
 const {courseid} = useParams();
 const {sectionid} = useParams();
+const {traineeID} = useParams();
 const [subtitles,setSubtitles] = useState([]);
 const [videoLink, setVideoLink] = useState('');
 
@@ -29,12 +31,10 @@ const [videoLink, setVideoLink] = useState('');
   
     return (
     <div>
-        <h2>Course - {courseid}</h2>
-        <h2>Section - {sectionid}</h2>
-        
-
+      <TraineeNavbar/>
+      
         {subtitles && subtitles.map((subtitle) =>(
-          <SubtitleCard subtitle={subtitle}/>
+          <SubtitleCard subtitle={subtitle} traineeID={traineeID}/>
         ))}
 
 

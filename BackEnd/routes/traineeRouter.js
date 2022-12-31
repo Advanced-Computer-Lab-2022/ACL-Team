@@ -14,6 +14,11 @@ const {
   getQuestionGrade,
   getQuizGrade,
   getJoinedCourses,
+  getEmailandSendCertifiate,
+  getMyReviews,
+  editInstructorReview,
+  deleteInstructorReview,
+  getReview,
 } = require("../controller/trainee/traineeCourseController");
 const User = require("../models/userSchema");
 
@@ -27,18 +32,29 @@ router.post("/reviewInstructor", reviewInstructor);
 
 router.post("/answerQuestion", answerQuestion);
 
+router.post("/getCertificate", getEmailandSendCertifiate);
+
 router.post("/getPreview", getPreview);
 
 router.get("/getTrainee", getTraineebyId);
 
 router.get("/questionGrade", getQuestionGrade);
 
-router.get("/quizGrade", getQuizGrade);
+router.post("/quizGrade", getQuizGrade);
 
 router.get("/myCourses", getJoinedCourses);
 
 router.post("/requestRefund", requestRefund);
+
 router.get("/getPayments", getPaymentById);
+
+router.get("/getReview", getReview);
+
+router.get("/myInstructorReviews", getMyReviews);
+
+router.post("/editInstructorReview", editInstructorReview);
+
+router.post("/deleteInstructorReview", deleteInstructorReview);
 
 //ALL ROUTES BELOW HERE ARE FOR CORPORATE TRAINEE ONLY
 

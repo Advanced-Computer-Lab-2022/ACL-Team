@@ -75,6 +75,9 @@ import AddDiscount from "./Components/Admin/addDiscount";
 import AdminViewCourses from "./pages/adminViewCourses";
 import PreviewPage from "./pages/previewPage";
 import ResetPasswordPage from "./pages/resetPasswordPage";
+import InstructorDrawer from "./Components/InstructorDrawer";
+import TraineeInstructorReviews from "./pages/traineeInstructorReviews";
+import TraineeEditReview from "./pages/traineeEditReview";
 
 function App() {
   return (
@@ -107,6 +110,16 @@ function App() {
             exact
             element={<TraineeOwnedCourses />}
           />
+          <Route
+            path="/trainee/myReviews/:traineeID"
+            exact
+            element={<TraineeInstructorReviews />}
+          />
+          <Route
+            path="/trainee/editMyReview/:reviewID"
+            exact
+            element={<TraineeEditReview />}
+          />
           <Route path="/user" exact element={<HomePage />} />
           <Route
             path="/instructor/:id"
@@ -116,7 +129,7 @@ function App() {
           <Route path="/course" exact element={<CourseDashboard />} />
           <Route path="/course/coursePage/:id" exact element={<CoursePage />} />
           <Route
-            path="/instructor/addCourse"
+            path="/instructor/addCourse/:instructorID"
             exact
             element={<InstructorAddCourse />}
           />
@@ -126,7 +139,7 @@ function App() {
             element={<SearchCoursePage />}
           />
           <Route
-            path="/instructor/editProfile"
+            path="/instructor/editProfile/:instructorID"
             exact
             element={<InstructorEditProfile />}
           />
@@ -162,12 +175,12 @@ function App() {
             element={<InstructorCoursePage />}
           />
           <Route
-            path="/instructor/editBio"
+            path="/instructor/editBio/:instructorID"
             exact
             element={<InstructorEditBio />}
           />
           <Route
-            path="/instructor/editMail"
+            path="/instructor/editMail/:instructorID"
             exact
             element={<InstructorEditEmail />}
           />
@@ -177,28 +190,32 @@ function App() {
             element={<InstructorEditPassword />}
           />
           <Route
-            path="/trainee/sectionPage/:courseid"
+            path="/trainee/sectionPage/:courseid&:traineeID"
             exact
             element={<SectionPage />}
           />
           <Route
-            path="/trainee/SubtitlePage/:courseid&:sectionid"
+            path="/trainee/SubtitlePage/:courseid&:sectionid&:traineeID"
             exact
             element={<SubtitlePage />}
           />
           <Route
-            path="/trainee/MaterialPage/:courseid&:sectionid"
+            path="/trainee/MaterialPage/:courseid&:sectionid&:traineeID"
             exact
             element={<MaterialPage />}
           />
-          <Route path="/quizPage/:materialID" exact element={<QuizPage />} />
           <Route
-            path="/quizResult/:materialID"
+            path="/quizPage/:courseID&:sectionID&:materialID&:traineeID"
+            exact
+            element={<QuizPage />}
+          />
+          <Route
+            path="/quizResult/:courseID&:sectionID&:materialID&:traineeID"
             exact
             element={<QuizResultsPage />}
           />
           <Route
-            path="signUp/instructor/termsInstructor"
+            path="/signUp/instructor/TermsInstructor"
             exact
             element={<TermsInstructor />}
           />
@@ -216,7 +233,16 @@ function App() {
           />
 
           <Route path="/test2" exact element={<TemplatePage />} />
-          <Route path="/trainee/filterCourses" exact element={<Drawer />} />
+          <Route
+            path="/trainee/filterCourses/:traineeID"
+            exact
+            element={<Drawer />}
+          />
+          <Route
+            path="/instructor/filterCourses/:instructorID"
+            exact
+            element={<InstructorDrawer />}
+          />
           <Route path="/test10" exact element={<AddDiscount />} />
 
           <Route path="/test" exact element={<Temp />} />

@@ -57,10 +57,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json()); // Send JSON responses
 //  app.use(passport.initialize())
 //  app.use(passport.session())
-
-
-
-//db connection   
+//db connection
 const conn = process.env.MONGO_URI || 'mongodb+srv://mohamed4016:1234@cluster0.iblfteg.mongodb.net/test';
 mongoose.connect(conn)
     .then(() => {

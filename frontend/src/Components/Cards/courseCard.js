@@ -56,7 +56,8 @@ export default function CourseCard({ course }) {
           </label>
           <label>
             <img src={img3} alt="" />
-            &nbsp;&nbsp;<span id="bold">31</span>&nbsp;lessons
+            &nbsp;&nbsp;<span id="bold">{course.averageRating}</span>
+            &nbsp;Rating
           </label>
           <label>
             <img src={img4} alt="" />

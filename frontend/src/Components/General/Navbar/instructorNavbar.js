@@ -12,8 +12,9 @@ import Dropdown2 from "../Buttons/CategoryChoices";
 import { InstructorEditProfile } from "../../../pages/instructorEditProfile";
 import NavyButton from "../Buttons/navyButton";
 import { AiFillWallet } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
-export default function InstNavbar() {
+export default function InstNavbar({ props }) {
   const [instructor, setInstructor] = useState([]);
   const getInstructorById = async () => {
     const user_id = window.localStorage.getItem("user_id");
@@ -29,11 +30,15 @@ export default function InstNavbar() {
   useEffect(() => {
     getInstructorById();
   }, []);
+  const handleGoBack = (e) => {
+    e.preventDefault();
 
+    window.history.back();
+  };
   return (
     <div className="Nav-signedIn">
       <div>
-        <button className="sidemenu_button">
+        <button className="sidemenu_button" onClick={handleGoBack}>
           <img className="setting_icon" src={img6} alt="back-page-icon" />
         </button>
       </div>
@@ -49,15 +54,23 @@ export default function InstNavbar() {
       <div className="Nav-actions">
         <ul>
           <li>
-            <a href="/instructor/coursepage">My Reviews</a>
+            <Link to={`/instructor/ViewReviews/${props}`}>My Reviews</Link>
           </li>
 
           <li>
-            <a href="/instructor/addCourse">Add a course</a>
+            <Link to={`/instructor/filterCourses/${props}`}>My Courses</Link>
           </li>
 
           <li>
-            <a href="/instructor/editProfile">Edit Profile</a>
+            <Link to={`/instructor/addCourse/${props}`}>Add Course</Link>
+          </li>
+
+          <li>
+            <Link to={`/instructor/editProfile/${props}`}>Edit Profile</Link>
+          </li>
+
+          <li>
+            <Link to={`/`}>Log Out</Link>
           </li>
 
           <li>

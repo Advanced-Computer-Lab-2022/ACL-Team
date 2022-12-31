@@ -10,11 +10,19 @@ import img6 from "../../images/arrow.png"
 import Dropdown2 from '../Buttons/CategoryChoices'
 
 export default function Navbar() {
+
+    const handleGoBack=(e)=>{
+        e.preventDefault()
+        
+        window.history.back();
+      
+      }
+
   return (
     <div className="Nav-signedIn">
 
         <div>
-            <button className="sidemenu_button"><img className="setting_icon" src={img6} alt="back-page-icon" /></button>
+            <button className="sidemenu_button" onClick={handleGoBack} ><img className="setting_icon" src={img6} alt="back-page-icon" /></button>
         </div>
 
         <div className="Nav-title">

@@ -2,13 +2,14 @@ import React , {useState} from 'react'
 import axios from 'axios'
 import "../css/instructorAddCourseComponent.css"
 import img1 from "../images/createCourse.png"
+import { useParams } from 'react-router-dom'
 
 
 
 
 
 
-export default function InstructorAddCourseComponent() {
+export default function InstructorAddCourseComponent({instructorID}) {
  const[name,setName] =useState('')
 const[title,setTitle] =useState('')
 const[price,setPrice] =useState('')
@@ -16,11 +17,12 @@ const[coursePreviewUrl,SetVideo] =useState('')
 const[summary,setSummary] =useState('')
  const[category,setCategory] =useState('')
  const[instructor_id,setinstructor_id] =useState('')
+
 const instructorAddCourse = async () => {
   // console.log("boodaa")
   const res = await axios
     .post("http://localhost:3000/instructor/addCourse", {
-      title:title,price:price,category:category,instructor_id:instructor_id,summary:summary,coursePreviewUrl:coursePreviewUrl,
+      title:title,price:price,category:category,instructor_id:instructorID,summary:summary,coursePreviewUrl:coursePreviewUrl,
     })
     .catch((err) => console.log(err));
     const data = await res.data;
@@ -85,12 +87,7 @@ const handleSubmitt=(e)=>{
           type="textbox" placeholder='category'/>
         </div> 
 
-        <div className="instructor_id">
-          <input
-            onChange={(e) => setinstructor_id(e.target.value)}
-            value={instructor_id} 
-          type="textbox" placeholder='id'/>
-        </div>
+        
         <div className="line2">
           <hr></hr>
         </div>

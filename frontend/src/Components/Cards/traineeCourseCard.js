@@ -69,7 +69,7 @@ console.log(traineeCourse.instructor_id)
  </div>
 
  <div className="course-text">
-    <Link to={`/trainee/sectionPage/${traineeCourse._id}`}>
+    <Link to={`/trainee/sectionPage/${traineeCourse._id}&${traineeId}`}>
       <h3>{traineeCourse.title}</h3>
     </Link>
 

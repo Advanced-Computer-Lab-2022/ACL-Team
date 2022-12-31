@@ -251,6 +251,31 @@ const grantCourse = async (req, res) => {
         })
     }
 }
+const denyCourseRequest = async (req, res) => {
+    const {
+        courseRequest_id,
+    } = req.body
+
+    try {
+        var request = await CourseRequest.findOne({
+            _id:courseRequest_id
+            })
+        if(!request)
+            throw Error('No unseen Issues Exist')
+
+        request = await CourseRequest.deleteOne({
+            _id:courseRequest_id
+        })
+
+        res.status(200).json({
+            request
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
 const adminAddDiscount = async (req, res) => {
     const {
         _id,
@@ -297,5 +322,6 @@ module.exports = {
     markIssueAsResolved,
     getPendingCourseRequests,
     grantCourse,
-    adminAddDiscount
+    adminAddDiscount,
+    denyCourseRequest
 }

@@ -6,7 +6,7 @@ import Navbar from "../Components/General/Navbar/navbar";
 import axios from "axios";
 import Progress_bar from "../Components/General/ProgressBar";
 export default function SectionPage() {
-  const { courseid } = useParams();
+  const { courseid, traineeID } = useParams();
   const [sections, setSections] = useState([]);
   const [progress, setProgress] = useState(0);
   const getsectionsbyCourse_id = async () => {
@@ -36,6 +36,23 @@ export default function SectionPage() {
       .catch((err) => console.log(err));
   };
 
+  const downloadCertificateandsendViaEmail = async () => {
+    const res = await axios
+      .post("http://localhost:3000/trainee/getCertificate", {
+        trainee_id: window.localStorage.getItem("user_id"),
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+    console.log(data);
+
+    return data;
+  };
+
+  const handleClick = (e) => {
+    e.preventDefault();
+
+    downloadCertificateandsendViaEmail().then((data) => console.log(data));
+  };
   return (
     <div>
       <Navbar />
@@ -46,6 +63,13 @@ export default function SectionPage() {
         {sections &&
           sections.map((section) => <SectionCard section={section} />)}
       </div>
+      <button className="button1" onClick={handleClick}>
+        Recieve Certificate
+      </button>
+
+      <a href="/Certificate.pdf" download="/Certificate.pdf">
+        <button className="button1"> Download certificate</button>
+      </a>
     </div>
   );
 }

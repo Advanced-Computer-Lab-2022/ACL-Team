@@ -52,7 +52,7 @@ const rateCourse = async (req, res) => {
 
 const reviewInstructor = async (req, res) => {
   const { _id, instructor_id, type, reviewString } = req.body;
-  console.log(req.body);
+
   try {
     const review = await Trainee.reviewInstructor(
       _id,

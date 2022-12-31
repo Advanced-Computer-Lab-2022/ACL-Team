@@ -51,15 +51,21 @@ export const TraineePage = () => {
         <TraineeNavbar />
       </div>
 
-      <button>
-        <Link to={`/trainee/myCourses/${traineeID}`}>My Courses</Link>
-      </button>
+      <Link to={`/trainee/myCourses/${traineeID}`}>
+        <button className="Trainee-page-buttons">My Courses </button>
+      </Link>
+
+      <Link to={`/trainee/myReviews/${traineeID}`}>
+        <button className="Trainee-page-buttons"> My Reviews</button>
+      </Link>
 
       <h1>Learn Through our Experts</h1>
 
       <div className="instructors_card">
         <div className="card1">
-          <img className="profile" src={image5} alt="image"></img>
+          <a href="/rateInstructor">
+            <img className="profile" src={image5} alt="image"></img>
+          </a>
           <button className="button6">Join now</button>
           <p className=" coursecount">19 Courses</p>
           <p className=" studentcount">25,599 Students</p>
@@ -68,13 +74,15 @@ export const TraineePage = () => {
           <p className=" job">UI/UX Designer</p>
           <img className="hat" src={image6} alt="image"></img>
           <img className="grad" src={image7} alt="image"></img>
-          <a href="/rateInstructor">
+          <a href="/rateCourse">
             <img className="star" src={image8} alt="image"></img>
           </a>
         </div>
 
         <div className="card1">
-          <img className="profile" src={image9} alt="image"></img>
+          <a href="/rateInstructor">
+            <img className="profile" src={image9} alt="image"></img>
+          </a>
           <button className="button7">Join now</button>
           <p className=" coursecount">19 Coursesd </p>
           <p className=" studentcount">25,599 Students</p>
@@ -89,7 +97,9 @@ export const TraineePage = () => {
         </div>
 
         <div className="card1">
-          <img className="profile" src={image10} alt="image"></img>
+          <a href="/rateInstructor">
+            <img className="profile" src={image10} alt="image"></img>
+          </a>
           <button className="button7">Join now</button>
           <p className=" coursecount">19 Courses</p>
           <p className=" studentcount">25,599 Students</p>
@@ -119,11 +129,19 @@ export const TraineePage = () => {
         </div>
       </div>
 
+      <div className="Popular-Courses">
+        <label>Most Viewed Courses</label>
+      </div>
+
       {courses &&
-        courses.map((course, i) => i < 3 && <CourseCard course={course} />)}
-      <a href="/trainee/filterCourses">
-        <button>Show More</button>
-      </a>
+        courses.map(
+          (course, i) =>
+            i < 3 && <CourseCard course={course} traineeID={traineeID} />
+        )}
+
+      <Link to={`/trainee/filterCourses/${traineeID}`}>
+        <button className="Trainee-page-buttons">Show More</button>
+      </Link>
     </div>
   );
 };

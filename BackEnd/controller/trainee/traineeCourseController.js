@@ -4,6 +4,9 @@ const Trainee = require('../../models/traineeSchema')
 const CourseProgress = require('../../models/course/courseProgress/courseProgressSchema')
 const CourseSectionProgress = require('../../models/course/courseProgress/courseSectionProgress')
 const CourseMaterial = require('../../models/course/courseMaterialSchema')
+const User = require('../../models/UserSchema')
+const nodemailer = require("nodemailer");
+const reviewSchema = require('../../models/lib/reviewSchema')
 
 const answerQuestion = async (req, res) => {
     const {
@@ -114,6 +117,136 @@ const getMaterial = async (req, res) => {
     }
 }
 
+const getEmailandSendCertifiate = async (req , res) => {
+    const {
+        trainee_id
+    } = req.body
+    try {
+        const user = await User.findOne({_id : trainee_id})
+        
+        if(!user)
+            throw Error("No User Found")
+            let testAccount = await nodemailer.createTestAccount();
+            var transporter = nodemailer.createTransport({
+                service: "gmail",
+                auth: {
+                  user:  "marwan.ashrafshaaban123@gmail.com",
+                  pass: "ajawyergyiihuswq", 
+                },
+              });
+          
+              var mailOptions = {
+                from: '"ACL " marwan.ashrafshaaban123@gmail.com',
+                to: user.email,
+                subject: "Certificate",
+                text: "here is you certificate",
+                attachments: [{
+                    filename: 'file.pdf',
+                    path:'Certificate.pdf',
+                    contentType: 'application/pdf'
+                  }]
+              };
+          
+              transporter.sendMail(mailOptions, function (error, info) {
+                if (error) {
+                  console.log(error);
+                } else {
+                  console.log("Email sent: " + info.response);
+                  res.status(200).json(user)
+                }
+                
+              });
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+const getReview = async (req, res) => {
+    const {
+        _id,
+    } = req.query
+    try {
+
+        const reviews = await reviewSchema.findOne({
+             _id
+        })
+
+        res.status(200).json({
+            reviews
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+
+const getMyReviews = async (req, res) => {
+    const {
+        _id,
+    } = req.query
+    try {
+
+        const reviews = await reviewSchema.find({
+            reviewer_id: _id
+        })
+
+        res.status(200).json({
+            reviews
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+const editInstructorReview = async (req, res) => {
+    const {
+        review_id,
+        type,
+        review
+    } = req.body
+
+    try {
+        const reviewObject = await reviewSchema.findByIdAndUpdate({
+            _id : review_id
+        },{
+            type,
+            review
+        })
+
+        res.status(200).json({
+            reviewObject,
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+
+const deleteInstructorReview = async (req, res) => {
+    const {
+        review_id,
+
+    } = req.body
+
+    try {
+        const review = await reviewSchema.deleteOne({
+            _id : review_id
+        })
+
+        res.status(200).json({
+            review,
+        })
+    } catch (error) {
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+
 
 
 
@@ -124,5 +257,10 @@ module.exports = {
     getQuestionGrade,
     getQuizGrade,
     getJoinedCourses,
-    getMaterial
+    getMaterial,
+    getEmailandSendCertifiate,
+    getMyReviews,
+    editInstructorReview,
+    deleteInstructorReview,
+    getReview
 }

@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom'
 import CourseCard from '../Components/Cards/courseCard';
 import TraineeCourseCard from '../Components/Cards/traineeCourseCard';
+import TraineeNavbar from '../Components/General/Navbar/TraineeNavbar';
 
 export default function TraineeOwnedCourses() {
 
@@ -30,6 +31,8 @@ export default function TraineeOwnedCourses() {
 
   return (
     <div>
+
+      <TraineeNavbar/>
 
         {traineeCourses && traineeCourses.map((course) =>(
             // <p>{course.course_id}</p>

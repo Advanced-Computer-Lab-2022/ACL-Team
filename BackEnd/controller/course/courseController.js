@@ -16,7 +16,7 @@ const stripe = require("stripe")(
 //get all courses available
 const getAllCourses = async (req, res) => {
   const courses = await Course.find().sort({
-    createdAt: -1,
+    subscriberNumber: -1,
   });
 
   res.status(200).json(courses);
@@ -143,7 +143,7 @@ const getCoursesByPriceFromHighToLow = async (req, res) => {
 const getCoursesByRating = async (req, res) => {
   const { rating } = req.body;
   try {
-    const courses = await Course.getCoursesByRating(rating);
+    const courses = await Course.getCourseByRating(rating);
     res.status(200).json(courses);
   } catch (error) {
     res.status(400).json({
