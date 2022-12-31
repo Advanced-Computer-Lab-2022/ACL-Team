@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 
 export default function InstNavbar({ props }) {
   const [instructor, setInstructor] = useState([]);
+  const [searchedword, setSearchedword] = useState("");
   const getInstructorById = async () => {
     const user_id = window.localStorage.getItem("user_id");
     if (user_id) {
@@ -30,6 +31,18 @@ export default function InstNavbar({ props }) {
   useEffect(() => {
     getInstructorById();
   }, []);
+
+  const courseSearch = async () => {
+    const res = await axios
+      .post("http://localhost:3000/course/search", {
+        searchedword: searchedword,
+      })
+      .catch((err) => console.log(err));
+    const data = await res.data;
+
+    return data;
+  };
+
   const handleGoBack = (e) => {
     e.preventDefault();
 
@@ -47,9 +60,11 @@ export default function InstNavbar({ props }) {
         <h2>LearnHub</h2>
       </div>
 
-      <div className="Nav-search">
-        <input type="textbox" placeholder="  Search ..." />
-      </div>
+      <div className="Nav-search" onSubmit={courseSearch()}>
+          <a href="/search">
+            <button className="Navy_Button">Search</button>
+          </a>
+        </div>
 
       <div className="Nav-actions">
         <ul>

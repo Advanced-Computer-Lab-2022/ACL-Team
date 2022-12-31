@@ -6,6 +6,8 @@ import Navbar from "../Components/General/Navbar/navbar";
 import axios from "axios";
 import Progress_bar from "../Components/General/ProgressBar";
 export default function SectionPage() {
+  
+  const {isFinished,setisFinished}=useState('false');
   const { courseid, traineeID } = useParams();
   const [sections, setSections] = useState([]);
   const [progress, setProgress] = useState(0);
@@ -17,6 +19,8 @@ export default function SectionPage() {
 
     return data;
   };
+  
+
 
   useEffect(() => {
     getsectionsbyCourse_id().then((data) => setSections(data));
@@ -25,12 +29,16 @@ export default function SectionPage() {
 
   const getCourseSections = async () => {
     await axios
-      .get(
-        `http://localhost:3000/lib//CourseSectionProgress?course_id=${courseid}&user_id=${traineeID}
-        )}`
+    .get(
+      `http://localhost:3000/lib//CourseSectionProgress?course_id=${courseid}&user_id=${window.localStorage.getItem(
+        "user_id"
+      )}`
       )
       .then((res) => {
         setProgress(res.data.finishedPercentage);
+        if(progress==100){
+          setisFinished('true');
+        }
       })
       .catch((err) => console.log(err));
   };
@@ -49,8 +57,10 @@ export default function SectionPage() {
 
   const handleClick = (e) => {
     e.preventDefault();
-
-    downloadCertificateandsendViaEmail().then((data) => console.log(data));
+    if(progress==100){
+      downloadCertificateandsendViaEmail().then((data) => console.log(data));
+    }
+   
   };
   return (
     <div>
@@ -64,10 +74,28 @@ export default function SectionPage() {
       <button className="button1" onClick={handleClick}>
         Recieve Certificate
       </button>
+      
+      <div>
+            
 
-      <a href="/Certificate.pdf" download="/Certificate.pdf">
-        <button className="button1"> Download certificate</button>
-      </a>
+          
+     
+
+      
+      </div>
+
+      <div>
+      {isFinished ? (
+       <a href="/Certificate.pdf" download="/Certificate.pdf">
+       <button className="button1"> Download certificate</button>
+       </a>
+      ) : (
+       <button className="button1">Finish For certificate</button>
+      )}
+    </div>
+     
+
+
     </div>
   );
 }
