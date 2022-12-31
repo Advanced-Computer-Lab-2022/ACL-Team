@@ -36,7 +36,6 @@ const [quizes,setQuizes] = useState([]);
   
         {quizes && quizes.map((quiz) =>(
           <MaterialCard courseID={courseid} sectionID={sectionid} materialID={quiz._id} traineeID={traineeID} />
-          //<p>{quiz._id}</p>
         ))}
 
     </div>

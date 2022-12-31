@@ -26,8 +26,7 @@ export default function SectionPage() {
   const getCourseSections = async () => {
     await axios
       .get(
-        `http://localhost:3000/lib//CourseSectionProgress?course_id=${courseid}&user_id=${window.localStorage.getItem(
-          "user_id"
+        `http://localhost:3000/lib//CourseSectionProgress?course_id=${courseid}&user_id=${traineeID}
         )}`
       )
       .then((res) => {
@@ -61,7 +60,7 @@ export default function SectionPage() {
       <Progress_bar bgcolor="#99ff66" progress={progress} height={30} />
       <div className="sectionPage_comp">
         {sections &&
-          sections.map((section) => <SectionCard section={section} />)}
+          sections.map((section) => <SectionCard section={section} traineeID={traineeID}/>)}
       </div>
       <button className="button1" onClick={handleClick}>
         Recieve Certificate
