@@ -6,8 +6,7 @@ import Navbar from "../Components/General/Navbar/navbar";
 import axios from "axios";
 import Progress_bar from "../Components/General/ProgressBar";
 export default function SectionPage() {
-  
-  const {isFinished,setisFinished}=useState('false');
+  const [isFinished, setIsFinished] = useState(false);
   const { courseid, traineeID } = useParams();
   const [sections, setSections] = useState([]);
   const [progress, setProgress] = useState(0);
@@ -19,8 +18,6 @@ export default function SectionPage() {
 
     return data;
   };
-  
-
 
   useEffect(() => {
     getsectionsbyCourse_id().then((data) => setSections(data));
@@ -29,15 +26,16 @@ export default function SectionPage() {
 
   const getCourseSections = async () => {
     await axios
-    .get(
-      `http://localhost:3000/lib//CourseSectionProgress?course_id=${courseid}&user_id=${window.localStorage.getItem(
-        "user_id"
-      )}`
+      .get(
+        `http://localhost:3000/lib//CourseSectionProgress?course_id=${courseid}&user_id=${window.localStorage.getItem(
+          "user_id"
+        )}`
       )
       .then((res) => {
         setProgress(res.data.finishedPercentage);
-        if(progress==100){
-          setisFinished('true');
+        if (res.data.finishedPercentage === 100) {
+          setIsFinished(true);
+          console.log(isFinished);
         }
       })
       .catch((err) => console.log(err));
@@ -57,45 +55,35 @@ export default function SectionPage() {
 
   const handleClick = (e) => {
     e.preventDefault();
-    if(progress==100){
+    if (progress == 100) {
       downloadCertificateandsendViaEmail().then((data) => console.log(data));
     }
-   
   };
   return (
     <div>
       <Navbar />
-
       <Progress_bar bgcolor="#99ff66" progress={progress} height={30} />
       <div className="sectionPage_comp">
         {sections &&
-          sections.map((section) => <SectionCard section={section} traineeID={traineeID}/>)}
-      </div>
-      <button className="button1" onClick={handleClick}>
-        Recieve Certificate
-      </button>
-      
-      <div>
-            
-
-          
-     
-
-      
+          sections.map((section) => (
+            <SectionCard section={section} traineeID={traineeID} />
+          ))}
       </div>
 
       <div>
-      {isFinished ? (
-       <a href="/Certificate.pdf" download="/Certificate.pdf">
-       <button className="button1"> Download certificate</button>
-       </a>
-      ) : (
-       <button className="button1">Finish For certificate</button>
-      )}
-    </div>
-     
-
-
+        {isFinished ? (
+          <>
+            <button className="button1" onClick={handleClick}>
+              Recieve Certificate By Email
+            </button>
+            <a href="/Certificate.pdf" download="/Certificate.pdf">
+              <button className="button1"> Download certificate</button>
+            </a>
+          </>
+        ) : (
+          <button className="button1">Finish For certificate</button>
+        )}
+      </div>
     </div>
   );
 }
