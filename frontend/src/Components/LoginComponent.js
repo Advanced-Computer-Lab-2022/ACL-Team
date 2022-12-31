@@ -9,12 +9,6 @@ import { Link } from "react-router-dom";
 export default function LoginComponent() {
   const [password, setPass] = useState("");
   const [email, setEmail] = useState("");
-  const [userID, setUserID] = useState([]);
-  const [userRole, setUserRole] = useState("");
-
-  const [userIsInstructor, setUserIsInstructor] = useState(false);
-  const [userIsAdmin, setUserIsAdmin] = useState(false);
-  const [userIsTrainee, setUserIsTrainee] = useState(false);
 
   const loginUser = async () => {
     // console.log("boodaa")
@@ -25,78 +19,60 @@ export default function LoginComponent() {
       })
       .then((res) => {
         window.localStorage.setItem("user_id", res.data.user._id);
-        setUserID(res.data.user._id);
+        if (res.data.role === "instructor") {
+          window.location.href = `/instructor/${res.data.user._id}`;
+        } else if (res.data.role === "admin") {
+          window.location.href = `/admin/${res.data.user._id}`;
+        } else {
+          window.location.href = `/trainee/${res.data.user._id}`;
+        }
       })
       .catch((err) => console.log(err));
     const data = await res.data;
     return data;
   };
-  const handleSubmitt = (e) => {
-    e.preventDefault();
-
-    loginUser().then((data) => console.log(data));
-  };
-
-  useEffect(() => {
-    loginUser().then((data) => setUserID(data.user._id));
-    loginUser().then((data) => setUserRole(data.role));
-  });
 
   const handleSignIn = (e) => {
     e.preventDefault();
-
-    if (userRole == "instructor") {
-      setUserIsInstructor(true);
-    } else if (userRole == "admin") {
-      setUserIsAdmin(true);
-    } else {
-      setUserIsTrainee(true);
-    }
+    loginUser();
   };
 
   return (
     <div>
       <p className="title">WELCOME BACK</p>
 
-      <form onSubmit={handleSubmitt}>
-        <div>
-          <div className="form">
-            <div className="username">
-              <div className="rectangle" />
-              <input
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-                className="user"
-                type="email"
-                placeholder=" email"
-              />
-            </div>
-            <div className="password">
-              <div className="rectangle" />
-              <input
-                onChange={(e) => setPass(e.target.value)}
-                value={password}
-                className="pass"
-                type="password"
-                placeholder=" Password"
-              />
-            </div>
-            <div className="Forget-Password">
-              <a href="/forgetPassword">Forget Password ?</a>
-            </div>
-          </div>
-          <div>
-            <button onClick={handleSignIn} className="buttonborder">
-              {userIsInstructor && <Link to={`/instructor/${userID}`}>✔️</Link>}
-              {userIsTrainee && <Link to={`/trainee/${userID}`}>✔️</Link>}
-              {userIsAdmin && <Link to={`/admin/${userID}`}>✔️</Link>}
-              Login
-            </button>
-          </div>
-
-          <div className="line" />
+      <div className="form">
+        <div className="username">
+          <div className="rectangle" />
+          <input
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
+            className="user"
+            type="email"
+            placeholder=" email"
+          />
         </div>
-      </form>
+        <div className="password">
+          <div className="rectangle" />
+          <input
+            onChange={(e) => setPass(e.target.value)}
+            value={password}
+            className="pass"
+            type="password"
+            placeholder=" Password"
+          />
+        </div>
+        <div className="Forget-Password">
+          <a href="/forgetPassword">Forget Password ?</a>
+        </div>
+      </div>
+      <div>
+        <button onClick={handleSignIn} className="buttonborder">
+          Login
+        </button>
+      </div>
+
+      <div className="line" />
 
       <p className="mess"> DONT HAVE AN ACCOUNT ?</p>
       <div>
