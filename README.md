@@ -40,6 +40,15 @@ The project is created with the contribution of 4 members.
 
 [Project Deliverables.xlsx](https://github.com/Advanced-Computer-Lab-2022/ACL-Team/files/10310567/Project.Deliverables.xlsx)
 
+<img width="1440" alt="User Register" src="https://user-images.githubusercontent.com/96923712/210185428-dfec6a24-7194-48a5-acd9-c6b15b0e6a3a.png">
+
+<img width="1440" alt="Admin Issue Page" src="https://user-images.githubusercontent.com/96923712/210185502-2bd6e324-8a49-4a0b-a04d-3e4b8331d14f.png">
+
+<img width="1440" alt="Instructor HomePage" src="https://user-images.githubusercontent.com/96923712/210185565-a78641c0-3618-4538-bc4f-9f6f4afe4fa5.png">
+
+<img width="1440" alt="FAQ" src="https://user-images.githubusercontent.com/96923712/210185601-af321a1a-ab68-490c-b87e-dc84b0ebe797.png">
+
+<img width="1440" alt="Course Search" src="https://user-images.githubusercontent.com/96923712/210185611-6ca05d5d-840b-4e0a-88bf-a61dd4195a1a.png">
 
 # Credits
 
