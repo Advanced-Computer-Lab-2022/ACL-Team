@@ -6,11 +6,30 @@ A user friendly website that serves as an online learning system where instructo
 
 # Motivation:
 
-Our vision was to create user-friendly website using MERN stack
+Our vision was to create user-friendly E-learning website using MERN stack
+
+# Build status
+
+1.The project is currently under development.  
+2.Design for error should be imporoved.  
+3.Need to implemetn unit testing .  
+4.The website is still not deployed. 
+
+# Code Style
+-Standard Code style that is easy for anyone to understand .
 
 # Technologies:
 
-*Node Js *React *Express *Mongo DB *REST API
+*Node Js *React *Express *Mongo DB *REST API *Bootstrap *Axios *bcrypt 
+
+#Features .
+1.Search and filter with high accuracy.  
+2.Sending emails automatically for trainees and instructors.  
+3. currency exchange according rto country selected.  
+4. Paying with credit card or visa. 
+5.Refunding money to wallet for further use .  
+6. Reporting issues and following up on their status.  
+
 
 # Installation 
 
@@ -24,17 +43,13 @@ Locally:
 * Cd frontend
 * Npm start “wait until your browser open automatically”.
 
-# Contributions
 
-The project is created with the contribution of 4 members.
+# Code Example
+<img width="1440" alt="Screenshot 2023-01-05 at 4 24 03 PM" src="https://user-images.githubusercontent.com/116225664/210802487-da6ff8a1-f523-4a88-a9e8-75228f94b6ef.png">
 
-1- https://github.com/MGhazouly
+<img width="1440" alt="Screenshot 2023-01-05 at 4 25 27 PM" src="https://user-images.githubusercontent.com/116225664/210802640-12285413-6292-4438-b93a-a4fb97a02f4c.png">
 
-2- https://github.com/Mazen317
 
-3- https://github.com/AbdullahShoeib1
-
-4- https://github.com/marwanashraf56
 
 # ScreenShots
 
@@ -49,6 +64,45 @@ The project is created with the contribution of 4 members.
 <img width="1440" alt="FAQ" src="https://user-images.githubusercontent.com/96923712/210185601-af321a1a-ab68-490c-b87e-dc84b0ebe797.png">
 
 <img width="1440" alt="Course Search" src="https://user-images.githubusercontent.com/96923712/210185611-6ca05d5d-840b-4e0a-88bf-a61dd4195a1a.png">
+
+
+# Tests
+1. As a trainee ,Try Buying a course and see if you granted access.
+
+2. As a trainee ,Try refunding a course after 50% course progress.
+
+3. As a trainee ,Try reporting an instructor and reviewing their Course. 
+
+4. As a trainee , Try solving a quizz from the list of your courses, check you grades, and view the model answer. 
+
+5. As a trainee , Try finishing the course and grand a certificate to download and recieve on. your email .
+
+6.Try Signing in as an instructor.
+
+7.Try to creat a course as an instructor.
+
+8.Try Creating new section for a course and make them quizzes.
+
+9.Try viewing course reviews as an instructor.
+
+10. As an admin , try granting access fro coroprate trainee course requests.
+
+11.As an admin, you should be able to view repors and change their staues from unseen , pending , and resolved .
+
+12.As an admin , you should be able to signup for other admns and instructor.
+
+# Contributions
+
+The project is created with the contribution of 4 members.
+
+1- https://github.com/MGhazouly
+
+2- https://github.com/Mazen317
+
+3- https://github.com/AbdullahShoeib1
+
+4- https://github.com/marwanashraf56
+
 
 # Credits
 
