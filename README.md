@@ -6,7 +6,8 @@ A user friendly website that serves as an online learning system where instructo
 
 # Motivation:
 
-Our vision was to create user-friendly E-learning website using MERN stack
+Our vision was to create user-friendly E-learning website using MERN stack. Its also aimed at creating a website for the canadian Chamber of commerce.
+They wanted to build their own streaming courses website insted of using a previously established websiet such as UDEMY. 
 
 # Build status
 
@@ -22,13 +23,227 @@ Our vision was to create user-friendly E-learning website using MERN stack
 
 *Node Js *React *Express *Mongo DB *REST API *Bootstrap *Axios *bcrypt 
 
-#Features .
+# Features .
 1.Search and filter with high accuracy.  
 2.Sending emails automatically for trainees and instructors.  
 3. currency exchange according rto country selected.  
 4. Paying with credit card or visa. 
 5.Refunding money to wallet for further use .  
 6. Reporting issues and following up on their status.  
+
+# Code Example. 
+1-sign up
+
+```
+export const SignupUser = () => {
+        const[email,setEmail] =useState('')
+        const[username,setUsername] =useState('')
+        const[password,setPass] =useState('')
+        const[firstname,setFirstname] =useState('')
+        const[lastname,setLastname] =useState('')
+        const[gender,setGender] =useState('')
+        const[corprate,setIsCorprate] =useState('')
+
+    const handleUserSignup = async () => {
+      console.log("boodaa")
+      const res = await axios
+        .post("http://localhost:3000/signup", {
+          email:email,username:username,password:password,firstname:firstname,lastname:lastname,gender:gender,corprate:corprate
+        })
+        .catch((err) => console.log(err));
+      const data = await res.data;
+      return data;
+      };
+      const handleSubmit =(e)=>{
+        e.preventDefault()
+        console.log("boodaa")
+
+        handleUserSignup().then((data) => console.log(data))
+      }. 
+ ```
+ 2-Instructor add course.  
+ ```  
+ export default function InstructorAddCourseComponent({instructorID}) {
+ const[name,setName] =useState('')
+const[title,setTitle] =useState('')
+const[price,setPrice] =useState('')
+const[coursePreviewUrl,SetVideo] =useState('')
+const[summary,setSummary] =useState('')
+ const[category,setCategory] =useState('')
+ const[instructor_id,setinstructor_id] =useState('')
+
+const instructorAddCourse = async () => {
+  // console.log("boodaa")
+  const res = await axios
+    .post("http://localhost:3000/instructor/addCourse", {
+      title:title,price:price,category:category,instructor_id:instructorID,summary:summary,coursePreviewUrl:coursePreviewUrl,
+    })
+    .catch((err) => console.log(err));
+    const data = await res.data;
+  return data;
+};
+const handleSubmitt=(e)=>{
+  e.preventDefault()
+  console.log("yarab")
+
+
+  
+
+  instructorAddCourse().then((data) => console.log(data))
+  console.log("hiiii")
+
+}
+
+  return (
+    <div>
+      
+      <div className="instructor-addCourse">
+        <div className="instructor-icon1">
+          <img src={img1} alt="icon"/>
+        </div>
+        <div className="instructor-title">
+          <h1>Create Course </h1>
+        </div>
+
+        <form onSubmit={handleSubmitt}>
+
+         <div className="instructor_name">
+          <input 
+          onChange={(e) => setName(e.target.value)}
+          value={name}
+          type="textbox" placeholder='Course Instructor Name'/>
+        </div> 
+        <div className="instructor_LastName">
+          <input 
+            onChange={(e) => setTitle(e.target.value)}
+            value={title}
+          type="textbox" placeholder='Course Title'/>
+        </div>
+        <div className="line1">
+          <hr></hr>
+        </div>
+        <div className="instructor_price">
+          <input
+            onChange={(e) => setPrice(e.target.value)}
+            value={price} 
+          type="textbox" placeholder='Price'/>
+        </div>
+        <div className="instructor_URL">
+          <input
+            onChange={(e) => SetVideo(e.target.value)}
+            value={coursePreviewUrl}
+           type="textbox" placeholder='Course Preview Video Url'/>
+        </div>
+         <div className="instructor_category">
+          <input
+            onChange={(e) => setCategory(e.target.value)}
+            value={category} 
+          type="textbox" placeholder='category'/>
+        </div> 
+
+        
+        <div className="line2">
+          <hr></hr>
+        </div>
+
+        <div className="line3">
+          <hr></hr>
+        </div>
+        <div className="instructor_Summary">
+          <input 
+            onChange={(e) => setSummary(e.target.value)}
+            value={summary}
+          type="textbox" placeholder='Course Summary'/>
+        </div>
+        <div className="instructor_Button">
+          <button className="Navy_Button" type="submit"> Create Course </button>
+
+        </div>
+
+        </form>
+        
+
+      </div>
+     
+    </div>
+  )
+}  
+```
+3-Request Refund (backend)
+```
+const requestRefund = async (req,res) => {
+    const {
+        _id,
+        course_id
+    } = req.body
+    
+    try{
+        if(!_id)
+            throw Error('userId not Entered')
+        if(!course_id)
+            throw Error('courseId not Entered')
+
+        const course = await Course.findOne({
+            _id: course_id
+        })
+        var trainee = await Trainee.findOne({
+            _id
+        })
+        const sectionProgress = await CourseSectionProgress.findOne({
+            user_id:_id,
+            course_id:course_id
+        })
+        if (!course)
+            throw Error('Course Does not Exist')
+        if (!trainee)
+            throw Error('Trainee Does not Exist')
+        if (!sectionProgress)
+            throw Error('Section Progress Does not Exist')    
+        const percentage = sectionProgress.finishedPercentage;
+
+        var ownedCourses = trainee.ownedCourses
+
+        for (let i = 0; i < ownedCourses.length; i++) {
+                console.log(ownedCourses[i].course_id)
+                if(ownedCourses[i].course_id == course_id)
+                {
+                    ownedCourses.splice(i, 1);
+                    
+                }
+          }
+        trainee = await Trainee.findByIdAndUpdate({
+            _id
+        },{
+            ownedCourses
+        })
+
+        await CourseSectionProgress.deleteOne({
+            user_id:_id,
+            course_id:course_id
+        })
+
+        if(percentage < 50) 
+        {
+            res.status(200).json({
+                ownedCourses
+            })
+        }
+        else{
+            res.status(200).json({
+                message: "Sorry you can't refund this course you Exceeded 50% of the materials"
+            })
+        }
+
+
+
+    }catch(error){
+        console.log(error)
+        res.status(400).json({
+            error: error.message
+        })
+    }
+}
+```
 
 
 # Installation 
@@ -43,11 +258,43 @@ Locally:
 * Cd frontend
 * Npm start “wait until your browser open automatically”.
 
+# API Reference
 
-# Code Example
-<img width="1440" alt="Screenshot 2023-01-05 at 4 24 03 PM" src="https://user-images.githubusercontent.com/116225664/210802487-da6ff8a1-f523-4a88-a9e8-75228f94b6ef.png">
+Login 
+``` 
+http://localhost:3000/signin
+```
+Signup
+``` 
+http://localhost:3000/Signup/
+```
 
-<img width="1440" alt="Screenshot 2023-01-05 at 4 25 27 PM" src="https://user-images.githubusercontent.com/116225664/210802640-12285413-6292-4438-b93a-a4fb97a02f4c.png">
+Review Instructor
+``` 
+localhost:3000/trainee/reviewInstructor. 
+```
+
+
+Admin view Unseen Reports.
+``` 
+http://localhost:3000/admin/unseenIssues
+```
+
+Change Password
+``` 
+http://localhost:3000/login/forgetPassword
+```
+
+
+Instructor Add Course
+``` 
+http://localhost:3000/instructor/addCourse
+```
+
+Instructor Add Quiz
+``` 
+http://localhost:3000/instructor/addQuiz
+```
 
 
 
@@ -67,32 +314,52 @@ Locally:
 
 
 # Tests
+
 1. As a trainee ,Try Buying a course and see if you granted access.
 
-2. As a trainee ,Try refunding a course after 50% course progress.
+2. As a trainee ,Try refunding a course before 50% course progress.
 
 3. As a trainee ,Try reporting an instructor and reviewing their Course. 
 
 4. As a trainee , Try solving a quizz from the list of your courses, check you grades, and view the model answer. 
 
-5. As a trainee , Try finishing the course and grand a certificate to download and recieve on. your email .
-
-6.Try Signing in as an instructor.
-
-7.Try to creat a course as an instructor.
-
-8.Try Creating new section for a course and make them quizzes.
-
-9.Try viewing course reviews as an instructor.
-
+5. As a trainee , Try finishing the course and grand a certificate to download and recieve on. your email .  
+6. Try Signing in as an instructor.  
+7. Try to creat a course as an instructor.
+8. Try Creating new section for a course and make them quizzes.  
+9. Try viewing course reviews as an instructor.
 10. As an admin , try granting access fro coroprate trainee course requests.
+11. As an admin, you should be able to view repors and change their staues from unseen , pending , and resolved .
+12. As an admin , you should be able to signup for other admns and instructor.  
+13. Try changing your password and email .  
+14. Forget password and recieve email to change it.  
 
-11.As an admin, you should be able to view repors and change their staues from unseen , pending , and resolved .
-
-12.As an admin , you should be able to signup for other admns and instructor.
 
 # Contributions
+Any Contributiona are welcomed to imporove the website.  
+1.Clone the repository.  
+2.Install dependancies.  
+3.Create branch and do your work.  
+4.Provide messages for the creaters to view.  
+5.commit and push your work.  
+6.wait for the creater to view your work and to be merged if master approved upon.
 
+
+# How to use ? 
+
+If you want to login as a trainee use these Credentials.  
+Email:Youssef@gmail.com.  
+Password:1234
+
+If you want to login as a Instructor use these Credentials.  
+Email:meza@gmail.com.  
+Password:1234
+
+If you want to login as a Admin use these Credentials.  
+Email:safrsas@gamal.com.  
+Password:1234
+
+# Credits
 The project is created with the contribution of 4 members.
 
 1- https://github.com/MGhazouly
@@ -102,15 +369,4 @@ The project is created with the contribution of 4 members.
 3- https://github.com/AbdullahShoeib1
 
 4- https://github.com/marwanashraf56
-
-
-# Credits
-
- https://mui.com
- 
- https://www.codecademy.com/learn/react-101	
- 
- https://www.w3schools.com/nodejs/
- 
- https://expressjs.com/
 
