@@ -335,16 +335,6 @@ http://localhost:3000/instructor/addQuiz
 14. Forget password and recieve email to change it.  
 
 
-# Contributions
-Any Contributiona are welcomed to imporove the website.  
-1.Clone the repository.  
-2.Install dependancies.  
-3.Create branch and do your work.  
-4.Provide messages for the creaters to view.  
-5.commit and push your work.  
-6.wait for the creater to view your work and to be merged if master approved upon.
-
-
 # How to use ? 
 
 If you want to login as a trainee use these Credentials.  
@@ -358,6 +348,16 @@ Password:1234
 If you want to login as a Admin use these Credentials.  
 Email:safrsas@gamal.com.  
 Password:1234
+
+
+# Contributions
+Any Contributiona are welcomed to imporove the website.  
+1.Clone the repository.  
+2.Install dependancies.  
+3.Create branch and do your work.  
+4.Provide messages for the creaters to view.  
+5.commit and push your work.  
+6.wait for the creater to view your work and to be merged if master approved upon.
 
 # Credits
 The project is created with the contribution of 4 members.
