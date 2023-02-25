@@ -392,21 +392,6 @@ http://localhost:3000/lib/payCourse
 14. Forget password and recieve email to change it.  
 
 
-# How to use ? 
-
-If you want to login as a trainee use these Credentials.  
-Email:Youssef@gmail.com.  
-Password:1234
-
-If you want to login as a Instructor use these Credentials.  
-Email:meza@gmail.com.  
-Password:1234
-
-If you want to login as a Admin use these Credentials.  
-Email:safrsas@gamal.com.  
-Password:1234
-
-
 # Contributions
 Any Contributiona are welcomed to imporove the website.  
 1.Clone the repository.  
