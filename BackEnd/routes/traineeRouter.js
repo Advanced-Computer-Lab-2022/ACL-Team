@@ -1,62 +1,63 @@
-const express = require('express')
-const { requestCourse } = require('../controller/trainee/corporateController')
+const express = require("express");
+const { requestCourse } = require("../controller/trainee/corporateController");
 const {
-    rateCourse,
-    reviewInstructor,
-    getTraineebyId,
-    joinCourse,
-    getPreview,
-    requestRefund
-} = require('../controller/trainee/traineeController')
+  rateCourse,
+  reviewInstructor,
+  getTraineebyId,
+  joinCourse,
+  getPreview,
+  requestRefund,
+  getPaymentById,
+} = require("../controller/trainee/traineeController");
 const {
-    answerQuestion,  
-    getQuestionGrade,
-    getQuizGrade,
-    getJoinedCourses,
-    getEmailandSendCertifiate,
-    getMyReviews,
-    editInstructorReview,
-    deleteInstructorReview,
-    getReview
-} = require('../controller/trainee/traineeCourseController')
-const User = require('../models/userSchema')
+  answerQuestion,
+  getQuestionGrade,
+  getQuizGrade,
+  getJoinedCourses,
+  getEmailandSendCertifiate,
+  getMyReviews,
+  editInstructorReview,
+  deleteInstructorReview,
+  getReview,
+} = require("../controller/trainee/traineeCourseController");
+const User = require("../models/userSchema");
 
-const router = express.Router()
+const router = express.Router();
 
-router.post('/joinCourse', joinCourse)
+router.post("/joinCourse", joinCourse);
 
-router.post('/rateCourse', rateCourse)
+router.post("/rateCourse", rateCourse);
 
-router.post('/reviewInstructor', reviewInstructor)
+router.post("/reviewInstructor", reviewInstructor);
 
-router.post('/answerQuestion', answerQuestion)
+router.post("/answerQuestion", answerQuestion);
 
-router.post('/getCertificate' , getEmailandSendCertifiate)
+router.post("/getCertificate", getEmailandSendCertifiate);
 
-router.post('/getPreview', getPreview)
+router.post("/getPreview", getPreview);
 
-router.get('/getTrainee',getTraineebyId)
+router.get("/getTrainee", getTraineebyId);
 
-router.get('/questionGrade', getQuestionGrade)
+router.get("/questionGrade", getQuestionGrade);
 
-router.post('/quizGrade', getQuizGrade)
+router.post("/quizGrade", getQuizGrade);
 
-router.get('/myCourses', getJoinedCourses)
+router.get("/myCourses", getJoinedCourses);
 
-router.post('/requestRefund', requestRefund)
+router.post("/requestRefund", requestRefund);
 
-router.get('/getReview', getReview)
+router.get("/getPayments", getPaymentById);
 
-router.get('/myInstructorReviews', getMyReviews)
+router.get("/getReview", getReview);
 
-router.post('/editInstructorReview', editInstructorReview)
+router.get("/myInstructorReviews", getMyReviews);
 
-router.post('/deleteInstructorReview', deleteInstructorReview)
+router.post("/editInstructorReview", editInstructorReview);
 
+router.post("/deleteInstructorReview", deleteInstructorReview);
 
 //ALL ROUTES BELOW HERE ARE FOR CORPORATE TRAINEE ONLY
 
-router.post('/requestCourse', requestCourse)
+router.post("/requestCourse", requestCourse);
 
-
-module.exports = router
+module.exports = router;

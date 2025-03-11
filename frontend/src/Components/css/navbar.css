@@ -1,74 +1,73 @@
-.Nav-signedIn{
-    background-color: #FAFDFF;
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0px;
-    height: 80px;
+.Nav-signedIn {
+  background-color: #fafdff;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0px;
+  height: 80px;
 }
 
 .sidemenu_button {
-    width: 30px;
-    border: none;
-    background-color: transparent;
-    /* padding: 0px 10px; */
-    margin-top: 5px;
-    margin-left: 20px;
-  }
-
-.Nav-title{
-    padding: 5px 0px;
-    margin-left: 20px;
+  width: 30px;
+  border: none;
+  background-color: transparent;
+  /* padding: 0px 10px; */
+  margin-top: 5px;
+  margin-left: 20px;
 }
 
-.Nav-search{
-    padding: 10px 0px;
-    margin-left: 200px;
-}
-.Nav-search > input{
-    border: none;
-    border-radius: 20px;
-    width: 200px;
-    background-color: rgb(224, 222, 222);
+.Nav-title {
+  padding: 5px 0px;
+  margin-left: 20px;
 }
 
-.Nav-search > input:focus{
-    outline: none;
+.Nav-search {
+  padding: 10px 0px;
+  margin-left: 200px;
+}
+.Nav-search > input {
+  border: none;
+  border-radius: 20px;
+  width: 200px;
+  background-color: rgb(224, 222, 222);
 }
 
-.Nav-actions > ul{
-    list-style: none;
-    padding: 0px;
+.Nav-search > input:focus {
+  outline: none;
 }
 
-.Nav-actions > ul > li{
-    list-style: none;
-    display: inline-table;
+.Nav-actions > ul {
+  list-style: none;
+  padding: 0px;
 }
 
-.Nav-actions > ul > li > a{
+.Nav-actions > ul > li {
+  list-style: none;
+  display: inline-table;
+}
+
+.Nav-actions > ul > li > a {
   text-decoration: none;
   font-size: 20px;
   padding: 20px;
   color: #253858;
 }
 
-.Nav-actions > ul > li > a:hover{
-    text-decoration: none;
-    color: #436fba;
-  }
-
-.Nav-userInfo{
-    padding: 6px 0px;
+.Nav-actions > ul > li > a:hover {
+  text-decoration: none;
+  color: #436fba;
 }
 
-.Nav-userInfo > a{
-    padding: 0px 10px;
+.Nav-userInfo {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 25px;
+  margin-right: 20px;
 }
-
-.setting_icon{
-    border-radius: 16px;
-    top: 15px;
-    height: 32px;
-    width: 32px;
-    background-color: rgba(255, 255, 255, 0.00009999999747378752);   
-  }
+.setting_icon {
+  border-radius: 16px;
+  top: 15px;
+  height: 32px;
+  width: 32px;
+  background-color: rgba(255, 255, 255, 0.00009999999747378752);
+}
